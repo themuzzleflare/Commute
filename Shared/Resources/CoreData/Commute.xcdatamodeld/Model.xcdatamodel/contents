@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="18154" systemVersion="20G80" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
+    <entity name="Trip" representedClassName=".Trip" syncable="YES">
+        <attribute name="fromId" optional="YES" attributeType="String"/>
+        <attribute name="fromName" optional="YES" attributeType="String"/>
+        <attribute name="fromStopId" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="toId" optional="YES" attributeType="String"/>
+        <attribute name="toName" optional="YES" attributeType="String"/>
+        <attribute name="toStopId" optional="YES" attributeType="String"/>
+    </entity>
+    <elements>
+        <element name="Trip" positionX="850.356201171875" positionY="-1219.601348876953" width="257.175537109375" height="134"/>
+    </elements>
+</model>

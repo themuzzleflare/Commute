@@ -1,0 +1,5 @@
+#include "Shared.xcconfig"
+
+CLOUDKIT_CONTAINER_ENVIRONMENT=Production
+APS_ENVIRONMENT=production
+TP_API_KEY=Qj55jbLcj5P7JkTbwDJe7C5id7chbjJsKkNC
