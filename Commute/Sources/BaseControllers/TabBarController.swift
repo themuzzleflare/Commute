@@ -14,6 +14,18 @@ final class TabBarController: ASTabBarController {
     return vc
   }()
 
+  private let stationsvc: UIViewController = {
+    let vc = NavigationController(rootViewController: StationsVC())
+
+    vc.tabBarItem = UITabBarItem(
+      title: "Stations",
+      image: UIImage(systemName: "location"),
+      selectedImage: UIImage(systemName: "location.fill")
+    )
+
+    return vc
+  }()
+
   private let toolsvc: UIViewController = {
     let vc = NavigationController(rootViewController: ToolsVC())
 
@@ -44,6 +56,6 @@ final class TabBarController: ASTabBarController {
   }
 
   private func configure() {
-    setViewControllers([tripsvc, toolsvc, aboutvc], animated: true)
+    setViewControllers([tripsvc, stationsvc, toolsvc, aboutvc], animated: true)
   }
 }

@@ -15,6 +15,13 @@ final class TripsVC: ASViewController {
     }
   }
 
+  private lazy var removeAllBarButtonItem = UIBarButtonItem(
+    title: "Remove All",
+    style: .plain,
+    target: self,
+    action: #selector(removeAllTrips)
+  )
+
   private var filteredTrips: [Trip] {
     return trips.filter {
       (trip) in
@@ -97,6 +104,7 @@ final class TripsVC: ASViewController {
     super.viewDidLoad()
     displayNode.addSubnode(tableNode)
     configureObserver()
+    configureToolbar()
     configureNavigation()
     configureTableView()
     applySnapshot()
@@ -112,10 +120,21 @@ final class TripsVC: ASViewController {
     fetchTrips()
   }
 
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+    navigationController?.setToolbarHidden(!isEditing, animated: true)
+  }
+
+  override func viewWillDisappear(_ animated: Bool) {
+    super.viewWillDisappear(animated)
+    navigationController?.setToolbarHidden(true, animated: false)
+  }
+
   override func setEditing(_ editing: Bool, animated: Bool) {
     super.setEditing(editing, animated: animated)
     tableView.setEditing(editing, animated: animated)
     addBarButtonItem.isEnabled = !editing
+    navigationController?.setToolbarHidden(!editing, animated: true)
   }
 
   private func configureObserver() {
@@ -125,6 +144,10 @@ final class TripsVC: ASViewController {
       name: NSNotification.Name(rawValue: "NSPersistentStoreRemoteChangeNotification"),
       object: AppDelegate.persistentContainer.persistentStoreCoordinator
     )
+  }
+
+  private func configureToolbar() {
+    setToolbarItems([removeAllBarButtonItem], animated: false)
   }
 
   private func configureNavigation() {

@@ -62,7 +62,7 @@ final class TripDetailVC: ASDKViewController<ASTableNode> {
   }
 
   private func fetchJourneys() {
-    APIFacade.fetchJourneys(from: trip.fromStopId, to: trip.toStopId) {
+    APIFacade.fetchJourneys(origin: trip.fromStopId, destination: trip.toStopId) {
       (result) in
       DispatchQueue.main.async {
         switch result {

@@ -5,7 +5,7 @@ import SwiftDate
 struct APIFacade {
   static let apiKey = infoForKey("TPAPIKey")!
 
-  static func fetchJourneys(from: String, to: String, completion: @escaping (Result<[TripRequestResponseJourney], AFError>) -> Void) {
+  static func fetchJourneys(origin: String, destination: String, completion: @escaping (Result<[TripRequestResponseJourney], AFError>) -> Void) {
     let headers: HTTPHeaders = [
       "Authorization": "apikey \(apiKey)"
     ]
@@ -17,9 +17,9 @@ struct APIFacade {
       "itdTime": itdTime(),
       "depArrMacro": "dep",
       "type_origin": "any",
-      "name_origin": from,
+      "name_origin": origin,
       "type_destination": "any",
-      "name_destination": to,
+      "name_destination": destination,
       "calcNumberOfTrips": "10",
       "excludedMeans": "checkbox",
       "exclMOT_4": "1",

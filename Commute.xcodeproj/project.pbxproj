@@ -10,6 +10,9 @@
 		7A2C18FC26AE6CB2005BF502 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2C18FB26AE6CB2005BF502 /* AppDelegate.swift */; };
 		7A2C190526AE6CB4005BF502 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A2C190426AE6CB4005BF502 /* Assets.xcassets */; };
 		7A2C190826AE6CB4005BF502 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A2C190626AE6CB4005BF502 /* LaunchScreen.storyboard */; };
+		7A473FED26C88CE2004CAC5E /* StationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A473FEC26C88CE2004CAC5E /* StationsVC.swift */; };
+		7A473FEF26C88DD2004CAC5E /* StationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A473FEE26C88DD2004CAC5E /* StationVC.swift */; };
+		7A473FF126C89AD6004CAC5E /* StationMapCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A473FF026C89AD6004CAC5E /* StationMapCellNode.swift */; };
 		7A77B9BA26B929E100712639 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A77B9B926B929E100712639 /* SceneDelegate.swift */; };
 		7AC2B4D226AE713B008DC5CF /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC2B4D126AE713B008DC5CF /* R.generated.swift */; };
 		7AC2B4D626AE742B008DC5CF /* TripRequestResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC2B4D526AE742B008DC5CF /* TripRequestResponse.swift */; };
@@ -59,6 +62,9 @@
 		7A38860B26BB63F800F57EA0 /* Development.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Development.xcconfig; sourceTree = "<group>"; };
 		7A38860E26BB683200F57EA0 /* Production.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Production.xcconfig; sourceTree = "<group>"; };
 		7A38860F26BB835800F57EA0 /* Shared.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Shared.xcconfig; sourceTree = "<group>"; };
+		7A473FEC26C88CE2004CAC5E /* StationsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationsVC.swift; sourceTree = "<group>"; };
+		7A473FEE26C88DD2004CAC5E /* StationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationVC.swift; sourceTree = "<group>"; };
+		7A473FF026C89AD6004CAC5E /* StationMapCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationMapCellNode.swift; sourceTree = "<group>"; };
 		7A77B9B926B929E100712639 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		7AC2B4D026AE70FB008DC5CF /* Commute.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Commute.entitlements; sourceTree = "<group>"; };
 		7AC2B4D126AE713B008DC5CF /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
@@ -217,6 +223,8 @@
 				7AD4E04426AFFEB0007960AD /* TripDetailVC.swift */,
 				7ACC855B26B0FCF900F8F946 /* JourneyDetailVC.swift */,
 				7ACC855D26B0FDEB00F8F946 /* StopSequenceVC.swift */,
+				7A473FEC26C88CE2004CAC5E /* StationsVC.swift */,
+				7A473FEE26C88DD2004CAC5E /* StationVC.swift */,
 				7ACC857326B2751F00F8F946 /* ToolsVC.swift */,
 				7AC2B4E126AE78D0008DC5CF /* AboutVC.swift */,
 				7ACC85C226B36A8000F8F946 /* SettingsVC.swift */,
@@ -269,6 +277,7 @@
 				7ACC856A26B22D8E00F8F946 /* AboutTopCellNode.swift */,
 				7ACC856C26B23DE800F8F946 /* RightDetailCellNode.swift */,
 				7ACC857126B25C7B00F8F946 /* SubtitleCellNode.swift */,
+				7A473FF026C89AD6004CAC5E /* StationMapCellNode.swift */,
 			);
 			path = Nodes;
 			sourceTree = "<group>";
@@ -482,6 +491,7 @@
 				7ACC857426B2751F00F8F946 /* ToolsVC.swift in Sources */,
 				7ACC855C26B0FCF900F8F946 /* JourneyDetailVC.swift in Sources */,
 				7ACC856B26B22D8E00F8F946 /* AboutTopCellNode.swift in Sources */,
+				7A473FF126C89AD6004CAC5E /* StationMapCellNode.swift in Sources */,
 				7ACC857B26B27EE100F8F946 /* PDFVC.swift in Sources */,
 				7AC2B4D626AE742B008DC5CF /* TripRequestResponse.swift in Sources */,
 				7AC2B4F226AEA6D8008DC5CF /* CKFacade.swift in Sources */,
@@ -492,10 +502,12 @@
 				7A2C18FC26AE6CB2005BF502 /* AppDelegate.swift in Sources */,
 				7AC2B4F426AEA750008DC5CF /* Station.swift in Sources */,
 				7ACC856326B1114D00F8F946 /* DateFormatters.swift in Sources */,
+				7A473FED26C88CE2004CAC5E /* StationsVC.swift in Sources */,
 				7AC2B4D826AE7876008DC5CF /* TabBarController.swift in Sources */,
 				7ACC857226B25C7B00F8F946 /* SubtitleCellNode.swift in Sources */,
 				7A77B9BA26B929E100712639 /* SceneDelegate.swift in Sources */,
 				7AD4E04526AFFEB0007960AD /* TripDetailVC.swift in Sources */,
+				7A473FEF26C88DD2004CAC5E /* StationVC.swift in Sources */,
 				7AC2B4E026AE78C5008DC5CF /* TripsVC.swift in Sources */,
 				7AC2B4E226AE78D0008DC5CF /* AboutVC.swift in Sources */,
 				7AF8783826B4D7D900A81C3A /* Model.swift in Sources */,
@@ -642,11 +654,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0B08224D77C6FF2AFE87A409 /* Pods-Commute.debug.xcconfig */;
 			buildSettings = {
-				ARCHS = arm64;
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Commute/Resources/Commute.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Paul Tavitian (P72KXKKSKD)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = "${COMMUTE_BUILD_VERSION}";
 				DEVELOPMENT_TEAM = JDL5FY6SCC;
@@ -659,6 +672,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "${COMMUTE_BUNDLE_ID}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "Commute Development";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "Commute Development";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -668,11 +683,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4C21E28A3F23E0A640FF21A7 /* Pods-Commute.release.xcconfig */;
 			buildSettings = {
-				ARCHS = arm64;
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Commute/Resources/Commute.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Paul Tavitian (P72KXKKSKD)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = "${COMMUTE_BUILD_VERSION}";
 				DEVELOPMENT_TEAM = JDL5FY6SCC;
@@ -685,6 +701,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "${COMMUTE_BUNDLE_ID}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "Commute Development";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "Commute Development";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
