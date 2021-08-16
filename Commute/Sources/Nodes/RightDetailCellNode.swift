@@ -17,7 +17,7 @@ final class RightDetailCellNode: ASCellNode {
       attributes: [
         .font: UIFont.preferredFont(forTextStyle: .body),
         .foregroundColor: UIColor.label,
-        .paragraphStyle: pLeftStyle
+        .paragraphStyle: ModelFacade.pLeftStyle
       ]
     )
 
@@ -26,7 +26,7 @@ final class RightDetailCellNode: ASCellNode {
       attributes: [
         .font: UIFont.preferredFont(forTextStyle: .body),
         .foregroundColor: UIColor.secondaryLabel,
-        .paragraphStyle: pRightStyle
+        .paragraphStyle: ModelFacade.pRightStyle
       ]
     )
 
@@ -46,14 +46,6 @@ final class RightDetailCellNode: ASCellNode {
       ]
     )
 
-    return ASInsetLayoutSpec(
-      insets: UIEdgeInsets(
-        top: 13,
-        left: 16,
-        bottom: 13,
-        right: 16
-      ),
-      child: hStack
-    )
+    return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 13, left: 16, bottom: 13, right: 16), child: hStack)
   }
 }

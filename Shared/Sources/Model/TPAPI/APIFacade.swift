@@ -3,7 +3,7 @@ import Alamofire
 import SwiftDate
 
 struct APIFacade {
-  static let apiKey = infoForKey("TPAPIKey")!
+  static let apiKey = ModelFacade.infoForKey("TPAPIKey")!
 
   static func fetchJourneys(origin: String, destination: String, completion: @escaping (Result<[TripRequestResponseJourney], AFError>) -> Void) {
     let headers: HTTPHeaders = [

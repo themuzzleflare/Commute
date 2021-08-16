@@ -117,7 +117,7 @@ final class AddTripToVC: ASViewController {
   }
 
   required init?(coder: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
+    fatalError("Not implemented")
   }
 
   override func viewDidLoad() {
@@ -185,6 +185,7 @@ final class AddTripToVC: ASViewController {
         (tableView, indexPath, station) in
         let cell = tableView.dequeueReusableCell(withIdentifier: "stationCell", for: indexPath)
         cell.separatorInset = .zero
+        cell.textLabel?.numberOfLines = 0
         cell.textLabel?.text = station.name
         return cell
       }
@@ -200,6 +201,7 @@ final class AddTripToVC: ASViewController {
         (tableView, indexPath, station) in
         let cell = tableView.dequeueReusableCell(withIdentifier: "stationCell", for: indexPath)
         cell.separatorInset = .zero
+        cell.textLabel?.numberOfLines = 0
         cell.textLabel?.text = station.name
         return cell
       }

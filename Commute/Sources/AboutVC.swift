@@ -9,7 +9,7 @@ final class AboutVC: ASDKViewController<ASTableNode> {
   }
 
   required init?(coder: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
+    fatalError("Not implemented")
   }
 
   override func viewDidLoad() {
@@ -58,6 +58,6 @@ extension AboutVC: ASTableDataSource {
   }
 
   func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-    return infoForKey("NSHumanReadableCopyright")!
+    return ModelFacade.infoForKey("NSHumanReadableCopyright")!
   }
 }

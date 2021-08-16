@@ -23,7 +23,7 @@ final class AboutTopCellNode: ASCellNode {
       attributes: [
         .font: UIFont.boldSystemFont(ofSize: 32),
         .foregroundColor: UIColor.label,
-        .paragraphStyle: pCentreStyle
+        .paragraphStyle: ModelFacade.pCentreStyle
       ]
     )
   }
@@ -40,14 +40,6 @@ final class AboutTopCellNode: ASCellNode {
       ]
     )
 
-    return ASInsetLayoutSpec(
-      insets: UIEdgeInsets(
-        top: 13,
-        left: 16,
-        bottom: 13,
-        right: 16
-      ),
-      child: vStack
-    )
+    return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 13, left: 16, bottom: 13, right: 16), child: vStack)
   }
 }

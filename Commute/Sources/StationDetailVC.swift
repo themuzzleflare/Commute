@@ -1,7 +1,7 @@
 import UIKit
 import AsyncDisplayKit
 
-final class StationVC: ASDKViewController<ASTableNode> {
+final class StationDetailVC: ASDKViewController<ASTableNode> {
   private let tableNode = ASTableNode(style: .grouped)
 
   var station: Station
@@ -12,7 +12,7 @@ final class StationVC: ASDKViewController<ASTableNode> {
   }
 
   required init?(coder: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
+    fatalError("Not implemented")
   }
 
   override func viewDidLoad() {
@@ -30,7 +30,7 @@ final class StationVC: ASDKViewController<ASTableNode> {
   }
 }
 
-extension StationVC: ASTableDataSource {
+extension StationDetailVC: ASTableDataSource {
   func numberOfSections(in tableNode: ASTableNode) -> Int {
     return 2
   }
@@ -45,6 +45,7 @@ extension StationVC: ASTableDataSource {
 
   func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
     switch section {
+    case 0: return "Details"
     case 1: return "Location"
     default: return nil
     }

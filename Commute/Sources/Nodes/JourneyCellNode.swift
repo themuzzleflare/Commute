@@ -19,7 +19,7 @@ final class JourneyCellNode: ASCellNode {
       attributes: [
         .font: UIFont.preferredFont(forTextStyle: .caption1),
         .foregroundColor: UIColor.secondaryLabel,
-        .paragraphStyle: pLeftStyle
+        .paragraphStyle: ModelFacade.pLeftStyle
       ]
     )
 
@@ -28,7 +28,7 @@ final class JourneyCellNode: ASCellNode {
       attributes: [
         .font: UIFont.preferredFont(forTextStyle: .caption1),
         .foregroundColor: journey.relativeTimeInPast ?? false ? UIColor.systemRed : UIColor.systemGreen,
-        .paragraphStyle: pLeftStyle
+        .paragraphStyle: ModelFacade.pLeftStyle
       ]
     )
 
@@ -37,7 +37,7 @@ final class JourneyCellNode: ASCellNode {
       attributes: [
         .font: UIFont.boldSystemFont(ofSize: UIFont.labelFontSize),
         .foregroundColor: UIColor.label,
-        .paragraphStyle: pLeftStyle
+        .paragraphStyle: ModelFacade.pLeftStyle
       ]
     )
 
@@ -46,7 +46,7 @@ final class JourneyCellNode: ASCellNode {
       attributes: [
         .font: UIFont.preferredFont(forTextStyle: .caption1),
         .foregroundColor: UIColor.secondaryLabel,
-        .paragraphStyle: pRightStyle
+        .paragraphStyle: ModelFacade.pRightStyle
       ]
     )
 
@@ -55,7 +55,7 @@ final class JourneyCellNode: ASCellNode {
       attributes: [
         .font: UIFont.boldSystemFont(ofSize: UIFont.labelFontSize),
         .foregroundColor: UIColor.label,
-        .paragraphStyle: pRightStyle
+        .paragraphStyle: ModelFacade.pRightStyle
       ]
     )
   }
@@ -101,14 +101,6 @@ final class JourneyCellNode: ASCellNode {
       ]
     )
 
-    return ASInsetLayoutSpec(
-      insets: UIEdgeInsets(
-        top: 13,
-        left: 16,
-        bottom: 13,
-        right: 16
-      ),
-      child: hStack
-    )
+    return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 13, left: 16, bottom: 13, right: 16), child: hStack)
   }
 }

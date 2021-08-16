@@ -113,7 +113,7 @@ final class StationsVC: ASViewController {
   }
 
   required init?(coder: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
+    fatalError("Not implemented")
   }
 
   override func viewDidLoad() {
@@ -160,7 +160,6 @@ final class StationsVC: ASViewController {
 
   private func configureToolbar() {
     setToolbarItems([UIBarButtonItem(customView: segmentedControl.view)], animated: false)
-    navigationController?.setToolbarHidden(false, animated: true)
   }
 
   @objc private func changedSelection(_ segmentedControl: UISegmentedControl) {
@@ -196,6 +195,7 @@ final class StationsVC: ASViewController {
         (tableView, indexPath, station) in
         let cell = tableView.dequeueReusableCell(withIdentifier: "stationCell", for: indexPath)
         cell.separatorInset = .zero
+        cell.textLabel?.numberOfLines = 0
         cell.textLabel?.text = station.name
         return cell
       }
@@ -211,6 +211,7 @@ final class StationsVC: ASViewController {
         (tableView, indexPath, station) in
         let cell = tableView.dequeueReusableCell(withIdentifier: "stationCell", for: indexPath)
         cell.separatorInset = .zero
+        cell.textLabel?.numberOfLines = 0
         cell.textLabel?.text = station.name
         return cell
       }
@@ -442,11 +443,11 @@ extension StationsVC: UITableViewDelegate {
     switch byName {
     case true:
       if let station = dataSource.itemIdentifier(for: indexPath) {
-        navigationController?.pushViewController(StationVC(station: station), animated: true)
+        navigationController?.pushViewController(StationDetailVC(station: station), animated: true)
       }
     case false:
       if let station = byDistanceDataSource.itemIdentifier(for: indexPath) {
-        navigationController?.pushViewController(StationVC(station: station), animated: true)
+        navigationController?.pushViewController(StationDetailVC(station: station), animated: true)
       }
     }
   }

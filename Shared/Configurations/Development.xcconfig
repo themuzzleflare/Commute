@@ -1,5 +1,5 @@
 #include "Shared.xcconfig"
 
-CLOUDKIT_CONTAINER_ENVIRONMENT=Development
-APS_ENVIRONMENT=development
-TP_API_KEY=Qj55jbLcj5P7JkTbwDJe7C5id7chbjJsKkNC
+CLOUDKIT_CONTAINER_ENVIRONMENT = Development
+APS_ENVIRONMENT = development
+TP_API_KEY = Qj55jbLcj5P7JkTbwDJe7C5id7chbjJsKkNC

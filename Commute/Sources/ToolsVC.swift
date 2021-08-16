@@ -10,7 +10,7 @@ final class ToolsVC: ASDKViewController<ASTableNode> {
   }
 
   required init?(coder: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
+    fatalError("Not implemented")
   }
 
   override func viewDidLoad() {
@@ -39,7 +39,7 @@ extension ToolsVC: ASTableDataSource {
       attributes: [
         NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .body),
         NSAttributedString.Key.foregroundColor: UIColor.label,
-        NSAttributedString.Key.paragraphStyle: pLeftStyle
+        NSAttributedString.Key.paragraphStyle: ModelFacade.pLeftStyle
       ],
       insets: UIEdgeInsets(
         top: 13,
@@ -50,7 +50,7 @@ extension ToolsVC: ASTableDataSource {
     )
 
     cell.accessoryType = .disclosureIndicator
-    cell.text = "Map"
+    cell.text = "Sydney Rail Network Map"
 
     return {
       cell
@@ -64,7 +64,6 @@ extension ToolsVC: ASTableDelegate {
 
     if let url = Bundle.main.url(forResource: "Sydney Rail Network", withExtension: "pdf"),
        let document = PDFDocument(url: url) {
-
       navigationController?.pushViewController(PDFVC(document: document), animated: true)
     }
   }

@@ -17,7 +17,7 @@ final class SubtitleCellNode: ASCellNode {
       attributes: [
         .font: UIFont.boldSystemFont(ofSize: UIFont.labelFontSize),
         .foregroundColor: UIColor.label,
-        .paragraphStyle: pLeftStyle
+        .paragraphStyle: ModelFacade.pLeftStyle
       ]
     )
 
@@ -26,7 +26,7 @@ final class SubtitleCellNode: ASCellNode {
       attributes: [
         .font: UIFont.preferredFont(forTextStyle: .caption1),
         .foregroundColor: UIColor.secondaryLabel,
-        .paragraphStyle: pLeftStyle
+        .paragraphStyle: ModelFacade.pLeftStyle
       ]
     )
   }
@@ -40,14 +40,6 @@ final class SubtitleCellNode: ASCellNode {
       children: (bottomTextNode.attributedText?.string.isEmpty)! ? [topTextNode] : [topTextNode, bottomTextNode]
     )
 
-    return ASInsetLayoutSpec(
-      insets: UIEdgeInsets(
-        top: 13,
-        left: 16,
-        bottom: 13,
-        right: 16
-      ),
-      child: hStack
-    )
+    return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 13, left: 16, bottom: 13, right: 16), child: hStack)
   }
 }

@@ -11,11 +11,10 @@
 		7A2C190526AE6CB4005BF502 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A2C190426AE6CB4005BF502 /* Assets.xcassets */; };
 		7A2C190826AE6CB4005BF502 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A2C190626AE6CB4005BF502 /* LaunchScreen.storyboard */; };
 		7A473FED26C88CE2004CAC5E /* StationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A473FEC26C88CE2004CAC5E /* StationsVC.swift */; };
-		7A473FEF26C88DD2004CAC5E /* StationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A473FEE26C88DD2004CAC5E /* StationVC.swift */; };
+		7A473FEF26C88DD2004CAC5E /* StationDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A473FEE26C88DD2004CAC5E /* StationDetailVC.swift */; };
 		7A473FF126C89AD6004CAC5E /* StationMapCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A473FF026C89AD6004CAC5E /* StationMapCellNode.swift */; };
 		7A77B9BA26B929E100712639 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A77B9B926B929E100712639 /* SceneDelegate.swift */; };
 		7AC2B4D226AE713B008DC5CF /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC2B4D126AE713B008DC5CF /* R.generated.swift */; };
-		7AC2B4D626AE742B008DC5CF /* TripRequestResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC2B4D526AE742B008DC5CF /* TripRequestResponse.swift */; };
 		7AC2B4D826AE7876008DC5CF /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC2B4D726AE7876008DC5CF /* TabBarController.swift */; };
 		7AC2B4DC26AE7898008DC5CF /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC2B4DB26AE7898008DC5CF /* NavigationController.swift */; };
 		7AC2B4E026AE78C5008DC5CF /* TripsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC2B4DF26AE78C5008DC5CF /* TripsVC.swift */; };
@@ -45,6 +44,14 @@
 		7AD1DDBE26AFABE00057BEF3 /* Commute.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7AD1DDBC26AFABE00057BEF3 /* Commute.xcdatamodeld */; };
 		7AD4E04526AFFEB0007960AD /* TripDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD4E04426AFFEB0007960AD /* TripDetailVC.swift */; };
 		7AD4E04726AFFECE007960AD /* APIFacade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD4E04626AFFECE007960AD /* APIFacade.swift */; };
+		7ADFA39E26C9D19600F474DA /* SortedStations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADFA39D26C9D19600F474DA /* SortedStations.swift */; };
+		7ADFA3A726C9D20900F474DA /* TripRequestResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADFA3A026C9D20800F474DA /* TripRequestResponse.swift */; };
+		7ADFA3A826C9D20900F474DA /* GrandparentLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADFA3A126C9D20900F474DA /* GrandparentLocation.swift */; };
+		7ADFA3A926C9D20900F474DA /* TripRequestResponseJourneyLegStop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADFA3A226C9D20900F474DA /* TripRequestResponseJourneyLegStop.swift */; };
+		7ADFA3AA26C9D20900F474DA /* ParentLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADFA3A326C9D20900F474DA /* ParentLocation.swift */; };
+		7ADFA3AB26C9D20900F474DA /* TripRequestResponseJourneyLeg.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADFA3A426C9D20900F474DA /* TripRequestResponseJourneyLeg.swift */; };
+		7ADFA3AC26C9D20900F474DA /* TripRequestResponseJourney.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADFA3A526C9D20900F474DA /* TripRequestResponseJourney.swift */; };
+		7ADFA3AD26C9D20900F474DA /* TripTransportation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADFA3A626C9D20900F474DA /* TripTransportation.swift */; };
 		7AF8783826B4D7D900A81C3A /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF8783726B4D7D900A81C3A /* Model.swift */; };
 		7AF8783A26B4FB7000A81C3A /* ASViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF8783926B4FB7000A81C3A /* ASViewController.swift */; };
 		DBF8CDFF69C4107866721E75 /* Pods_Commute.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48E658014247727F107433BE /* Pods_Commute.framework */; };
@@ -63,12 +70,11 @@
 		7A38860E26BB683200F57EA0 /* Production.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Production.xcconfig; sourceTree = "<group>"; };
 		7A38860F26BB835800F57EA0 /* Shared.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Shared.xcconfig; sourceTree = "<group>"; };
 		7A473FEC26C88CE2004CAC5E /* StationsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationsVC.swift; sourceTree = "<group>"; };
-		7A473FEE26C88DD2004CAC5E /* StationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationVC.swift; sourceTree = "<group>"; };
+		7A473FEE26C88DD2004CAC5E /* StationDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationDetailVC.swift; sourceTree = "<group>"; };
 		7A473FF026C89AD6004CAC5E /* StationMapCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationMapCellNode.swift; sourceTree = "<group>"; };
 		7A77B9B926B929E100712639 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		7AC2B4D026AE70FB008DC5CF /* Commute.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Commute.entitlements; sourceTree = "<group>"; };
 		7AC2B4D126AE713B008DC5CF /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
-		7AC2B4D526AE742B008DC5CF /* TripRequestResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripRequestResponse.swift; sourceTree = "<group>"; };
 		7AC2B4D726AE7876008DC5CF /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		7AC2B4DB26AE7898008DC5CF /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		7AC2B4DF26AE78C5008DC5CF /* TripsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripsVC.swift; sourceTree = "<group>"; };
@@ -98,6 +104,14 @@
 		7AD1DDBD26AFABE00057BEF3 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		7AD4E04426AFFEB0007960AD /* TripDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripDetailVC.swift; sourceTree = "<group>"; };
 		7AD4E04626AFFECE007960AD /* APIFacade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIFacade.swift; sourceTree = "<group>"; };
+		7ADFA39D26C9D19600F474DA /* SortedStations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortedStations.swift; sourceTree = "<group>"; };
+		7ADFA3A026C9D20800F474DA /* TripRequestResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripRequestResponse.swift; sourceTree = "<group>"; };
+		7ADFA3A126C9D20900F474DA /* GrandparentLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrandparentLocation.swift; sourceTree = "<group>"; };
+		7ADFA3A226C9D20900F474DA /* TripRequestResponseJourneyLegStop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripRequestResponseJourneyLegStop.swift; sourceTree = "<group>"; };
+		7ADFA3A326C9D20900F474DA /* ParentLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParentLocation.swift; sourceTree = "<group>"; };
+		7ADFA3A426C9D20900F474DA /* TripRequestResponseJourneyLeg.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripRequestResponseJourneyLeg.swift; sourceTree = "<group>"; };
+		7ADFA3A526C9D20900F474DA /* TripRequestResponseJourney.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripRequestResponseJourney.swift; sourceTree = "<group>"; };
+		7ADFA3A626C9D20900F474DA /* TripTransportation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripTransportation.swift; sourceTree = "<group>"; };
 		7AF8783726B4D7D900A81C3A /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		7AF8783926B4FB7000A81C3A /* ASViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -185,14 +199,11 @@
 		7AC2B4D426AE733B008DC5CF /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				7ADFA39F26C9D1F600F474DA /* TPAPI */,
+				7ADFA3AE26C9D25100F474DA /* CloudKit */,
 				7AC7376726B0D201009B330C /* CoreData */,
-				7AC2B4D526AE742B008DC5CF /* TripRequestResponse.swift */,
-				7AC2B4F126AEA6D8008DC5CF /* CKFacade.swift */,
-				7AC2B4F326AEA750008DC5CF /* Station.swift */,
-				7AD4E04626AFFECE007960AD /* APIFacade.swift */,
 				7ACC856226B1114D00F8F946 /* DateFormatters.swift */,
 				7ACC856826B2204F00F8F946 /* Journey.swift */,
-				7AC3FFCB26B38FCD00EEBBBD /* ErrorDetail.swift */,
 				7AC3FFCD26B38FF200EEBBBD /* ErrorType.swift */,
 				7AF8783726B4D7D900A81C3A /* Model.swift */,
 			);
@@ -204,8 +215,8 @@
 			children = (
 				7AC2B4D726AE7876008DC5CF /* TabBarController.swift */,
 				7AC2B4DB26AE7898008DC5CF /* NavigationController.swift */,
-				7ACC857A26B27EE100F8F946 /* PDFVC.swift */,
 				7AF8783926B4FB7000A81C3A /* ASViewController.swift */,
+				7ACC857A26B27EE100F8F946 /* PDFVC.swift */,
 			);
 			path = BaseControllers;
 			sourceTree = "<group>";
@@ -224,7 +235,7 @@
 				7ACC855B26B0FCF900F8F946 /* JourneyDetailVC.swift */,
 				7ACC855D26B0FDEB00F8F946 /* StopSequenceVC.swift */,
 				7A473FEC26C88CE2004CAC5E /* StationsVC.swift */,
-				7A473FEE26C88DD2004CAC5E /* StationVC.swift */,
+				7A473FEE26C88DD2004CAC5E /* StationDetailVC.swift */,
 				7ACC857326B2751F00F8F946 /* ToolsVC.swift */,
 				7AC2B4E126AE78D0008DC5CF /* AboutVC.swift */,
 				7ACC85C226B36A8000F8F946 /* SettingsVC.swift */,
@@ -304,6 +315,32 @@
 				7AD1DDBC26AFABE00057BEF3 /* Commute.xcdatamodeld */,
 			);
 			path = CoreData;
+			sourceTree = "<group>";
+		};
+		7ADFA39F26C9D1F600F474DA /* TPAPI */ = {
+			isa = PBXGroup;
+			children = (
+				7AD4E04626AFFECE007960AD /* APIFacade.swift */,
+				7ADFA3A026C9D20800F474DA /* TripRequestResponse.swift */,
+				7ADFA3A526C9D20900F474DA /* TripRequestResponseJourney.swift */,
+				7ADFA3A426C9D20900F474DA /* TripRequestResponseJourneyLeg.swift */,
+				7ADFA3A626C9D20900F474DA /* TripTransportation.swift */,
+				7ADFA3A226C9D20900F474DA /* TripRequestResponseJourneyLegStop.swift */,
+				7ADFA3A326C9D20900F474DA /* ParentLocation.swift */,
+				7ADFA3A126C9D20900F474DA /* GrandparentLocation.swift */,
+			);
+			path = TPAPI;
+			sourceTree = "<group>";
+		};
+		7ADFA3AE26C9D25100F474DA /* CloudKit */ = {
+			isa = PBXGroup;
+			children = (
+				7AC2B4F126AEA6D8008DC5CF /* CKFacade.swift */,
+				7AC2B4F326AEA750008DC5CF /* Station.swift */,
+				7ADFA39D26C9D19600F474DA /* SortedStations.swift */,
+				7AC3FFCB26B38FCD00EEBBBD /* ErrorDetail.swift */,
+			);
+			path = CloudKit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -486,14 +523,15 @@
 				7ACC856726B2201E00F8F946 /* JourneyCellNode.swift in Sources */,
 				7AF8783A26B4FB7000A81C3A /* ASViewController.swift in Sources */,
 				7AD1DDBE26AFABE00057BEF3 /* Commute.xcdatamodeld in Sources */,
+				7ADFA3AA26C9D20900F474DA /* ParentLocation.swift in Sources */,
 				7AC3FFCC26B38FCD00EEBBBD /* ErrorDetail.swift in Sources */,
 				7ACC856926B2204F00F8F946 /* Journey.swift in Sources */,
 				7ACC857426B2751F00F8F946 /* ToolsVC.swift in Sources */,
 				7ACC855C26B0FCF900F8F946 /* JourneyDetailVC.swift in Sources */,
+				7ADFA3A826C9D20900F474DA /* GrandparentLocation.swift in Sources */,
 				7ACC856B26B22D8E00F8F946 /* AboutTopCellNode.swift in Sources */,
 				7A473FF126C89AD6004CAC5E /* StationMapCellNode.swift in Sources */,
 				7ACC857B26B27EE100F8F946 /* PDFVC.swift in Sources */,
-				7AC2B4D626AE742B008DC5CF /* TripRequestResponse.swift in Sources */,
 				7AC2B4F226AEA6D8008DC5CF /* CKFacade.swift in Sources */,
 				7AC3FFCE26B38FF200EEBBBD /* ErrorType.swift in Sources */,
 				7ACC855E26B0FDEB00F8F946 /* StopSequenceVC.swift in Sources */,
@@ -507,13 +545,19 @@
 				7ACC857226B25C7B00F8F946 /* SubtitleCellNode.swift in Sources */,
 				7A77B9BA26B929E100712639 /* SceneDelegate.swift in Sources */,
 				7AD4E04526AFFEB0007960AD /* TripDetailVC.swift in Sources */,
-				7A473FEF26C88DD2004CAC5E /* StationVC.swift in Sources */,
+				7A473FEF26C88DD2004CAC5E /* StationDetailVC.swift in Sources */,
+				7ADFA3A726C9D20900F474DA /* TripRequestResponse.swift in Sources */,
 				7AC2B4E026AE78C5008DC5CF /* TripsVC.swift in Sources */,
+				7ADFA3AC26C9D20900F474DA /* TripRequestResponseJourney.swift in Sources */,
+				7ADFA39E26C9D19600F474DA /* SortedStations.swift in Sources */,
 				7AC2B4E226AE78D0008DC5CF /* AboutVC.swift in Sources */,
+				7ADFA3AB26C9D20900F474DA /* TripRequestResponseJourneyLeg.swift in Sources */,
 				7AF8783826B4D7D900A81C3A /* Model.swift in Sources */,
 				7AC2B4DC26AE7898008DC5CF /* NavigationController.swift in Sources */,
 				7AC2B4D226AE713B008DC5CF /* R.generated.swift in Sources */,
+				7ADFA3A926C9D20900F474DA /* TripRequestResponseJourneyLegStop.swift in Sources */,
 				7ACC857026B23F5A00F8F946 /* UserDefaults+Extension.swift in Sources */,
+				7ADFA3AD26C9D20900F474DA /* TripTransportation.swift in Sources */,
 				7ACC85C326B36A8000F8F946 /* SettingsVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -675,7 +719,7 @@
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "Commute Development";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -704,7 +748,7 @@
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "Commute Development";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

@@ -2,7 +2,7 @@ import Foundation
 import CloudKit
 
 struct CKFacade {
-  static let container = CKContainer(identifier: "iCloud.\(infoForKey("CFBundleIdentifier")!)")
+  static let container = CKContainer(identifier: "iCloud.\(ModelFacade.infoForKey("CFBundleIdentifier")!)")
   static let database = container.publicCloudDatabase
 
   static func searchStation(cursor: CKQueryOperation.Cursor? = nil, inputStations: [Station]? = nil, searchString: String? = nil, currentLocation: CLLocation? = nil, exclude: Station? = nil, completion: @escaping (Result<[Station], CKError>) -> Void) {

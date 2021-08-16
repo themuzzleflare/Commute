@@ -97,7 +97,7 @@ final class TripsVC: ASViewController {
   }
 
   required init?(coder: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
+    fatalError("Not implemented")
   }
 
   override func viewDidLoad() {
@@ -265,7 +265,14 @@ final class TripsVC: ASViewController {
   }
 
   @objc private func removeAllTrips() {
-    Trip.deleteAll()
+    let ac = UIAlertController(title: "Confirmation", message: "Are you sure you'd like to remove all saved trips? This cannot be undone.", preferredStyle: .actionSheet)
+    let confirmAction = UIAlertAction(title: "Remove All", style: .destructive, handler: { _ in
+      Trip.deleteAll()
+    })
+    let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+    ac.addAction(confirmAction)
+    ac.addAction(cancelAction)
+    present(ac, animated: true)
   }
 }
 

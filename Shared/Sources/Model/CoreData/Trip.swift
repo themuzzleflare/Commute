@@ -4,13 +4,13 @@ import CoreData
 final class Trip: NSManagedObject {
   static func fetchAll(viewContext: NSManagedObjectContext = AppDelegate.viewContext) -> [Trip] {
     let request: NSFetchRequest<Trip> = Trip.fetchRequest()
-    request.sortDescriptors = [NSSortDescriptor(key: "fromName", ascending: true)]
+    request.sortDescriptors = [NSSortDescriptor(key: "fromName", ascending: true), NSSortDescriptor(key: "toName", ascending: true)]
     guard let tasks = try? AppDelegate.viewContext.fetch(request) else { return [] }
     return tasks
   }
 
   static func deleteAll(viewContext: NSManagedObjectContext = AppDelegate.viewContext) {
-    Trip.fetchAll(viewContext: viewContext).forEach({ viewContext.delete($0) })
+    Trip.fetchAll(viewContext: viewContext).forEach { viewContext.delete($0) }
     try? viewContext.save()
   }
 }

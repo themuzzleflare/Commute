@@ -7,7 +7,6 @@ final class PDFVC: ASViewController {
 
   private lazy var pdfNode = ASDisplayNode { () -> UIView in
     let view = PDFView()
-    view.delegate = self
     view.document = self.document
     return view
   }
@@ -18,7 +17,7 @@ final class PDFVC: ASViewController {
   }
 
   required init?(coder: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
+    fatalError("Not implemented")
   }
 
   override func viewDidLoad() {
@@ -35,7 +34,4 @@ final class PDFVC: ASViewController {
   private func configureNavigation() {
     navigationItem.title = document.documentAttributes?["Title"] as? String ?? ""
   }
-}
-
-extension PDFVC: PDFViewDelegate {
 }
