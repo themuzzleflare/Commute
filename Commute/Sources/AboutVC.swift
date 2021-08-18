@@ -21,7 +21,7 @@ final class AboutVC: ASDKViewController<ASTableNode> {
   private func configureNavigation() {
     navigationItem.title = "About"
     navigationItem.rightBarButtonItem = UIBarButtonItem(
-      image: UIImage(systemName: "gear"),
+      image: R.image.gear(),
       style: .plain,
       target: self,
       action: #selector(openSettings)

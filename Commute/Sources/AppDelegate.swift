@@ -5,16 +5,6 @@ import Rswift
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-  static var persistentContainer: NSPersistentContainer {
-    return (UIApplication.shared.delegate as! AppDelegate).persistentContainer
-  }
-
-  static var viewContext: NSManagedObjectContext {
-    let viewContext = persistentContainer.viewContext
-    viewContext.automaticallyMergesChangesFromParent = true
-    return viewContext
-  }
-
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     SwiftDate.defaultRegion = .current
     registerDefaults()
@@ -26,19 +16,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       let settingsData = try Data(contentsOf: R.file.settingsBundle()!.appendingPathComponent("Root.plist"))
       let settingsPlist = try PropertyListSerialization.propertyList(from: settingsData, format: nil) as? [String: Any]
       let settingsPreferences = settingsPlist?["PreferenceSpecifiers"] as? [[String: Any]]
-
       var defaults = [String: Any]()
-
       settingsPreferences?.forEach {
         (preference) in
         if let key = preference["Key"] as? String {
           defaults[key] = preference["DefaultValue"]
         }
       }
-
       appDefaults.register(defaults: defaults)
     } catch {
-      return
+      fatalError("Registering defaults failed")
     }
   }
 
@@ -49,6 +36,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   }
 
   // MARK: - Core Data Stack
+
+  static var persistentContainer: NSPersistentContainer {
+    return (UIApplication.shared.delegate as! AppDelegate).persistentContainer
+  }
+
+  static var viewContext: NSManagedObjectContext {
+    let viewContext = persistentContainer.viewContext
+    viewContext.automaticallyMergesChangesFromParent = true
+    return viewContext
+  }
 
   lazy var persistentContainer: NSPersistentCloudKitContainer = {
     let container = NSPersistentCloudKitContainer(name: "Commute")

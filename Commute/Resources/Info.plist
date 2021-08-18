@@ -2,6 +2,49 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Frank New Regular.ttf</string>
+		<string>Frank New Medium.ttf</string>
+		<string>Frank New Bold.ttf</string>
+	</array>
+	<key>UIApplicationShortcutItems</key>
+	<array>
+		<dict>
+			<key>UIApplicationShortcutItemIconFile</key>
+			<string>info.circle</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>About</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>aboutShortcut</string>
+		</dict>
+		<dict>
+			<key>UIApplicationShortcutItemIconFile</key>
+			<string>gearshape</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>Tools</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>toolsShortcut</string>
+		</dict>
+		<dict>
+			<key>UIApplicationShortcutItemIconFile</key>
+			<string>location</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>Stations</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>stationsShortcut</string>
+		</dict>
+		<dict>
+			<key>UIApplicationShortcutItemIconFile</key>
+			<string>tram</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>Trips</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>tripsShortcut</string>
+		</dict>
+	</array>
+	<key>MGLMapboxAccessToken</key>
+	<string>${MAPBOX_TOKEN}</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>

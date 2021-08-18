@@ -1,6 +1,7 @@
 import UIKit
 import AsyncDisplayKit
 import PDFKit
+import Rswift
 
 final class ToolsVC: ASDKViewController<ASTableNode> {
   private let tableNode = ASTableNode(style: .grouped)
@@ -26,6 +27,7 @@ final class ToolsVC: ASDKViewController<ASTableNode> {
   private func configureTableNode() {
     tableNode.dataSource = self
     tableNode.delegate = self
+    tableNode.view.showsVerticalScrollIndicator = false
   }
 }
 
@@ -37,7 +39,7 @@ extension ToolsVC: ASTableDataSource {
   func tableNode(_ tableNode: ASTableNode, nodeBlockForRowAt indexPath: IndexPath) -> ASCellNodeBlock {
     let cell = ASTextCellNode(
       attributes: [
-        NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .body),
+        NSAttributedString.Key.font: R.font.newFrankRegular(size: UIFont.labelFontSize)!,
         NSAttributedString.Key.foregroundColor: UIColor.label,
         NSAttributedString.Key.paragraphStyle: ModelFacade.pLeftStyle
       ],
@@ -62,8 +64,7 @@ extension ToolsVC: ASTableDelegate {
   func tableNode(_ tableNode: ASTableNode, didSelectRowAt indexPath: IndexPath) {
     tableNode.deselectRow(at: indexPath, animated: true)
 
-    if let url = Bundle.main.url(forResource: "Sydney Rail Network", withExtension: "pdf"),
-       let document = PDFDocument(url: url) {
+    if let document = PDFDocument(url: R.file.sydneyRailNetworkPdf.url()!) {
       navigationController?.pushViewController(PDFVC(document: document), animated: true)
     }
   }

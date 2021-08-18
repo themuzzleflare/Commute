@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7A29279626CB430A005FD79B /* ShortcutType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A29279526CB430A005FD79B /* ShortcutType.swift */; };
 		7A2C18FC26AE6CB2005BF502 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2C18FB26AE6CB2005BF502 /* AppDelegate.swift */; };
 		7A2C190526AE6CB4005BF502 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A2C190426AE6CB4005BF502 /* Assets.xcassets */; };
 		7A2C190826AE6CB4005BF502 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A2C190626AE6CB4005BF502 /* LaunchScreen.storyboard */; };
@@ -14,6 +15,9 @@
 		7A473FEF26C88DD2004CAC5E /* StationDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A473FEE26C88DD2004CAC5E /* StationDetailVC.swift */; };
 		7A473FF126C89AD6004CAC5E /* StationMapCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A473FF026C89AD6004CAC5E /* StationMapCellNode.swift */; };
 		7A77B9BA26B929E100712639 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A77B9B926B929E100712639 /* SceneDelegate.swift */; };
+		7AAA3F0A26CB96FC002231CE /* Frank New Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7AAA3F0926CB96FC002231CE /* Frank New Bold.ttf */; };
+		7AAA3F0C26CB9702002231CE /* Frank New Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7AAA3F0B26CB9702002231CE /* Frank New Medium.ttf */; };
+		7AAA3F0E26CB9709002231CE /* Frank New Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7AAA3F0D26CB9709002231CE /* Frank New Regular.ttf */; };
 		7AC2B4D226AE713B008DC5CF /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC2B4D126AE713B008DC5CF /* R.generated.swift */; };
 		7AC2B4D826AE7876008DC5CF /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC2B4D726AE7876008DC5CF /* TabBarController.swift */; };
 		7AC2B4DC26AE7898008DC5CF /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC2B4DB26AE7898008DC5CF /* NavigationController.swift */; };
@@ -39,7 +43,6 @@
 		7ACC857426B2751F00F8F946 /* ToolsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACC857326B2751F00F8F946 /* ToolsVC.swift */; };
 		7ACC857B26B27EE100F8F946 /* PDFVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACC857A26B27EE100F8F946 /* PDFVC.swift */; };
 		7ACC857D26B2835D00F8F946 /* Sydney Rail Network.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 7ACC857C26B2835D00F8F946 /* Sydney Rail Network.pdf */; };
-		7ACC85C326B36A8000F8F946 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACC85C226B36A8000F8F946 /* SettingsVC.swift */; };
 		7AD1DDBB26AFAA2F0057BEF3 /* AddTripToVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD1DDBA26AFAA2F0057BEF3 /* AddTripToVC.swift */; };
 		7AD1DDBE26AFABE00057BEF3 /* Commute.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7AD1DDBC26AFABE00057BEF3 /* Commute.xcdatamodeld */; };
 		7AD4E04526AFFEB0007960AD /* TripDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD4E04426AFFEB0007960AD /* TripDetailVC.swift */; };
@@ -61,6 +64,7 @@
 		0B08224D77C6FF2AFE87A409 /* Pods-Commute.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Commute.debug.xcconfig"; path = "Target Support Files/Pods-Commute/Pods-Commute.debug.xcconfig"; sourceTree = "<group>"; };
 		48E658014247727F107433BE /* Pods_Commute.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Commute.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C21E28A3F23E0A640FF21A7 /* Pods-Commute.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Commute.release.xcconfig"; path = "Target Support Files/Pods-Commute/Pods-Commute.release.xcconfig"; sourceTree = "<group>"; };
+		7A29279526CB430A005FD79B /* ShortcutType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutType.swift; sourceTree = "<group>"; };
 		7A2C18F826AE6CB2005BF502 /* Commute.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Commute.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A2C18FB26AE6CB2005BF502 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7A2C190426AE6CB4005BF502 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -73,6 +77,10 @@
 		7A473FEE26C88DD2004CAC5E /* StationDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationDetailVC.swift; sourceTree = "<group>"; };
 		7A473FF026C89AD6004CAC5E /* StationMapCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationMapCellNode.swift; sourceTree = "<group>"; };
 		7A77B9B926B929E100712639 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		7AAA3F0926CB96FC002231CE /* Frank New Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Frank New Bold.ttf"; sourceTree = "<group>"; };
+		7AAA3F0B26CB9702002231CE /* Frank New Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Frank New Medium.ttf"; sourceTree = "<group>"; };
+		7AAA3F0D26CB9709002231CE /* Frank New Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Frank New Regular.ttf"; sourceTree = "<group>"; };
+		7AAA3F0F26CBA03D002231CE /* StationMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationMapView.swift; sourceTree = "<group>"; };
 		7AC2B4D026AE70FB008DC5CF /* Commute.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Commute.entitlements; sourceTree = "<group>"; };
 		7AC2B4D126AE713B008DC5CF /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		7AC2B4D726AE7876008DC5CF /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -186,6 +194,16 @@
 			path = Configurations;
 			sourceTree = "<group>";
 		};
+		7AAA3F0826CB96F3002231CE /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				7AAA3F0D26CB9709002231CE /* Frank New Regular.ttf */,
+				7AAA3F0B26CB9702002231CE /* Frank New Medium.ttf */,
+				7AAA3F0926CB96FC002231CE /* Frank New Bold.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		7AC2B4D326AE7333008DC5CF /* Shared */ = {
 			isa = PBXGroup;
 			children = (
@@ -206,6 +224,7 @@
 				7ACC856826B2204F00F8F946 /* Journey.swift */,
 				7AC3FFCD26B38FF200EEBBBD /* ErrorType.swift */,
 				7AF8783726B4D7D900A81C3A /* Model.swift */,
+				7A29279526CB430A005FD79B /* ShortcutType.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -236,6 +255,7 @@
 				7ACC855D26B0FDEB00F8F946 /* StopSequenceVC.swift */,
 				7A473FEC26C88CE2004CAC5E /* StationsVC.swift */,
 				7A473FEE26C88DD2004CAC5E /* StationDetailVC.swift */,
+				7AAA3F0F26CBA03D002231CE /* StationMapView.swift */,
 				7ACC857326B2751F00F8F946 /* ToolsVC.swift */,
 				7AC2B4E126AE78D0008DC5CF /* AboutVC.swift */,
 				7ACC85C226B36A8000F8F946 /* SettingsVC.swift */,
@@ -267,6 +287,7 @@
 		7AC2B4EC26AE8420008DC5CF /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				7AAA3F0826CB96F3002231CE /* Fonts */,
 				7ACC85C126B36A1300F8F946 /* CoreData */,
 				7ACC857726B2787000F8F946 /* PDF */,
 			);
@@ -409,7 +430,10 @@
 				7A2C190826AE6CB4005BF502 /* LaunchScreen.storyboard in Resources */,
 				7ACC857D26B2835D00F8F946 /* Sydney Rail Network.pdf in Resources */,
 				7AC2B4E926AE812E008DC5CF /* Settings.bundle in Resources */,
+				7AAA3F0A26CB96FC002231CE /* Frank New Bold.ttf in Resources */,
+				7AAA3F0E26CB9709002231CE /* Frank New Regular.ttf in Resources */,
 				7A2C190526AE6CB4005BF502 /* Assets.xcassets in Resources */,
+				7AAA3F0C26CB9702002231CE /* Frank New Medium.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -546,6 +570,7 @@
 				7A77B9BA26B929E100712639 /* SceneDelegate.swift in Sources */,
 				7AD4E04526AFFEB0007960AD /* TripDetailVC.swift in Sources */,
 				7A473FEF26C88DD2004CAC5E /* StationDetailVC.swift in Sources */,
+				7A29279626CB430A005FD79B /* ShortcutType.swift in Sources */,
 				7ADFA3A726C9D20900F474DA /* TripRequestResponse.swift in Sources */,
 				7AC2B4E026AE78C5008DC5CF /* TripsVC.swift in Sources */,
 				7ADFA3AC26C9D20900F474DA /* TripRequestResponseJourney.swift in Sources */,
@@ -558,7 +583,6 @@
 				7ADFA3A926C9D20900F474DA /* TripRequestResponseJourneyLegStop.swift in Sources */,
 				7ACC857026B23F5A00F8F946 /* UserDefaults+Extension.swift in Sources */,
 				7ADFA3AD26C9D20900F474DA /* TripTransportation.swift in Sources */,
-				7ACC85C326B36A8000F8F946 /* SettingsVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -628,7 +652,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -684,7 +708,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -702,12 +726,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Commute/Resources/Commute.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Paul Tavitian (P72KXKKSKD)";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = "${COMMUTE_BUILD_VERSION}";
 				DEVELOPMENT_TEAM = JDL5FY6SCC;
 				INFOPLIST_FILE = Commute/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -731,12 +756,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Commute/Resources/Commute.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Paul Tavitian (P72KXKKSKD)";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = "${COMMUTE_BUILD_VERSION}";
 				DEVELOPMENT_TEAM = JDL5FY6SCC;
 				INFOPLIST_FILE = Commute/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -1,9 +1,10 @@
 import UIKit
 import AsyncDisplayKit
+import Rswift
 
 final class RightDetailCellNode: ASCellNode {
-  let leftTextNode = ASTextNode()
-  let rightTextNode = ASTextNode()
+  private let leftTextNode = ASTextNode()
+  private let rightTextNode = ASTextNode()
 
   init(text: String, detailText: String) {
     super.init()
@@ -15,7 +16,7 @@ final class RightDetailCellNode: ASCellNode {
     leftTextNode.attributedText = NSAttributedString(
       string: text,
       attributes: [
-        .font: UIFont.preferredFont(forTextStyle: .body),
+        .font: R.font.newFrankMedium(size: UIFont.labelFontSize)!,
         .foregroundColor: UIColor.label,
         .paragraphStyle: ModelFacade.pLeftStyle
       ]
@@ -24,7 +25,7 @@ final class RightDetailCellNode: ASCellNode {
     rightTextNode.attributedText = NSAttributedString(
       string: detailText,
       attributes: [
-        .font: UIFont.preferredFont(forTextStyle: .body),
+        .font: R.font.newFrankRegular(size: UIFont.labelFontSize)!,
         .foregroundColor: UIColor.secondaryLabel,
         .paragraphStyle: ModelFacade.pRightStyle
       ]

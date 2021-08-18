@@ -2,7 +2,6 @@ import UIKit
 import AsyncDisplayKit
 import SwiftDate
 import TinyConstraints
-import Rswift
 
 final class TripDetailVC: ASDKViewController<ASTableNode> {
   private let tableNode = ASTableNode(style: .grouped)

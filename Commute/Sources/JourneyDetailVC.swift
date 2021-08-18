@@ -61,7 +61,6 @@ extension JourneyDetailVC: ASTableDataSource {
         let node = RightDetailCellNode(text: "Stop Sequence", detailText: leg.stopSequence?.count.description ?? "")
         node.selectionStyle = .default
         node.accessoryType = .disclosureIndicator
-
         return node
       default:
         fatalError("Unknown row")

@@ -5,7 +5,7 @@ import PDFKit
 final class PDFVC: ASViewController {
   private var document: PDFDocument
 
-  private lazy var pdfNode = ASDisplayNode { () -> UIView in
+  private lazy var pdfNode = ASDisplayNode { () -> PDFView in
     let view = PDFView()
     view.document = self.document
     return view

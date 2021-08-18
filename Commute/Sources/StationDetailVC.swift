@@ -1,5 +1,6 @@
 import UIKit
 import AsyncDisplayKit
+import Mapbox
 
 final class StationDetailVC: ASDKViewController<ASTableNode> {
   private let tableNode = ASTableNode(style: .grouped)
@@ -27,6 +28,7 @@ final class StationDetailVC: ASDKViewController<ASTableNode> {
 
   private func configureTableNode() {
     tableNode.dataSource = self
+    tableNode.view.showsVerticalScrollIndicator = false
   }
 }
 
@@ -52,6 +54,8 @@ extension StationDetailVC: ASTableDataSource {
   }
 
   func tableNode(_ tableNode: ASTableNode, nodeBlockForRowAt indexPath: IndexPath) -> ASCellNodeBlock {
+    let mapNode = StationMapCellNode(station: station)
+
     return {
       switch indexPath.section {
       case 0:
@@ -68,7 +72,7 @@ extension StationDetailVC: ASTableDataSource {
           fatalError("Unknown row")
         }
       case 1:
-        return StationMapCellNode(station: self.station)
+        return mapNode
       default:
         fatalError("Unknown section")
       }

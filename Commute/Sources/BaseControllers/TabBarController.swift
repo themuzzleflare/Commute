@@ -1,5 +1,6 @@
 import UIKit
 import AsyncDisplayKit
+import Rswift
 
 final class TabBarController: ASTabBarController {
   private let tripsvc: UIViewController = {
@@ -7,8 +8,8 @@ final class TabBarController: ASTabBarController {
 
     vc.tabBarItem = UITabBarItem(
       title: "Trips",
-      image: UIImage(systemName: "tram"),
-      selectedImage: UIImage(systemName: "tram.fill")
+      image: R.image.tram(),
+      selectedImage: R.image.tramFill()
     )
 
     return vc
@@ -19,8 +20,8 @@ final class TabBarController: ASTabBarController {
 
     vc.tabBarItem = UITabBarItem(
       title: "Stations",
-      image: UIImage(systemName: "location"),
-      selectedImage: UIImage(systemName: "location.fill")
+      image: R.image.location(),
+      selectedImage: R.image.locationFill()
     )
 
     return vc
@@ -31,8 +32,8 @@ final class TabBarController: ASTabBarController {
 
     vc.tabBarItem = UITabBarItem(
       title: "Tools",
-      image: UIImage(systemName: "gearshape"),
-      selectedImage: UIImage(systemName: "gearshape.fill")
+      image: R.image.gearshape(),
+      selectedImage: R.image.gearshapeFill()
     )
 
     return vc
@@ -43,8 +44,8 @@ final class TabBarController: ASTabBarController {
 
     vc.tabBarItem = UITabBarItem(
       title: "About",
-      image: UIImage(systemName: "info.circle"),
-      selectedImage: UIImage(systemName: "info.circle.fill")
+      image: R.image.infoCircle(),
+      selectedImage: R.image.infoCircleFill()
     )
 
     return vc

@@ -1,9 +1,10 @@
 import UIKit
 import AsyncDisplayKit
+import Rswift
 
 final class SubtitleCellNode: ASCellNode {
-  let topTextNode = ASTextNode()
-  let bottomTextNode = ASTextNode()
+  private let topTextNode = ASTextNode()
+  private let bottomTextNode = ASTextNode()
 
   init(text: String, detailText: String) {
     super.init()
@@ -15,7 +16,7 @@ final class SubtitleCellNode: ASCellNode {
     topTextNode.attributedText = NSAttributedString(
       string: text,
       attributes: [
-        .font: UIFont.boldSystemFont(ofSize: UIFont.labelFontSize),
+        .font: R.font.newFrankBold(size: UIFont.labelFontSize)!,
         .foregroundColor: UIColor.label,
         .paragraphStyle: ModelFacade.pLeftStyle
       ]
@@ -24,7 +25,7 @@ final class SubtitleCellNode: ASCellNode {
     bottomTextNode.attributedText = NSAttributedString(
       string: detailText,
       attributes: [
-        .font: UIFont.preferredFont(forTextStyle: .caption1),
+        .font: R.font.newFrankRegular(size: UIFont.smallSystemFontSize)!,
         .foregroundColor: UIColor.secondaryLabel,
         .paragraphStyle: ModelFacade.pLeftStyle
       ]

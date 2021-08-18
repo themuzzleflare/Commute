@@ -1,6 +1,8 @@
 import UIKit
 import AsyncDisplayKit
 import CoreData
+import TinyConstraints
+import Rswift
 
 final class TripsVC: ASViewController {
   private let tableView = UITableView(frame: .zero, style: .grouped)
@@ -56,7 +58,7 @@ final class TripsVC: ASViewController {
     sc.searchBar.delegate = self
     sc.obscuresBackgroundDuringPresentation = false
     sc.searchBar.searchBarStyle = .minimal
-    sc.searchBar.scopeButtonTitles = ["From", "To"]
+    sc.searchBar.scopeButtonTitles = ["Origin", "Destination"]
     return sc
   }()
 
@@ -174,6 +176,7 @@ final class TripsVC: ASViewController {
         cell.accessoryType = .disclosureIndicator
         cell.separatorInset = .zero
         cell.textLabel?.numberOfLines = 0
+        cell.textLabel?.font = R.font.newFrankRegular(size: UIFont.labelFontSize)
         cell.textLabel?.text = "\(trip.fromName.replacingOccurrences(of: " Station", with: "")) to \(trip.toName.replacingOccurrences(of: " Station", with: ""))"
         return cell
       }

@@ -2,6 +2,7 @@ import UIKit
 import AsyncDisplayKit
 import CloudKit
 import TinyConstraints
+import Rswift
 
 final class AddTripFromVC: ASViewController {
   private enum Section {
@@ -141,11 +142,10 @@ final class AddTripFromVC: ASViewController {
   }
 
   private func configureNavigation() {
-    navigationItem.title = "From Station"
+    navigationItem.title = "Origin"
     navigationItem.searchController = searchController
     navigationItem.hidesSearchBarWhenScrolling = false
     navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(close))
-    navigationItem.backButtonDisplayMode = .minimal
     definesPresentationContext = true
   }
 
@@ -188,6 +188,7 @@ final class AddTripFromVC: ASViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "stationCell", for: indexPath)
         cell.separatorInset = .zero
         cell.textLabel?.numberOfLines = 0
+        cell.textLabel?.font = R.font.newFrankRegular(size: UIFont.labelFontSize)
         cell.textLabel?.text = station.name
         return cell
       }
@@ -204,6 +205,7 @@ final class AddTripFromVC: ASViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "stationCell", for: indexPath)
         cell.separatorInset = .zero
         cell.textLabel?.numberOfLines = 0
+        cell.textLabel?.font = R.font.newFrankRegular(size: UIFont.labelFontSize)
         cell.textLabel?.text = station.name
         return cell
       }
@@ -435,10 +437,12 @@ extension AddTripFromVC: UITableViewDelegate {
     switch byName {
     case true:
       if let station = dataSource.itemIdentifier(for: indexPath) {
+        navigationItem.backButtonTitle = station.name.replacingOccurrences(of: " Station", with: "")
         navigationController?.pushViewController(AddTripToVC(station: station), animated: true)
       }
     case false:
       if let station = byDistanceDataSource.itemIdentifier(for: indexPath) {
+        navigationItem.backButtonTitle = station.name.replacingOccurrences(of: " Station", with: "")
         navigationController?.pushViewController(AddTripToVC(station: station), animated: true)
       }
     }

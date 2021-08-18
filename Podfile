@@ -1,4 +1,4 @@
-platform :ios, '14.0'
+platform :ios, '13.0'
 inhibit_all_warnings!
 
 target 'Commute' do
@@ -10,5 +10,6 @@ target 'Commute' do
   pod 'TinyConstraints'
   pod 'SwiftLint'
   pod 'R.swift'
+  pod 'Mapbox-iOS-SDK', '~> 6.3.0'
 
 end

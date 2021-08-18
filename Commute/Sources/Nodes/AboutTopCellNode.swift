@@ -1,9 +1,10 @@
 import UIKit
 import AsyncDisplayKit
+import Rswift
 
 final class AboutTopCellNode: ASCellNode {
-  let logoNode = ASImageNode()
-  let labelNode = ASTextNode()
+  private let logoNode = ASImageNode()
+  private let labelNode = ASTextNode()
 
   override init() {
     super.init()
@@ -12,7 +13,7 @@ final class AboutTopCellNode: ASCellNode {
 
     selectionStyle = .none
 
-    logoNode.image = UIImage(named: "appLogo")
+    logoNode.image = R.image.appLogo()
     logoNode.forceUpscaling = true
     logoNode.style.width = ASDimension(unit: .points, value: 150)
     logoNode.style.height = ASDimension(unit: .points, value: 150)
@@ -21,7 +22,7 @@ final class AboutTopCellNode: ASCellNode {
     labelNode.attributedText = NSAttributedString(
       string: "Commute",
       attributes: [
-        .font: UIFont.boldSystemFont(ofSize: 32),
+        .font: R.font.newFrankBold(size: 32)!,
         .foregroundColor: UIColor.label,
         .paragraphStyle: ModelFacade.pCentreStyle
       ]

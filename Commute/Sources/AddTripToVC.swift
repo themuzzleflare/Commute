@@ -3,6 +3,7 @@ import AsyncDisplayKit
 import CoreData
 import CloudKit
 import TinyConstraints
+import Rswift
 
 final class AddTripToVC: ASViewController {
   private var fromStation: Station
@@ -145,7 +146,7 @@ final class AddTripToVC: ASViewController {
   }
 
   private func configureNavigation() {
-    navigationItem.title = "To Station"
+    navigationItem.title = "Destination"
     navigationItem.searchController = searchController
     navigationItem.hidesSearchBarWhenScrolling = false
     definesPresentationContext = true
@@ -186,6 +187,7 @@ final class AddTripToVC: ASViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "stationCell", for: indexPath)
         cell.separatorInset = .zero
         cell.textLabel?.numberOfLines = 0
+        cell.textLabel?.font = R.font.newFrankRegular(size: UIFont.labelFontSize)
         cell.textLabel?.text = station.name
         return cell
       }
@@ -202,6 +204,7 @@ final class AddTripToVC: ASViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "stationCell", for: indexPath)
         cell.separatorInset = .zero
         cell.textLabel?.numberOfLines = 0
+        cell.textLabel?.font = R.font.newFrankRegular(size: UIFont.labelFontSize)
         cell.textLabel?.text = station.name
         return cell
       }

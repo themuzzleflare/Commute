@@ -1,13 +1,14 @@
 import UIKit
 import AsyncDisplayKit
 import SwiftDate
+import Rswift
 
 final class JourneyCellNode: ASCellNode {
-  let fromNameNode = ASTextNode()
-  let relativeTimeNode = ASTextNode()
-  let fromTimeNode = ASTextNode()
-  let toNameNode = ASTextNode()
-  let toTimeNode = ASTextNode()
+  private let fromNameNode = ASTextNode()
+  private let relativeTimeNode = ASTextNode()
+  private let fromTimeNode = ASTextNode()
+  private let toNameNode = ASTextNode()
+  private let toTimeNode = ASTextNode()
 
   init(journey: Journey) {
     super.init()
@@ -17,7 +18,7 @@ final class JourneyCellNode: ASCellNode {
     fromNameNode.attributedText = NSAttributedString(
       string: journey.fromName ?? "",
       attributes: [
-        .font: UIFont.preferredFont(forTextStyle: .caption1),
+        .font: R.font.newFrankRegular(size: UIFont.smallSystemFontSize)!,
         .foregroundColor: UIColor.secondaryLabel,
         .paragraphStyle: ModelFacade.pLeftStyle
       ]
@@ -26,7 +27,7 @@ final class JourneyCellNode: ASCellNode {
     relativeTimeNode.attributedText = NSAttributedString(
       string: journey.relativeTime ?? "",
       attributes: [
-        .font: UIFont.preferredFont(forTextStyle: .caption1),
+        .font: R.font.newFrankRegular(size: UIFont.smallSystemFontSize)!,
         .foregroundColor: journey.relativeTimeInPast ?? false ? UIColor.systemRed : UIColor.systemGreen,
         .paragraphStyle: ModelFacade.pLeftStyle
       ]
@@ -35,7 +36,7 @@ final class JourneyCellNode: ASCellNode {
     fromTimeNode.attributedText = NSAttributedString(
       string: journey.fromTime ?? "",
       attributes: [
-        .font: UIFont.boldSystemFont(ofSize: UIFont.labelFontSize),
+        .font: R.font.newFrankBold(size: UIFont.labelFontSize)!,
         .foregroundColor: UIColor.label,
         .paragraphStyle: ModelFacade.pLeftStyle
       ]
@@ -44,7 +45,7 @@ final class JourneyCellNode: ASCellNode {
     toNameNode.attributedText = NSAttributedString(
       string: journey.toName ?? "",
       attributes: [
-        .font: UIFont.preferredFont(forTextStyle: .caption1),
+        .font: R.font.newFrankRegular(size: UIFont.smallSystemFontSize)!,
         .foregroundColor: UIColor.secondaryLabel,
         .paragraphStyle: ModelFacade.pRightStyle
       ]
@@ -53,7 +54,7 @@ final class JourneyCellNode: ASCellNode {
     toTimeNode.attributedText = NSAttributedString(
       string: journey.toTime ?? "",
       attributes: [
-        .font: UIFont.boldSystemFont(ofSize: UIFont.labelFontSize),
+        .font: R.font.newFrankBold(size: UIFont.labelFontSize)!,
         .foregroundColor: UIColor.label,
         .paragraphStyle: ModelFacade.pRightStyle
       ]

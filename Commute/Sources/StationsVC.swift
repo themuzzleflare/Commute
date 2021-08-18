@@ -2,6 +2,7 @@ import UIKit
 import AsyncDisplayKit
 import CloudKit
 import TinyConstraints
+import Rswift
 
 final class StationsVC: ASViewController {
   private enum Section {
@@ -154,7 +155,11 @@ final class StationsVC: ASViewController {
     navigationItem.title = "Stations"
     navigationItem.searchController = searchController
     navigationItem.hidesSearchBarWhenScrolling = false
-    navigationItem.backButtonDisplayMode = .minimal
+    if #available(iOS 14.0, *) {
+      navigationItem.backButtonDisplayMode = .minimal
+    } else {
+      navigationItem.backButtonTitle = ""
+    }
     definesPresentationContext = true
   }
 
@@ -196,6 +201,7 @@ final class StationsVC: ASViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "stationCell", for: indexPath)
         cell.separatorInset = .zero
         cell.textLabel?.numberOfLines = 0
+        cell.textLabel?.font = R.font.newFrankRegular(size: UIFont.labelFontSize)
         cell.textLabel?.text = station.name
         return cell
       }
@@ -212,6 +218,7 @@ final class StationsVC: ASViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "stationCell", for: indexPath)
         cell.separatorInset = .zero
         cell.textLabel?.numberOfLines = 0
+        cell.textLabel?.font = R.font.newFrankRegular(size: UIFont.labelFontSize)
         cell.textLabel?.text = station.name
         return cell
       }
