@@ -5,6 +5,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
   var window: UIWindow?
   var savedShortcutItem: UIApplicationShortcutItem!
 
+  let notificationCentre = UNUserNotificationCenter.current()
+
   func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
     guard let windowScene = (scene as? UIWindowScene) else { return }
 
@@ -19,6 +21,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     window.makeKeyAndVisible()
 
     self.window = window
+
+    notificationCentre.requestAuthorization(options: [.alert, .sound, .badge]) {
+      (granted, error) in
+      if let error = error {
+        print(error.localizedDescription)
+      } else if granted {
+        print("Granted")
+      }
+    }
   }
 
   func windowScene(_ windowScene: UIWindowScene, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
@@ -29,6 +40,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     if savedShortcutItem != nil {
       _ = handleShortcutItem(shortcutItem: savedShortcutItem)
     }
+
+    UIApplication.shared.applicationIconBadgeNumber = 0
   }
 
   func sceneWillResignActive(_ scene: UIScene) {
@@ -48,5 +61,93 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
       }
     }
     return true
+  }
+
+  private func checkPermissionStatus() {
+    CKFacade.checkPermissionStatus { (result) in
+      switch result {
+      case .success(let status):
+        switch status {
+        case .initialState:
+          self.requestPermission()
+        case .couldNotComplete:
+          break
+        case .denied:
+          self.requestPermission()
+        case .granted:
+          break
+        @unknown default:
+          self.requestPermission()
+        }
+      case .failure(let error):
+        let errorDetail = errorDetail(for: error)
+        print("\(errorDetail.title): \(errorDetail.detail)")
+      }
+    }
+  }
+
+  private func requestPermission() {
+    CKFacade.requestDiscoverability { (result) in
+      switch result {
+      case .success(let status):
+        let statusDetail = permissionStatusDetail(for: status)
+        print("\(statusDetail.title): \(statusDetail.detail)")
+      case .failure(let error):
+        let errorDetail = errorDetail(for: error)
+        print("\(errorDetail.title): \(errorDetail.detail)")
+      }
+    }
+  }
+
+  private func fetchAccountStatus() {
+    CKFacade.fetchAccountStatus {
+      (result) in
+      DispatchQueue.main.async {
+        switch result {
+        case .success(let status):
+          let statusDetail = accountStatusDetail(for: status)
+          print("\(statusDetail.title): \(statusDetail.detail)")
+          self.checkPermissionStatus()
+        case .failure(let error):
+          print(error.localizedDescription)
+        }
+      }
+    }
+  }
+
+  private func saveTripCreatedSubscription() {
+    CKFacade.saveTripCreatedSubscription {
+      (result) in
+      DispatchQueue.main.async {
+        switch result {
+        case .success(let subscription):
+          print("Successfully created subscription with ID: \(subscription.subscriptionID)")
+        case .failure(let error):
+          let errorInfo = errorDetail(for: error)
+          let ac = UIAlertController(title: errorInfo.title, message: errorInfo.detail, preferredStyle: .alert)
+          let dismissAction = UIAlertAction(title: "Dismiss", style: .default)
+          ac.addAction(dismissAction)
+          self.window?.rootViewController?.present(ac, animated: true)
+        }
+      }
+    }
+  }
+
+  private func saveTripDeletedSubscription() {
+    CKFacade.saveTripDeletedSubscription {
+      (result) in
+      DispatchQueue.main.async {
+        switch result {
+        case .success(let subscription):
+          print("Successfully created subscription with ID: \(subscription.subscriptionID)")
+        case .failure(let error):
+          let errorInfo = errorDetail(for: error)
+          let ac = UIAlertController(title: errorInfo.title, message: errorInfo.detail, preferredStyle: .alert)
+          let dismissAction = UIAlertAction(title: "Dismiss", style: .default)
+          ac.addAction(dismissAction)
+          self.window?.rootViewController?.present(ac, animated: true)
+        }
+      }
+    }
   }
 }

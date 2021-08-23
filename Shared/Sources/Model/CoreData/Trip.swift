@@ -4,7 +4,7 @@ import CoreData
 final class Trip: NSManagedObject {
   static func fetchAll(viewContext: NSManagedObjectContext = AppDelegate.viewContext) -> [Trip] {
     let request: NSFetchRequest<Trip> = Trip.fetchRequest()
-    request.sortDescriptors = [NSSortDescriptor(key: "fromName", ascending: true), NSSortDescriptor(key: "toName", ascending: true)]
+    request.sortDescriptors = [NSSortDescriptor(key: "dateAdded", ascending: false), NSSortDescriptor(key: "fromName", ascending: true), NSSortDescriptor(key: "toName", ascending: true)]
     guard let tasks = try? AppDelegate.viewContext.fetch(request) else { return [] }
     return tasks
   }
@@ -26,7 +26,7 @@ extension Trip {
   @NSManaged public var toId: String
   @NSManaged public var toName: String
   @NSManaged public var toStopId: String
-
+  @NSManaged public var dateAdded: Date
 }
 
 extension Trip: Identifiable {

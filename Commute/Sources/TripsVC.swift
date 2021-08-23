@@ -1,6 +1,5 @@
 import UIKit
 import AsyncDisplayKit
-import CoreData
 import TinyConstraints
 import Rswift
 
@@ -109,7 +108,7 @@ final class TripsVC: ASViewController {
     configureToolbar()
     configureNavigation()
     configureTableView()
-    applySnapshot()
+    applySnapshot(animate: false)
   }
 
   override func viewDidLayoutSubviews() {
@@ -214,12 +213,12 @@ final class TripsVC: ASViewController {
 
             titleLabel.textAlignment = .center
             titleLabel.textColor = .placeholderText
-            titleLabel.font = .preferredFont(forTextStyle: .largeTitle)
+            titleLabel.font = R.font.newFrankMedium(size: 32)
             titleLabel.text = "No Trips"
 
             subtitleLabel.textAlignment = .center
             subtitleLabel.textColor = .placeholderText
-            subtitleLabel.font = .preferredFont(forTextStyle: .body)
+            subtitleLabel.font = R.font.newFrankRegular(size: UIFont.labelFontSize)
             subtitleLabel.numberOfLines = 0
             subtitleLabel.text = "Add a trip by tapping the add button in the top-right corner."
 
@@ -236,7 +235,7 @@ final class TripsVC: ASViewController {
             titleLabel.centerInSuperview()
             titleLabel.textAlignment = .center
             titleLabel.textColor = .placeholderText
-            titleLabel.font = .preferredFont(forTextStyle: .largeTitle)
+            titleLabel.font = R.font.newFrankMedium(size: 32)
             titleLabel.text = "No Results"
 
             return view
@@ -262,7 +261,7 @@ final class TripsVC: ASViewController {
   }
 
   @objc private func openAddTrip() {
-    let vc = NavigationController(rootViewController: AddTripFromVC())
+    let vc = NavigationController(rootViewController: AddTripOriginVC())
     vc.modalPresentationStyle = .fullScreen
     present(vc, animated: true)
   }

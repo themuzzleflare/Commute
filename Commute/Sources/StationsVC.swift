@@ -263,7 +263,7 @@ final class StationsVC: ASViewController {
           label.centerInSuperview()
           label.textAlignment = .center
           label.textColor = .placeholderText
-          label.font = .preferredFont(forTextStyle: .largeTitle)
+          label.font = R.font.newFrankMedium(size: 32)
 
           if searchController.searchBar.text!.isEmpty {
             label.text = "No Stations"
@@ -295,12 +295,12 @@ final class StationsVC: ASViewController {
 
           titleLabel.textAlignment = .center
           titleLabel.textColor = .placeholderText
-          titleLabel.font = .preferredFont(forTextStyle: .largeTitle)
+          titleLabel.font = R.font.newFrankMedium(size: 32)
           titleLabel.text = errorType.title
 
           subtitleLabel.textAlignment = .center
           subtitleLabel.textColor = .placeholderText
-          subtitleLabel.font = .preferredFont(forTextStyle: .body)
+          subtitleLabel.font = R.font.newFrankRegular(size: UIFont.labelFontSize)
           subtitleLabel.numberOfLines = 0
           subtitleLabel.text = errorType.detail
 
@@ -348,7 +348,7 @@ final class StationsVC: ASViewController {
           label.centerInSuperview()
           label.textAlignment = .center
           label.textColor = .placeholderText
-          label.font = .preferredFont(forTextStyle: .largeTitle)
+          label.font = R.font.newFrankMedium(size: 32)
 
           if searchController.searchBar.text!.isEmpty {
             label.text = "No Stations"
@@ -380,12 +380,12 @@ final class StationsVC: ASViewController {
 
           titleLabel.textAlignment = .center
           titleLabel.textColor = .placeholderText
-          titleLabel.font = .preferredFont(forTextStyle: .largeTitle)
+          titleLabel.font = R.font.newFrankMedium(size: 32)
           titleLabel.text = errorType.title
 
           subtitleLabel.textAlignment = .center
           subtitleLabel.textColor = .placeholderText
-          subtitleLabel.font = .preferredFont(forTextStyle: .body)
+          subtitleLabel.font = R.font.newFrankRegular(size: UIFont.labelFontSize)
           subtitleLabel.numberOfLines = 0
           subtitleLabel.text = errorType.detail
 

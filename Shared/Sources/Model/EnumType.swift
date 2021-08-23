@@ -1,6 +1,6 @@
 import Foundation
 
-struct ErrorType {
+struct EnumType {
   var title: String
   var detail: String
 }

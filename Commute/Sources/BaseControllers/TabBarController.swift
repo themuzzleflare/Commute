@@ -57,6 +57,6 @@ final class TabBarController: ASTabBarController {
   }
 
   private func configure() {
-    setViewControllers([tripsvc, stationsvc, toolsvc, aboutvc], animated: true)
+    setViewControllers([tripsvc, stationsvc, toolsvc, aboutvc], animated: false)
   }
 }

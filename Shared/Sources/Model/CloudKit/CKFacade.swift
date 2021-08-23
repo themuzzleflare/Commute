@@ -3,7 +3,40 @@ import CloudKit
 
 struct CKFacade {
   static let container = CKContainer(identifier: "iCloud.\(ModelFacade.infoForKey("CFBundleIdentifier")!)")
-  static let database = container.publicCloudDatabase
+  static let publicDatabase = container.publicCloudDatabase
+  static let privateDatabase = container.privateCloudDatabase
+  static let sharedDatabase = container.sharedCloudDatabase
+
+  static func fetchAccountStatus(completion: @escaping (Result<CKAccountStatus, CKError>) -> Void) {
+    container.accountStatus { (status, error) in
+      if let error = error as? CKError {
+        completion(.failure(error))
+      } else {
+        completion(.success(status))
+      }
+    }
+  }
+
+  static func checkPermissionStatus(completion: @escaping (Result<CKContainer_Application_PermissionStatus, CKError>) -> Void) {
+    container.status(forApplicationPermission: .userDiscoverability) { (applicationPermissionStatus, error) in
+      if let error = error as? CKError {
+        completion(.failure(error))
+      } else {
+        completion(.success(applicationPermissionStatus))
+      }
+    }
+  }
+
+  static func requestDiscoverability(completion: @escaping (Result<CKContainer_Application_PermissionStatus, CKError>) -> Void) {
+    container.requestApplicationPermission(.userDiscoverability) { (applicationPermissionStatus, error) in
+      if let error = error as? CKError {
+        print(error.localizedDescription)
+      } else {
+        let statusDetail = permissionStatusDetail(for: applicationPermissionStatus)
+        print("\(statusDetail.title): \(statusDetail.detail)")
+      }
+    }
+  }
 
   static func searchStation(cursor: CKQueryOperation.Cursor? = nil, inputStations: [Station]? = nil, searchString: String? = nil, currentLocation: CLLocation? = nil, exclude: Station? = nil, completion: @escaping (Result<[Station], CKError>) -> Void) {
 
@@ -60,21 +93,73 @@ struct CKFacade {
 
     operation.queryCompletionBlock = {
       (cursor, operationError) in
-      DispatchQueue.main.async {
-        if let error = operationError {
-          completion(.failure(error as! CKError))
-        } else if let cursor = cursor {
-          searchStation(
-            cursor: cursor,
-            inputStations: stations,
-            completion: completion
-          )
-        } else {
-          completion(.success(stations))
-        }
+      if let error = operationError as? CKError {
+        completion(.failure(error))
+      } else if let cursor = cursor {
+        searchStation(
+          cursor: cursor,
+          inputStations: stations,
+          completion: completion
+        )
+      } else {
+        completion(.success(stations))
       }
     }
 
-    database.add(operation)
+    publicDatabase.add(operation)
+  }
+
+  static func saveTripCreatedSubscription(completion: @escaping (Result<CKSubscription, CKError>) -> Void) {
+    let notificationInfo = CKSubscription.NotificationInfo(
+      alertLocalizationKey: "A new trip has been saved: %1$@ to %2$@",
+      alertLocalizationArgs: ["CD_fromName", "CD_toName"],
+      title: "Trip Created",
+      soundName: "cityrailBeep.wav"
+    )
+
+    let subscription = CKQuerySubscription(
+      recordType: "CD_Trip",
+      predicate: NSPredicate(value: true),
+      subscriptionID: "tripCreated",
+      options: [.firesOnRecordCreation]
+    )
+
+    subscription.zoneID = CKRecordZone.ID(zoneName: "com.apple.coredata.cloudkit.zone")
+    subscription.notificationInfo = notificationInfo
+
+    privateDatabase.save(subscription) { (subscription, error) in
+      if let error = error as? CKError {
+        completion(.failure(error))
+      } else if let subscription = subscription {
+        completion(.success(subscription))
+      }
+    }
+  }
+
+  static func saveTripDeletedSubscription(completion: @escaping (Result<CKSubscription, CKError>) -> Void) {
+    let notificationInfo = CKSubscription.NotificationInfo(
+      alertLocalizationKey: "A trip has been deleted: %1$@ to %2$@",
+      alertLocalizationArgs: ["CD_fromName", "CD_toName"],
+      title: "Trip Deleted",
+      soundName: "cityrailBeep.wav"
+    )
+
+    let subscription = CKQuerySubscription(
+      recordType: "CD_Trip",
+      predicate: NSPredicate(value: true),
+      subscriptionID: "tripDeleted",
+      options: [.firesOnRecordDeletion]
+    )
+
+    subscription.zoneID = CKRecordZone.ID(zoneName: "com.apple.coredata.cloudkit.zone")
+    subscription.notificationInfo = notificationInfo
+
+    privateDatabase.save(subscription) { (subscription, error) in
+      if let error = error as? CKError {
+        completion(.failure(error))
+      } else if let subscription = subscription {
+        completion(.success(subscription))
+      }
+    }
   }
 }

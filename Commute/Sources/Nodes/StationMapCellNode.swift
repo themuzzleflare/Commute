@@ -4,7 +4,7 @@ import Mapbox
 
 final class StationMapCellNode: ASCellNode {
   private lazy var mapView: MGLMapView = {
-    let mapView = MGLMapView(frame: .zero, styleURL: URL(string: "mapbox://styles/themuzzleflare/cksfqc1moanss17qt9mp2bpx1"))
+    let mapView = MGLMapView(frame: .zero, styleURL: URL(string: "mapbox://styles/themuzzleflare/cksoh1z262udz17o93pl4q4vj"))
     mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
     return mapView
   }()

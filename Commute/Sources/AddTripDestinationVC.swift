@@ -1,10 +1,13 @@
 import UIKit
 import AsyncDisplayKit
+import CoreData
 import CloudKit
 import TinyConstraints
 import Rswift
 
-final class AddTripFromVC: ASViewController {
+final class AddTripDestinationVC: ASViewController {
+  private var fromStation: Station
+
   private enum Section {
     case main
   }
@@ -52,6 +55,9 @@ final class AddTripFromVC: ASViewController {
     return self.byDistanceTableView
   }
 
+  private var error: CKError?
+  private var byDistanceError: CKError?
+
   private var stations: [Station] = [] {
     didSet {
       noStations = stations.isEmpty
@@ -65,9 +71,6 @@ final class AddTripFromVC: ASViewController {
       applyByDistanceSnapshot()
     }
   }
-
-  private var error: CKError?
-  private var byDistanceError: CKError?
 
   private var groupedStations: [String: [Station]] {
     return Dictionary(
@@ -88,7 +91,7 @@ final class AddTripFromVC: ASViewController {
 
   // UITableViewDiffableDataSource
   private class DataSource: UITableViewDiffableDataSource<SortedStations, Station> {
-    weak var parent: AddTripFromVC! = nil
+    weak var parent: AddTripDestinationVC! = nil
 
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
       guard let firstStation = itemIdentifier(for: IndexPath(item: 0, section: section)) else { return nil }
@@ -108,7 +111,8 @@ final class AddTripFromVC: ASViewController {
   private class ByDistanceDataSource: UITableViewDiffableDataSource<Section, Station> {
   }
 
-  override init() {
+  init(station: Station) {
+    self.fromStation = station
     super.init()
     dataSource.parent = self
   }
@@ -142,10 +146,9 @@ final class AddTripFromVC: ASViewController {
   }
 
   private func configureNavigation() {
-    navigationItem.title = "Origin"
+    navigationItem.title = "Destination"
     navigationItem.searchController = searchController
     navigationItem.hidesSearchBarWhenScrolling = false
-    navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(close))
     definesPresentationContext = true
   }
 
@@ -160,10 +163,6 @@ final class AddTripFromVC: ASViewController {
     case 1: byName = false
     default: break
     }
-  }
-
-  @objc private func close() {
-    navigationController?.dismiss(animated: true)
   }
 
   private func configureTableView() {
@@ -250,7 +249,7 @@ final class AddTripFromVC: ASViewController {
           label.centerInSuperview()
           label.textAlignment = .center
           label.textColor = .placeholderText
-          label.font = .preferredFont(forTextStyle: .largeTitle)
+          label.font = R.font.newFrankMedium(size: 32)
 
           if searchController.searchBar.text!.isEmpty {
             label.text = "No Stations"
@@ -282,12 +281,12 @@ final class AddTripFromVC: ASViewController {
 
           titleLabel.textAlignment = .center
           titleLabel.textColor = .placeholderText
-          titleLabel.font = .preferredFont(forTextStyle: .largeTitle)
+          titleLabel.font = R.font.newFrankMedium(size: 32)
           titleLabel.text = errorType.title
 
           subtitleLabel.textAlignment = .center
           subtitleLabel.textColor = .placeholderText
-          subtitleLabel.font = .preferredFont(forTextStyle: .body)
+          subtitleLabel.font = R.font.newFrankRegular(size: UIFont.labelFontSize)
           subtitleLabel.numberOfLines = 0
           subtitleLabel.text = errorType.detail
 
@@ -335,7 +334,7 @@ final class AddTripFromVC: ASViewController {
           label.centerInSuperview()
           label.textAlignment = .center
           label.textColor = .placeholderText
-          label.font = .preferredFont(forTextStyle: .largeTitle)
+          label.font = R.font.newFrankMedium(size: 32)
 
           if searchController.searchBar.text!.isEmpty {
             label.text = "No Stations"
@@ -367,12 +366,12 @@ final class AddTripFromVC: ASViewController {
 
           titleLabel.textAlignment = .center
           titleLabel.textColor = .placeholderText
-          titleLabel.font = .preferredFont(forTextStyle: .largeTitle)
+          titleLabel.font = R.font.newFrankMedium(size: 32)
           titleLabel.text = errorType.title
 
           subtitleLabel.textAlignment = .center
           subtitleLabel.textColor = .placeholderText
-          subtitleLabel.font = .preferredFont(forTextStyle: .body)
+          subtitleLabel.font = R.font.newFrankRegular(size: UIFont.labelFontSize)
           subtitleLabel.numberOfLines = 0
           subtitleLabel.text = errorType.detail
 
@@ -387,7 +386,7 @@ final class AddTripFromVC: ASViewController {
   }
 
   private func fetchStations() {
-    CKFacade.searchStation(searchString: searchController.searchBar.text) {
+    CKFacade.searchStation(searchString: searchController.searchBar.text, exclude: fromStation) {
       (result) in
       DispatchQueue.main.async {
         switch result {
@@ -405,7 +404,7 @@ final class AddTripFromVC: ASViewController {
         }
       }
     }
-    CKFacade.searchStation(searchString: searchController.searchBar.text, currentLocation: locationManager?.location) {
+    CKFacade.searchStation(searchString: searchController.searchBar.text, currentLocation: locationManager?.location, exclude: fromStation) {
       (result) in
       DispatchQueue.main.async {
         switch result {
@@ -424,9 +423,44 @@ final class AddTripFromVC: ASViewController {
       }
     }
   }
+
+  private func configureCoreData(toStation: Station) {
+    if Trip.fetchAll().contains(where: { $0.fromId == fromStation.globalId && $0.toId == toStation.globalId }) {
+      DispatchQueue.main.async {
+        let ac = UIAlertController(title: "Error", message: "This trip has already been added.", preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "Dismiss", style: .default)
+        ac.addAction(cancelAction)
+        self.present(ac, animated: true)
+      }
+    } else {
+      let newTrip = Trip(context: AppDelegate.viewContext)
+
+      newTrip.id = UUID()
+      newTrip.fromId = fromStation.globalId
+      newTrip.fromStopId = fromStation.stopId
+      newTrip.fromName = fromStation.name
+      newTrip.toId = toStation.globalId
+      newTrip.toStopId = toStation.stopId
+      newTrip.toName = toStation.name
+      newTrip.dateAdded = Date()
+
+      do {
+        try AppDelegate.viewContext.save()
+
+        navigationController?.dismiss(animated: true)
+      } catch {
+        DispatchQueue.main.async {
+          let ac = UIAlertController(title: "Error", message: "An unknown error was encountered while adding this trip.", preferredStyle: .alert)
+          let cancelAction = UIAlertAction(title: "Dismiss", style: .default)
+          ac.addAction(cancelAction)
+          self.present(ac, animated: true)
+        }
+      }
+    }
+  }
 }
 
-extension AddTripFromVC: UITableViewDelegate {
+extension AddTripDestinationVC: UITableViewDelegate {
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     return UITableView.automaticDimension
   }
@@ -437,19 +471,17 @@ extension AddTripFromVC: UITableViewDelegate {
     switch byName {
     case true:
       if let station = dataSource.itemIdentifier(for: indexPath) {
-        navigationItem.backButtonTitle = station.name.replacingOccurrences(of: " Station", with: "")
-        navigationController?.pushViewController(AddTripToVC(station: station), animated: true)
+        configureCoreData(toStation: station)
       }
     case false:
       if let station = byDistanceDataSource.itemIdentifier(for: indexPath) {
-        navigationItem.backButtonTitle = station.name.replacingOccurrences(of: " Station", with: "")
-        navigationController?.pushViewController(AddTripToVC(station: station), animated: true)
+        configureCoreData(toStation: station)
       }
     }
   }
 }
 
-extension AddTripFromVC: UISearchBarDelegate {
+extension AddTripDestinationVC: UISearchBarDelegate {
   func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
     fetchStations()
   }
