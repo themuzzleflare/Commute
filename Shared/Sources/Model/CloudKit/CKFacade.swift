@@ -5,7 +5,6 @@ struct CKFacade {
   static let container = CKContainer(identifier: "iCloud.\(ModelFacade.infoForKey("CFBundleIdentifier")!)")
   static let publicDatabase = container.publicCloudDatabase
   static let privateDatabase = container.privateCloudDatabase
-  static let sharedDatabase = container.sharedCloudDatabase
 
   static func fetchAccountStatus(completion: @escaping (Result<CKAccountStatus, CKError>) -> Void) {
     container.accountStatus { (status, error) in
@@ -30,10 +29,9 @@ struct CKFacade {
   static func requestDiscoverability(completion: @escaping (Result<CKContainer_Application_PermissionStatus, CKError>) -> Void) {
     container.requestApplicationPermission(.userDiscoverability) { (applicationPermissionStatus, error) in
       if let error = error as? CKError {
-        print(error.localizedDescription)
+        completion(.failure(error))
       } else {
-        let statusDetail = permissionStatusDetail(for: applicationPermissionStatus)
-        print("\(statusDetail.title): \(statusDetail.detail)")
+        completion(.success(applicationPermissionStatus))
       }
     }
   }
@@ -77,8 +75,7 @@ struct CKFacade {
     operation.resultsLimit = 200
     operation.qualityOfService = .userInitiated
 
-    operation.recordFetchedBlock = {
-      (record) in
+    operation.recordFetchedBlock = { (record) in
       let station = Station(
         id: record.recordID,
         globalId: record["id"] as! String,
@@ -91,8 +88,7 @@ struct CKFacade {
       stations.append(station)
     }
 
-    operation.queryCompletionBlock = {
-      (cursor, operationError) in
+    operation.queryCompletionBlock = { (cursor, operationError) in
       if let error = operationError as? CKError {
         completion(.failure(error))
       } else if let cursor = cursor {
@@ -121,7 +117,7 @@ struct CKFacade {
       recordType: "CD_Trip",
       predicate: NSPredicate(value: true),
       subscriptionID: "tripCreated",
-      options: [.firesOnRecordCreation]
+      options: .firesOnRecordCreation
     )
 
     subscription.zoneID = CKRecordZone.ID(zoneName: "com.apple.coredata.cloudkit.zone")
@@ -148,7 +144,7 @@ struct CKFacade {
       recordType: "CD_Trip",
       predicate: NSPredicate(value: true),
       subscriptionID: "tripDeleted",
-      options: [.firesOnRecordDeletion]
+      options: .firesOnRecordDeletion
     )
 
     subscription.zoneID = CKRecordZone.ID(zoneName: "com.apple.coredata.cloudkit.zone")

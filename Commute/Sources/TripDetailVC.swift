@@ -2,6 +2,7 @@ import UIKit
 import AsyncDisplayKit
 import SwiftDate
 import TinyConstraints
+import TfNSW
 
 final class TripDetailVC: ASDKViewController<ASTableNode> {
   private let tableNode = ASTableNode(style: .grouped)
@@ -37,7 +38,7 @@ final class TripDetailVC: ASDKViewController<ASTableNode> {
   }
 
   private func configureNavigation() {
-    navigationItem.title = "\(trip.fromName.replacingOccurrences(of: " Station", with: "")) to \(trip.toName.replacingOccurrences(of: " Station", with: ""))"
+    navigationItem.title = trip.tripName
   }
 
   private func configureTableNode() {
@@ -61,8 +62,7 @@ final class TripDetailVC: ASDKViewController<ASTableNode> {
   }
 
   private func fetchJourneys() {
-    APIFacade.fetchJourneys(origin: trip.fromStopId, destination: trip.toStopId) {
-      (result) in
+    APIFacade.fetchJourneys(from: trip.fromStopId, to: trip.toStopId) { (result) in
       DispatchQueue.main.async {
         switch result {
         case .success(let journeys):
@@ -83,17 +83,8 @@ extension TripDetailVC: ASTableDataSource {
   func tableNode(_ tableNode: ASTableNode, nodeBlockForRowAt indexPath: IndexPath) -> ASCellNodeBlock {
     let journey = journeys[indexPath.row]
 
-    let jObject = Journey(
-      fromName: journey.legs?.first?.origin?.disassembledName?.replacingOccurrences(of: " Station", with: ""),
-      fromTime: journey.legs?.first?.origin?.departureTimeEstimated?.toDate()?.toString(.time(.short)),
-      toName: journey.legs?.last?.destination?.disassembledName?.replacingOccurrences(of: " Station", with: ""),
-      toTime: journey.legs?.last?.destination?.arrivalTimeEstimated?.toDate()?.toString(.time(.short)),
-      relativeTime: journey.legs?.first?.origin?.departureTimeEstimated?.toDate()?.toRelative(),
-      relativeTimeInPast: journey.legs?.first?.origin?.departureTimeEstimated?.toDate()?.isInPast
-    )
-
     return {
-      return JourneyCellNode(journey: jObject)
+      return JourneyCellNode(journey: journey)
     }
   }
 }
@@ -105,7 +96,15 @@ extension TripDetailVC: ASTableDelegate {
     tableNode.deselectRow(at: indexPath, animated: true)
 
     if let legs = journey.legs {
+      if legs.count == 1 {
+        if let stops = legs[0].stopSequence {
+          navigationController?.pushViewController(StopSequenceVC(stops: stops), animated: true)
+        } else {
+          navigationController?.pushViewController(JourneyDetailVC(legs: legs), animated: true)
+        }
+      } else {
       navigationController?.pushViewController(JourneyDetailVC(legs: legs), animated: true)
+      }
     }
   }
 }

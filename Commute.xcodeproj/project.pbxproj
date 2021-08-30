@@ -3,13 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		7A09525C26CF952900938A50 /* cityrailBeep.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7A09525B26CF952900938A50 /* cityrailBeep.wav */; };
-		7A09525E26D0B01A00938A50 /* AccountStatusDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A09525D26D0B01A00938A50 /* AccountStatusDetail.swift */; };
-		7A09526026D0B53400938A50 /* PermissionStatusDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A09525F26D0B53400938A50 /* PermissionStatusDetail.swift */; };
+		7A09525E26D0B01A00938A50 /* CKAccountStatus+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A09525D26D0B01A00938A50 /* CKAccountStatus+Extension.swift */; };
+		7A09526026D0B53400938A50 /* CKContainerApplicationPermissionStatus+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A09525F26D0B53400938A50 /* CKContainerApplicationPermissionStatus+Extension.swift */; };
 		7A29279626CB430A005FD79B /* ShortcutType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A29279526CB430A005FD79B /* ShortcutType.swift */; };
 		7A2C18FC26AE6CB2005BF502 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2C18FB26AE6CB2005BF502 /* AppDelegate.swift */; };
 		7A2C190526AE6CB4005BF502 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A2C190426AE6CB4005BF502 /* Assets.xcassets */; };
@@ -18,9 +18,6 @@
 		7A473FEF26C88DD2004CAC5E /* StationDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A473FEE26C88DD2004CAC5E /* StationDetailVC.swift */; };
 		7A473FF126C89AD6004CAC5E /* StationMapCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A473FF026C89AD6004CAC5E /* StationMapCellNode.swift */; };
 		7A77B9BA26B929E100712639 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A77B9B926B929E100712639 /* SceneDelegate.swift */; };
-		7AAA3F0A26CB96FC002231CE /* Frank New Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7AAA3F0926CB96FC002231CE /* Frank New Bold.ttf */; };
-		7AAA3F0C26CB9702002231CE /* Frank New Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7AAA3F0B26CB9702002231CE /* Frank New Medium.ttf */; };
-		7AAA3F0E26CB9709002231CE /* Frank New Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7AAA3F0D26CB9709002231CE /* Frank New Regular.ttf */; };
 		7AC2B4D226AE713B008DC5CF /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC2B4D126AE713B008DC5CF /* R.generated.swift */; };
 		7AC2B4D826AE7876008DC5CF /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC2B4D726AE7876008DC5CF /* TabBarController.swift */; };
 		7AC2B4DC26AE7898008DC5CF /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC2B4DB26AE7898008DC5CF /* NavigationController.swift */; };
@@ -32,35 +29,45 @@
 		7AC2B4F226AEA6D8008DC5CF /* CKFacade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC2B4F126AEA6D8008DC5CF /* CKFacade.swift */; };
 		7AC2B4F426AEA750008DC5CF /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC2B4F326AEA750008DC5CF /* Station.swift */; };
 		7AC3FFCA26B380A700EEBBBD /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC3FFC926B380A700EEBBBD /* Trip.swift */; };
-		7AC3FFCC26B38FCD00EEBBBD /* ErrorDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC3FFCB26B38FCD00EEBBBD /* ErrorDetail.swift */; };
-		7AC3FFCE26B38FF200EEBBBD /* EnumType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC3FFCD26B38FF200EEBBBD /* EnumType.swift */; };
+		7AC3FFCC26B38FCD00EEBBBD /* CKError+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC3FFCB26B38FCD00EEBBBD /* CKError+Extension.swift */; };
 		7ACC855C26B0FCF900F8F946 /* JourneyDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACC855B26B0FCF900F8F946 /* JourneyDetailVC.swift */; };
 		7ACC855E26B0FDEB00F8F946 /* StopSequenceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACC855D26B0FDEB00F8F946 /* StopSequenceVC.swift */; };
 		7ACC856326B1114D00F8F946 /* DateFormatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACC856226B1114D00F8F946 /* DateFormatters.swift */; };
 		7ACC856726B2201E00F8F946 /* JourneyCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACC856626B2201E00F8F946 /* JourneyCellNode.swift */; };
-		7ACC856926B2204F00F8F946 /* Journey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACC856826B2204F00F8F946 /* Journey.swift */; };
 		7ACC856B26B22D8E00F8F946 /* AboutTopCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACC856A26B22D8E00F8F946 /* AboutTopCellNode.swift */; };
 		7ACC856D26B23DE800F8F946 /* RightDetailCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACC856C26B23DE800F8F946 /* RightDetailCellNode.swift */; };
 		7ACC857026B23F5A00F8F946 /* UserDefaults+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACC856F26B23F5A00F8F946 /* UserDefaults+Extension.swift */; };
 		7ACC857226B25C7B00F8F946 /* SubtitleCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACC857126B25C7B00F8F946 /* SubtitleCellNode.swift */; };
 		7ACC857426B2751F00F8F946 /* ToolsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACC857326B2751F00F8F946 /* ToolsVC.swift */; };
 		7ACC857B26B27EE100F8F946 /* PDFVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACC857A26B27EE100F8F946 /* PDFVC.swift */; };
-		7ACC857D26B2835D00F8F946 /* Sydney Rail Network.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 7ACC857C26B2835D00F8F946 /* Sydney Rail Network.pdf */; };
+		7ACC857D26B2835D00F8F946 /* SydneyRailNetwork.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 7ACC857C26B2835D00F8F946 /* SydneyRailNetwork.pdf */; };
 		7AD1DDBB26AFAA2F0057BEF3 /* AddTripDestinationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD1DDBA26AFAA2F0057BEF3 /* AddTripDestinationVC.swift */; };
 		7AD1DDBE26AFABE00057BEF3 /* Commute.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7AD1DDBC26AFABE00057BEF3 /* Commute.xcdatamodeld */; };
 		7AD4E04526AFFEB0007960AD /* TripDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD4E04426AFFEB0007960AD /* TripDetailVC.swift */; };
 		7AD4E04726AFFECE007960AD /* APIFacade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD4E04626AFFECE007960AD /* APIFacade.swift */; };
 		7ADFA39E26C9D19600F474DA /* SortedStations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADFA39D26C9D19600F474DA /* SortedStations.swift */; };
-		7ADFA3A726C9D20900F474DA /* TripRequestResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADFA3A026C9D20800F474DA /* TripRequestResponse.swift */; };
-		7ADFA3A826C9D20900F474DA /* GrandparentLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADFA3A126C9D20900F474DA /* GrandparentLocation.swift */; };
-		7ADFA3A926C9D20900F474DA /* TripRequestResponseJourneyLegStop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADFA3A226C9D20900F474DA /* TripRequestResponseJourneyLegStop.swift */; };
-		7ADFA3AA26C9D20900F474DA /* ParentLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADFA3A326C9D20900F474DA /* ParentLocation.swift */; };
-		7ADFA3AB26C9D20900F474DA /* TripRequestResponseJourneyLeg.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADFA3A426C9D20900F474DA /* TripRequestResponseJourneyLeg.swift */; };
-		7ADFA3AC26C9D20900F474DA /* TripRequestResponseJourney.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADFA3A526C9D20900F474DA /* TripRequestResponseJourney.swift */; };
-		7ADFA3AD26C9D20900F474DA /* TripTransportation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADFA3A626C9D20900F474DA /* TripTransportation.swift */; };
-		7AE38BB326D1D7A10021679A /* DatabaseScopeDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE38BB226D1D7A10021679A /* DatabaseScopeDetail.swift */; };
+		7AE38BB326D1D7A10021679A /* CKDatabaseScope+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE38BB226D1D7A10021679A /* CKDatabaseScope+Extension.swift */; };
 		7AF8783826B4D7D900A81C3A /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF8783726B4D7D900A81C3A /* Model.swift */; };
 		7AF8783A26B4FB7000A81C3A /* ASViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF8783926B4FB7000A81C3A /* ASViewController.swift */; };
+		7AFDA8BA26DC674B002AB73B /* NewFrankBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7AFDA8AE26DC6749002AB73B /* NewFrankBoldItalic.ttf */; };
+		7AFDA8BB26DC674B002AB73B /* NewFrankThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7AFDA8AF26DC6749002AB73B /* NewFrankThinItalic.ttf */; };
+		7AFDA8BC26DC674B002AB73B /* NewFrankLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7AFDA8B026DC6749002AB73B /* NewFrankLightItalic.ttf */; };
+		7AFDA8BD26DC674B002AB73B /* NewFrankMediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7AFDA8B126DC6749002AB73B /* NewFrankMediumItalic.ttf */; };
+		7AFDA8BE26DC674B002AB73B /* NewFrankRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7AFDA8B226DC674A002AB73B /* NewFrankRegular.ttf */; };
+		7AFDA8BF26DC674B002AB73B /* NewFrankThin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7AFDA8B326DC674A002AB73B /* NewFrankThin.ttf */; };
+		7AFDA8C026DC674B002AB73B /* NewFrankExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7AFDA8B426DC674A002AB73B /* NewFrankExtraBold.ttf */; };
+		7AFDA8C126DC674B002AB73B /* NewFrankLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7AFDA8B526DC674A002AB73B /* NewFrankLight.ttf */; };
+		7AFDA8C226DC674B002AB73B /* NewFrankRegularItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7AFDA8B626DC674A002AB73B /* NewFrankRegularItalic.ttf */; };
+		7AFDA8C326DC674B002AB73B /* NewFrankBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7AFDA8B726DC674A002AB73B /* NewFrankBold.ttf */; };
+		7AFDA8C426DC674B002AB73B /* NewFrankMedium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7AFDA8B826DC674B002AB73B /* NewFrankMedium.ttf */; };
+		7AFDA8C526DC674B002AB73B /* NewFrankExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7AFDA8B926DC674B002AB73B /* NewFrankExtraBoldItalic.ttf */; };
+		7AFDA8C926DC7062002AB73B /* gtfs-realtime.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFDA8C826DC7062002AB73B /* gtfs-realtime.pb.swift */; };
+		7AFDA8CC26DC7283002AB73B /* AlertCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFDA8CB26DC7283002AB73B /* AlertCellNode.swift */; };
+		7AFDA8CE26DC729F002AB73B /* ServiceAlertVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFDA8CD26DC729F002AB73B /* ServiceAlertVC.swift */; };
+		7AFDA8D026DC72B3002AB73B /* ServiceInformationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFDA8CF26DC72B3002AB73B /* ServiceInformationVC.swift */; };
+		7AFDA8D226DC7313002AB73B /* LegCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFDA8D126DC7313002AB73B /* LegCellNode.swift */; };
+		7AFDA8D526DC7A07002AB73B /* TfNSW in Frameworks */ = {isa = PBXBuildFile; productRef = 7AFDA8D426DC7A07002AB73B /* TfNSW */; };
+		7AFDA8D726DC8CEE002AB73B /* NSParagraphStyle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFDA8D626DC8CEE002AB73B /* NSParagraphStyle+Extension.swift */; };
 		DBF8CDFF69C4107866721E75 /* Pods_Commute.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48E658014247727F107433BE /* Pods_Commute.framework */; };
 /* End PBXBuildFile section */
 
@@ -69,8 +76,8 @@
 		48E658014247727F107433BE /* Pods_Commute.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Commute.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C21E28A3F23E0A640FF21A7 /* Pods-Commute.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Commute.release.xcconfig"; path = "Target Support Files/Pods-Commute/Pods-Commute.release.xcconfig"; sourceTree = "<group>"; };
 		7A09525B26CF952900938A50 /* cityrailBeep.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = cityrailBeep.wav; sourceTree = "<group>"; };
-		7A09525D26D0B01A00938A50 /* AccountStatusDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountStatusDetail.swift; sourceTree = "<group>"; };
-		7A09525F26D0B53400938A50 /* PermissionStatusDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionStatusDetail.swift; sourceTree = "<group>"; };
+		7A09525D26D0B01A00938A50 /* CKAccountStatus+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CKAccountStatus+Extension.swift"; sourceTree = "<group>"; };
+		7A09525F26D0B53400938A50 /* CKContainerApplicationPermissionStatus+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CKContainerApplicationPermissionStatus+Extension.swift"; sourceTree = "<group>"; };
 		7A29279526CB430A005FD79B /* ShortcutType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutType.swift; sourceTree = "<group>"; };
 		7A2C18F826AE6CB2005BF502 /* Commute.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Commute.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A2C18FB26AE6CB2005BF502 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -84,9 +91,6 @@
 		7A473FEE26C88DD2004CAC5E /* StationDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationDetailVC.swift; sourceTree = "<group>"; };
 		7A473FF026C89AD6004CAC5E /* StationMapCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationMapCellNode.swift; sourceTree = "<group>"; };
 		7A77B9B926B929E100712639 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		7AAA3F0926CB96FC002231CE /* Frank New Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Frank New Bold.ttf"; sourceTree = "<group>"; };
-		7AAA3F0B26CB9702002231CE /* Frank New Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Frank New Medium.ttf"; sourceTree = "<group>"; };
-		7AAA3F0D26CB9709002231CE /* Frank New Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Frank New Regular.ttf"; sourceTree = "<group>"; };
 		7AC2B4D026AE70FB008DC5CF /* Commute.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Commute.entitlements; sourceTree = "<group>"; };
 		7AC2B4D126AE713B008DC5CF /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		7AC2B4D726AE7876008DC5CF /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -99,35 +103,45 @@
 		7AC2B4F126AEA6D8008DC5CF /* CKFacade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKFacade.swift; sourceTree = "<group>"; };
 		7AC2B4F326AEA750008DC5CF /* Station.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Station.swift; sourceTree = "<group>"; };
 		7AC3FFC926B380A700EEBBBD /* Trip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
-		7AC3FFCB26B38FCD00EEBBBD /* ErrorDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorDetail.swift; sourceTree = "<group>"; };
-		7AC3FFCD26B38FF200EEBBBD /* EnumType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumType.swift; sourceTree = "<group>"; };
+		7AC3FFCB26B38FCD00EEBBBD /* CKError+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CKError+Extension.swift"; sourceTree = "<group>"; };
 		7ACC855B26B0FCF900F8F946 /* JourneyDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyDetailVC.swift; sourceTree = "<group>"; };
 		7ACC855D26B0FDEB00F8F946 /* StopSequenceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopSequenceVC.swift; sourceTree = "<group>"; };
 		7ACC856226B1114D00F8F946 /* DateFormatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatters.swift; sourceTree = "<group>"; };
 		7ACC856626B2201E00F8F946 /* JourneyCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyCellNode.swift; sourceTree = "<group>"; };
-		7ACC856826B2204F00F8F946 /* Journey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Journey.swift; sourceTree = "<group>"; };
 		7ACC856A26B22D8E00F8F946 /* AboutTopCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutTopCellNode.swift; sourceTree = "<group>"; };
 		7ACC856C26B23DE800F8F946 /* RightDetailCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightDetailCellNode.swift; sourceTree = "<group>"; };
 		7ACC856F26B23F5A00F8F946 /* UserDefaults+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extension.swift"; sourceTree = "<group>"; };
 		7ACC857126B25C7B00F8F946 /* SubtitleCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtitleCellNode.swift; sourceTree = "<group>"; };
 		7ACC857326B2751F00F8F946 /* ToolsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolsVC.swift; sourceTree = "<group>"; };
 		7ACC857A26B27EE100F8F946 /* PDFVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFVC.swift; sourceTree = "<group>"; };
-		7ACC857C26B2835D00F8F946 /* Sydney Rail Network.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Sydney Rail Network.pdf"; sourceTree = "<group>"; };
+		7ACC857C26B2835D00F8F946 /* SydneyRailNetwork.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = SydneyRailNetwork.pdf; sourceTree = "<group>"; };
 		7AD1DDBA26AFAA2F0057BEF3 /* AddTripDestinationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTripDestinationVC.swift; sourceTree = "<group>"; };
 		7AD1DDBD26AFABE00057BEF3 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		7AD4E04426AFFEB0007960AD /* TripDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripDetailVC.swift; sourceTree = "<group>"; };
 		7AD4E04626AFFECE007960AD /* APIFacade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIFacade.swift; sourceTree = "<group>"; };
 		7ADFA39D26C9D19600F474DA /* SortedStations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortedStations.swift; sourceTree = "<group>"; };
-		7ADFA3A026C9D20800F474DA /* TripRequestResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripRequestResponse.swift; sourceTree = "<group>"; };
-		7ADFA3A126C9D20900F474DA /* GrandparentLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrandparentLocation.swift; sourceTree = "<group>"; };
-		7ADFA3A226C9D20900F474DA /* TripRequestResponseJourneyLegStop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripRequestResponseJourneyLegStop.swift; sourceTree = "<group>"; };
-		7ADFA3A326C9D20900F474DA /* ParentLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParentLocation.swift; sourceTree = "<group>"; };
-		7ADFA3A426C9D20900F474DA /* TripRequestResponseJourneyLeg.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripRequestResponseJourneyLeg.swift; sourceTree = "<group>"; };
-		7ADFA3A526C9D20900F474DA /* TripRequestResponseJourney.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripRequestResponseJourney.swift; sourceTree = "<group>"; };
-		7ADFA3A626C9D20900F474DA /* TripTransportation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripTransportation.swift; sourceTree = "<group>"; };
-		7AE38BB226D1D7A10021679A /* DatabaseScopeDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseScopeDetail.swift; sourceTree = "<group>"; };
+		7AE38BB226D1D7A10021679A /* CKDatabaseScope+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CKDatabaseScope+Extension.swift"; sourceTree = "<group>"; };
 		7AF8783726B4D7D900A81C3A /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		7AF8783926B4FB7000A81C3A /* ASViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASViewController.swift; sourceTree = "<group>"; };
+		7AFDA8AE26DC6749002AB73B /* NewFrankBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NewFrankBoldItalic.ttf; sourceTree = "<group>"; };
+		7AFDA8AF26DC6749002AB73B /* NewFrankThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NewFrankThinItalic.ttf; sourceTree = "<group>"; };
+		7AFDA8B026DC6749002AB73B /* NewFrankLightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NewFrankLightItalic.ttf; sourceTree = "<group>"; };
+		7AFDA8B126DC6749002AB73B /* NewFrankMediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NewFrankMediumItalic.ttf; sourceTree = "<group>"; };
+		7AFDA8B226DC674A002AB73B /* NewFrankRegular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NewFrankRegular.ttf; sourceTree = "<group>"; };
+		7AFDA8B326DC674A002AB73B /* NewFrankThin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NewFrankThin.ttf; sourceTree = "<group>"; };
+		7AFDA8B426DC674A002AB73B /* NewFrankExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NewFrankExtraBold.ttf; sourceTree = "<group>"; };
+		7AFDA8B526DC674A002AB73B /* NewFrankLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NewFrankLight.ttf; sourceTree = "<group>"; };
+		7AFDA8B626DC674A002AB73B /* NewFrankRegularItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NewFrankRegularItalic.ttf; sourceTree = "<group>"; };
+		7AFDA8B726DC674A002AB73B /* NewFrankBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NewFrankBold.ttf; sourceTree = "<group>"; };
+		7AFDA8B826DC674B002AB73B /* NewFrankMedium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NewFrankMedium.ttf; sourceTree = "<group>"; };
+		7AFDA8B926DC674B002AB73B /* NewFrankExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NewFrankExtraBoldItalic.ttf; sourceTree = "<group>"; };
+		7AFDA8C726DC6FFD002AB73B /* gtfs-realtime.proto */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.protobuf; path = "gtfs-realtime.proto"; sourceTree = "<group>"; };
+		7AFDA8C826DC7062002AB73B /* gtfs-realtime.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "gtfs-realtime.pb.swift"; sourceTree = "<group>"; };
+		7AFDA8CB26DC7283002AB73B /* AlertCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertCellNode.swift; sourceTree = "<group>"; };
+		7AFDA8CD26DC729F002AB73B /* ServiceAlertVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceAlertVC.swift; sourceTree = "<group>"; };
+		7AFDA8CF26DC72B3002AB73B /* ServiceInformationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceInformationVC.swift; sourceTree = "<group>"; };
+		7AFDA8D126DC7313002AB73B /* LegCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegCellNode.swift; sourceTree = "<group>"; };
+		7AFDA8D626DC8CEE002AB73B /* NSParagraphStyle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSParagraphStyle+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +149,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7AFDA8D526DC7A07002AB73B /* TfNSW in Frameworks */,
 				7AC2B4E726AE80DF008DC5CF /* CloudKit.framework in Frameworks */,
 				DBF8CDFF69C4107866721E75 /* Pods_Commute.framework in Frameworks */,
 			);
@@ -211,9 +226,18 @@
 		7AAA3F0826CB96F3002231CE /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				7AAA3F0D26CB9709002231CE /* Frank New Regular.ttf */,
-				7AAA3F0B26CB9702002231CE /* Frank New Medium.ttf */,
-				7AAA3F0926CB96FC002231CE /* Frank New Bold.ttf */,
+				7AFDA8B726DC674A002AB73B /* NewFrankBold.ttf */,
+				7AFDA8AE26DC6749002AB73B /* NewFrankBoldItalic.ttf */,
+				7AFDA8B426DC674A002AB73B /* NewFrankExtraBold.ttf */,
+				7AFDA8B926DC674B002AB73B /* NewFrankExtraBoldItalic.ttf */,
+				7AFDA8B526DC674A002AB73B /* NewFrankLight.ttf */,
+				7AFDA8B026DC6749002AB73B /* NewFrankLightItalic.ttf */,
+				7AFDA8B826DC674B002AB73B /* NewFrankMedium.ttf */,
+				7AFDA8B126DC6749002AB73B /* NewFrankMediumItalic.ttf */,
+				7AFDA8B226DC674A002AB73B /* NewFrankRegular.ttf */,
+				7AFDA8B626DC674A002AB73B /* NewFrankRegularItalic.ttf */,
+				7AFDA8B326DC674A002AB73B /* NewFrankThin.ttf */,
+				7AFDA8AF26DC6749002AB73B /* NewFrankThinItalic.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -231,12 +255,11 @@
 		7AC2B4D426AE733B008DC5CF /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				7AFDA8C626DC6FCD002AB73B /* ProtocolBuffers */,
 				7ADFA39F26C9D1F600F474DA /* TPAPI */,
 				7ADFA3AE26C9D25100F474DA /* CloudKit */,
 				7AC7376726B0D201009B330C /* CoreData */,
 				7ACC856226B1114D00F8F946 /* DateFormatters.swift */,
-				7ACC856826B2204F00F8F946 /* Journey.swift */,
-				7AC3FFCD26B38FF200EEBBBD /* EnumType.swift */,
 				7A29279526CB430A005FD79B /* ShortcutType.swift */,
 				7AF8783726B4D7D900A81C3A /* Model.swift */,
 			);
@@ -259,8 +282,7 @@
 			children = (
 				7ACC856526B16AE200F8F946 /* Nodes */,
 				7AC2B4E326AE8008008DC5CF /* BaseControllers */,
-				7A2C18FB26AE6CB2005BF502 /* AppDelegate.swift */,
-				7A77B9B926B929E100712639 /* SceneDelegate.swift */,
+				7AFDA8CA26DC713C002AB73B /* Application */,
 				7AC2B4DF26AE78C5008DC5CF /* TripsVC.swift */,
 				7AC2B4EF26AEA6C2008DC5CF /* AddTripOriginVC.swift */,
 				7AD1DDBA26AFAA2F0057BEF3 /* AddTripDestinationVC.swift */,
@@ -270,6 +292,8 @@
 				7A473FEC26C88CE2004CAC5E /* StationsVC.swift */,
 				7A473FEE26C88DD2004CAC5E /* StationDetailVC.swift */,
 				7ACC857326B2751F00F8F946 /* ToolsVC.swift */,
+				7AFDA8CF26DC72B3002AB73B /* ServiceInformationVC.swift */,
+				7AFDA8CD26DC729F002AB73B /* ServiceAlertVC.swift */,
 				7AC2B4E126AE78D0008DC5CF /* AboutVC.swift */,
 			);
 			path = Sources;
@@ -323,6 +347,8 @@
 				7ACC856C26B23DE800F8F946 /* RightDetailCellNode.swift */,
 				7ACC857126B25C7B00F8F946 /* SubtitleCellNode.swift */,
 				7A473FF026C89AD6004CAC5E /* StationMapCellNode.swift */,
+				7AFDA8CB26DC7283002AB73B /* AlertCellNode.swift */,
+				7AFDA8D126DC7313002AB73B /* LegCellNode.swift */,
 			);
 			path = Nodes;
 			sourceTree = "<group>";
@@ -331,6 +357,11 @@
 			isa = PBXGroup;
 			children = (
 				7ACC856F26B23F5A00F8F946 /* UserDefaults+Extension.swift */,
+				7A09525D26D0B01A00938A50 /* CKAccountStatus+Extension.swift */,
+				7AC3FFCB26B38FCD00EEBBBD /* CKError+Extension.swift */,
+				7A09525F26D0B53400938A50 /* CKContainerApplicationPermissionStatus+Extension.swift */,
+				7AE38BB226D1D7A10021679A /* CKDatabaseScope+Extension.swift */,
+				7AFDA8D626DC8CEE002AB73B /* NSParagraphStyle+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -338,7 +369,7 @@
 		7ACC857726B2787000F8F946 /* PDF */ = {
 			isa = PBXGroup;
 			children = (
-				7ACC857C26B2835D00F8F946 /* Sydney Rail Network.pdf */,
+				7ACC857C26B2835D00F8F946 /* SydneyRailNetwork.pdf */,
 			);
 			path = PDF;
 			sourceTree = "<group>";
@@ -355,13 +386,6 @@
 			isa = PBXGroup;
 			children = (
 				7AD4E04626AFFECE007960AD /* APIFacade.swift */,
-				7ADFA3A026C9D20800F474DA /* TripRequestResponse.swift */,
-				7ADFA3A526C9D20900F474DA /* TripRequestResponseJourney.swift */,
-				7ADFA3A426C9D20900F474DA /* TripRequestResponseJourneyLeg.swift */,
-				7ADFA3A626C9D20900F474DA /* TripTransportation.swift */,
-				7ADFA3A226C9D20900F474DA /* TripRequestResponseJourneyLegStop.swift */,
-				7ADFA3A326C9D20900F474DA /* ParentLocation.swift */,
-				7ADFA3A126C9D20900F474DA /* GrandparentLocation.swift */,
 			);
 			path = TPAPI;
 			sourceTree = "<group>";
@@ -372,12 +396,26 @@
 				7AC2B4F126AEA6D8008DC5CF /* CKFacade.swift */,
 				7AC2B4F326AEA750008DC5CF /* Station.swift */,
 				7ADFA39D26C9D19600F474DA /* SortedStations.swift */,
-				7A09525D26D0B01A00938A50 /* AccountStatusDetail.swift */,
-				7AC3FFCB26B38FCD00EEBBBD /* ErrorDetail.swift */,
-				7A09525F26D0B53400938A50 /* PermissionStatusDetail.swift */,
-				7AE38BB226D1D7A10021679A /* DatabaseScopeDetail.swift */,
 			);
 			path = CloudKit;
+			sourceTree = "<group>";
+		};
+		7AFDA8C626DC6FCD002AB73B /* ProtocolBuffers */ = {
+			isa = PBXGroup;
+			children = (
+				7AFDA8C826DC7062002AB73B /* gtfs-realtime.pb.swift */,
+				7AFDA8C726DC6FFD002AB73B /* gtfs-realtime.proto */,
+			);
+			path = ProtocolBuffers;
+			sourceTree = "<group>";
+		};
+		7AFDA8CA26DC713C002AB73B /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				7A2C18FB26AE6CB2005BF502 /* AppDelegate.swift */,
+				7A77B9B926B929E100712639 /* SceneDelegate.swift */,
+			);
+			path = Application;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -388,12 +426,12 @@
 			buildConfigurationList = 7A2C190C26AE6CB4005BF502 /* Build configuration list for PBXNativeTarget "Commute" */;
 			buildPhases = (
 				585D8D2AA137F5E62E6599E4 /* [CP] Check Pods Manifest.lock */,
-				7AC2B4CE26AE7034008DC5CF /* Run Script */,
+				7AC2B4CE26AE7034008DC5CF /* Generate Rswift File */,
 				7A2C18F426AE6CB2005BF502 /* Sources */,
 				7A2C18F526AE6CB2005BF502 /* Frameworks */,
 				7A2C18F626AE6CB2005BF502 /* Resources */,
-				7AC2B4EA26AE8259008DC5CF /* ShellScript */,
-				7AC2B4CF26AE7070008DC5CF /* Run Script */,
+				7AC2B4EA26AE8259008DC5CF /* Append Values to Settings.bundle/Root.plist */,
+				7AC2B4CF26AE7070008DC5CF /* Initialise SwiftLint */,
 				43752CBDD0EFDDD7F07F5DEF /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
@@ -401,6 +439,9 @@
 			dependencies = (
 			);
 			name = Commute;
+			packageProductDependencies = (
+				7AFDA8D426DC7A07002AB73B /* TfNSW */,
+			);
 			productName = Commute;
 			productReference = 7A2C18F826AE6CB2005BF502 /* Commute.app */;
 			productType = "com.apple.product-type.application";
@@ -429,6 +470,9 @@
 				Base,
 			);
 			mainGroup = 7A2C18EF26AE6CB1005BF502;
+			packageReferences = (
+				7AFDA8D326DC7A07002AB73B /* XCRemoteSwiftPackageReference "TfNSW" */,
+			);
 			productRefGroup = 7A2C18F926AE6CB2005BF502 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -444,13 +488,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A2C190826AE6CB4005BF502 /* LaunchScreen.storyboard in Resources */,
+				7AFDA8C526DC674B002AB73B /* NewFrankExtraBoldItalic.ttf in Resources */,
+				7AFDA8C226DC674B002AB73B /* NewFrankRegularItalic.ttf in Resources */,
+				7AFDA8C326DC674B002AB73B /* NewFrankBold.ttf in Resources */,
+				7AFDA8BA26DC674B002AB73B /* NewFrankBoldItalic.ttf in Resources */,
+				7AFDA8C026DC674B002AB73B /* NewFrankExtraBold.ttf in Resources */,
+				7AFDA8BB26DC674B002AB73B /* NewFrankThinItalic.ttf in Resources */,
+				7AFDA8BE26DC674B002AB73B /* NewFrankRegular.ttf in Resources */,
+				7AFDA8BF26DC674B002AB73B /* NewFrankThin.ttf in Resources */,
 				7A09525C26CF952900938A50 /* cityrailBeep.wav in Resources */,
-				7ACC857D26B2835D00F8F946 /* Sydney Rail Network.pdf in Resources */,
+				7AFDA8BD26DC674B002AB73B /* NewFrankMediumItalic.ttf in Resources */,
+				7ACC857D26B2835D00F8F946 /* SydneyRailNetwork.pdf in Resources */,
+				7AFDA8C426DC674B002AB73B /* NewFrankMedium.ttf in Resources */,
+				7AFDA8BC26DC674B002AB73B /* NewFrankLightItalic.ttf in Resources */,
 				7AC2B4E926AE812E008DC5CF /* Settings.bundle in Resources */,
-				7AAA3F0A26CB96FC002231CE /* Frank New Bold.ttf in Resources */,
-				7AAA3F0E26CB9709002231CE /* Frank New Regular.ttf in Resources */,
+				7AFDA8C126DC674B002AB73B /* NewFrankLight.ttf in Resources */,
 				7A2C190526AE6CB4005BF502 /* Assets.xcassets in Resources */,
-				7AAA3F0C26CB9702002231CE /* Frank New Medium.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -496,7 +549,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		7AC2B4CE26AE7034008DC5CF /* Run Script */ = {
+		7AC2B4CE26AE7034008DC5CF /* Generate Rswift File */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -506,7 +559,7 @@
 			inputPaths = (
 				"$TEMP_DIR/rswift-lastrun",
 			);
-			name = "Run Script";
+			name = "Generate Rswift File";
 			outputFileListPaths = (
 			);
 			outputPaths = (
@@ -516,7 +569,7 @@
 			shellPath = /bin/sh;
 			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/R.generated.swift\"\n";
 		};
-		7AC2B4CF26AE7070008DC5CF /* Run Script */ = {
+		7AC2B4CF26AE7070008DC5CF /* Initialise SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -525,7 +578,7 @@
 			);
 			inputPaths = (
 			);
-			name = "Run Script";
+			name = "Initialise SwiftLint";
 			outputFileListPaths = (
 			);
 			outputPaths = (
@@ -534,7 +587,7 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
 		};
-		7AC2B4EA26AE8259008DC5CF /* ShellScript */ = {
+		7AC2B4EA26AE8259008DC5CF /* Append Values to Settings.bundle/Root.plist */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -543,6 +596,7 @@
 			);
 			inputPaths = (
 			);
+			name = "Append Values to Settings.bundle/Root.plist";
 			outputFileListPaths = (
 			);
 			outputPaths = (
@@ -559,24 +613,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				7AD4E04726AFFECE007960AD /* APIFacade.swift in Sources */,
+				7AFDA8D226DC7313002AB73B /* LegCellNode.swift in Sources */,
 				7ACC856D26B23DE800F8F946 /* RightDetailCellNode.swift in Sources */,
 				7AC2B4F026AEA6C2008DC5CF /* AddTripOriginVC.swift in Sources */,
 				7ACC856726B2201E00F8F946 /* JourneyCellNode.swift in Sources */,
 				7AF8783A26B4FB7000A81C3A /* ASViewController.swift in Sources */,
 				7AD1DDBE26AFABE00057BEF3 /* Commute.xcdatamodeld in Sources */,
-				7ADFA3AA26C9D20900F474DA /* ParentLocation.swift in Sources */,
-				7A09526026D0B53400938A50 /* PermissionStatusDetail.swift in Sources */,
-				7AC3FFCC26B38FCD00EEBBBD /* ErrorDetail.swift in Sources */,
-				7ACC856926B2204F00F8F946 /* Journey.swift in Sources */,
+				7A09526026D0B53400938A50 /* CKContainerApplicationPermissionStatus+Extension.swift in Sources */,
+				7AC3FFCC26B38FCD00EEBBBD /* CKError+Extension.swift in Sources */,
 				7ACC857426B2751F00F8F946 /* ToolsVC.swift in Sources */,
 				7ACC855C26B0FCF900F8F946 /* JourneyDetailVC.swift in Sources */,
-				7ADFA3A826C9D20900F474DA /* GrandparentLocation.swift in Sources */,
 				7ACC856B26B22D8E00F8F946 /* AboutTopCellNode.swift in Sources */,
 				7A473FF126C89AD6004CAC5E /* StationMapCellNode.swift in Sources */,
-				7A09525E26D0B01A00938A50 /* AccountStatusDetail.swift in Sources */,
+				7A09525E26D0B01A00938A50 /* CKAccountStatus+Extension.swift in Sources */,
+				7AFDA8D726DC8CEE002AB73B /* NSParagraphStyle+Extension.swift in Sources */,
 				7ACC857B26B27EE100F8F946 /* PDFVC.swift in Sources */,
 				7AC2B4F226AEA6D8008DC5CF /* CKFacade.swift in Sources */,
-				7AC3FFCE26B38FF200EEBBBD /* EnumType.swift in Sources */,
 				7ACC855E26B0FDEB00F8F946 /* StopSequenceVC.swift in Sources */,
 				7AD1DDBB26AFAA2F0057BEF3 /* AddTripDestinationVC.swift in Sources */,
 				7AC3FFCA26B380A700EEBBBD /* Trip.swift in Sources */,
@@ -587,22 +639,21 @@
 				7AC2B4D826AE7876008DC5CF /* TabBarController.swift in Sources */,
 				7ACC857226B25C7B00F8F946 /* SubtitleCellNode.swift in Sources */,
 				7A77B9BA26B929E100712639 /* SceneDelegate.swift in Sources */,
+				7AFDA8CC26DC7283002AB73B /* AlertCellNode.swift in Sources */,
 				7AD4E04526AFFEB0007960AD /* TripDetailVC.swift in Sources */,
 				7A473FEF26C88DD2004CAC5E /* StationDetailVC.swift in Sources */,
 				7A29279626CB430A005FD79B /* ShortcutType.swift in Sources */,
-				7ADFA3A726C9D20900F474DA /* TripRequestResponse.swift in Sources */,
 				7AC2B4E026AE78C5008DC5CF /* TripsVC.swift in Sources */,
-				7ADFA3AC26C9D20900F474DA /* TripRequestResponseJourney.swift in Sources */,
 				7ADFA39E26C9D19600F474DA /* SortedStations.swift in Sources */,
 				7AC2B4E226AE78D0008DC5CF /* AboutVC.swift in Sources */,
-				7ADFA3AB26C9D20900F474DA /* TripRequestResponseJourneyLeg.swift in Sources */,
+				7AFDA8D026DC72B3002AB73B /* ServiceInformationVC.swift in Sources */,
 				7AF8783826B4D7D900A81C3A /* Model.swift in Sources */,
-				7AE38BB326D1D7A10021679A /* DatabaseScopeDetail.swift in Sources */,
+				7AE38BB326D1D7A10021679A /* CKDatabaseScope+Extension.swift in Sources */,
 				7AC2B4DC26AE7898008DC5CF /* NavigationController.swift in Sources */,
 				7AC2B4D226AE713B008DC5CF /* R.generated.swift in Sources */,
-				7ADFA3A926C9D20900F474DA /* TripRequestResponseJourneyLegStop.swift in Sources */,
 				7ACC857026B23F5A00F8F946 /* UserDefaults+Extension.swift in Sources */,
-				7ADFA3AD26C9D20900F474DA /* TripTransportation.swift in Sources */,
+				7AFDA8CE26DC729F002AB73B /* ServiceAlertVC.swift in Sources */,
+				7AFDA8C926DC7062002AB73B /* gtfs-realtime.pb.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -757,7 +808,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = "${COMMUTE_SHORT_VERSION_STRING}";
+				MARKETING_VERSION = 3.4;
 				PRODUCT_BUNDLE_IDENTIFIER = "${COMMUTE_BUNDLE_ID}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "Commute Development";
@@ -787,7 +838,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = "${COMMUTE_SHORT_VERSION_STRING}";
+				MARKETING_VERSION = 3.4;
 				PRODUCT_BUNDLE_IDENTIFIER = "${COMMUTE_BUNDLE_ID}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "Commute Development";
@@ -820,6 +871,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		7AFDA8D326DC7A07002AB73B /* XCRemoteSwiftPackageReference "TfNSW" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/themuzzleflare/TfNSW.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		7AFDA8D426DC7A07002AB73B /* TfNSW */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7AFDA8D326DC7A07002AB73B /* XCRemoteSwiftPackageReference "TfNSW" */;
+			productName = TfNSW;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		7AD1DDBC26AFABE00057BEF3 /* Commute.xcdatamodeld */ = {

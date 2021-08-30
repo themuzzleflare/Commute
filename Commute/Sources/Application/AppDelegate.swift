@@ -2,10 +2,12 @@ import UIKit
 import CoreData
 import SwiftDate
 import Rswift
+import AlamofireNetworkActivityIndicator
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+    NetworkActivityIndicatorManager.shared.isEnabled = true
     SwiftDate.defaultRegion = .current
     registerDefaults()
     return true
@@ -17,13 +19,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       let settingsPlist = try PropertyListSerialization.propertyList(from: settingsData, format: nil) as? [String: Any]
       let settingsPreferences = settingsPlist?["PreferenceSpecifiers"] as? [[String: Any]]
       var defaults = [String: Any]()
-      settingsPreferences?.forEach {
-        (preference) in
+      settingsPreferences?.forEach { (preference) in
         if let key = preference["Key"] as? String {
           defaults[key] = preference["DefaultValue"]
         }
       }
-      appDefaults.register(defaults: defaults)
+      UserDefaults.commute.register(defaults: defaults)
     } catch {
       fatalError("Registering defaults failed")
     }
@@ -56,8 +57,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let remoteChangeKey = "NSPersistentStoreRemoteChangeNotificationOptionKey"
     description?.setOption(true as NSNumber, forKey: remoteChangeKey)
 
-    container.loadPersistentStores(completionHandler: {
-      (_, error) in
+    container.loadPersistentStores(completionHandler: { (_, error) in
       if let error = error as NSError? {
         fatalError("Unresolved error \(error), \(error.userInfo)")
       }

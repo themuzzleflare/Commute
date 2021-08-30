@@ -14,4 +14,4 @@ opt_in_rules:
 excluded:
 - Pods
 - R.generated.swift
-- Shared/Sources/Model/Protobuf
+- Shared/Sources/Model/ProtocolBuffers

@@ -2,7 +2,6 @@ import Foundation
 
 struct SortedStations: Identifiable {
   var id: String
-
   var stations: [Station]
 
   init(id: String, stations: [Station]) {

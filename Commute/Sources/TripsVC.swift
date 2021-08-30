@@ -81,7 +81,7 @@ final class TripsVC: ASViewController {
           parent.fetchTrips()
         } catch {
           DispatchQueue.main.async {
-            let ac = UIAlertController(title: "Error", message: "An unknown error was encountered while deleting this trip.", preferredStyle: .alert)
+            let ac = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
             let cancelAction = UIAlertAction(title: "Dismiss", style: .default)
             ac.addAction(cancelAction)
             self.parent.present(ac, animated: true)
@@ -169,14 +169,13 @@ final class TripsVC: ASViewController {
   private func makeDataSource() -> DataSource {
     let ds = DataSource(
       tableView: tableView,
-      cellProvider: {
-        (tableView, indexPath, trip) in
+      cellProvider: { (tableView, indexPath, trip) in
         let cell = tableView.dequeueReusableCell(withIdentifier: "tripCell", for: indexPath)
         cell.accessoryType = .disclosureIndicator
         cell.separatorInset = .zero
         cell.textLabel?.numberOfLines = 0
         cell.textLabel?.font = R.font.newFrankRegular(size: UIFont.labelFontSize)
-        cell.textLabel?.text = "\(trip.fromName.replacingOccurrences(of: " Station", with: "")) to \(trip.toName.replacingOccurrences(of: " Station", with: ""))"
+        cell.textLabel?.text = trip.tripName
         return cell
       }
     )
@@ -185,8 +184,7 @@ final class TripsVC: ASViewController {
   }
 
   private func applySnapshot(animate: Bool = true) {
-    DispatchQueue.main.async {
-      [self] in
+    DispatchQueue.main.async { [self] in
       var snapshot = Snapshot()
 
       snapshot.appendSections([.main])
@@ -268,7 +266,7 @@ final class TripsVC: ASViewController {
 
   @objc private func removeAllTrips() {
     let ac = UIAlertController(title: "Confirmation", message: "Are you sure you'd like to remove all saved trips? This cannot be undone.", preferredStyle: .actionSheet)
-    let confirmAction = UIAlertAction(title: "Remove All", style: .destructive, handler: { _ in
+    let confirmAction = UIAlertAction(title: "Remove All", style: .destructive, handler: { (_) in
       Trip.deleteAll()
     })
     let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)

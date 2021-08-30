@@ -1,44 +1,62 @@
 import Foundation
 import Alamofire
 import SwiftDate
+import TfNSW
 
 struct APIFacade {
-  static let apiKey = ModelFacade.infoForKey("TPAPIKey")!
+  static let jsonDecoder = JSONDecoder()
 
-  static func fetchJourneys(origin: String, destination: String, completion: @escaping (Result<[TripRequestResponseJourney], AFError>) -> Void) {
+  /**
+   Retrieve a list of suggested transportation journeys based on the provided origin and destination.
+
+   - parameters:
+      - from: The `id` or `stopId` of the starting stop.
+      - to: The `id` or `stopId` of the finishing stop.
+   - returns: An array of `TripRequestResponseJourney` objects.
+   - throws: An `Error` object.
+
+   */
+
+  static func fetchJourneys(from origin: String, to destination: String, completion: @escaping (Result<[TripRequestResponseJourney], Error>) -> Void) {
     let headers: HTTPHeaders = [
-      "Authorization": "apikey \(apiKey)"
+      .accept("application/json")
     ]
 
     let urlParams = [
-      "outputFormat": "rapidJSON",
-      "coordOutputFormat": "EPSG:4326",
-      "itdDate": itdDate(),
-      "itdTime": itdTime(),
-      "depArrMacro": "dep",
-      "type_origin": "any",
-      "name_origin": origin,
-      "type_destination": "any",
-      "name_destination": destination,
-      "calcNumberOfTrips": "10",
-      "excludedMeans": "checkbox",
-      "exclMOT_4": "1",
-      "exclMOT_5": "1",
-      "exclMOT_7": "1",
-      "exclMOT_9": "1",
-      "exclMOT_11": "1"
+      "origin": origin,
+      "destination": destination
     ]
 
-    AF.request("https://api.transport.nsw.gov.au/v1/tp/trip", method: .get, parameters: urlParams, headers: headers)
-      .validate(statusCode: 200..<300)
-      .responseJSON {
-        (response) in
+    AF.request("https://api.commute.tavitian.cloud/trips", method: .get, parameters: urlParams, headers: headers)
+      .responseJSON { (response) in
         switch response.result {
         case .success:
-          if let decodedResponse = try? JSONDecoder().decode(TripRequestResponse.self, from: response.data!) {
+          do {
+            let decodedResponse = try jsonDecoder.decode(TripRequestResponse.self, from: response.data!)
             completion(.success(decodedResponse.journeys!))
-          } else {
-            completion(.failure(AFError.sessionDeinitialized))
+          } catch {
+            completion(.failure(error))
+          }
+        case .failure(let error):
+          completion(.failure(error))
+        }
+      }
+  }
+
+  static func fetchTrackworkAlerts(completion: @escaping (Result<TransitRealtime_FeedMessage, Error>) -> Void) {
+    let headers: HTTPHeaders = [
+      .accept("application/json")
+    ]
+
+    AF.request("https://api.commute.tavitian.cloud/alerts/trackwork", method: .get, headers: headers)
+      .responseJSON { (response) in
+        switch response.result {
+        case .success:
+          do {
+            let feed = try TransitRealtime_FeedMessage(jsonUTF8Data: response.data!)
+            completion(.success(feed))
+          } catch {
+            completion(.failure(error))
           }
         case .failure(let error):
           completion(.failure(error))
@@ -49,12 +67,10 @@ struct APIFacade {
 
 extension APIFacade {
   static func itdDate() -> String {
-    let date = Date()
-    return date.toFormat("yyyyMMdd")
+    return Date().toFormat("yyyyMMdd")
   }
 
   static func itdTime() -> String {
-    let date = Date()
-    return date.toFormat("HHmm")
+    return Date().toFormat("HHmm")
   }
 }

@@ -2,13 +2,13 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="18154" systemVersion="20G95" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
     <entity name="Trip" representedClassName=".Trip" syncable="YES">
         <attribute name="dateAdded" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="fromId" optional="YES" attributeType="String"/>
-        <attribute name="fromName" optional="YES" attributeType="String"/>
-        <attribute name="fromStopId" optional="YES" attributeType="String"/>
+        <attribute name="fromId" attributeType="String" defaultValueString=""/>
+        <attribute name="fromName" attributeType="String" defaultValueString=""/>
+        <attribute name="fromStopId" attributeType="String" defaultValueString=""/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
-        <attribute name="toId" optional="YES" attributeType="String"/>
-        <attribute name="toName" optional="YES" attributeType="String"/>
-        <attribute name="toStopId" optional="YES" attributeType="String"/>
+        <attribute name="toId" attributeType="String" defaultValueString=""/>
+        <attribute name="toName" attributeType="String" defaultValueString=""/>
+        <attribute name="toStopId" attributeType="String" defaultValueString=""/>
     </entity>
     <elements>
         <element name="Trip" positionX="850.356201171875" positionY="-1219.601348876953" width="257.175537109375" height="149"/>

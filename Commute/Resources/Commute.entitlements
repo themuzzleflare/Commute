@@ -8,6 +8,7 @@
 	<array>
 		<string>applinks:commute.tavitian.cloud</string>
 		<string>applinks:cloudkit.tavitian.cloud</string>
+		<string>applinks:commute.tavitian.net.au</string>
 	</array>
 	<key>com.apple.developer.icloud-container-environment</key>
 	<string>${CLOUDKIT_CONTAINER_ENVIRONMENT}</string>

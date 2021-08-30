@@ -24,7 +24,7 @@ final class AboutTopCellNode: ASCellNode {
       attributes: [
         .font: R.font.newFrankBold(size: 32)!,
         .foregroundColor: UIColor.label,
-        .paragraphStyle: ModelFacade.pCentreStyle
+        .paragraphStyle: NSParagraphStyle.centreAligned
       ]
     )
   }

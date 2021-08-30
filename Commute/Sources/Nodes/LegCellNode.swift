@@ -4,26 +4,36 @@ import SwiftDate
 import Rswift
 import TfNSW
 
-final class JourneyCellNode: ASCellNode {
+final class LegCellNode: ASCellNode {
   private let relativeTimeDisplayNode = ASDisplayNode()
   private let relativeTimeTextNode = ASTextNode()
   private let fromNameTextNode = ASTextNode()
   private let fromTimeTextNode = ASTextNode()
-  private let totalDurationTextNode = ASTextNode()
+  private let durationTextNode = ASTextNode()
   private let toNameTextNode = ASTextNode()
   private let toTimeTextNode = ASTextNode()
-  private let transportationNamesTextNode = ASTextNode()
+  private let transportationNameTextNode = ASTextNode()
 
-  init(journey: TripRequestResponseJourney) {
+  init(legs: [TripRequestResponseJourneyLeg], index: Int) {
     super.init()
+
+    let leg = legs[index]
 
     automaticallyManagesSubnodes = true
 
-    relativeTimeDisplayNode.backgroundColor = journey.colour
+    relativeTimeDisplayNode.backgroundColor = leg.colour
     relativeTimeDisplayNode.style.preferredSize = CGSize(width: 80, height: 120)
 
+    let relativeTimeText: String
+
+    if index == 0 {
+      relativeTimeText = leg.relativeDepartureTime ?? ""
+    } else {
+      relativeTimeText = leg.relativeWaitTime(for: legs[index - 1]) ?? ""
+    }
+
     relativeTimeTextNode.attributedText = NSAttributedString(
-      string: journey.relativeDepartureTime ?? "",
+      string: relativeTimeText,
       attributes: [
         .font: R.font.newFrankRegular(size: UIFont.systemFontSize)!,
         .foregroundColor: UIColor.white,
@@ -32,7 +42,7 @@ final class JourneyCellNode: ASCellNode {
     )
 
     fromNameTextNode.attributedText = NSAttributedString(
-      string: journey.fromName ?? "",
+      string: leg.fromName ?? "",
       attributes: [
         .font: R.font.newFrankRegular(size: UIFont.smallSystemFontSize)!,
         .foregroundColor: UIColor.secondaryLabel,
@@ -41,7 +51,7 @@ final class JourneyCellNode: ASCellNode {
     )
 
     fromTimeTextNode.attributedText = NSAttributedString(
-      string: journey.fromTime ?? "",
+      string: leg.fromTime ?? "",
       attributes: [
         .font: R.font.newFrankBold(size: UIFont.labelFontSize)!,
         .foregroundColor: UIColor.label,
@@ -49,8 +59,8 @@ final class JourneyCellNode: ASCellNode {
       ]
     )
 
-    totalDurationTextNode.attributedText = NSAttributedString(
-      string: journey.totalDurationText,
+    durationTextNode.attributedText = NSAttributedString(
+      string: leg.durationText,
       attributes: [
         .font: R.font.newFrankRegular(size: UIFont.smallSystemFontSize)!,
         .foregroundColor: UIColor.secondaryLabel,
@@ -59,7 +69,7 @@ final class JourneyCellNode: ASCellNode {
     )
 
     toNameTextNode.attributedText = NSAttributedString(
-      string: journey.toName ?? "",
+      string: leg.toName ?? "",
       attributes: [
         .font: R.font.newFrankRegular(size: UIFont.smallSystemFontSize)!,
         .foregroundColor: UIColor.secondaryLabel,
@@ -68,7 +78,7 @@ final class JourneyCellNode: ASCellNode {
     )
 
     toTimeTextNode.attributedText = NSAttributedString(
-      string: journey.toTime ?? "",
+      string: leg.toTime ?? "",
       attributes: [
         .font: R.font.newFrankBold(size: UIFont.labelFontSize)!,
         .foregroundColor: UIColor.label,
@@ -76,8 +86,8 @@ final class JourneyCellNode: ASCellNode {
       ]
     )
 
-    transportationNamesTextNode.attributedText = NSAttributedString(
-      string: journey.transportationNames ?? "",
+    transportationNameTextNode.attributedText = NSAttributedString(
+      string: leg.isWheelchairAccessible ?? false ? "\(leg.transportationName ?? "") ♿️" : leg.transportationName ?? "",
       attributes: [
         .font: R.font.newFrankRegular(size: UIFont.smallSystemFontSize)!,
         .foregroundColor: UIColor.secondaryLabel,
@@ -95,7 +105,7 @@ final class JourneyCellNode: ASCellNode {
       children: [
         fromNameTextNode,
         fromTimeTextNode,
-        totalDurationTextNode
+        durationTextNode
       ]
     )
 
@@ -110,7 +120,7 @@ final class JourneyCellNode: ASCellNode {
       children: [
         toNameTextNode,
         toTimeTextNode,
-        transportationNamesTextNode
+        transportationNameTextNode
 
       ]
     )

@@ -10,6 +10,9 @@ target 'Commute' do
   pod 'TinyConstraints'
   pod 'SwiftLint'
   pod 'R.swift'
-  pod 'Mapbox-iOS-SDK', '~> 6.3.0'
+  pod 'Mapbox-iOS-SDK'
+  pod 'SwiftProtobuf'
+  pod 'MarqueeLabel'
+  pod 'AlamofireNetworkActivityIndicator'
 
 end

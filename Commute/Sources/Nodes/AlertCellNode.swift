@@ -1,20 +1,21 @@
 import UIKit
 import AsyncDisplayKit
+import SwiftDate
 import Rswift
 
-final class SubtitleCellNode: ASCellNode {
-  private let topTextNode = ASTextNode()
-  private let bottomTextNode = ASTextNode()
+final class AlertCellNode: ASCellNode {
+  private let headerTextNode = ASTextNode()
+  private let activePeriodTextNode = ASTextNode()
 
-  init(text: String, detailText: String) {
+  init(alert: TransitRealtime_Alert) {
     super.init()
 
     automaticallyManagesSubnodes = true
 
-    selectionStyle = .none
+    accessoryType = .disclosureIndicator
 
-    topTextNode.attributedText = NSAttributedString(
-      string: text,
+    headerTextNode.attributedText = NSAttributedString(
+      string: alert.headerText.translation[0].text,
       attributes: [
         .font: R.font.newFrankBold(size: UIFont.labelFontSize)!,
         .foregroundColor: UIColor.label,
@@ -22,8 +23,11 @@ final class SubtitleCellNode: ASCellNode {
       ]
     )
 
-    bottomTextNode.attributedText = NSAttributedString(
-      string: detailText,
+    let fromDate = Date(seconds: TimeInterval(alert.activePeriod[0].start))
+    let toDate = Date(seconds: TimeInterval(alert.activePeriod[0].end))
+
+    activePeriodTextNode.attributedText = NSAttributedString(
+      string: "\(fromDate.toString(.date(.medium))) to \(toDate.toString(.date(.medium)))",
       attributes: [
         .font: R.font.newFrankRegular(size: UIFont.smallSystemFontSize)!,
         .foregroundColor: UIColor.secondaryLabel,
@@ -36,10 +40,15 @@ final class SubtitleCellNode: ASCellNode {
     let hStack = ASStackLayoutSpec(
       direction: .vertical,
       spacing: 0,
-      justifyContent: .start,
+      justifyContent: .center,
       alignItems: .start,
-      children: (bottomTextNode.attributedText?.string.isEmpty)! ? [topTextNode] : [topTextNode, bottomTextNode]
+      children: [
+        headerTextNode,
+        activePeriodTextNode
+      ]
     )
+
+    hStack.style.minHeight = ASDimension(unit: .points, value: 80)
 
     return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 13, left: 16, bottom: 13, right: 16), child: hStack)
   }

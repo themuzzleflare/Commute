@@ -18,7 +18,7 @@ final class RightDetailCellNode: ASCellNode {
       attributes: [
         .font: R.font.newFrankMedium(size: UIFont.labelFontSize)!,
         .foregroundColor: UIColor.label,
-        .paragraphStyle: ModelFacade.pLeftStyle
+        .paragraphStyle: NSParagraphStyle.leftAligned
       ]
     )
 
@@ -27,7 +27,7 @@ final class RightDetailCellNode: ASCellNode {
       attributes: [
         .font: R.font.newFrankRegular(size: UIFont.labelFontSize)!,
         .foregroundColor: UIColor.secondaryLabel,
-        .paragraphStyle: ModelFacade.pRightStyle
+        .paragraphStyle: NSParagraphStyle.rightAligned
       ]
     )
 

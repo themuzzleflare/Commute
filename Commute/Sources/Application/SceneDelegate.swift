@@ -22,8 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     self.window = window
 
-    notificationCentre.requestAuthorization(options: [.alert, .sound, .badge]) {
-      (granted, error) in
+    notificationCentre.requestAuthorization(options: [.alert, .sound, .badge]) { (granted, error) in
       if let error = error {
         print(error.localizedDescription)
       } else if granted {
@@ -80,8 +79,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
           self.requestPermission()
         }
       case .failure(let error):
-        let errorDetail = errorDetail(for: error)
-        print("\(errorDetail.title): \(errorDetail.detail)")
+        print("\(error.title): \(error.description)")
       }
     }
   }
@@ -90,41 +88,35 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     CKFacade.requestDiscoverability { (result) in
       switch result {
       case .success(let status):
-        let statusDetail = permissionStatusDetail(for: status)
-        print("\(statusDetail.title): \(statusDetail.detail)")
+        print("\(status.title): \(status.description)")
       case .failure(let error):
-        let errorDetail = errorDetail(for: error)
-        print("\(errorDetail.title): \(errorDetail.detail)")
+        print("\(error.title): \(error.description)")
       }
     }
   }
 
   private func fetchAccountStatus() {
-    CKFacade.fetchAccountStatus {
-      (result) in
+    CKFacade.fetchAccountStatus { (result) in
       DispatchQueue.main.async {
         switch result {
         case .success(let status):
-          let statusDetail = accountStatusDetail(for: status)
-          print("\(statusDetail.title): \(statusDetail.detail)")
+          print("\(status.title): \(status.description)")
           self.checkPermissionStatus()
         case .failure(let error):
-          print(error.localizedDescription)
+          print("\(error.title): \(error.description)")
         }
       }
     }
   }
 
   private func saveTripCreatedSubscription() {
-    CKFacade.saveTripCreatedSubscription {
-      (result) in
+    CKFacade.saveTripCreatedSubscription { (result) in
       DispatchQueue.main.async {
         switch result {
         case .success(let subscription):
           print("Successfully created subscription with ID: \(subscription.subscriptionID)")
         case .failure(let error):
-          let errorInfo = errorDetail(for: error)
-          let ac = UIAlertController(title: errorInfo.title, message: errorInfo.detail, preferredStyle: .alert)
+          let ac = UIAlertController(title: error.title, message: error.description, preferredStyle: .alert)
           let dismissAction = UIAlertAction(title: "Dismiss", style: .default)
           ac.addAction(dismissAction)
           self.window?.rootViewController?.present(ac, animated: true)
@@ -134,15 +126,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
   }
 
   private func saveTripDeletedSubscription() {
-    CKFacade.saveTripDeletedSubscription {
-      (result) in
+    CKFacade.saveTripDeletedSubscription { (result) in
       DispatchQueue.main.async {
         switch result {
         case .success(let subscription):
           print("Successfully created subscription with ID: \(subscription.subscriptionID)")
         case .failure(let error):
-          let errorInfo = errorDetail(for: error)
-          let ac = UIAlertController(title: errorInfo.title, message: errorInfo.detail, preferredStyle: .alert)
+          let ac = UIAlertController(title: error.title, message: error.description, preferredStyle: .alert)
           let dismissAction = UIAlertAction(title: "Dismiss", style: .default)
           ac.addAction(dismissAction)
           self.window?.rootViewController?.present(ac, animated: true)

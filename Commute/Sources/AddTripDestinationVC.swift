@@ -44,8 +44,8 @@ final class AddTripDestinationVC: ASViewController {
   private var noStations: Bool = false
   private var noByDistanceStations: Bool = false
 
-  private let tableView = UITableView(frame: .zero, style: .grouped)
-  private let byDistanceTableView = UITableView(frame: .zero, style: .grouped)
+  private let tableView = UITableView(frame: .zero, style: .plain)
+  private let byDistanceTableView = UITableView(frame: .zero, style: .plain)
 
   private lazy var tableNode = ASDisplayNode { () -> UIView in
     return self.tableView
@@ -182,13 +182,12 @@ final class AddTripDestinationVC: ASViewController {
   private func makeDataSource() -> DataSource {
     let ds = DataSource(
       tableView: tableView,
-      cellProvider: {
-        (tableView, indexPath, station) in
+      cellProvider: { (tableView, indexPath, station) in
         let cell = tableView.dequeueReusableCell(withIdentifier: "stationCell", for: indexPath)
         cell.separatorInset = .zero
         cell.textLabel?.numberOfLines = 0
         cell.textLabel?.font = R.font.newFrankRegular(size: UIFont.labelFontSize)
-        cell.textLabel?.text = station.name
+        cell.textLabel?.text = station.shortName
         return cell
       }
     )
@@ -199,13 +198,12 @@ final class AddTripDestinationVC: ASViewController {
   private func makeByDistanceDataSource() -> ByDistanceDataSource {
     let ds = ByDistanceDataSource(
       tableView: byDistanceTableView,
-      cellProvider: {
-        (tableView, indexPath, station) in
+      cellProvider: { (tableView, indexPath, station) in
         let cell = tableView.dequeueReusableCell(withIdentifier: "stationCell", for: indexPath)
         cell.separatorInset = .zero
         cell.textLabel?.numberOfLines = 0
         cell.textLabel?.font = R.font.newFrankRegular(size: UIFont.labelFontSize)
-        cell.textLabel?.text = station.name
+        cell.textLabel?.text = station.shortName
         return cell
       }
     )
@@ -265,8 +263,6 @@ final class AddTripDestinationVC: ASViewController {
         tableView.backgroundView = {
           let view = UIView(frame: tableView.bounds)
 
-          let errorType = errorDetail(for: error)
-
           let titleLabel = UILabel()
           let subtitleLabel = UILabel()
 
@@ -282,13 +278,13 @@ final class AddTripDestinationVC: ASViewController {
           titleLabel.textAlignment = .center
           titleLabel.textColor = .placeholderText
           titleLabel.font = R.font.newFrankMedium(size: 32)
-          titleLabel.text = errorType.title
+          titleLabel.text = error.title
 
           subtitleLabel.textAlignment = .center
           subtitleLabel.textColor = .placeholderText
           subtitleLabel.font = R.font.newFrankRegular(size: UIFont.labelFontSize)
           subtitleLabel.numberOfLines = 0
-          subtitleLabel.text = errorType.detail
+          subtitleLabel.text = error.description
 
           return view
         }()
@@ -350,8 +346,6 @@ final class AddTripDestinationVC: ASViewController {
         byDistanceTableView.backgroundView = {
           let view = UIView(frame: byDistanceTableView.bounds)
 
-          let errorType = errorDetail(for: error)
-
           let titleLabel = UILabel()
           let subtitleLabel = UILabel()
 
@@ -367,13 +361,13 @@ final class AddTripDestinationVC: ASViewController {
           titleLabel.textAlignment = .center
           titleLabel.textColor = .placeholderText
           titleLabel.font = R.font.newFrankMedium(size: 32)
-          titleLabel.text = errorType.title
+          titleLabel.text = error.title
 
           subtitleLabel.textAlignment = .center
           subtitleLabel.textColor = .placeholderText
           subtitleLabel.font = R.font.newFrankRegular(size: UIFont.labelFontSize)
           subtitleLabel.numberOfLines = 0
-          subtitleLabel.text = errorType.detail
+          subtitleLabel.text = error.description
 
           return view
         }()
@@ -386,8 +380,7 @@ final class AddTripDestinationVC: ASViewController {
   }
 
   private func fetchStations() {
-    CKFacade.searchStation(searchString: searchController.searchBar.text, exclude: fromStation) {
-      (result) in
+    CKFacade.searchStation(searchString: searchController.searchBar.text, exclude: fromStation) { (result) in
       DispatchQueue.main.async {
         switch result {
         case .success(let stations):
@@ -396,16 +389,14 @@ final class AddTripDestinationVC: ASViewController {
         case .failure(let error):
           self.error = error
           self.stations = []
-          let errorType = errorDetail(for: error)
-          let ac = UIAlertController(title: errorType.title, message: errorType.detail, preferredStyle: .alert)
+          let ac = UIAlertController(title: error.title, message: error.description, preferredStyle: .alert)
           let cancelAction = UIAlertAction(title: "Dismiss", style: .default)
           ac.addAction(cancelAction)
           self.present(ac, animated: true)
         }
       }
     }
-    CKFacade.searchStation(searchString: searchController.searchBar.text, currentLocation: locationManager?.location, exclude: fromStation) {
-      (result) in
+    CKFacade.searchStation(searchString: searchController.searchBar.text, currentLocation: locationManager?.location, exclude: fromStation) { (result) in
       DispatchQueue.main.async {
         switch result {
         case .success(let stations):
@@ -414,8 +405,7 @@ final class AddTripDestinationVC: ASViewController {
         case .failure(let error):
           self.byDistanceError = error
           self.byDistanceStations = []
-          let errorType = errorDetail(for: error)
-          let ac = UIAlertController(title: errorType.title, message: errorType.detail, preferredStyle: .alert)
+          let ac = UIAlertController(title: error.title, message: error.description, preferredStyle: .alert)
           let cancelAction = UIAlertAction(title: "Dismiss", style: .default)
           ac.addAction(cancelAction)
           self.present(ac, animated: true)
@@ -450,7 +440,7 @@ final class AddTripDestinationVC: ASViewController {
         navigationController?.dismiss(animated: true)
       } catch {
         DispatchQueue.main.async {
-          let ac = UIAlertController(title: "Error", message: "An unknown error was encountered while adding this trip.", preferredStyle: .alert)
+          let ac = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
           let cancelAction = UIAlertAction(title: "Dismiss", style: .default)
           ac.addAction(cancelAction)
           self.present(ac, animated: true)
