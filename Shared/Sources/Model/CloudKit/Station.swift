@@ -2,7 +2,7 @@ import Foundation
 import CloudKit
 
 struct Station: Identifiable {
-  /// The `CKRecord.ID` associated with the station.
+  /// The `CKRecord.ID` associated with the record.
   var id: CKRecord.ID
 
   /// The `id` field.
@@ -32,6 +32,7 @@ extension Station: Hashable {
 }
 
 extension Station {
+  /// `name`, with occurrunces of "Station" removed.
   var shortName: String {
     return name.replacingOccurrences(of: " Station", with: "")
   }

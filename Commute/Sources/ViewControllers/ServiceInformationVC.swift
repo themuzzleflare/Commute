@@ -15,7 +15,7 @@ final class ServiceInformationVC: ASDKViewController<ASTableNode> {
   }
 
   required init?(coder: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
+    fatalError("Not implemented")
   }
 
   override func viewDidLoad() {
@@ -58,20 +58,20 @@ extension ServiceInformationVC: ASTableDataSource {
   }
 
   func tableNode(_ tableNode: ASTableNode, nodeBlockForRowAt indexPath: IndexPath) -> ASCellNodeBlock {
-    let alert = alerts[indexPath.row]
+    let alert = alerts[indexPath.row].alert
 
     return {
-      AlertCellNode(alert: alert.alert)
+      AlertCellNode(alert: alert)
     }
   }
 }
 
 extension ServiceInformationVC: ASTableDelegate {
   func tableNode(_ tableNode: ASTableNode, didSelectRowAt indexPath: IndexPath) {
-    let alert = alerts[indexPath.row]
+    let alert = alerts[indexPath.row].alert
 
     tableNode.deselectRow(at: indexPath, animated: true)
 
-    navigationController?.pushViewController(ServiceAlertVC(alert: alert.alert), animated: true)
+    navigationController?.pushViewController(ServiceAlertVC(alert: alert), animated: true)
   }
 }

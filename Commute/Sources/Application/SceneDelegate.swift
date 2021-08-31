@@ -26,7 +26,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
       if let error = error {
         print(error.localizedDescription)
       } else if granted {
-        print("Granted")
+        print("Notifications granted")
       }
     }
   }

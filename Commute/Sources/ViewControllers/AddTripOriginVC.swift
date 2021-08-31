@@ -41,8 +41,8 @@ final class AddTripOriginVC: ASViewController {
   private var noStations: Bool = false
   private var noByDistanceStations: Bool = false
 
-  private let tableView = UITableView(frame: .zero, style: .plain)
-  private let byDistanceTableView = UITableView(frame: .zero, style: .plain)
+  private let tableView = UITableView(frame: .zero, style: .grouped)
+  private let byDistanceTableView = UITableView(frame: .zero, style: .grouped)
 
   private lazy var tableNode = ASDisplayNode { () -> UIView in
     return self.tableView
@@ -176,7 +176,7 @@ final class AddTripOriginVC: ASViewController {
   private func configureByDistanceTableView() {
     byDistanceTableView.dataSource = byDistanceDataSource
     byDistanceTableView.delegate = self
-    byDistanceTableView.register(UITableViewCell.self, forCellReuseIdentifier: "stationCell")
+    byDistanceTableView.register(SubtitleCell.self, forCellReuseIdentifier: "stationCell")
     byDistanceTableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
   }
 
@@ -200,11 +200,18 @@ final class AddTripOriginVC: ASViewController {
     let ds = ByDistanceDataSource(
       tableView: byDistanceTableView,
       cellProvider: { (tableView, indexPath, station) in
-        let cell = tableView.dequeueReusableCell(withIdentifier: "stationCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "stationCell", for: indexPath) as! SubtitleCell
         cell.separatorInset = .zero
         cell.textLabel?.numberOfLines = 0
         cell.textLabel?.font = R.font.newFrankRegular(size: UIFont.labelFontSize)
         cell.textLabel?.text = station.shortName
+        cell.detailTextLabel?.textColor = .secondaryLabel
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        numberFormatter.minimumFractionDigits = 2
+        numberFormatter.maximumFractionDigits = 2
+        let number = numberFormatter.string(from: NSNumber(value: station.location.distance(from: self.locationManager?.location ?? CLLocation()).kilometres(from: .meters)))
+        cell.detailTextLabel?.text = "\(number ?? "") km"
         return cell
       }
     )
@@ -297,6 +304,14 @@ final class AddTripOriginVC: ASViewController {
     dataSource.apply(snapshot, animatingDifferences: animate)
   }
 
+  @objc private func buttonPressed() {
+    UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+  }
+
+  func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+    fetchStations()
+  }
+
   private func applyByDistanceSnapshot(animate: Bool = true) {
     var snapshot = ByDistanceSnapshot()
 
@@ -304,76 +319,88 @@ final class AddTripOriginVC: ASViewController {
 
     snapshot.appendItems(byDistanceStations)
 
-    if snapshot.itemIdentifiers.isEmpty && byDistanceError == nil {
-      if byDistanceStations.isEmpty && !noByDistanceStations {
-        byDistanceTableView.backgroundView = {
-          let view = UIView(frame: byDistanceTableView.bounds)
-
-          let loadingIndicator = UIActivityIndicatorView(style: .medium)
-          loadingIndicator.startAnimating()
-
-          view.addSubview(loadingIndicator)
-
-          loadingIndicator.centerInSuperview()
-          loadingIndicator.width(100)
-          loadingIndicator.height(100)
-
-          return view
-        }()
-      } else {
-        byDistanceTableView.backgroundView = {
-          let view = UIView(frame: byDistanceTableView.bounds)
-
-          let label = UILabel()
-
-          view.addSubview(label)
-
-          label.centerInSuperview()
-          label.textAlignment = .center
-          label.textColor = .placeholderText
-          label.font = R.font.newFrankMedium(size: 32)
-
-          if searchController.searchBar.text!.isEmpty {
-            label.text = "No Stations"
-          } else {
-            label.text = "No Results"
-          }
-
-          return view
-        }()
-      }
+    if CLLocationManager.authorizationStatus() != .authorizedWhenInUse {
+      byDistanceTableView.backgroundView = {
+        let view = UIView(frame: byDistanceTableView.bounds)
+        let button = UIButton(type: .roundedRect)
+        button.setTitle("Enable Location Services", for: .normal)
+        button.addTarget(self, action: #selector(buttonPressed), for: .allTouchEvents)
+        view.addSubview(button)
+        button.centerInSuperview()
+        return view
+      }()
     } else {
-      if let error = byDistanceError {
-        byDistanceTableView.backgroundView = {
-          let view = UIView(frame: byDistanceTableView.bounds)
+      if snapshot.itemIdentifiers.isEmpty && byDistanceError == nil {
+        if byDistanceStations.isEmpty && !noByDistanceStations {
+          byDistanceTableView.backgroundView = {
+            let view = UIView(frame: byDistanceTableView.bounds)
 
-          let titleLabel = UILabel()
-          let subtitleLabel = UILabel()
+            let loadingIndicator = UIActivityIndicatorView(style: .medium)
+            loadingIndicator.startAnimating()
 
-          let vStack = UIStackView(arrangedSubviews: [titleLabel, subtitleLabel])
+            view.addSubview(loadingIndicator)
 
-          view.addSubview(vStack)
+            loadingIndicator.centerInSuperview()
+            loadingIndicator.width(100)
+            loadingIndicator.height(100)
 
-          vStack.horizontalToSuperview(insets: .horizontal(16))
-          vStack.centerInSuperview()
-          vStack.axis = .vertical
-          vStack.alignment = .center
+            return view
+          }()
+        } else {
+          byDistanceTableView.backgroundView = {
+            let view = UIView(frame: byDistanceTableView.bounds)
 
-          titleLabel.textAlignment = .center
-          titleLabel.textColor = .placeholderText
-          titleLabel.font = R.font.newFrankMedium(size: 32)
-          titleLabel.text = error.title
+            let label = UILabel()
 
-          subtitleLabel.textAlignment = .center
-          subtitleLabel.textColor = .placeholderText
-          subtitleLabel.font = R.font.newFrankRegular(size: UIFont.labelFontSize)
-          subtitleLabel.numberOfLines = 0
-          subtitleLabel.text = error.description
+            view.addSubview(label)
 
-          return view
-        }()
+            label.centerInSuperview()
+            label.textAlignment = .center
+            label.textColor = .placeholderText
+            label.font = R.font.newFrankMedium(size: 32)
+
+            if searchController.searchBar.text!.isEmpty {
+              label.text = "No Stations"
+            } else {
+              label.text = "No Results"
+            }
+
+            return view
+          }()
+        }
       } else {
-        if byDistanceTableView.backgroundView != nil { byDistanceTableView.backgroundView = nil }
+        if let error = byDistanceError {
+          byDistanceTableView.backgroundView = {
+            let view = UIView(frame: byDistanceTableView.bounds)
+
+            let titleLabel = UILabel()
+            let subtitleLabel = UILabel()
+
+            let vStack = UIStackView(arrangedSubviews: [titleLabel, subtitleLabel])
+
+            view.addSubview(vStack)
+
+            vStack.horizontalToSuperview(insets: .horizontal(16))
+            vStack.centerInSuperview()
+            vStack.axis = .vertical
+            vStack.alignment = .center
+
+            titleLabel.textAlignment = .center
+            titleLabel.textColor = .placeholderText
+            titleLabel.font = R.font.newFrankMedium(size: 32)
+            titleLabel.text = error.title
+
+            subtitleLabel.textAlignment = .center
+            subtitleLabel.textColor = .placeholderText
+            subtitleLabel.font = R.font.newFrankRegular(size: UIFont.labelFontSize)
+            subtitleLabel.numberOfLines = 0
+            subtitleLabel.text = error.description
+
+            return view
+          }()
+        } else {
+          if byDistanceTableView.backgroundView != nil { byDistanceTableView.backgroundView = nil }
+        }
       }
     }
 
@@ -402,7 +429,7 @@ final class AddTripOriginVC: ASViewController {
         switch result {
         case .success(let stations):
           self.byDistanceError = nil
-          self.byDistanceStations = stations
+          self.byDistanceStations = CLLocationManager.authorizationStatus() == .authorizedWhenInUse ? stations : []
         case .failure(let error):
           self.byDistanceError = error
           self.byDistanceStations = []

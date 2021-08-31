@@ -1,8 +1,8 @@
 import UIKit
 import CoreData
 import SwiftDate
-import Rswift
 import AlamofireNetworkActivityIndicator
+import Rswift
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,14 +19,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       let settingsPlist = try PropertyListSerialization.propertyList(from: settingsData, format: nil) as? [String: Any]
       let settingsPreferences = settingsPlist?["PreferenceSpecifiers"] as? [[String: Any]]
       var defaults = [String: Any]()
+
       settingsPreferences?.forEach { (preference) in
         if let key = preference["Key"] as? String {
           defaults[key] = preference["DefaultValue"]
         }
       }
+
       UserDefaults.commute.register(defaults: defaults)
     } catch {
-      fatalError("Registering defaults failed")
+      fatalError("Registering defaults failed: \(error.localizedDescription)")
     }
   }
 

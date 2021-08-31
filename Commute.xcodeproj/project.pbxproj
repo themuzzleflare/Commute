@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -18,6 +18,8 @@
 		7A473FEF26C88DD2004CAC5E /* StationDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A473FEE26C88DD2004CAC5E /* StationDetailVC.swift */; };
 		7A473FF126C89AD6004CAC5E /* StationMapCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A473FF026C89AD6004CAC5E /* StationMapCellNode.swift */; };
 		7A77B9BA26B929E100712639 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A77B9B926B929E100712639 /* SceneDelegate.swift */; };
+		7A7D6B0026DDE68200101CD9 /* CKContainer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7D6AFF26DDE68200101CD9 /* CKContainer+Extension.swift */; };
+		7A7D6B0226DDE71200101CD9 /* InfoPlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7D6B0126DDE71200101CD9 /* InfoPlist.swift */; };
 		7AC2B4D226AE713B008DC5CF /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC2B4D126AE713B008DC5CF /* R.generated.swift */; };
 		7AC2B4D826AE7876008DC5CF /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC2B4D726AE7876008DC5CF /* TabBarController.swift */; };
 		7AC2B4DC26AE7898008DC5CF /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC2B4DB26AE7898008DC5CF /* NavigationController.swift */; };
@@ -32,7 +34,6 @@
 		7AC3FFCC26B38FCD00EEBBBD /* CKError+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC3FFCB26B38FCD00EEBBBD /* CKError+Extension.swift */; };
 		7ACC855C26B0FCF900F8F946 /* JourneyDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACC855B26B0FCF900F8F946 /* JourneyDetailVC.swift */; };
 		7ACC855E26B0FDEB00F8F946 /* StopSequenceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACC855D26B0FDEB00F8F946 /* StopSequenceVC.swift */; };
-		7ACC856326B1114D00F8F946 /* DateFormatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACC856226B1114D00F8F946 /* DateFormatters.swift */; };
 		7ACC856726B2201E00F8F946 /* JourneyCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACC856626B2201E00F8F946 /* JourneyCellNode.swift */; };
 		7ACC856B26B22D8E00F8F946 /* AboutTopCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACC856A26B22D8E00F8F946 /* AboutTopCellNode.swift */; };
 		7ACC856D26B23DE800F8F946 /* RightDetailCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACC856C26B23DE800F8F946 /* RightDetailCellNode.swift */; };
@@ -47,7 +48,6 @@
 		7AD4E04726AFFECE007960AD /* APIFacade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD4E04626AFFECE007960AD /* APIFacade.swift */; };
 		7ADFA39E26C9D19600F474DA /* SortedStations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADFA39D26C9D19600F474DA /* SortedStations.swift */; };
 		7AE38BB326D1D7A10021679A /* CKDatabaseScope+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE38BB226D1D7A10021679A /* CKDatabaseScope+Extension.swift */; };
-		7AF8783826B4D7D900A81C3A /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF8783726B4D7D900A81C3A /* Model.swift */; };
 		7AF8783A26B4FB7000A81C3A /* ASViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF8783926B4FB7000A81C3A /* ASViewController.swift */; };
 		7AFDA8BA26DC674B002AB73B /* NewFrankBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7AFDA8AE26DC6749002AB73B /* NewFrankBoldItalic.ttf */; };
 		7AFDA8BB26DC674B002AB73B /* NewFrankThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7AFDA8AF26DC6749002AB73B /* NewFrankThinItalic.ttf */; };
@@ -66,8 +66,10 @@
 		7AFDA8CE26DC729F002AB73B /* ServiceAlertVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFDA8CD26DC729F002AB73B /* ServiceAlertVC.swift */; };
 		7AFDA8D026DC72B3002AB73B /* ServiceInformationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFDA8CF26DC72B3002AB73B /* ServiceInformationVC.swift */; };
 		7AFDA8D226DC7313002AB73B /* LegCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFDA8D126DC7313002AB73B /* LegCellNode.swift */; };
-		7AFDA8D526DC7A07002AB73B /* TfNSW in Frameworks */ = {isa = PBXBuildFile; productRef = 7AFDA8D426DC7A07002AB73B /* TfNSW */; };
 		7AFDA8D726DC8CEE002AB73B /* NSParagraphStyle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFDA8D626DC8CEE002AB73B /* NSParagraphStyle+Extension.swift */; };
+		7AFDA8DE26DCDB49002AB73B /* Int+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFDA8DD26DCDB49002AB73B /* Int+Extension.swift */; };
+		7AFDA8E126DCE69B002AB73B /* SubtitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFDA8E026DCE69B002AB73B /* SubtitleCell.swift */; };
+		7AFDA8E326DCF0F6002AB73B /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFDA8E226DCF0F6002AB73B /* Double+Extension.swift */; };
 		DBF8CDFF69C4107866721E75 /* Pods_Commute.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48E658014247727F107433BE /* Pods_Commute.framework */; };
 /* End PBXBuildFile section */
 
@@ -91,6 +93,8 @@
 		7A473FEE26C88DD2004CAC5E /* StationDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationDetailVC.swift; sourceTree = "<group>"; };
 		7A473FF026C89AD6004CAC5E /* StationMapCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationMapCellNode.swift; sourceTree = "<group>"; };
 		7A77B9B926B929E100712639 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		7A7D6AFF26DDE68200101CD9 /* CKContainer+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CKContainer+Extension.swift"; sourceTree = "<group>"; };
+		7A7D6B0126DDE71200101CD9 /* InfoPlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoPlist.swift; sourceTree = "<group>"; };
 		7AC2B4D026AE70FB008DC5CF /* Commute.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Commute.entitlements; sourceTree = "<group>"; };
 		7AC2B4D126AE713B008DC5CF /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		7AC2B4D726AE7876008DC5CF /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -106,7 +110,6 @@
 		7AC3FFCB26B38FCD00EEBBBD /* CKError+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CKError+Extension.swift"; sourceTree = "<group>"; };
 		7ACC855B26B0FCF900F8F946 /* JourneyDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyDetailVC.swift; sourceTree = "<group>"; };
 		7ACC855D26B0FDEB00F8F946 /* StopSequenceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopSequenceVC.swift; sourceTree = "<group>"; };
-		7ACC856226B1114D00F8F946 /* DateFormatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatters.swift; sourceTree = "<group>"; };
 		7ACC856626B2201E00F8F946 /* JourneyCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyCellNode.swift; sourceTree = "<group>"; };
 		7ACC856A26B22D8E00F8F946 /* AboutTopCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutTopCellNode.swift; sourceTree = "<group>"; };
 		7ACC856C26B23DE800F8F946 /* RightDetailCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightDetailCellNode.swift; sourceTree = "<group>"; };
@@ -121,7 +124,6 @@
 		7AD4E04626AFFECE007960AD /* APIFacade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIFacade.swift; sourceTree = "<group>"; };
 		7ADFA39D26C9D19600F474DA /* SortedStations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortedStations.swift; sourceTree = "<group>"; };
 		7AE38BB226D1D7A10021679A /* CKDatabaseScope+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CKDatabaseScope+Extension.swift"; sourceTree = "<group>"; };
-		7AF8783726B4D7D900A81C3A /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		7AF8783926B4FB7000A81C3A /* ASViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASViewController.swift; sourceTree = "<group>"; };
 		7AFDA8AE26DC6749002AB73B /* NewFrankBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NewFrankBoldItalic.ttf; sourceTree = "<group>"; };
 		7AFDA8AF26DC6749002AB73B /* NewFrankThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NewFrankThinItalic.ttf; sourceTree = "<group>"; };
@@ -142,6 +144,9 @@
 		7AFDA8CF26DC72B3002AB73B /* ServiceInformationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceInformationVC.swift; sourceTree = "<group>"; };
 		7AFDA8D126DC7313002AB73B /* LegCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegCellNode.swift; sourceTree = "<group>"; };
 		7AFDA8D626DC8CEE002AB73B /* NSParagraphStyle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSParagraphStyle+Extension.swift"; sourceTree = "<group>"; };
+		7AFDA8DD26DCDB49002AB73B /* Int+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Extension.swift"; sourceTree = "<group>"; };
+		7AFDA8E026DCE69B002AB73B /* SubtitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtitleCell.swift; sourceTree = "<group>"; };
+		7AFDA8E226DCF0F6002AB73B /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,7 +154,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7AFDA8D526DC7A07002AB73B /* TfNSW in Frameworks */,
 				7AC2B4E726AE80DF008DC5CF /* CloudKit.framework in Frameworks */,
 				DBF8CDFF69C4107866721E75 /* Pods_Commute.framework in Frameworks */,
 			);
@@ -259,9 +263,8 @@
 				7ADFA39F26C9D1F600F474DA /* TPAPI */,
 				7ADFA3AE26C9D25100F474DA /* CloudKit */,
 				7AC7376726B0D201009B330C /* CoreData */,
-				7ACC856226B1114D00F8F946 /* DateFormatters.swift */,
 				7A29279526CB430A005FD79B /* ShortcutType.swift */,
-				7AF8783726B4D7D900A81C3A /* Model.swift */,
+				7A7D6B0126DDE71200101CD9 /* InfoPlist.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -280,21 +283,11 @@
 		7AC2B4E426AE8017008DC5CF /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				7AFDA8CA26DC713C002AB73B /* Application */,
+				7AFDA8DF26DCE68C002AB73B /* TableViewCells */,
 				7ACC856526B16AE200F8F946 /* Nodes */,
 				7AC2B4E326AE8008008DC5CF /* BaseControllers */,
-				7AFDA8CA26DC713C002AB73B /* Application */,
-				7AC2B4DF26AE78C5008DC5CF /* TripsVC.swift */,
-				7AC2B4EF26AEA6C2008DC5CF /* AddTripOriginVC.swift */,
-				7AD1DDBA26AFAA2F0057BEF3 /* AddTripDestinationVC.swift */,
-				7AD4E04426AFFEB0007960AD /* TripDetailVC.swift */,
-				7ACC855B26B0FCF900F8F946 /* JourneyDetailVC.swift */,
-				7ACC855D26B0FDEB00F8F946 /* StopSequenceVC.swift */,
-				7A473FEC26C88CE2004CAC5E /* StationsVC.swift */,
-				7A473FEE26C88DD2004CAC5E /* StationDetailVC.swift */,
-				7ACC857326B2751F00F8F946 /* ToolsVC.swift */,
-				7AFDA8CF26DC72B3002AB73B /* ServiceInformationVC.swift */,
-				7AFDA8CD26DC729F002AB73B /* ServiceAlertVC.swift */,
-				7AC2B4E126AE78D0008DC5CF /* AboutVC.swift */,
+				7AFDA8DC26DCCD40002AB73B /* ViewControllers */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -343,12 +336,12 @@
 			isa = PBXGroup;
 			children = (
 				7ACC856626B2201E00F8F946 /* JourneyCellNode.swift */,
+				7AFDA8D126DC7313002AB73B /* LegCellNode.swift */,
 				7ACC856A26B22D8E00F8F946 /* AboutTopCellNode.swift */,
 				7ACC856C26B23DE800F8F946 /* RightDetailCellNode.swift */,
 				7ACC857126B25C7B00F8F946 /* SubtitleCellNode.swift */,
 				7A473FF026C89AD6004CAC5E /* StationMapCellNode.swift */,
 				7AFDA8CB26DC7283002AB73B /* AlertCellNode.swift */,
-				7AFDA8D126DC7313002AB73B /* LegCellNode.swift */,
 			);
 			path = Nodes;
 			sourceTree = "<group>";
@@ -357,11 +350,14 @@
 			isa = PBXGroup;
 			children = (
 				7ACC856F26B23F5A00F8F946 /* UserDefaults+Extension.swift */,
+				7A7D6AFF26DDE68200101CD9 /* CKContainer+Extension.swift */,
 				7A09525D26D0B01A00938A50 /* CKAccountStatus+Extension.swift */,
 				7AC3FFCB26B38FCD00EEBBBD /* CKError+Extension.swift */,
 				7A09525F26D0B53400938A50 /* CKContainerApplicationPermissionStatus+Extension.swift */,
 				7AE38BB226D1D7A10021679A /* CKDatabaseScope+Extension.swift */,
 				7AFDA8D626DC8CEE002AB73B /* NSParagraphStyle+Extension.swift */,
+				7AFDA8DD26DCDB49002AB73B /* Int+Extension.swift */,
+				7AFDA8E226DCF0F6002AB73B /* Double+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -418,6 +414,33 @@
 			path = Application;
 			sourceTree = "<group>";
 		};
+		7AFDA8DC26DCCD40002AB73B /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				7AC2B4DF26AE78C5008DC5CF /* TripsVC.swift */,
+				7AC2B4EF26AEA6C2008DC5CF /* AddTripOriginVC.swift */,
+				7AD1DDBA26AFAA2F0057BEF3 /* AddTripDestinationVC.swift */,
+				7AD4E04426AFFEB0007960AD /* TripDetailVC.swift */,
+				7ACC855B26B0FCF900F8F946 /* JourneyDetailVC.swift */,
+				7ACC855D26B0FDEB00F8F946 /* StopSequenceVC.swift */,
+				7A473FEC26C88CE2004CAC5E /* StationsVC.swift */,
+				7A473FEE26C88DD2004CAC5E /* StationDetailVC.swift */,
+				7ACC857326B2751F00F8F946 /* ToolsVC.swift */,
+				7AFDA8CF26DC72B3002AB73B /* ServiceInformationVC.swift */,
+				7AFDA8CD26DC729F002AB73B /* ServiceAlertVC.swift */,
+				7AC2B4E126AE78D0008DC5CF /* AboutVC.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		7AFDA8DF26DCE68C002AB73B /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				7AFDA8E026DCE69B002AB73B /* SubtitleCell.swift */,
+			);
+			path = TableViewCells;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -440,7 +463,6 @@
 			);
 			name = Commute;
 			packageProductDependencies = (
-				7AFDA8D426DC7A07002AB73B /* TfNSW */,
 			);
 			productName = Commute;
 			productReference = 7A2C18F826AE6CB2005BF502 /* Commute.app */;
@@ -471,7 +493,6 @@
 			);
 			mainGroup = 7A2C18EF26AE6CB1005BF502;
 			packageReferences = (
-				7AFDA8D326DC7A07002AB73B /* XCRemoteSwiftPackageReference "TfNSW" */,
 			);
 			productRefGroup = 7A2C18F926AE6CB2005BF502 /* Products */;
 			projectDirPath = "";
@@ -618,7 +639,10 @@
 				7AC2B4F026AEA6C2008DC5CF /* AddTripOriginVC.swift in Sources */,
 				7ACC856726B2201E00F8F946 /* JourneyCellNode.swift in Sources */,
 				7AF8783A26B4FB7000A81C3A /* ASViewController.swift in Sources */,
+				7A7D6B0226DDE71200101CD9 /* InfoPlist.swift in Sources */,
 				7AD1DDBE26AFABE00057BEF3 /* Commute.xcdatamodeld in Sources */,
+				7AFDA8E126DCE69B002AB73B /* SubtitleCell.swift in Sources */,
+				7AFDA8DE26DCDB49002AB73B /* Int+Extension.swift in Sources */,
 				7A09526026D0B53400938A50 /* CKContainerApplicationPermissionStatus+Extension.swift in Sources */,
 				7AC3FFCC26B38FCD00EEBBBD /* CKError+Extension.swift in Sources */,
 				7ACC857426B2751F00F8F946 /* ToolsVC.swift in Sources */,
@@ -626,6 +650,7 @@
 				7ACC856B26B22D8E00F8F946 /* AboutTopCellNode.swift in Sources */,
 				7A473FF126C89AD6004CAC5E /* StationMapCellNode.swift in Sources */,
 				7A09525E26D0B01A00938A50 /* CKAccountStatus+Extension.swift in Sources */,
+				7AFDA8E326DCF0F6002AB73B /* Double+Extension.swift in Sources */,
 				7AFDA8D726DC8CEE002AB73B /* NSParagraphStyle+Extension.swift in Sources */,
 				7ACC857B26B27EE100F8F946 /* PDFVC.swift in Sources */,
 				7AC2B4F226AEA6D8008DC5CF /* CKFacade.swift in Sources */,
@@ -634,7 +659,6 @@
 				7AC3FFCA26B380A700EEBBBD /* Trip.swift in Sources */,
 				7A2C18FC26AE6CB2005BF502 /* AppDelegate.swift in Sources */,
 				7AC2B4F426AEA750008DC5CF /* Station.swift in Sources */,
-				7ACC856326B1114D00F8F946 /* DateFormatters.swift in Sources */,
 				7A473FED26C88CE2004CAC5E /* StationsVC.swift in Sources */,
 				7AC2B4D826AE7876008DC5CF /* TabBarController.swift in Sources */,
 				7ACC857226B25C7B00F8F946 /* SubtitleCellNode.swift in Sources */,
@@ -646,8 +670,8 @@
 				7AC2B4E026AE78C5008DC5CF /* TripsVC.swift in Sources */,
 				7ADFA39E26C9D19600F474DA /* SortedStations.swift in Sources */,
 				7AC2B4E226AE78D0008DC5CF /* AboutVC.swift in Sources */,
+				7A7D6B0026DDE68200101CD9 /* CKContainer+Extension.swift in Sources */,
 				7AFDA8D026DC72B3002AB73B /* ServiceInformationVC.swift in Sources */,
-				7AF8783826B4D7D900A81C3A /* Model.swift in Sources */,
 				7AE38BB326D1D7A10021679A /* CKDatabaseScope+Extension.swift in Sources */,
 				7AC2B4DC26AE7898008DC5CF /* NavigationController.swift in Sources */,
 				7AC2B4D226AE713B008DC5CF /* R.generated.swift in Sources */,
@@ -675,7 +699,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7A38860B26BB63F800F57EA0 /* Development.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -705,7 +728,6 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -737,7 +759,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7A38860E26BB683200F57EA0 /* Production.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -767,7 +788,6 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -793,7 +813,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0B08224D77C6FF2AFE87A409 /* Pods-Commute.debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Commute/Resources/Commute.entitlements;
@@ -804,11 +823,7 @@
 				DEVELOPMENT_TEAM = JDL5FY6SCC;
 				INFOPLIST_FILE = Commute/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 3.4;
+				MARKETING_VERSION = "${COMMUTE_SHORT_VERSION_STRING}";
 				PRODUCT_BUNDLE_IDENTIFIER = "${COMMUTE_BUNDLE_ID}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "Commute Development";
@@ -823,7 +838,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4C21E28A3F23E0A640FF21A7 /* Pods-Commute.release.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Commute/Resources/Commute.entitlements;
@@ -834,11 +848,7 @@
 				DEVELOPMENT_TEAM = JDL5FY6SCC;
 				INFOPLIST_FILE = Commute/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 3.4;
+				MARKETING_VERSION = "${COMMUTE_SHORT_VERSION_STRING}";
 				PRODUCT_BUNDLE_IDENTIFIER = "${COMMUTE_BUNDLE_ID}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "Commute Development";
@@ -871,25 +881,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		7AFDA8D326DC7A07002AB73B /* XCRemoteSwiftPackageReference "TfNSW" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/themuzzleflare/TfNSW.git";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		7AFDA8D426DC7A07002AB73B /* TfNSW */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 7AFDA8D326DC7A07002AB73B /* XCRemoteSwiftPackageReference "TfNSW" */;
-			productName = TfNSW;
-		};
-/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		7AD1DDBC26AFABE00057BEF3 /* Commute.xcdatamodeld */ = {

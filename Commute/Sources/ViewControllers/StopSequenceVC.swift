@@ -41,16 +41,16 @@ extension StopSequenceVC: ASTableDataSource {
   func tableNode(_ tableNode: ASTableNode, nodeBlockForRowAt indexPath: IndexPath) -> ASCellNodeBlock {
     let stop = stopSequence[indexPath.row]
 
-    let cell: SubtitleCellNode
+    let text: String
 
     if let parent = stop.parent?.parent?.name {
-      cell = SubtitleCellNode(text: stop.name?.replacingOccurrences(of: "\(parent), ", with: "") ?? "", detailText: stop.departureTimeEstimated?.toDate()?.toString(.time(.short)) ?? stop.departureTimePlanned?.toDate()?.toString(.time(.short)) ?? stop.arrivalTimeEstimated?.toDate()?.toString(.time(.short)) ?? stop.arrivalTimePlanned?.toDate()?.toString(.time(.short)) ?? "")
+      text = stop.name?.replacingOccurrences(of: "\(parent), ", with: "") ?? stop.disassembledName ?? ""
     } else {
-      cell = SubtitleCellNode(text: stop.disassembledName ?? "", detailText: stop.departureTimeEstimated?.toDate()?.toString(.time(.short)) ?? stop.departureTimePlanned?.toDate()?.toString(.time(.short)) ?? stop.arrivalTimeEstimated?.toDate()?.toString(.time(.short)) ?? stop.arrivalTimePlanned?.toDate()?.toString(.time(.short)) ?? "")
+      text = stop.disassembledName ?? ""
     }
 
     return {
-      cell
+      SubtitleCellNode(text: text, detailText: stop.departureTime?.toDate()?.toString(.time(.short)) ?? stop.arrivalTime?.toDate()?.toString(.time(.short)) ?? "")
     }
   }
 }

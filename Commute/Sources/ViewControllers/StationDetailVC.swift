@@ -4,7 +4,7 @@ import AsyncDisplayKit
 final class StationDetailVC: ASDKViewController<ASTableNode> {
   private let tableNode = ASTableNode(style: .grouped)
 
-  var station: Station
+  private var station: Station
 
   init(station: Station) {
     self.station = station

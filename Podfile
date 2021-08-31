@@ -4,8 +4,10 @@ inhibit_all_warnings!
 target 'Commute' do
   use_frameworks!
   
+  pod 'TfNSW', :git => 'https://github.com/themuzzleflare/TfNSW.git'
   pod 'SwiftDate'
   pod 'Alamofire'
+  pod 'AlamofireNetworkActivityIndicator'
   pod 'Texture'
   pod 'TinyConstraints'
   pod 'SwiftLint'
@@ -13,6 +15,5 @@ target 'Commute' do
   pod 'Mapbox-iOS-SDK'
   pod 'SwiftProtobuf'
   pod 'MarqueeLabel'
-  pod 'AlamofireNetworkActivityIndicator'
 
 end

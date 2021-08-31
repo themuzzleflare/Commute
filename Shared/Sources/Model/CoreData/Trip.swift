@@ -40,14 +40,17 @@ extension Trip: Identifiable {
 }
 
 extension Trip {
+  /// `fromName`, with occurrences of "Station" removed.
   var shortFromName: String {
     return fromName.replacingOccurrences(of: " Station", with: "")
   }
 
+  /// `toName`, with occurrences of "Station" removed.
   var shortToName: String {
     return toName.replacingOccurrences(of: " Station", with: "")
   }
 
+  /// `shortFromName` and `shortToName`, separated by "to".
   var tripName: String {
     return "\(shortFromName) to \(shortToName)"
   }

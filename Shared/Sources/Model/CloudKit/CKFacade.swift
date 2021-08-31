@@ -2,9 +2,9 @@ import Foundation
 import CloudKit
 
 struct CKFacade {
-  static let container = CKContainer(identifier: "iCloud.\(ModelFacade.infoForKey("CFBundleIdentifier")!)")
-  static let publicDatabase = container.publicCloudDatabase
-  static let privateDatabase = container.privateCloudDatabase
+  static private let container = CKContainer.commute
+  static private let publicDatabase = container.publicCloudDatabase
+  static private let privateDatabase = container.privateCloudDatabase
 
   static func fetchAccountStatus(completion: @escaping (Result<CKAccountStatus, CKError>) -> Void) {
     container.accountStatus { (status, error) in
@@ -37,7 +37,6 @@ struct CKFacade {
   }
 
   static func searchStation(cursor: CKQueryOperation.Cursor? = nil, inputStations: [Station]? = nil, searchString: String? = nil, currentLocation: CLLocation? = nil, exclude: Station? = nil, completion: @escaping (Result<[Station], CKError>) -> Void) {
-
     var stations = [Station]()
 
     if let inputStations = inputStations {
@@ -65,7 +64,6 @@ struct CKFacade {
 
       if let location = currentLocation {
         let locationSort = CKLocationSortDescriptor(key: "location", relativeLocation: location)
-
         query.sortDescriptors = [locationSort]
       }
 
@@ -108,7 +106,10 @@ struct CKFacade {
   static func saveTripCreatedSubscription(completion: @escaping (Result<CKSubscription, CKError>) -> Void) {
     let notificationInfo = CKSubscription.NotificationInfo(
       alertLocalizationKey: "A new trip has been saved: %1$@ to %2$@",
-      alertLocalizationArgs: ["CD_fromName", "CD_toName"],
+      alertLocalizationArgs: [
+        "CD_fromName",
+        "CD_toName"
+      ],
       title: "Trip Created",
       soundName: "cityrailBeep.wav"
     )
@@ -135,7 +136,10 @@ struct CKFacade {
   static func saveTripDeletedSubscription(completion: @escaping (Result<CKSubscription, CKError>) -> Void) {
     let notificationInfo = CKSubscription.NotificationInfo(
       alertLocalizationKey: "A trip has been deleted: %1$@ to %2$@",
-      alertLocalizationArgs: ["CD_fromName", "CD_toName"],
+      alertLocalizationArgs: [
+        "CD_fromName",
+        "CD_toName"
+      ],
       title: "Trip Deleted",
       soundName: "cityrailBeep.wav"
     )

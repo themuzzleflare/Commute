@@ -1,10 +1,9 @@
 import Foundation
 import Alamofire
-import SwiftDate
 import TfNSW
 
 struct APIFacade {
-  static let jsonDecoder = JSONDecoder()
+  static private let jsonDecoder = JSONDecoder()
 
   /**
    Retrieve a list of suggested transportation journeys based on the provided origin and destination.

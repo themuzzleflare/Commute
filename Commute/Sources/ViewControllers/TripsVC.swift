@@ -24,8 +24,7 @@ final class TripsVC: ASViewController {
   )
 
   private var filteredTrips: [Trip] {
-    return trips.filter {
-      (trip) in
+    return trips.filter { (trip) in
       switch searchController.searchBar.selectedScopeButtonIndex {
       case 0:
         return searchController.searchBar.text!.isEmpty || trip.fromName.localizedStandardContains(searchController.searchBar.text!)
@@ -218,7 +217,7 @@ final class TripsVC: ASViewController {
             subtitleLabel.textColor = .placeholderText
             subtitleLabel.font = R.font.newFrankRegular(size: UIFont.labelFontSize)
             subtitleLabel.numberOfLines = 0
-            subtitleLabel.text = "Add a trip by tapping the add button in the top-right corner."
+            subtitleLabel.text = "To get started, tap the plus button to add a trip."
 
             return view
           }()

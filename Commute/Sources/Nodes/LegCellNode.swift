@@ -1,6 +1,5 @@
 import UIKit
 import AsyncDisplayKit
-import SwiftDate
 import Rswift
 import TfNSW
 
@@ -121,7 +120,6 @@ final class LegCellNode: ASCellNode {
         toNameTextNode,
         toTimeTextNode,
         transportationNameTextNode
-
       ]
     )
 

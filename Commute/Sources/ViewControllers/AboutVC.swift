@@ -40,11 +40,11 @@ final class AboutVC: ASDKViewController<ASTableNode> {
 
 extension AboutVC: ASTableDataSource {
   func tableNode(_ tableNode: ASTableNode, numberOfRowsInSection section: Int) -> Int {
-    3
+    return 3
   }
 
   func tableNode(_ tableNode: ASTableNode, nodeBlockForRowAt indexPath: IndexPath) -> ASCellNodeBlock {
-    {
+    return {
       switch indexPath.row {
       case 0:
         return AboutTopCellNode()
@@ -59,6 +59,6 @@ extension AboutVC: ASTableDataSource {
   }
 
   func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-    ModelFacade.infoForKey("NSHumanReadableCopyright")!
+    return InfoPlist.nsHumanReadableCopyright
   }
 }

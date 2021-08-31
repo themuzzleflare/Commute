@@ -2,17 +2,17 @@ import UIKit
 import WebKit
 import MarqueeLabel
 
-final class ServiceAlertVC: UIViewController {
+final class ServiceAlertVC: ASViewController {
   private var alert: TransitRealtime_Alert
   private let webView = WKWebView(frame: .zero)
 
   init(alert: TransitRealtime_Alert) {
     self.alert = alert
-    super.init(nibName: nil, bundle: nil)
+    super.init()
   }
 
   required init?(coder: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
+    fatalError("Not implemented")
   }
 
   override func viewDidLoad() {
