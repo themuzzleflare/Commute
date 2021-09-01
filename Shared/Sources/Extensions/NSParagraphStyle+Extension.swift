@@ -9,17 +9,17 @@ extension NSParagraphStyle {
     return ps
   }
 
-  /// A right-aligned paragraph style.
-  static var rightAligned: NSParagraphStyle {
-    let ps = NSMutableParagraphStyle()
-    ps.alignment = .right
-    return ps
-  }
-
   /// A centre-aligned paragraph style.
   static var centreAligned: NSParagraphStyle {
     let ps = NSMutableParagraphStyle()
     ps.alignment = .center
+    return ps
+  }
+
+  /// A right-aligned paragraph style.
+  static var rightAligned: NSParagraphStyle {
+    let ps = NSMutableParagraphStyle()
+    ps.alignment = .right
     return ps
   }
 }

@@ -20,6 +20,11 @@
 		7A77B9BA26B929E100712639 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A77B9B926B929E100712639 /* SceneDelegate.swift */; };
 		7A7D6B0026DDE68200101CD9 /* CKContainer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7D6AFF26DDE68200101CD9 /* CKContainer+Extension.swift */; };
 		7A7D6B0226DDE71200101CD9 /* InfoPlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7D6B0126DDE71200101CD9 /* InfoPlist.swift */; };
+		7A7D6B0626DEEADF00101CD9 /* NumberFormatter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7D6B0526DEEADF00101CD9 /* NumberFormatter+Extension.swift */; };
+		7A7D6B0826DEF97100101CD9 /* MarqueeLabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7D6B0726DEF97100101CD9 /* MarqueeLabel+Extension.swift */; };
+		7A7D6B0A26DF086900101CD9 /* StopsMapCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7D6B0926DF086900101CD9 /* StopsMapCellNode.swift */; };
+		7A7D6B0C26DF21BF00101CD9 /* MGLStyle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7D6B0B26DF21BF00101CD9 /* MGLStyle+Extension.swift */; };
+		7A7D6B0F26DF27CD00101CD9 /* StopSequenceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7D6B0E26DF27CD00101CD9 /* StopSequenceDelegate.swift */; };
 		7AC2B4D226AE713B008DC5CF /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC2B4D126AE713B008DC5CF /* R.generated.swift */; };
 		7AC2B4D826AE7876008DC5CF /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC2B4D726AE7876008DC5CF /* TabBarController.swift */; };
 		7AC2B4DC26AE7898008DC5CF /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC2B4DB26AE7898008DC5CF /* NavigationController.swift */; };
@@ -95,6 +100,11 @@
 		7A77B9B926B929E100712639 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		7A7D6AFF26DDE68200101CD9 /* CKContainer+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CKContainer+Extension.swift"; sourceTree = "<group>"; };
 		7A7D6B0126DDE71200101CD9 /* InfoPlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoPlist.swift; sourceTree = "<group>"; };
+		7A7D6B0526DEEADF00101CD9 /* NumberFormatter+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NumberFormatter+Extension.swift"; sourceTree = "<group>"; };
+		7A7D6B0726DEF97100101CD9 /* MarqueeLabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MarqueeLabel+Extension.swift"; sourceTree = "<group>"; };
+		7A7D6B0926DF086900101CD9 /* StopsMapCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopsMapCellNode.swift; sourceTree = "<group>"; };
+		7A7D6B0B26DF21BF00101CD9 /* MGLStyle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MGLStyle+Extension.swift"; sourceTree = "<group>"; };
+		7A7D6B0E26DF27CD00101CD9 /* StopSequenceDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopSequenceDelegate.swift; sourceTree = "<group>"; };
 		7AC2B4D026AE70FB008DC5CF /* Commute.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Commute.entitlements; sourceTree = "<group>"; };
 		7AC2B4D126AE713B008DC5CF /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		7AC2B4D726AE7876008DC5CF /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -227,6 +237,14 @@
 			path = Configurations;
 			sourceTree = "<group>";
 		};
+		7A7D6B0D26DF27AD00101CD9 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				7A7D6B0E26DF27CD00101CD9 /* StopSequenceDelegate.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		7AAA3F0826CB96F3002231CE /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -283,6 +301,7 @@
 		7AC2B4E426AE8017008DC5CF /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				7A7D6B0D26DF27AD00101CD9 /* Protocols */,
 				7AFDA8CA26DC713C002AB73B /* Application */,
 				7AFDA8DF26DCE68C002AB73B /* TableViewCells */,
 				7ACC856526B16AE200F8F946 /* Nodes */,
@@ -342,6 +361,7 @@
 				7ACC857126B25C7B00F8F946 /* SubtitleCellNode.swift */,
 				7A473FF026C89AD6004CAC5E /* StationMapCellNode.swift */,
 				7AFDA8CB26DC7283002AB73B /* AlertCellNode.swift */,
+				7A7D6B0926DF086900101CD9 /* StopsMapCellNode.swift */,
 			);
 			path = Nodes;
 			sourceTree = "<group>";
@@ -358,6 +378,9 @@
 				7AFDA8D626DC8CEE002AB73B /* NSParagraphStyle+Extension.swift */,
 				7AFDA8DD26DCDB49002AB73B /* Int+Extension.swift */,
 				7AFDA8E226DCF0F6002AB73B /* Double+Extension.swift */,
+				7A7D6B0526DEEADF00101CD9 /* NumberFormatter+Extension.swift */,
+				7A7D6B0726DEF97100101CD9 /* MarqueeLabel+Extension.swift */,
+				7A7D6B0B26DF21BF00101CD9 /* MGLStyle+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -635,6 +658,7 @@
 			files = (
 				7AD4E04726AFFECE007960AD /* APIFacade.swift in Sources */,
 				7AFDA8D226DC7313002AB73B /* LegCellNode.swift in Sources */,
+				7A7D6B0C26DF21BF00101CD9 /* MGLStyle+Extension.swift in Sources */,
 				7ACC856D26B23DE800F8F946 /* RightDetailCellNode.swift in Sources */,
 				7AC2B4F026AEA6C2008DC5CF /* AddTripOriginVC.swift in Sources */,
 				7ACC856726B2201E00F8F946 /* JourneyCellNode.swift in Sources */,
@@ -646,7 +670,9 @@
 				7A09526026D0B53400938A50 /* CKContainerApplicationPermissionStatus+Extension.swift in Sources */,
 				7AC3FFCC26B38FCD00EEBBBD /* CKError+Extension.swift in Sources */,
 				7ACC857426B2751F00F8F946 /* ToolsVC.swift in Sources */,
+				7A7D6B0626DEEADF00101CD9 /* NumberFormatter+Extension.swift in Sources */,
 				7ACC855C26B0FCF900F8F946 /* JourneyDetailVC.swift in Sources */,
+				7A7D6B0F26DF27CD00101CD9 /* StopSequenceDelegate.swift in Sources */,
 				7ACC856B26B22D8E00F8F946 /* AboutTopCellNode.swift in Sources */,
 				7A473FF126C89AD6004CAC5E /* StationMapCellNode.swift in Sources */,
 				7A09525E26D0B01A00938A50 /* CKAccountStatus+Extension.swift in Sources */,
@@ -662,6 +688,7 @@
 				7A473FED26C88CE2004CAC5E /* StationsVC.swift in Sources */,
 				7AC2B4D826AE7876008DC5CF /* TabBarController.swift in Sources */,
 				7ACC857226B25C7B00F8F946 /* SubtitleCellNode.swift in Sources */,
+				7A7D6B0826DEF97100101CD9 /* MarqueeLabel+Extension.swift in Sources */,
 				7A77B9BA26B929E100712639 /* SceneDelegate.swift in Sources */,
 				7AFDA8CC26DC7283002AB73B /* AlertCellNode.swift in Sources */,
 				7AD4E04526AFFEB0007960AD /* TripDetailVC.swift in Sources */,
@@ -677,6 +704,7 @@
 				7AC2B4D226AE713B008DC5CF /* R.generated.swift in Sources */,
 				7ACC857026B23F5A00F8F946 /* UserDefaults+Extension.swift in Sources */,
 				7AFDA8CE26DC729F002AB73B /* ServiceAlertVC.swift in Sources */,
+				7A7D6B0A26DF086900101CD9 /* StopsMapCellNode.swift in Sources */,
 				7AFDA8C926DC7062002AB73B /* gtfs-realtime.pb.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

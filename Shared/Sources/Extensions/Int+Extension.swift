@@ -1,15 +1,11 @@
 import Foundation
 
 extension Int {
-  var secondsToHoursMinutesSecondsStr: String {
-    let (hours, minutes, seconds) = secondsToHoursMinutesSeconds
-    var str = hours > 0 ? "\(hours) h" : ""
-    str = minutes > 0 ? str + " \(minutes) min" : str
-    str = seconds > 0 ? str + " \(seconds) sec" : str
-    return str
-  }
-
-  var secondsToHoursMinutesSeconds: (Int, Int, Int) {
-    return (self / 3600, (self % 3600) / 60, (self % 3600) % 60)
+  var secondsToHoursMinutesSeconds: String {
+    let (hours, minutes, seconds) = (self / 3600, (self % 3600) / 60, (self % 3600) % 60)
+    var string = hours > 0 ? "\(hours) h" : ""
+    string = minutes > 0 ? string + " \(minutes) min" : string
+    string = seconds > 0 ? string + " \(seconds) sec" : string
+    return string
   }
 }

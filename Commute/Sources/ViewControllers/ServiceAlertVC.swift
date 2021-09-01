@@ -28,10 +28,7 @@ final class ServiceAlertVC: ASViewController {
   }
 
   private func configureNavigation() {
-    let label = MarqueeLabel(frame: navigationController!.navigationBar.bounds, duration: 8.0, fadeLength: 10.0)
-    label.font = .boldSystemFont(ofSize: UIFont.labelFontSize)
-    label.text = alert.headerText.translation[0].text
-    navigationItem.titleView = label
+    navigationItem.titleView = MarqueeLabel.textLabel(for: alert.headerText.translation[0].text)
     navigationItem.title = alert.headerText.translation[0].text
   }
 

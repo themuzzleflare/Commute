@@ -4,7 +4,6 @@ import Rswift
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
   var window: UIWindow?
   var savedShortcutItem: UIApplicationShortcutItem!
-
   let notificationCentre = UNUserNotificationCenter.current()
 
   func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -53,10 +52,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     if let tbc = window?.rootViewController as? TabBarController,
        let actionTypeValue = ShortcutType(rawValue: shortcutItem.type) {
       switch actionTypeValue {
-      case .trips: tbc.selectedIndex = 0
-      case .stations: tbc.selectedIndex = 1
-      case .tools: tbc.selectedIndex = 2
-      case .about: tbc.selectedIndex = 3
+      case .trips:
+        tbc.selectedIndex = 0
+      case .stations:
+        tbc.selectedIndex = 1
+      case .tools:
+        tbc.selectedIndex = 2
+      case .about:
+        tbc.selectedIndex = 3
       }
     }
     return true

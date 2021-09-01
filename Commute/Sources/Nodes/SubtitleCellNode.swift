@@ -11,8 +11,6 @@ final class SubtitleCellNode: ASCellNode {
 
     automaticallyManagesSubnodes = true
 
-    selectionStyle = .none
-
     topTextNode.attributedText = NSAttributedString(
       string: text,
       attributes: [

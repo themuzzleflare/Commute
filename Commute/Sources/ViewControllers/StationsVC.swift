@@ -223,12 +223,7 @@ final class StationsVC: ASViewController {
         cell.textLabel?.font = R.font.newFrankRegular(size: UIFont.labelFontSize)
         cell.textLabel?.text = station.shortName
         cell.detailTextLabel?.textColor = .secondaryLabel
-        let numberFormatter = NumberFormatter()
-        numberFormatter.numberStyle = .decimal
-        numberFormatter.minimumFractionDigits = 2
-        numberFormatter.maximumFractionDigits = 2
-        let number = numberFormatter.string(from: NSNumber(value: station.location.distance(from: self.locationManager?.location ?? CLLocation()).kilometres(from: .meters)))
-        cell.detailTextLabel?.text = "\(number ?? "") km"
+        cell.detailTextLabel?.text = "\(NumberFormatter.twoDecimalPlaces.string(from: station.location.distance(from: self.locationManager?.location ?? CLLocation()).kilometres.nsNumber) ?? "") km"
         return cell
       }
     )
@@ -337,7 +332,7 @@ final class StationsVC: ASViewController {
         let view = UIView(frame: byDistanceTableView.bounds)
         let button = UIButton(type: .roundedRect)
         button.setTitle("Enable Location Services", for: .normal)
-        button.addTarget(self, action: #selector(buttonPressed), for: .allTouchEvents)
+        button.addTarget(self, action: #selector(buttonPressed), for: .touchDown)
         view.addSubview(button)
         button.centerInSuperview()
         return view

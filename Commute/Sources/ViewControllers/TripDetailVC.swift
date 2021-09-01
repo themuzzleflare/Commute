@@ -1,5 +1,6 @@
 import UIKit
 import AsyncDisplayKit
+import MarqueeLabel
 import TinyConstraints
 import TfNSW
 
@@ -37,6 +38,7 @@ final class TripDetailVC: ASDKViewController<ASTableNode> {
   }
 
   private func configureNavigation() {
+    navigationItem.titleView = MarqueeLabel.textLabel(for: trip.tripName)
     navigationItem.title = trip.tripName
   }
 
@@ -46,16 +48,12 @@ final class TripDetailVC: ASDKViewController<ASTableNode> {
     tableNode.view.showsVerticalScrollIndicator = false
     tableNode.view.backgroundView = {
       let view = UIView(frame: tableNode.bounds)
-
       let loadingIndicator = UIActivityIndicatorView(style: .medium)
       loadingIndicator.startAnimating()
-
       view.addSubview(loadingIndicator)
-
       loadingIndicator.centerInSuperview()
       loadingIndicator.width(100)
       loadingIndicator.height(100)
-
       return view
     }()
   }
@@ -83,7 +81,7 @@ extension TripDetailVC: ASTableDataSource {
     let journey = journeys[indexPath.row]
 
     return {
-      return JourneyCellNode(journey: journey)
+      JourneyCellNode(journey: journey)
     }
   }
 }
@@ -96,13 +94,13 @@ extension TripDetailVC: ASTableDelegate {
 
     if let legs = journey.legs {
       if legs.count == 1 {
-        if let stops = legs[0].stopSequence {
+        if let stops = legs.first?.stopSequence {
           navigationController?.pushViewController(StopSequenceVC(stops: stops), animated: true)
         } else {
           navigationController?.pushViewController(JourneyDetailVC(legs: legs), animated: true)
         }
       } else {
-      navigationController?.pushViewController(JourneyDetailVC(legs: legs), animated: true)
+        navigationController?.pushViewController(JourneyDetailVC(legs: legs), animated: true)
       }
     }
   }
