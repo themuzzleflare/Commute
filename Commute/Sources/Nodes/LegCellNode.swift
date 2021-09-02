@@ -4,13 +4,13 @@ import TfNSW
 
 final class LegCellNode: ASCellNode {
   private let relativeTimeDisplayNode = ASDisplayNode()
-  private let relativeTimeTextNode = ASTextNode2()
-  private let fromNameTextNode = ASTextNode2()
-  private let fromTimeTextNode = ASTextNode2()
-  private let durationTextNode = ASTextNode2()
-  private let toNameTextNode = ASTextNode2()
-  private let toTimeTextNode = ASTextNode2()
-  private let transportationNameTextNode = ASTextNode2()
+  private let relativeTimeTextNode = ASTextNode()
+  private let fromNameTextNode = ASTextNode()
+  private let fromTimeTextNode = ASTextNode()
+  private let durationTextNode = ASTextNode()
+  private let toNameTextNode = ASTextNode()
+  private let toTimeTextNode = ASTextNode()
+  private let transportationNameTextNode = ASTextNode()
 
   init(legs: [TripRequestResponseJourneyLeg], index: Int) {
     super.init()

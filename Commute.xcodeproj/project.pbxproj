@@ -14,6 +14,8 @@
 		7A26778726E0600900459C30 /* UIControl+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A26778626E0600900459C30 /* UIControl+Extension.swift */; };
 		7A26778926E063DC00459C30 /* NSAttributedString+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A26778826E063DC00459C30 /* NSAttributedString+Extension.swift */; };
 		7A26778B26E0A17400459C30 /* ASTextCellNode+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A26778A26E0A17400459C30 /* ASTextCellNode+Extension.swift */; };
+		7A26778D26E0B9A800459C30 /* UIAction+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A26778C26E0B9A800459C30 /* UIAction+Extension.swift */; };
+		7A26779026E0C8F400459C30 /* StationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A26778F26E0C8F400459C30 /* StationName.swift */; };
 		7A29279626CB430A005FD79B /* ShortcutType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A29279526CB430A005FD79B /* ShortcutType.swift */; };
 		7A2C18FC26AE6CB2005BF502 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2C18FB26AE6CB2005BF502 /* AppDelegate.swift */; };
 		7A2C190526AE6CB4005BF502 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A2C190426AE6CB4005BF502 /* Assets.xcassets */; };
@@ -101,6 +103,8 @@
 		7A26778626E0600900459C30 /* UIControl+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIControl+Extension.swift"; sourceTree = "<group>"; };
 		7A26778826E063DC00459C30 /* NSAttributedString+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Extension.swift"; sourceTree = "<group>"; };
 		7A26778A26E0A17400459C30 /* ASTextCellNode+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ASTextCellNode+Extension.swift"; sourceTree = "<group>"; };
+		7A26778C26E0B9A800459C30 /* UIAction+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAction+Extension.swift"; sourceTree = "<group>"; };
+		7A26778F26E0C8F400459C30 /* StationName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationName.swift; sourceTree = "<group>"; };
 		7A29279526CB430A005FD79B /* ShortcutType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutType.swift; sourceTree = "<group>"; };
 		7A2C18F826AE6CB2005BF502 /* Commute.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Commute.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A2C18FB26AE6CB2005BF502 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -220,6 +224,14 @@
 				7A09525B26CF952900938A50 /* cityrailBeep.wav */,
 			);
 			path = Sounds;
+			sourceTree = "<group>";
+		};
+		7A26778E26E0C8E200459C30 /* PropertyWrappers */ = {
+			isa = PBXGroup;
+			children = (
+				7A26778F26E0C8F400459C30 /* StationName.swift */,
+			);
+			path = PropertyWrappers;
 			sourceTree = "<group>";
 		};
 		7A2C18EF26AE6CB1005BF502 = {
@@ -349,6 +361,7 @@
 		7AC2B4EB26AE8419008DC5CF /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				7A26778E26E0C8E200459C30 /* PropertyWrappers */,
 				7ACC856E26B23F4B00F8F946 /* Extensions */,
 				7AC2B4D426AE733B008DC5CF /* Model */,
 			);
@@ -417,6 +430,7 @@
 				7A26778626E0600900459C30 /* UIControl+Extension.swift */,
 				7A26778826E063DC00459C30 /* NSAttributedString+Extension.swift */,
 				7A26778A26E0A17400459C30 /* ASTextCellNode+Extension.swift */,
+				7A26778C26E0B9A800459C30 /* UIAction+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -686,6 +700,7 @@
 				7AD1DDBE26AFABE00057BEF3 /* Commute.xcdatamodeld in Sources */,
 				7AFDA8E126DCE69B002AB73B /* SubtitleCell.swift in Sources */,
 				7AFDA8DE26DCDB49002AB73B /* Int+Extension.swift in Sources */,
+				7A26779026E0C8F400459C30 /* StationName.swift in Sources */,
 				7A09526026D0B53400938A50 /* CKContainerApplicationPermissionStatus+Extension.swift in Sources */,
 				7A7D6B1F26DF884500101CD9 /* UIFont+Extension.swift in Sources */,
 				7AC3FFCC26B38FCD00EEBBBD /* CKError+Extension.swift in Sources */,
@@ -719,6 +734,7 @@
 				7AD4E04526AFFEB0007960AD /* TripDetailVC.swift in Sources */,
 				7A7D6B1526DF6EF100101CD9 /* UIEdgeInsets+Extension.swift in Sources */,
 				7A473FEF26C88DD2004CAC5E /* StationDetailVC.swift in Sources */,
+				7A26778D26E0B9A800459C30 /* UIAction+Extension.swift in Sources */,
 				7A29279626CB430A005FD79B /* ShortcutType.swift in Sources */,
 				7AC2B4E026AE78C5008DC5CF /* TripsVC.swift in Sources */,
 				7ADFA39E26C9D19600F474DA /* SortedStations.swift in Sources */,

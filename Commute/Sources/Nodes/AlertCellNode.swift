@@ -3,8 +3,8 @@ import AsyncDisplayKit
 import SwiftDate
 
 final class AlertCellNode: ASCellNode {
-  private let headerTextNode = ASTextNode2()
-  private let activePeriodTextNode = ASTextNode2()
+  private let headerTextNode = ASTextNode()
+  private let activePeriodTextNode = ASTextNode()
 
   init(alert: TransitRealtime_Alert) {
     super.init()

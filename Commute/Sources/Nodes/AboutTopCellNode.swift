@@ -3,7 +3,7 @@ import AsyncDisplayKit
 
 final class AboutTopCellNode: ASCellNode {
   private let logoImageNode = ASImageNode()
-  private let labelTextNode = ASTextNode2()
+  private let labelTextNode = ASTextNode()
 
   override init() {
     super.init()

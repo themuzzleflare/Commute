@@ -4,13 +4,13 @@ import TfNSW
 
 final class JourneyCellNode: ASCellNode {
   private let relativeTimeDisplayNode = ASDisplayNode()
-  private let relativeTimeTextNode = ASTextNode2()
-  private let fromNameTextNode = ASTextNode2()
-  private let fromTimeTextNode = ASTextNode2()
-  private let totalDurationTextNode = ASTextNode2()
-  private let toNameTextNode = ASTextNode2()
-  private let toTimeTextNode = ASTextNode2()
-  private let transportationNamesTextNode = ASTextNode2()
+  private let relativeTimeTextNode = ASTextNode()
+  private let fromNameTextNode = ASTextNode()
+  private let fromTimeTextNode = ASTextNode()
+  private let totalDurationTextNode = ASTextNode()
+  private let toNameTextNode = ASTextNode()
+  private let toTimeTextNode = ASTextNode()
+  private let transportationNamesTextNode = ASTextNode()
 
   init(journey: TripRequestResponseJourney) {
     super.init()
@@ -117,6 +117,7 @@ final class JourneyCellNode: ASCellNode {
       sizingOptions: .minimumXY,
       child: relativeTimeTextNode
     )
+
     let overlaySpec = ASOverlayLayoutSpec(child: relativeTimeDisplayNode, overlay: textCentreSpec)
 
     let finalStack = ASStackLayoutSpec(

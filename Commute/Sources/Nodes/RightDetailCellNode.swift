@@ -2,8 +2,8 @@ import UIKit
 import AsyncDisplayKit
 
 final class RightDetailCellNode: ASCellNode {
-  private let leftTextNode = ASTextNode2()
-  private let rightTextNode = ASTextNode2()
+  private let leftTextNode = ASTextNode()
+  private let rightTextNode = ASTextNode()
 
   init(text: String, detailText: String) {
     super.init()

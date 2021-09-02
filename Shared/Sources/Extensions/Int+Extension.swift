@@ -1,12 +1,11 @@
 import Foundation
+import SwiftDate
 
 extension Int {
   var secondsToHoursMinutesSeconds: String {
-    let (hours, minutes, seconds) = (self / 3600, (self % 3600) / 60, (self % 3600) % 60)
-    var string = hours > 0 ? "\(hours) h" : ""
-    string = minutes > 0 ? string + " \(minutes) min" : string
-    string = seconds > 0 ? string + " \(seconds) sec" : string
-    return string
+    return self.seconds.timeInterval.toString {
+      $0.unitsStyle = .abbreviated
+    }
   }
 
   /// UInt(self).

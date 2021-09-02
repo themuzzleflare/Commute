@@ -2,8 +2,8 @@ import UIKit
 import AsyncDisplayKit
 
 final class SubtitleCellNode: ASCellNode {
-  private let topTextNode = ASTextNode2()
-  private let bottomTextNode = ASTextNode2()
+  private let topTextNode = ASTextNode()
+  private let bottomTextNode = ASTextNode()
 
   init(text: String, detailText: String) {
     super.init()

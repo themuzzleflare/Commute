@@ -12,7 +12,7 @@ struct Station: Identifiable {
   var stopId: String
 
   /// The `name` field.
-  var name: String
+  @StationName var name: String
 
   /// The `suburb` field.
   var suburb: String
