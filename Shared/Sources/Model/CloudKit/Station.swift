@@ -32,7 +32,7 @@ extension Station: Hashable {
 }
 
 extension Station {
-  /// `name`, with occurrunces of "Station" removed.
+  /// `station.name`, with occurrunces of "Station" removed.
   var shortName: String {
     return name.replacingOccurrences(of: " Station", with: "")
   }

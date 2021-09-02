@@ -1,6 +1,5 @@
 import UIKit
 import AsyncDisplayKit
-import Rswift
 
 final class AboutVC: ASDKViewController<ASTableNode> {
   private let tableNode = ASTableNode(style: .grouped)
@@ -22,7 +21,7 @@ final class AboutVC: ASDKViewController<ASTableNode> {
   private func configureNavigation() {
     navigationItem.title = "About"
     navigationItem.rightBarButtonItem = UIBarButtonItem(
-      image: R.image.gear(),
+      image: .gear,
       style: .plain,
       target: self,
       action: #selector(openSettings)

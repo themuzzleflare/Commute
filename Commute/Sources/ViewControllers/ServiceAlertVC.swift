@@ -28,7 +28,7 @@ final class ServiceAlertVC: ASViewController {
   }
 
   private func configureNavigation() {
-    navigationItem.titleView = MarqueeLabel.textLabel(for: alert.headerText.translation[0].text)
+    navigationItem.titleView = MarqueeLabel.textLabel(with: alert.headerText.translation[0].text)
     navigationItem.title = alert.headerText.translation[0].text
   }
 

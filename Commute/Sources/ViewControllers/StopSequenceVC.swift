@@ -63,6 +63,7 @@ extension StopSequenceVC: ASTableDataSource {
       text = stop.disassembledName ?? ""
     }
 
+    let subtitleCellNode = SubtitleCellNode(text: text, detailText: stop.departureTime?.toDate()?.toString(.time(.short)) ?? stop.arrivalTime?.toDate()?.toString(.time(.short)) ?? "")
     let stopsMapCellNode = StopsMapCellNode(self, stops: stopSequence)
 
     return {
@@ -70,7 +71,7 @@ extension StopSequenceVC: ASTableDataSource {
       case 0:
         return stopsMapCellNode
       case 1:
-        return SubtitleCellNode(text: text, detailText: stop.departureTime?.toDate()?.toString(.time(.short)) ?? stop.arrivalTime?.toDate()?.toString(.time(.short)) ?? "")
+        return subtitleCellNode
       default:
         fatalError("Unknown section")
       }

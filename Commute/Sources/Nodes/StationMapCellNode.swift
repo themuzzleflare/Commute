@@ -23,7 +23,7 @@ final class StationMapCellNode: ASCellNode {
 
     mapView.frame = bounds
     mapView.setCenter(station.location.coordinate, zoomLevel: 16.45, animated: false)
-    mapNode.style.preferredSize = CGSize(width: 300, height: 300)
+    mapNode.style.minHeight = ASDimension(unit: .points, value: 300)
   }
 
   override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {

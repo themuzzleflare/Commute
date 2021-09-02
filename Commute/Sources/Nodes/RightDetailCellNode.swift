@@ -1,10 +1,9 @@
 import UIKit
 import AsyncDisplayKit
-import Rswift
 
 final class RightDetailCellNode: ASCellNode {
-  private let leftTextNode = ASTextNode()
-  private let rightTextNode = ASTextNode()
+  private let leftTextNode = ASTextNode2()
+  private let rightTextNode = ASTextNode2()
 
   init(text: String, detailText: String) {
     super.init()
@@ -15,20 +14,13 @@ final class RightDetailCellNode: ASCellNode {
 
     leftTextNode.attributedText = NSAttributedString(
       string: text,
-      attributes: [
-        .font: R.font.newFrankMedium(size: UIFont.labelFontSize)!,
-        .foregroundColor: UIColor.label,
-        .paragraphStyle: NSParagraphStyle.leftAligned
-      ]
+      font: .newFrankMedium(size: UIFont.labelFontSize)
     )
 
     rightTextNode.attributedText = NSAttributedString(
       string: detailText,
-      attributes: [
-        .font: R.font.newFrankRegular(size: UIFont.labelFontSize)!,
-        .foregroundColor: UIColor.secondaryLabel,
-        .paragraphStyle: NSParagraphStyle.rightAligned
-      ]
+      colour: .secondaryLabel,
+      alignment: .rightAligned
     )
 
     rightTextNode.style.flexShrink = 1.0
@@ -47,6 +39,6 @@ final class RightDetailCellNode: ASCellNode {
       ]
     )
 
-    return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 13, left: 16, bottom: 13, right: 16), child: hStack)
+    return ASInsetLayoutSpec(insets: .cellNode, child: hStack)
   }
 }

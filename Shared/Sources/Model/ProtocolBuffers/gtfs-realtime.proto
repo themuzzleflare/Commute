@@ -637,28 +637,25 @@ message TranslatedString {
   extensions 1000 to 1999;
 }
 
+// The TfnswVehicleDescriptor extends the GTFS vehicle message to provide additional vehicle attribute information to the consuming application.
 message TfnswVehicleDescriptor {
-
-    // The TfnswVehicleDescriptor extends the GTFS vehicle message to provide additional vehicle attribute information to the consuming application
-
+  // Indicates the availability of air-conditioning on this vehicle.
   optional bool air_conditioned = 1 [default = false];
-    // Indicates the availability of air-conditioning on this vehicle
 
+  // Indicates the number of wheel chairs that can be accommodated on this vehicle.
   optional int32 wheelchair_accessible = 2 [default = 0];
-    // Indicates the number of wheel chairs that can be accommodated on this vehicle
 
+  // A the type of vehicle performing this trip.
   optional string vehicle_model = 3;
-    // A the type of vehicle performing this trip
 
+  // An indicator used to display the location of vehicles that will execute this upon completion of their current trip.
   optional bool performing_prior_trip = 4 [default = false];
-    // An indicator used to display the location of vehicles that will execute this upon completion of their current trip
 
+  // Used to pass ad-hoc temporary additional vehicle attribute information, for example Christmas buses.
   optional int32 special_vehicle_attributes = 5 [default = 0];
-    // Used to pass ad-hoc temporary additional vehicle attribute information, for example Christmas buses
 }
 
 extend transit_realtime.VehicleDescriptor {
-
+  // Assumes the TfNSW extension number will be 1999.
   optional TfnswVehicleDescriptor tfnsw_vehicle_descriptor = 1999;
-    // Assumes the TfNSW extension number will be 1999
 }

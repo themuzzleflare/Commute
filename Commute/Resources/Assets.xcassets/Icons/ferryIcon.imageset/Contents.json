@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "Ferry_Mode_Colour_Background_400x400.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

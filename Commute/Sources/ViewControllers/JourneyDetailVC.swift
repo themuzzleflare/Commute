@@ -4,6 +4,7 @@ import TfNSW
 
 final class JourneyDetailVC: ASDKViewController<ASTableNode> {
   private var legs: [TripRequestResponseJourneyLeg]
+
   private let tableNode = ASTableNode(style: .grouped)
 
   init(legs: [TripRequestResponseJourneyLeg]) {
@@ -38,8 +39,10 @@ extension JourneyDetailVC: ASTableDataSource {
   }
 
   func tableNode(_ tableNode: ASTableNode, nodeBlockForRowAt indexPath: IndexPath) -> ASCellNodeBlock {
+    let cellNode = LegCellNode(legs: self.legs, index: indexPath.row)
+
     return {
-      LegCellNode(legs: self.legs, index: indexPath.row)
+      cellNode
     }
   }
 }

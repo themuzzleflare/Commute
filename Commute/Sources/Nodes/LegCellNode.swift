@@ -1,17 +1,16 @@
 import UIKit
 import AsyncDisplayKit
-import Rswift
 import TfNSW
 
 final class LegCellNode: ASCellNode {
   private let relativeTimeDisplayNode = ASDisplayNode()
-  private let relativeTimeTextNode = ASTextNode()
-  private let fromNameTextNode = ASTextNode()
-  private let fromTimeTextNode = ASTextNode()
-  private let durationTextNode = ASTextNode()
-  private let toNameTextNode = ASTextNode()
-  private let toTimeTextNode = ASTextNode()
-  private let transportationNameTextNode = ASTextNode()
+  private let relativeTimeTextNode = ASTextNode2()
+  private let fromNameTextNode = ASTextNode2()
+  private let fromTimeTextNode = ASTextNode2()
+  private let durationTextNode = ASTextNode2()
+  private let toNameTextNode = ASTextNode2()
+  private let toTimeTextNode = ASTextNode2()
+  private let transportationNameTextNode = ASTextNode2()
 
   init(legs: [TripRequestResponseJourneyLeg], index: Int) {
     super.init()
@@ -23,75 +22,48 @@ final class LegCellNode: ASCellNode {
     relativeTimeDisplayNode.backgroundColor = leg.colour
     relativeTimeDisplayNode.style.preferredSize = CGSize(width: 80, height: 120)
 
-    let relativeTimeText: String
-
-    if index == 0 {
-      relativeTimeText = leg.relativeDepartureTime ?? ""
-    } else {
-      relativeTimeText = leg.relativeWaitTime(for: legs[index - 1]) ?? ""
-    }
-
     relativeTimeTextNode.attributedText = NSAttributedString(
-      string: relativeTimeText,
-      attributes: [
-        .font: R.font.newFrankRegular(size: UIFont.systemFontSize)!,
-        .foregroundColor: UIColor.white,
-        .paragraphStyle: NSParagraphStyle.centreAligned
-      ]
+      string: index == 0 ? leg.relativeDepartureTime : leg.relativeWaitTime(for: legs[index - 1]),
+      font: .newFrankRegular(size: UIFont.systemFontSize),
+      colour: .white,
+      alignment: .centreAligned
     )
 
     fromNameTextNode.attributedText = NSAttributedString(
-      string: leg.fromName ?? "",
-      attributes: [
-        .font: R.font.newFrankRegular(size: UIFont.smallSystemFontSize)!,
-        .foregroundColor: UIColor.secondaryLabel,
-        .paragraphStyle: NSParagraphStyle.leftAligned
-      ]
+      string: leg.fromName,
+      font: .newFrankRegular(size: UIFont.smallSystemFontSize),
+      colour: .secondaryLabel
     )
 
     fromTimeTextNode.attributedText = NSAttributedString(
-      string: leg.fromTime ?? "",
-      attributes: [
-        .font: R.font.newFrankBold(size: UIFont.labelFontSize)!,
-        .foregroundColor: UIColor.label,
-        .paragraphStyle: NSParagraphStyle.leftAligned
-      ]
+      string: leg.fromTime,
+      font: .newFrankBold(size: UIFont.labelFontSize)
     )
 
     durationTextNode.attributedText = NSAttributedString(
       string: leg.durationText,
-      attributes: [
-        .font: R.font.newFrankRegular(size: UIFont.smallSystemFontSize)!,
-        .foregroundColor: UIColor.secondaryLabel,
-        .paragraphStyle: NSParagraphStyle.leftAligned
-      ]
+      font: .newFrankRegular(size: UIFont.smallSystemFontSize),
+      colour: .secondaryLabel
     )
 
     toNameTextNode.attributedText = NSAttributedString(
-      string: leg.toName ?? "",
-      attributes: [
-        .font: R.font.newFrankRegular(size: UIFont.smallSystemFontSize)!,
-        .foregroundColor: UIColor.secondaryLabel,
-        .paragraphStyle: NSParagraphStyle.rightAligned
-      ]
+      string: leg.toName,
+      font: .newFrankRegular(size: UIFont.smallSystemFontSize),
+      colour: .secondaryLabel,
+      alignment: .rightAligned
     )
 
     toTimeTextNode.attributedText = NSAttributedString(
-      string: leg.toTime ?? "",
-      attributes: [
-        .font: R.font.newFrankBold(size: UIFont.labelFontSize)!,
-        .foregroundColor: UIColor.label,
-        .paragraphStyle: NSParagraphStyle.rightAligned
-      ]
+      string: leg.toTime,
+      font: .newFrankBold(size: UIFont.labelFontSize),
+      alignment: .rightAligned
     )
 
     transportationNameTextNode.attributedText = NSAttributedString(
-      string: leg.isWheelchairAccessible ?? false ? "\(leg.transportationName ?? "") ♿️" : leg.transportationName ?? "",
-      attributes: [
-        .font: R.font.newFrankRegular(size: UIFont.smallSystemFontSize)!,
-        .foregroundColor: UIColor.secondaryLabel,
-        .paragraphStyle: NSParagraphStyle.rightAligned
-      ]
+      string: leg.isWheelchairAccessible ?? false ? "\(leg.transportationName ?? "") ♿️" : leg.transportationName,
+      font: .newFrankRegular(size: UIFont.smallSystemFontSize),
+      colour: .secondaryLabel,
+      alignment: .rightAligned
     )
   }
 
@@ -137,12 +109,17 @@ final class LegCellNode: ASCellNode {
       ]
     )
 
-    let insetStack = ASInsetLayoutSpec(insets: UIEdgeInsets(top: 13, left: 16, bottom: 13, right: 16), child: hStack)
+    let insetStack = ASInsetLayoutSpec(insets: .cellNode, child: hStack)
 
     insetStack.style.flexShrink = 1.0
     insetStack.style.flexGrow = 1.0
 
-    let textCentreSpec = ASCenterLayoutSpec(centeringOptions: .XY, sizingOptions: .minimumXY, child: relativeTimeTextNode)
+    let textCentreSpec = ASCenterLayoutSpec(
+      centeringOptions: .XY,
+      sizingOptions: .minimumXY,
+      child: relativeTimeTextNode
+    )
+
     let overlaySpec = ASOverlayLayoutSpec(child: relativeTimeDisplayNode, overlay: textCentreSpec)
 
     let finalStack = ASStackLayoutSpec(

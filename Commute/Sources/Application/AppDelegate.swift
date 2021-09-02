@@ -2,7 +2,6 @@ import UIKit
 import CoreData
 import SwiftDate
 import AlamofireNetworkActivityIndicator
-import Rswift
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   private func registerDefaults() {
     do {
-      let settingsData = try Data(contentsOf: R.file.settingsBundle()!.appendingPathComponent("Root.plist"))
+      let settingsData = try Data(contentsOf: .settingsBundle.appendingPathComponent("Root.plist"))
       let settingsPlist = try PropertyListSerialization.propertyList(from: settingsData, format: nil) as? [String: Any]
       let settingsPreferences = settingsPlist?["PreferenceSpecifiers"] as? [[String: Any]]
       var defaults = [String: Any]()

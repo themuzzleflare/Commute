@@ -9,10 +9,9 @@ final class TripDetailVC: ASDKViewController<ASTableNode> {
 
   private var trip: Trip
 
-  private var journeys: [TripRequestResponseJourney] = [] {
+  private var journeys = [TripRequestResponseJourney]() {
     didSet {
       tableNode.reloadData()
-      tableNode.view.refreshControl?.endRefreshing()
       if tableNode.view.backgroundView != nil { tableNode.view.backgroundView = nil }
     }
   }
@@ -38,7 +37,7 @@ final class TripDetailVC: ASDKViewController<ASTableNode> {
   }
 
   private func configureNavigation() {
-    navigationItem.titleView = MarqueeLabel.textLabel(for: trip.tripName)
+    navigationItem.titleView = MarqueeLabel.textLabel(with: trip.tripName)
     navigationItem.title = trip.tripName
   }
 
@@ -48,12 +47,9 @@ final class TripDetailVC: ASDKViewController<ASTableNode> {
     tableNode.view.showsVerticalScrollIndicator = false
     tableNode.view.backgroundView = {
       let view = UIView(frame: tableNode.bounds)
-      let loadingIndicator = UIActivityIndicatorView(style: .medium)
-      loadingIndicator.startAnimating()
+      let loadingIndicator = UIActivityIndicatorView.mediumAnimating
       view.addSubview(loadingIndicator)
       loadingIndicator.centerInSuperview()
-      loadingIndicator.width(100)
-      loadingIndicator.height(100)
       return view
     }()
   }
@@ -65,7 +61,7 @@ final class TripDetailVC: ASDKViewController<ASTableNode> {
         case .success(let journeys):
           self.journeys = journeys
         case .failure(let error):
-          print(error.localizedDescription)
+          print(error)
         }
       }
     }
@@ -79,9 +75,10 @@ extension TripDetailVC: ASTableDataSource {
 
   func tableNode(_ tableNode: ASTableNode, nodeBlockForRowAt indexPath: IndexPath) -> ASCellNodeBlock {
     let journey = journeys[indexPath.row]
+    let cellNode = JourneyCellNode(journey: journey)
 
     return {
-      JourneyCellNode(journey: journey)
+      cellNode
     }
   }
 }

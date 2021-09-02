@@ -1,10 +1,9 @@
 import UIKit
 import AsyncDisplayKit
-import Rswift
 
 final class SubtitleCellNode: ASCellNode {
-  private let topTextNode = ASTextNode()
-  private let bottomTextNode = ASTextNode()
+  private let topTextNode = ASTextNode2()
+  private let bottomTextNode = ASTextNode2()
 
   init(text: String, detailText: String) {
     super.init()
@@ -13,20 +12,13 @@ final class SubtitleCellNode: ASCellNode {
 
     topTextNode.attributedText = NSAttributedString(
       string: text,
-      attributes: [
-        .font: R.font.newFrankBold(size: UIFont.labelFontSize)!,
-        .foregroundColor: UIColor.label,
-        .paragraphStyle: NSParagraphStyle.leftAligned
-      ]
+      font: .newFrankBold(size: UIFont.labelFontSize)
     )
 
     bottomTextNode.attributedText = NSAttributedString(
       string: detailText,
-      attributes: [
-        .font: R.font.newFrankRegular(size: UIFont.smallSystemFontSize)!,
-        .foregroundColor: UIColor.secondaryLabel,
-        .paragraphStyle: NSParagraphStyle.leftAligned
-      ]
+      font: .newFrankRegular(size: UIFont.smallSystemFontSize),
+      colour: .secondaryLabel
     )
   }
 
@@ -36,9 +28,9 @@ final class SubtitleCellNode: ASCellNode {
       spacing: 0,
       justifyContent: .start,
       alignItems: .start,
-      children: (bottomTextNode.attributedText?.string.isEmpty)! ? [topTextNode] : [topTextNode, bottomTextNode]
+      children: bottomTextNode.attributedText!.string.isEmpty ? [topTextNode] : [topTextNode, bottomTextNode]
     )
 
-    return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 13, left: 16, bottom: 13, right: 16), child: hStack)
+    return ASInsetLayoutSpec(insets: .cellNode, child: hStack)
   }
 }

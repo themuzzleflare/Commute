@@ -1,5 +1,4 @@
 import UIKit
-import Rswift
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
   var window: UIWindow?
@@ -15,7 +14,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     let window = UIWindow(windowScene: windowScene)
 
-    window.tintColor = R.color.accentColor()
+    window.tintColor = .accentColor
     window.rootViewController = TabBarController()
     window.makeKeyAndVisible()
 

@@ -4,22 +4,22 @@ import UIKit
 extension NSParagraphStyle {
   /// A left-aligned paragraph style.
   static var leftAligned: NSParagraphStyle {
-    let ps = NSMutableParagraphStyle()
-    ps.alignment = .left
-    return ps
+    let paragraphStyle = NSMutableParagraphStyle()
+    paragraphStyle.alignment = .left
+    return paragraphStyle
   }
 
   /// A centre-aligned paragraph style.
   static var centreAligned: NSParagraphStyle {
-    let ps = NSMutableParagraphStyle()
-    ps.alignment = .center
-    return ps
+    let paragraphStyle = NSMutableParagraphStyle()
+    paragraphStyle.alignment = .center
+    return paragraphStyle
   }
 
   /// A right-aligned paragraph style.
   static var rightAligned: NSParagraphStyle {
-    let ps = NSMutableParagraphStyle()
-    ps.alignment = .right
-    return ps
+    let paragraphStyle = NSMutableParagraphStyle()
+    paragraphStyle.alignment = .right
+    return paragraphStyle
   }
 }

@@ -8,4 +8,9 @@ extension Int {
     string = seconds > 0 ? string + " \(seconds) sec" : string
     return string
   }
+
+  /// UInt(self).
+  var uInt: UInt {
+    return UInt(self)
+  }
 }

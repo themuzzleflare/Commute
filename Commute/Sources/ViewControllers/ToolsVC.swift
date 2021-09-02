@@ -1,7 +1,6 @@
 import UIKit
 import AsyncDisplayKit
 import PDFKit
-import Rswift
 
 final class ToolsVC: ASDKViewController<ASTableNode> {
   private let tableNode = ASTableNode(style: .grouped)
@@ -37,30 +36,12 @@ extension ToolsVC: ASTableDataSource {
   }
 
   func tableNode(_ tableNode: ASTableNode, nodeBlockForRowAt indexPath: IndexPath) -> ASCellNodeBlock {
-    let cell = ASTextCellNode(
-      attributes: [
-        NSAttributedString.Key.font: R.font.newFrankRegular(size: UIFont.labelFontSize)!,
-        NSAttributedString.Key.foregroundColor: UIColor.label,
-        NSAttributedString.Key.paragraphStyle: NSParagraphStyle.leftAligned
-      ],
-      insets: UIEdgeInsets(
-        top: 13,
-        left: 16,
-        bottom: 13,
-        right: 16
-      )
-    )
-
-    cell.accessoryType = .disclosureIndicator
-
     return {
       switch indexPath.row {
       case 0:
-        cell.text = "Sydney Rail Network Map"
-        return cell
+        return ASTextCellNode.cellNode(string: "Sydney Rail Network Map", accessoryType: .disclosureIndicator)
       case 1:
-        cell.text = "Service Information"
-        return cell
+        return ASTextCellNode.cellNode(string: "Service Information", accessoryType: .disclosureIndicator)
       default:
         fatalError("Unknown row")
       }
@@ -74,7 +55,7 @@ extension ToolsVC: ASTableDelegate {
 
     switch indexPath.row {
     case 0:
-      if let document = PDFDocument(url: R.file.sydneyRailNetworkPdf.url()!) {
+      if let document = PDFDocument(url: .sydneyRailNetworkPDF) {
         navigationController?.pushViewController(PDFVC(document: document), animated: true)
       }
     case 1:

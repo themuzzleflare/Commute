@@ -4,7 +4,7 @@ import Mapbox
 import TfNSW
 
 final class StopsMapCellNode: ASCellNode {
-  var stopSequenceVC: StopSequenceVC
+  private var stopSequenceViewController: StopSequenceVC
 
   private lazy var mapView: MGLMapView = {
     let mapView = MGLMapView(frame: .zero)
@@ -19,19 +19,23 @@ final class StopsMapCellNode: ASCellNode {
   }
 
   init(_ viewController: StopSequenceVC, stops: [TripRequestResponseJourneyLegStop]) {
-    self.stopSequenceVC = viewController
+    self.stopSequenceViewController = viewController
     super.init()
+
+    let coordinates = stops.compactMap { $0.location?.coordinate }
+    let polyine = MGLPolyline(coordinates: coordinates, count: coordinates.count.uInt)
 
     automaticallyManagesSubnodes = true
 
     selectionStyle = .none
 
-    let coordinates = stops.compactMap { $0.location?.coordinate }
-    let polyine = MGLPolyline(coordinates: coordinates, count: UInt(coordinates.count))
-
     mapView.frame = bounds
     mapView.addAnnotation(polyine)
-    mapView.setCenter(stops.first!.location!.coordinate, zoomLevel: 13.0, animated: false)
+
+    if let location = stops.first?.location {
+      mapView.setCenter(location.coordinate, zoomLevel: 13.0, animated: false)
+    }
+
     mapNode.style.minHeight = ASDimension(unit: .points, value: 300)
   }
 
@@ -42,13 +46,21 @@ final class StopsMapCellNode: ASCellNode {
 
 extension StopsMapCellNode: MGLMapViewDelegate {
   func mapViewDidFinishLoadingMap(_ mapView: MGLMapView) {
-    stopSequenceVC.delegate = self
+    stopSequenceViewController.delegate = self
   }
 }
 
 extension StopsMapCellNode: StopSequenceDelegate {
   func didSelectStop(_ stop: TripRequestResponseJourneyLegStop) {
-    let camera = MGLMapCamera(lookingAtCenter: stop.location!.coordinate, altitude: mapView.camera.altitude, pitch: mapView.camera.pitch, heading: mapView.camera.heading)
-    mapView.fly(to: camera)
+    if let location = stop.location {
+      let camera = MGLMapCamera(
+        lookingAtCenter: location.coordinate,
+        altitude: mapView.camera.altitude,
+        pitch: mapView.camera.pitch,
+        heading: mapView.camera.heading
+      )
+
+      mapView.fly(to: camera)
+    }
   }
 }

@@ -5,15 +5,14 @@ target 'Commute' do
   use_frameworks!
   
   pod 'TfNSW', :git => 'https://github.com/themuzzleflare/TfNSW.git'
+  pod 'SwiftProtobuf'
+  pod 'SwiftLint'
   pod 'SwiftDate'
   pod 'Alamofire'
   pod 'AlamofireNetworkActivityIndicator'
   pod 'Texture'
   pod 'TinyConstraints'
-  pod 'SwiftLint'
-  pod 'R.swift'
   pod 'Mapbox-iOS-SDK'
-  pod 'SwiftProtobuf'
   pod 'MarqueeLabel'
 
 end

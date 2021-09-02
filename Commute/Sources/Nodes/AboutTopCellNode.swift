@@ -1,10 +1,9 @@
 import UIKit
 import AsyncDisplayKit
-import Rswift
 
 final class AboutTopCellNode: ASCellNode {
-  private let logoNode = ASImageNode()
-  private let labelNode = ASTextNode()
+  private let logoImageNode = ASImageNode()
+  private let labelTextNode = ASTextNode2()
 
   override init() {
     super.init()
@@ -13,19 +12,16 @@ final class AboutTopCellNode: ASCellNode {
 
     selectionStyle = .none
 
-    logoNode.image = R.image.appLogo()
-    logoNode.forceUpscaling = true
-    logoNode.style.width = ASDimension(unit: .points, value: 150)
-    logoNode.style.height = ASDimension(unit: .points, value: 150)
-    logoNode.cornerRadius = 40
+    logoImageNode.image = .appLogo
+    logoImageNode.forceUpscaling = true
+    logoImageNode.style.width = ASDimension(unit: .points, value: 150)
+    logoImageNode.style.height = ASDimension(unit: .points, value: 150)
+    logoImageNode.cornerRadius = 40
 
-    labelNode.attributedText = NSAttributedString(
+    labelTextNode.attributedText = NSAttributedString(
       string: "Commute",
-      attributes: [
-        .font: R.font.newFrankBold(size: 32)!,
-        .foregroundColor: UIColor.label,
-        .paragraphStyle: NSParagraphStyle.centreAligned
-      ]
+      font: .newFrankBold(size: 32),
+      alignment: .centreAligned
     )
   }
 
@@ -36,11 +32,11 @@ final class AboutTopCellNode: ASCellNode {
       justifyContent: .center,
       alignItems: .center,
       children: [
-        logoNode,
-        labelNode
+        logoImageNode,
+        labelTextNode
       ]
     )
 
-    return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 13, left: 16, bottom: 13, right: 16), child: vStack)
+    return ASInsetLayoutSpec(insets: .cellNode, child: vStack)
   }
 }

@@ -2,7 +2,6 @@ import UIKit
 import AsyncDisplayKit
 import CloudKit
 import TinyConstraints
-import Rswift
 
 final class StationsVC: ASViewController {
   private enum Section {
@@ -11,23 +10,24 @@ final class StationsVC: ASViewController {
 
   private typealias Snapshot = NSDiffableDataSourceSnapshot<SortedStations, Station>
   private typealias ByDistanceSnapshot = NSDiffableDataSourceSnapshot<Section, Station>
+  private typealias ByDistanceDataSource = UITableViewDiffableDataSource<Section, Station>
 
   private lazy var dataSource = makeDataSource()
   private lazy var byDistanceDataSource = makeByDistanceDataSource()
 
   private lazy var searchController: UISearchController = {
-    let sc = UISearchController()
-    sc.searchBar.delegate = self
-    sc.obscuresBackgroundDuringPresentation = false
-    sc.searchBar.searchBarStyle = .minimal
-    return sc
+    let searchController = UISearchController()
+    searchController.searchBar.delegate = self
+    searchController.obscuresBackgroundDuringPresentation = false
+    searchController.searchBar.searchBarStyle = .minimal
+    return searchController
   }()
 
-  private lazy var segmentedControl = ASDisplayNode { () -> UIView in
-    let view = UISegmentedControl(items: ["By Name", "By Distance"])
-    view.selectedSegmentIndex = self.byName ? 0 : 1
-    view.addTarget(self, action: #selector(self.changedSelection(_:)), for: .valueChanged)
-    return view
+  private lazy var segmentedControl = ASDisplayNode { () -> UISegmentedControl in
+    let segmentedControl = UISegmentedControl(items: ["By Name", "By Distance"])
+    segmentedControl.selectedSegmentIndex = self.byName ? 0 : 1
+    segmentedControl.addTarget(self, action: #selector(self.changedSelection(_:)), for: .valueChanged)
+    return segmentedControl
   }
 
   private var byName: Bool = true {
@@ -44,22 +44,22 @@ final class StationsVC: ASViewController {
   private let tableView = UITableView(frame: .zero, style: .grouped)
   private let byDistanceTableView = UITableView(frame: .zero, style: .grouped)
 
-  private lazy var tableNode = ASDisplayNode { () -> UIView in
+  private lazy var tableNode = ASDisplayNode { () -> UITableView in
     return self.tableView
   }
 
-  private lazy var byDistanceTableNode = ASDisplayNode { () -> UIView in
+  private lazy var byDistanceTableNode = ASDisplayNode { () -> UITableView in
     return self.byDistanceTableView
   }
 
-  private var stations: [Station] = [] {
+  private var stations = [Station]() {
     didSet {
       noStations = stations.isEmpty
       applySnapshot()
     }
   }
 
-  private var byDistanceStations: [Station] = [] {
+  private var byDistanceStations = [Station]() {
     didSet {
       noByDistanceStations = byDistanceStations.isEmpty
       applyByDistanceSnapshot()
@@ -84,7 +84,7 @@ final class StationsVC: ASViewController {
     return groupedStations.sorted { $0.key < $1.key }
   }
 
-  private var sections: [SortedStations] = []
+  private var sections = [SortedStations]()
 
   // UITableViewDiffableDataSource
   private class DataSource: UITableViewDiffableDataSource<SortedStations, Station> {
@@ -103,9 +103,6 @@ final class StationsVC: ASViewController {
     override func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
       return parent.keys.map { $0.capitalized }.firstIndex(of: title)!
     }
-  }
-
-  private class ByDistanceDataSource: UITableViewDiffableDataSource<Section, Station> {
   }
 
   override init() {
@@ -131,8 +128,10 @@ final class StationsVC: ASViewController {
   override func viewDidLayoutSubviews() {
     super.viewDidLayoutSubviews()
     switch byName {
-    case true: tableNode.frame = displayNode.bounds
-    case false: byDistanceTableNode.frame = displayNode.bounds
+    case true:
+      tableNode.frame = displayNode.bounds
+    case false:
+      byDistanceTableNode.frame = displayNode.bounds
     }
   }
 
@@ -169,9 +168,12 @@ final class StationsVC: ASViewController {
 
   @objc private func changedSelection(_ segmentedControl: UISegmentedControl) {
     switch segmentedControl.selectedSegmentIndex {
-    case 0: byName = true
-    case 1: byName = false
-    default: break
+    case 0:
+      byName = true
+    case 1:
+      byName = false
+    default:
+      break
     }
   }
 
@@ -200,7 +202,7 @@ final class StationsVC: ASViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "stationCell", for: indexPath)
         cell.separatorInset = .zero
         cell.textLabel?.numberOfLines = 0
-        cell.textLabel?.font = R.font.newFrankRegular(size: UIFont.labelFontSize)
+        cell.textLabel?.font = .newFrankRegular(size: UIFont.labelFontSize)
         cell.textLabel?.text = station.shortName
         return cell
       }
@@ -220,9 +222,10 @@ final class StationsVC: ASViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "stationCell", for: indexPath) as! SubtitleCell
         cell.separatorInset = .zero
         cell.textLabel?.numberOfLines = 0
-        cell.textLabel?.font = R.font.newFrankRegular(size: UIFont.labelFontSize)
+        cell.textLabel?.font = .newFrankRegular(size: UIFont.labelFontSize)
         cell.textLabel?.text = station.shortName
         cell.detailTextLabel?.textColor = .secondaryLabel
+        cell.detailTextLabel?.font = .newFrankRegular(size: UIFont.smallSystemFontSize)
         cell.detailTextLabel?.text = "\(NumberFormatter.twoDecimalPlaces.string(from: station.location.distance(from: self.locationManager?.location ?? CLLocation()).kilometres.nsNumber) ?? "") km"
         return cell
       }
@@ -233,48 +236,24 @@ final class StationsVC: ASViewController {
 
   private func applySnapshot(animate: Bool = true) {
     sections = sortedStations.map { SortedStations(id: $0.key, stations: $0.value) }
-
     var snapshot = Snapshot()
-
     snapshot.appendSections(sections)
-
     sections.forEach { snapshot.appendItems($0.stations, toSection: $0) }
-
     if snapshot.itemIdentifiers.isEmpty && error == nil {
       if stations.isEmpty && !noStations {
         tableView.backgroundView = {
           let view = UIView(frame: tableView.bounds)
-
-          let loadingIndicator = UIActivityIndicatorView(style: .medium)
-          loadingIndicator.startAnimating()
-
+          let loadingIndicator = UIActivityIndicatorView.mediumAnimating
           view.addSubview(loadingIndicator)
-
           loadingIndicator.centerInSuperview()
-          loadingIndicator.width(100)
-          loadingIndicator.height(100)
-
           return view
         }()
       } else {
         tableView.backgroundView = {
           let view = UIView(frame: tableView.bounds)
-
-          let label = UILabel()
-
+          let label = UILabel.backgroundLabelTitle(with: searchController.searchBar.text!.isEmpty ? "No Stations" : "No Results")
           view.addSubview(label)
-
           label.centerInSuperview()
-          label.textAlignment = .center
-          label.textColor = .placeholderText
-          label.font = R.font.newFrankMedium(size: 32)
-
-          if searchController.searchBar.text!.isEmpty {
-            label.text = "No Stations"
-          } else {
-            label.text = "No Results"
-          }
-
           return view
         }()
       }
@@ -282,30 +261,12 @@ final class StationsVC: ASViewController {
       if let error = error {
         tableView.backgroundView = {
           let view = UIView(frame: tableView.bounds)
-
-          let titleLabel = UILabel()
-          let subtitleLabel = UILabel()
-
-          let vStack = UIStackView(arrangedSubviews: [titleLabel, subtitleLabel])
-
-          view.addSubview(vStack)
-
-          vStack.horizontalToSuperview(insets: .horizontal(16))
-          vStack.centerInSuperview()
-          vStack.axis = .vertical
-          vStack.alignment = .center
-
-          titleLabel.textAlignment = .center
-          titleLabel.textColor = .placeholderText
-          titleLabel.font = R.font.newFrankMedium(size: 32)
-          titleLabel.text = error.title
-
-          subtitleLabel.textAlignment = .center
-          subtitleLabel.textColor = .placeholderText
-          subtitleLabel.font = R.font.newFrankRegular(size: UIFont.labelFontSize)
-          subtitleLabel.numberOfLines = 0
-          subtitleLabel.text = error.description
-
+          let titleLabel = UILabel.backgroundLabelTitle(with: error.title)
+          let descriptionLabel = UILabel.backgroundLabelDescription(with: error.description)
+          let stackView = UIStackView.backgroundStack(for: [titleLabel, descriptionLabel])
+          view.addSubview(stackView)
+          stackView.horizontalToSuperview(insets: .horizontal(16))
+          stackView.centerInSuperview()
           return view
         }()
       } else {
@@ -316,23 +277,14 @@ final class StationsVC: ASViewController {
     dataSource.apply(snapshot, animatingDifferences: animate)
   }
 
-  @objc private func buttonPressed() {
-    UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
-  }
-
   private func applyByDistanceSnapshot(animate: Bool = true) {
     var snapshot = ByDistanceSnapshot()
-
     snapshot.appendSections([.main])
-
     snapshot.appendItems(byDistanceStations)
-
     if CLLocationManager.authorizationStatus() != .authorizedWhenInUse {
       byDistanceTableView.backgroundView = {
         let view = UIView(frame: byDistanceTableView.bounds)
-        let button = UIButton(type: .roundedRect)
-        button.setTitle("Enable Location Services", for: .normal)
-        button.addTarget(self, action: #selector(buttonPressed), for: .touchDown)
+        let button = UIButton.locationServicesButton
         view.addSubview(button)
         button.centerInSuperview()
         return view
@@ -342,37 +294,17 @@ final class StationsVC: ASViewController {
         if byDistanceStations.isEmpty && !noByDistanceStations {
           byDistanceTableView.backgroundView = {
             let view = UIView(frame: byDistanceTableView.bounds)
-
-            let loadingIndicator = UIActivityIndicatorView(style: .medium)
-            loadingIndicator.startAnimating()
-
+            let loadingIndicator = UIActivityIndicatorView.mediumAnimating
             view.addSubview(loadingIndicator)
-
             loadingIndicator.centerInSuperview()
-            loadingIndicator.width(100)
-            loadingIndicator.height(100)
-
             return view
           }()
         } else {
           byDistanceTableView.backgroundView = {
             let view = UIView(frame: byDistanceTableView.bounds)
-
-            let label = UILabel()
-
+            let label = UILabel.backgroundLabelTitle(with: searchController.searchBar.text!.isEmpty ? "No Stations" : "No Results")
             view.addSubview(label)
-
             label.centerInSuperview()
-            label.textAlignment = .center
-            label.textColor = .placeholderText
-            label.font = R.font.newFrankMedium(size: 32)
-
-            if searchController.searchBar.text!.isEmpty {
-              label.text = "No Stations"
-            } else {
-              label.text = "No Results"
-            }
-
             return view
           }()
         }
@@ -380,30 +312,12 @@ final class StationsVC: ASViewController {
         if let error = byDistanceError {
           byDistanceTableView.backgroundView = {
             let view = UIView(frame: byDistanceTableView.bounds)
-
-            let titleLabel = UILabel()
-            let subtitleLabel = UILabel()
-
-            let vStack = UIStackView(arrangedSubviews: [titleLabel, subtitleLabel])
-
-            view.addSubview(vStack)
-
-            vStack.horizontalToSuperview(insets: .horizontal(16))
-            vStack.centerInSuperview()
-            vStack.axis = .vertical
-            vStack.alignment = .center
-
-            titleLabel.textAlignment = .center
-            titleLabel.textColor = .placeholderText
-            titleLabel.font = R.font.newFrankMedium(size: 32)
-            titleLabel.text = error.title
-
-            subtitleLabel.textAlignment = .center
-            subtitleLabel.textColor = .placeholderText
-            subtitleLabel.font = R.font.newFrankRegular(size: UIFont.labelFontSize)
-            subtitleLabel.numberOfLines = 0
-            subtitleLabel.text = error.description
-
+            let titleLabel = UILabel.backgroundLabelTitle(with: error.title)
+            let subtitleLabel = UILabel.backgroundLabelDescription(with: error.description)
+            let stackView = UIStackView.backgroundStack(for: [titleLabel, subtitleLabel])
+            view.addSubview(stackView)
+            stackView.horizontalToSuperview(insets: .horizontal(16))
+            stackView.centerInSuperview()
             return view
           }()
         } else {
@@ -411,7 +325,6 @@ final class StationsVC: ASViewController {
         }
       }
     }
-
     byDistanceDataSource.apply(snapshot, animatingDifferences: animate)
   }
 
@@ -432,6 +345,7 @@ final class StationsVC: ASViewController {
         }
       }
     }
+
     CKFacade.searchStation(searchString: searchController.searchBar.text, currentLocation: locationManager?.location) { (result) in
       DispatchQueue.main.async {
         switch result {

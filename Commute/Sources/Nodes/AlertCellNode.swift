@@ -1,38 +1,30 @@
 import UIKit
 import AsyncDisplayKit
 import SwiftDate
-import Rswift
 
 final class AlertCellNode: ASCellNode {
-  private let headerTextNode = ASTextNode()
-  private let activePeriodTextNode = ASTextNode()
+  private let headerTextNode = ASTextNode2()
+  private let activePeriodTextNode = ASTextNode2()
 
   init(alert: TransitRealtime_Alert) {
     super.init()
+
+    let fromDate = Date(seconds: TimeInterval(alert.activePeriod[0].start))
+    let toDate = Date(seconds: TimeInterval(alert.activePeriod[0].end))
 
     automaticallyManagesSubnodes = true
 
     accessoryType = .disclosureIndicator
 
     headerTextNode.attributedText = NSAttributedString(
-      string: alert.headerText.translation[0].text,
-      attributes: [
-        .font: R.font.newFrankBold(size: UIFont.labelFontSize)!,
-        .foregroundColor: UIColor.label,
-        .paragraphStyle: NSParagraphStyle.leftAligned
-      ]
+      string: alert.headerText.translation.first?.text,
+      font: .newFrankBold(size: UIFont.labelFontSize)
     )
-
-    let fromDate = Date(seconds: TimeInterval(alert.activePeriod[0].start))
-    let toDate = Date(seconds: TimeInterval(alert.activePeriod[0].end))
 
     activePeriodTextNode.attributedText = NSAttributedString(
       string: "\(fromDate.toString(.date(.medium))) to \(toDate.toString(.date(.medium)))",
-      attributes: [
-        .font: R.font.newFrankRegular(size: UIFont.smallSystemFontSize)!,
-        .foregroundColor: UIColor.secondaryLabel,
-        .paragraphStyle: NSParagraphStyle.leftAligned
-      ]
+      font: .newFrankRegular(size: UIFont.smallSystemFontSize),
+      colour: .secondaryLabel
     )
   }
 
@@ -50,6 +42,6 @@ final class AlertCellNode: ASCellNode {
 
     hStack.style.minHeight = ASDimension(unit: .points, value: 80)
 
-    return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 13, left: 16, bottom: 13, right: 16), child: hStack)
+    return ASInsetLayoutSpec(insets: .cellNode, child: hStack)
   }
 }

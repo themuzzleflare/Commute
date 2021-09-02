@@ -1,16 +1,15 @@
 import UIKit
 import AsyncDisplayKit
 import TinyConstraints
-import Rswift
 
 final class TripsVC: ASViewController {
   private let tableView = UITableView(frame: .zero, style: .grouped)
 
-  private lazy var tableNode = ASDisplayNode { () -> UIView in
+  private lazy var tableNode = ASDisplayNode { () -> UITableView in
     return self.tableView
   }
 
-  private var trips: [Trip] = Trip.fetchAll() {
+  private var trips = [Trip]() {
     didSet {
       applySnapshot()
     }
@@ -76,7 +75,6 @@ final class TripsVC: ASViewController {
 
         do {
           try AppDelegate.viewContext.save()
-
           parent.fetchTrips()
         } catch {
           DispatchQueue.main.async {
@@ -86,7 +84,8 @@ final class TripsVC: ASViewController {
             self.parent.present(ac, animated: true)
           }
         }
-      default: break
+      default:
+        break
       }
     }
   }
@@ -173,7 +172,7 @@ final class TripsVC: ASViewController {
         cell.accessoryType = .disclosureIndicator
         cell.separatorInset = .zero
         cell.textLabel?.numberOfLines = 0
-        cell.textLabel?.font = R.font.newFrankRegular(size: UIFont.labelFontSize)
+        cell.textLabel?.font = .newFrankRegular(size: UIFont.labelFontSize)
         cell.textLabel?.text = trip.tripName
         return cell
       }
@@ -185,56 +184,28 @@ final class TripsVC: ASViewController {
   private func applySnapshot(animate: Bool = true) {
     DispatchQueue.main.async { [self] in
       var snapshot = Snapshot()
-
       snapshot.appendSections([.main])
       snapshot.appendItems(filteredTrips)
-
       if snapshot.itemIdentifiers.isEmpty {
         if trips.isEmpty {
           if isEditing { setEditing(false, animated: true) }
           if editBarButtonItem.isEnabled { editBarButtonItem.isEnabled = false }
           tableView.backgroundView = {
             let view = UIView(frame: tableView.bounds)
-
-            let titleLabel = UILabel()
-            let subtitleLabel = UILabel()
-
-            let vStack = UIStackView(arrangedSubviews: [titleLabel, subtitleLabel])
-
-            view.addSubview(vStack)
-
-            vStack.horizontalToSuperview(insets: .horizontal(16))
-            vStack.centerInSuperview()
-            vStack.axis = .vertical
-            vStack.alignment = .center
-
-            titleLabel.textAlignment = .center
-            titleLabel.textColor = .placeholderText
-            titleLabel.font = R.font.newFrankMedium(size: 32)
-            titleLabel.text = "No Trips"
-
-            subtitleLabel.textAlignment = .center
-            subtitleLabel.textColor = .placeholderText
-            subtitleLabel.font = R.font.newFrankRegular(size: UIFont.labelFontSize)
-            subtitleLabel.numberOfLines = 0
-            subtitleLabel.text = "To get started, tap the plus button to add a trip."
-
+            let titleLabel = UILabel.backgroundLabelTitle(with: "No Trips")
+            let descriptionLabel = UILabel.backgroundLabelDescription(with: "To get started, tap the plus button to add a trip.")
+            let stackView = UIStackView.backgroundStack(for: [titleLabel, descriptionLabel])
+            view.addSubview(stackView)
+            stackView.horizontalToSuperview(insets: .horizontal(16))
+            stackView.centerInSuperview()
             return view
           }()
         } else {
           tableView.backgroundView = {
             let view = UIView(frame: tableView.bounds)
-
-            let titleLabel = UILabel()
-
+            let titleLabel = UILabel.backgroundLabelTitle(with: "No Results")
             view.addSubview(titleLabel)
-
             titleLabel.centerInSuperview()
-            titleLabel.textAlignment = .center
-            titleLabel.textColor = .placeholderText
-            titleLabel.font = R.font.newFrankMedium(size: 32)
-            titleLabel.text = "No Results"
-
             return view
           }()
         }

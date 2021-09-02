@@ -1477,12 +1477,13 @@ struct TransitRealtime_TranslatedString: SwiftProtobuf.ExtensibleMessage {
   var _protobuf_extensionFieldValues = SwiftProtobuf.ExtensionFieldValueSet()
 }
 
+/// The TfnswVehicleDescriptor extends the GTFS vehicle message to provide additional vehicle attribute information to the consuming application.
 struct TransitRealtime_TfnswVehicleDescriptor {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  /// Indicates the availability of air-conditioning on this vehicle
+  /// Indicates the availability of air-conditioning on this vehicle.
   var airConditioned: Bool {
     get {return _airConditioned ?? false}
     set {_airConditioned = newValue}
@@ -1492,7 +1493,7 @@ struct TransitRealtime_TfnswVehicleDescriptor {
   /// Clears the value of `airConditioned`. Subsequent reads from it will return its default value.
   mutating func clearAirConditioned() {self._airConditioned = nil}
 
-  /// Indicates the number of wheel chairs that can be accommodated on this vehicle
+  /// Indicates the number of wheel chairs that can be accommodated on this vehicle.
   var wheelchairAccessible: Int32 {
     get {return _wheelchairAccessible ?? 0}
     set {_wheelchairAccessible = newValue}
@@ -1502,7 +1503,7 @@ struct TransitRealtime_TfnswVehicleDescriptor {
   /// Clears the value of `wheelchairAccessible`. Subsequent reads from it will return its default value.
   mutating func clearWheelchairAccessible() {self._wheelchairAccessible = nil}
 
-  /// A the type of vehicle performing this trip
+  /// A the type of vehicle performing this trip.
   var vehicleModel: String {
     get {return _vehicleModel ?? String()}
     set {_vehicleModel = newValue}
@@ -1512,7 +1513,7 @@ struct TransitRealtime_TfnswVehicleDescriptor {
   /// Clears the value of `vehicleModel`. Subsequent reads from it will return its default value.
   mutating func clearVehicleModel() {self._vehicleModel = nil}
 
-  /// An indicator used to display the location of vehicles that will execute this upon completion of their current trip
+  /// An indicator used to display the location of vehicles that will execute this upon completion of their current trip.
   var performingPriorTrip: Bool {
     get {return _performingPriorTrip ?? false}
     set {_performingPriorTrip = newValue}
@@ -1522,7 +1523,7 @@ struct TransitRealtime_TfnswVehicleDescriptor {
   /// Clears the value of `performingPriorTrip`. Subsequent reads from it will return its default value.
   mutating func clearPerformingPriorTrip() {self._performingPriorTrip = nil}
 
-  /// Used to pass ad-hoc temporary additional vehicle attribute information, for example Christmas buses
+  /// Used to pass ad-hoc temporary additional vehicle attribute information, for example Christmas buses.
   var specialVehicleAttributes: Int32 {
     get {return _specialVehicleAttributes ?? 0}
     set {_specialVehicleAttributes = newValue}
@@ -1554,7 +1555,7 @@ struct TransitRealtime_TfnswVehicleDescriptor {
 
 extension TransitRealtime_VehicleDescriptor {
 
-  /// Assumes the TfNSW extension number will be 1999
+  /// Assumes the TfNSW extension number will be 1999.
   var TransitRealtime_tfnswVehicleDescriptor: TransitRealtime_TfnswVehicleDescriptor {
     get {return getExtensionValue(ext: TransitRealtime_Extensions_tfnsw_vehicle_descriptor) ?? TransitRealtime_TfnswVehicleDescriptor()}
     set {setExtensionValue(ext: TransitRealtime_Extensions_tfnsw_vehicle_descriptor, value: newValue)}
@@ -1586,7 +1587,7 @@ let TransitRealtime_Gtfs_u45Realtime_Extensions: SwiftProtobuf.SimpleExtensionMa
 // constructing a `SimpleExtensionMap`, otherwise, use the above _Extension Properties_
 // accessors for the extension fields on the messages directly.
 
-/// Assumes the TfNSW extension number will be 1999
+/// Assumes the TfNSW extension number will be 1999.
 let TransitRealtime_Extensions_tfnsw_vehicle_descriptor = SwiftProtobuf.MessageExtension<SwiftProtobuf.OptionalMessageExtensionField<TransitRealtime_TfnswVehicleDescriptor>, TransitRealtime_VehicleDescriptor>(
   _protobuf_fieldNumber: 1999,
   fieldName: "transit_realtime.tfnsw_vehicle_descriptor"
