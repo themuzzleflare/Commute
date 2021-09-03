@@ -1,6 +1,6 @@
+import CoreLocation
 import UIKit
 import AsyncDisplayKit
-import CoreLocation
 
 class ASViewController: ASDKViewController<ASDisplayNode> {
   let displayNode = ASDisplayNode()

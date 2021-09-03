@@ -1,13 +1,9 @@
 import UIKit
+import IGListKit
 import AsyncDisplayKit
-import TinyConstraints
 
-final class TripsVC: ASViewController {
-  private let tableView = UITableView(frame: .zero, style: .grouped)
-
-  private lazy var tableNode = ASDisplayNode { () -> UITableView in
-    return self.tableView
-  }
+final class TripsVC: ASDKViewController<ASTableNode> {
+  private let tableNode = ASTableNode(style: .grouped)
 
   private var trips = [Trip]() {
     didSet {
@@ -22,26 +18,12 @@ final class TripsVC: ASViewController {
     action: #selector(removeAllTrips)
   )
 
+  private var oldFilteredTrips = [Trip]()
+
   private var filteredTrips: [Trip] {
-    return trips.filter { (trip) in
-      switch searchController.searchBar.selectedScopeButtonIndex {
-      case 0:
-        return searchController.searchBar.text!.isEmpty || trip.fromName.localizedStandardContains(searchController.searchBar.text!)
-      case 1:
-        return searchController.searchBar.text!.isEmpty || trip.toName.localizedStandardContains(searchController.searchBar.text!)
-      default:
-        return searchController.searchBar.text!.isEmpty || trip.fromName.localizedStandardContains(searchController.searchBar.text!)
-      }
-    }
+    return trips.filtered(searchBar: searchController.searchBar)
   }
 
-  private enum Section {
-    case main
-  }
-
-  private typealias Snapshot = NSDiffableDataSourceSnapshot<Section, Trip>
-
-  private lazy var dataSource = makeDataSource()
   private lazy var editBarButtonItem = editButtonItem
 
   private lazy var addBarButtonItem = UIBarButtonItem(
@@ -50,49 +32,10 @@ final class TripsVC: ASViewController {
     action: #selector(openAddTrip)
   )
 
-  private lazy var searchController: UISearchController = {
-    let sc = UISearchController()
-    sc.searchBar.delegate = self
-    sc.obscuresBackgroundDuringPresentation = false
-    sc.searchBar.searchBarStyle = .minimal
-    sc.searchBar.scopeButtonTitles = ["Origin", "Destination"]
-    return sc
-  }()
-
-  private class DataSource: UITableViewDiffableDataSource<Section, Trip> {
-    weak var parent: TripsVC! = nil
-
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-      return true
-    }
-
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-      guard let trip = itemIdentifier(for: indexPath) else { return }
-
-      switch editingStyle {
-      case .delete:
-        AppDelegate.viewContext.delete(trip)
-
-        do {
-          try AppDelegate.viewContext.save()
-          parent.fetchTrips()
-        } catch {
-          DispatchQueue.main.async {
-            let ac = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
-            let cancelAction = UIAlertAction(title: "Dismiss", style: .default)
-            ac.addAction(cancelAction)
-            self.parent.present(ac, animated: true)
-          }
-        }
-      default:
-        break
-      }
-    }
-  }
+  private lazy var searchController = UISearchController.tripsSearchController(self)
 
   override init() {
-    super.init()
-    dataSource.parent = self
+    super.init(node: tableNode)
   }
 
   required init?(coder: NSCoder) {
@@ -101,17 +44,10 @@ final class TripsVC: ASViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    displayNode.addSubnode(tableNode)
     configureObserver()
     configureToolbar()
     configureNavigation()
-    configureTableView()
-    applySnapshot(animate: false)
-  }
-
-  override func viewDidLayoutSubviews() {
-    super.viewDidLayoutSubviews()
-    tableNode.frame = displayNode.bounds
+    configureTableNode()
   }
 
   override func viewWillAppear(_ animated: Bool) {
@@ -131,7 +67,7 @@ final class TripsVC: ASViewController {
 
   override func setEditing(_ editing: Bool, animated: Bool) {
     super.setEditing(editing, animated: animated)
-    tableView.setEditing(editing, animated: animated)
+    tableNode.view.setEditing(editing, animated: animated)
     addBarButtonItem.isEnabled = !editing
     navigationController?.setToolbarHidden(!editing, animated: true)
   }
@@ -157,64 +93,43 @@ final class TripsVC: ASViewController {
     definesPresentationContext = true
   }
 
-  private func configureTableView() {
-    tableView.dataSource = dataSource
-    tableView.delegate = self
-    tableView.register(UITableViewCell.self, forCellReuseIdentifier: "tripCell")
-    tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+  private func configureTableNode() {
+    tableNode.dataSource = self
+    tableNode.delegate = self
   }
 
-  private func makeDataSource() -> DataSource {
-    let ds = DataSource(
-      tableView: tableView,
-      cellProvider: { (tableView, indexPath, trip) in
-        let cell = tableView.dequeueReusableCell(withIdentifier: "tripCell", for: indexPath)
-        cell.accessoryType = .disclosureIndicator
-        cell.separatorInset = .zero
-        cell.textLabel?.numberOfLines = 0
-        cell.textLabel?.font = .newFrankRegular(size: UIFont.labelFontSize)
-        cell.textLabel?.text = trip.tripName
-        return cell
-      }
-    )
-    ds.defaultRowAnimation = .middle
-    return ds
-  }
-
-  private func applySnapshot(animate: Bool = true) {
+  private func applySnapshot() {
     DispatchQueue.main.async { [self] in
-      var snapshot = Snapshot()
-      snapshot.appendSections([.main])
-      snapshot.appendItems(filteredTrips)
-      if snapshot.itemIdentifiers.isEmpty {
+      if filteredTrips.isEmpty {
         if trips.isEmpty {
           if isEditing { setEditing(false, animated: true) }
           if editBarButtonItem.isEnabled { editBarButtonItem.isEnabled = false }
-          tableView.backgroundView = {
-            let view = UIView(frame: tableView.bounds)
-            let titleLabel = UILabel.backgroundLabelTitle(with: "No Trips")
-            let descriptionLabel = UILabel.backgroundLabelDescription(with: "To get started, tap the plus button to add a trip.")
-            let stackView = UIStackView.backgroundStack(for: [titleLabel, descriptionLabel])
-            view.addSubview(stackView)
-            stackView.horizontalToSuperview(insets: .horizontal(16))
-            stackView.centerInSuperview()
-            return view
-          }()
+          tableNode.view.backgroundView = .noTripsView(frame: tableNode.bounds)
         } else {
-          tableView.backgroundView = {
-            let view = UIView(frame: tableView.bounds)
-            let titleLabel = UILabel.backgroundLabelTitle(with: "No Results")
-            view.addSubview(titleLabel)
-            titleLabel.centerInSuperview()
-            return view
-          }()
+          tableNode.view.backgroundView = .noResultsView(frame: tableNode.bounds)
         }
       } else {
         if !editBarButtonItem.isEnabled { editBarButtonItem.isEnabled = true }
-        if tableView.backgroundView != nil { tableView.backgroundView = nil }
+        if tableNode.view.backgroundView != nil { tableNode.view.backgroundView = nil }
       }
 
-      dataSource.apply(snapshot, animatingDifferences: animate)
+      let results = ListDiffPaths(
+        fromSection: 0,
+        toSection: 0,
+        oldArray: oldFilteredTrips,
+        newArray: filteredTrips,
+        option: .equality
+      )
+
+      let batchUpdates = {
+        tableNode.deleteRows(at: results.deletes, with: .automatic)
+        tableNode.insertRows(at: results.inserts, with: .automatic)
+        tableNode.reloadRows(at: results.updates, with: .none)
+      }
+
+      tableNode.performBatchUpdates(batchUpdates, completion: { (_) in
+        oldFilteredTrips = filteredTrips
+      })
     }
   }
 
@@ -229,34 +144,61 @@ final class TripsVC: ASViewController {
   }
 
   @objc private func openAddTrip() {
-    let vc = NavigationController(rootViewController: AddTripOriginVC())
-    vc.modalPresentationStyle = .fullScreen
-    present(vc, animated: true)
+    let viewController = UIViewController.fullscreenPresentation(NavigationController(rootViewController: AddTripOriginVC()))
+    present(viewController, animated: true)
   }
 
   @objc private func removeAllTrips() {
-    let ac = UIAlertController(title: "Confirmation", message: "Are you sure you'd like to remove all saved trips? This cannot be undone.", preferredStyle: .actionSheet)
+    let alertController = UIAlertController(title: "Confirmation", message: "Are you sure you'd like to remove all saved trips? This cannot be undone.", preferredStyle: .actionSheet)
     let confirmAction = UIAlertAction(title: "Remove All", style: .destructive, handler: { (_) in
       Trip.deleteAll()
     })
-    let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-    ac.addAction(confirmAction)
-    ac.addAction(cancelAction)
-    present(ac, animated: true)
+    alertController.addAction(confirmAction)
+    alertController.addAction(.cancel)
+    present(alertController, animated: true)
   }
 }
 
-extension TripsVC: UITableViewDelegate {
-  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    return UITableView.automaticDimension
+extension TripsVC: ASTableDataSource {
+  func tableNode(_ tableNode: ASTableNode, numberOfRowsInSection section: Int) -> Int {
+    return filteredTrips.count
   }
 
-  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    tableView.deselectRow(at: indexPath, animated: true)
+  func tableNode(_ tableNode: ASTableNode, nodeBlockForRowAt indexPath: IndexPath) -> ASCellNodeBlock {
+    let trip = filteredTrips[indexPath.row]
 
-    if let trip = dataSource.itemIdentifier(for: indexPath) {
-      navigationController?.pushViewController(TripDetailVC(trip: trip), animated: true)
+    return {
+      ASTextCellNode(string: trip.tripName, accessoryType: .disclosureIndicator)
     }
+  }
+
+  func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    let trip = filteredTrips[indexPath.row]
+
+    switch editingStyle {
+    case .delete:
+      AppDelegate.viewContext.delete(trip)
+      do {
+        try AppDelegate.viewContext.save()
+      } catch {
+        DispatchQueue.main.async {
+          let alertController = UIAlertController.alertWithDismissButton(title: "Error", message: error.localizedDescription)
+          self.present(alertController, animated: true)
+        }
+      }
+    default:
+      break
+    }
+  }
+}
+
+extension TripsVC: ASTableDelegate {
+  func tableNode(_ tableNode: ASTableNode, didSelectRowAt indexPath: IndexPath) {
+    let trip = filteredTrips[indexPath.row]
+
+    tableNode.deselectRow(at: indexPath, animated: true)
+
+    navigationController?.pushViewController(TripDetailVC(trip: trip), animated: true)
   }
 }
 
@@ -267,7 +209,7 @@ extension TripsVC: UISearchBarDelegate {
 
   func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
     if !searchBar.text!.isEmpty {
-      searchBar.text = ""
+      searchBar.clear()
       applySnapshot()
     }
   }

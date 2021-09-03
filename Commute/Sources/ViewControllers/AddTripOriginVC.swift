@@ -1,7 +1,6 @@
+import CloudKit
 import UIKit
 import AsyncDisplayKit
-import CloudKit
-import TinyConstraints
 
 final class AddTripOriginVC: ASViewController {
   private enum Section {
@@ -15,13 +14,7 @@ final class AddTripOriginVC: ASViewController {
   private lazy var dataSource = makeDataSource()
   private lazy var byDistanceDataSource = makeByDistanceDataSource()
 
-  private lazy var searchController: UISearchController = {
-    let searchController = UISearchController()
-    searchController.searchBar.delegate = self
-    searchController.obscuresBackgroundDuringPresentation = false
-    searchController.searchBar.searchBarStyle = .minimal
-    return searchController
-  }()
+  private lazy var searchController = UISearchController.stationsSearchController(self)
 
   private lazy var segmentedControl = ASDisplayNode { () -> UISegmentedControl in
     let segmentedControl = UISegmentedControl(items: ["By Name", "By Distance"])
@@ -224,34 +217,13 @@ final class AddTripOriginVC: ASViewController {
     sections.forEach { snapshot.appendItems($0.stations, toSection: $0) }
     if snapshot.itemIdentifiers.isEmpty && error == nil {
       if stations.isEmpty && !noStations {
-        tableView.backgroundView = {
-          let view = UIView(frame: tableView.bounds)
-          let loadingIndicator = UIActivityIndicatorView.mediumAnimating
-          view.addSubview(loadingIndicator)
-          loadingIndicator.centerInSuperview()
-          return view
-        }()
+        tableView.backgroundView = .loadingView(frame: tableView.bounds)
       } else {
-        tableView.backgroundView = {
-          let view = UIView(frame: tableView.bounds)
-          let label = UILabel.backgroundLabelTitle(with: searchController.searchBar.text!.isEmpty ? "No Stations" : "No Results")
-          view.addSubview(label)
-          label.centerInSuperview()
-          return view
-        }()
+        tableView.backgroundView = .noStationsOrResultsView(for: searchController, frame: tableView.bounds)
       }
     } else {
       if let error = error {
-        tableView.backgroundView = {
-          let view = UIView(frame: tableView.bounds)
-          let titleLabel = UILabel.backgroundLabelTitle(with: error.title)
-          let descriptionLabel = UILabel.backgroundLabelDescription(with: error.description)
-          let stackView = UIStackView.backgroundStack(for: [titleLabel, descriptionLabel])
-          view.addSubview(stackView)
-          stackView.horizontalToSuperview(insets: .horizontal(16))
-          stackView.centerInSuperview()
-          return view
-        }()
+        tableView.backgroundView = .errorView(for: error, frame: tableView.bounds)
       } else {
         if tableView.backgroundView != nil { tableView.backgroundView = nil }
       }
@@ -259,53 +231,22 @@ final class AddTripOriginVC: ASViewController {
     dataSource.apply(snapshot, animatingDifferences: animate)
   }
 
-  func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-    fetchStations()
-  }
-
   private func applyByDistanceSnapshot(animate: Bool = true) {
     var snapshot = ByDistanceSnapshot()
     snapshot.appendSections([.main])
     snapshot.appendItems(byDistanceStations)
     if CLLocationManager.authorizationStatus() != .authorizedWhenInUse {
-      byDistanceTableView.backgroundView = {
-        let view = UIView(frame: byDistanceTableView.bounds)
-        let button = UIButton.locationServicesButton
-        view.addSubview(button)
-        button.centerInSuperview()
-        return view
-      }()
+      byDistanceTableView.backgroundView = .locationServicesView(frame: byDistanceTableView.bounds)
     } else {
       if snapshot.itemIdentifiers.isEmpty && byDistanceError == nil {
         if byDistanceStations.isEmpty && !noByDistanceStations {
-          byDistanceTableView.backgroundView = {
-            let view = UIView(frame: byDistanceTableView.bounds)
-            let loadingIndicator = UIActivityIndicatorView.mediumAnimating
-            view.addSubview(loadingIndicator)
-            loadingIndicator.centerInSuperview()
-            return view
-          }()
+          byDistanceTableView.backgroundView = .loadingView(frame: byDistanceTableView.bounds)
         } else {
-          byDistanceTableView.backgroundView = {
-            let view = UIView(frame: byDistanceTableView.bounds)
-            let label = UILabel.backgroundLabelTitle(with: searchController.searchBar.text!.isEmpty ? "No Stations" : "No Results")
-            view.addSubview(label)
-            label.centerInSuperview()
-            return view
-          }()
+          byDistanceTableView.backgroundView = .noStationsOrResultsView(for: searchController, frame: byDistanceTableView.bounds)
         }
       } else {
         if let error = byDistanceError {
-          byDistanceTableView.backgroundView = {
-            let view = UIView(frame: byDistanceTableView.bounds)
-            let titleLabel = UILabel.backgroundLabelTitle(with: error.title)
-            let descriptionLabel = UILabel.backgroundLabelDescription(with: error.description)
-            let stackView = UIStackView.backgroundStack(for: [titleLabel, descriptionLabel])
-            view.addSubview(stackView)
-            stackView.horizontalToSuperview(insets: .horizontal(16))
-            stackView.centerInSuperview()
-            return view
-          }()
+          byDistanceTableView.backgroundView = .errorView(for: error, frame: byDistanceTableView.bounds)
         } else {
           if byDistanceTableView.backgroundView != nil { byDistanceTableView.backgroundView = nil }
         }
@@ -324,10 +265,8 @@ final class AddTripOriginVC: ASViewController {
         case .failure(let error):
           self.error = error
           self.stations = []
-          let ac = UIAlertController(title: error.title, message: error.description, preferredStyle: .alert)
-          let cancelAction = UIAlertAction(title: "Dismiss", style: .default)
-          ac.addAction(cancelAction)
-          self.present(ac, animated: true)
+          let alertController = UIAlertController.errorAlertWithDismissButton(error: error)
+          self.present(alertController, animated: true)
         }
       }
     }
@@ -341,10 +280,8 @@ final class AddTripOriginVC: ASViewController {
         case .failure(let error):
           self.byDistanceError = error
           self.byDistanceStations = []
-          let ac = UIAlertController(title: error.title, message: error.description, preferredStyle: .alert)
-          let cancelAction = UIAlertAction(title: "Dismiss", style: .default)
-          ac.addAction(cancelAction)
-          self.present(ac, animated: true)
+          let alertController = UIAlertController.errorAlertWithDismissButton(error: error)
+          self.present(alertController, animated: true)
         }
       }
     }
@@ -381,8 +318,14 @@ extension AddTripOriginVC: UISearchBarDelegate {
 
   func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
     if !searchBar.text!.isEmpty {
-      searchBar.text = ""
+      searchBar.clear()
       fetchStations()
     }
+  }
+}
+
+extension AddTripOriginVC {
+  func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+    fetchStations()
   }
 }

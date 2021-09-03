@@ -1,8 +1,10 @@
 import Foundation
 
 struct SortedStations: Identifiable {
+  /// The letter by which the stations are sorted.
   var id: String
 
+  /// The sorted stations.
   var stations: [Station]
 
   init(id: String, stations: [Station]) {

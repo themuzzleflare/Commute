@@ -1,6 +1,6 @@
+import PDFKit
 import UIKit
 import AsyncDisplayKit
-import PDFKit
 
 final class ToolsVC: ASDKViewController<ASTableNode> {
   private let tableNode = ASTableNode(style: .grouped)
@@ -39,9 +39,9 @@ extension ToolsVC: ASTableDataSource {
     return {
       switch indexPath.row {
       case 0:
-        return ASTextCellNode.cellNode(string: "Sydney Rail Network Map", accessoryType: .disclosureIndicator)
+        return ASTextCellNode(string: "Sydney Rail Network Map", accessoryType: .disclosureIndicator)
       case 1:
-        return ASTextCellNode.cellNode(string: "Service Information", accessoryType: .disclosureIndicator)
+        return ASTextCellNode(string: "Service Information", accessoryType: .disclosureIndicator)
       default:
         fatalError("Unknown row")
       }

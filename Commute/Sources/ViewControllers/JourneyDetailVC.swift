@@ -1,6 +1,6 @@
+import TfNSW
 import UIKit
 import AsyncDisplayKit
-import TfNSW
 
 final class JourneyDetailVC: ASDKViewController<ASTableNode> {
   private var legs: [TripRequestResponseJourneyLeg]

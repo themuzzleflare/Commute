@@ -33,7 +33,9 @@ final class AboutVC: ASDKViewController<ASTableNode> {
   }
 
   @objc private func openSettings() {
-    UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+    if UIApplication.shared.canOpenURL(.settingsApp) {
+      UIApplication.shared.open(.settingsApp)
+    }
   }
 }
 

@@ -45,7 +45,8 @@ final class ServiceInformationVC: ASDKViewController<ASTableNode> {
         case .success(let feed):
           self.alerts = feed.entity
         case .failure(let error):
-          print(error.localizedDescription)
+          let alertController = UIAlertController.alertWithDismissButton(title: "Error", message: error.localizedDescription)
+          self.present(alertController, animated: true)
         }
       }
     }

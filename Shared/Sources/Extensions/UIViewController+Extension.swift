@@ -41,4 +41,10 @@ extension UIViewController {
     )
     return viewController
   }
+
+  static func fullscreenPresentation(_ viewController: UIViewController) -> UIViewController {
+    let controller = viewController
+    controller.modalPresentationStyle = .fullScreen
+    return controller
+  }
 }

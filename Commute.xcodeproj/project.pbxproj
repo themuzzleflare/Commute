@@ -10,6 +10,11 @@
 		7A09525C26CF952900938A50 /* cityrailBeep.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7A09525B26CF952900938A50 /* cityrailBeep.wav */; };
 		7A09525E26D0B01A00938A50 /* CKAccountStatus+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A09525D26D0B01A00938A50 /* CKAccountStatus+Extension.swift */; };
 		7A09526026D0B53400938A50 /* CKContainerApplicationPermissionStatus+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A09525F26D0B53400938A50 /* CKContainerApplicationPermissionStatus+Extension.swift */; };
+		7A1C033426E1B8E300B3587B /* UIAlertController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1C033326E1B8E300B3587B /* UIAlertController+Extension.swift */; };
+		7A1C033626E1B9B900B3587B /* UIAlertAction+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1C033526E1B9B900B3587B /* UIAlertAction+Extension.swift */; };
+		7A1C033826E1C23600B3587B /* UISearchBar+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1C033726E1C23600B3587B /* UISearchBar+Extension.swift */; };
+		7A1C033C26E203CC00B3587B /* TripsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1C033B26E203CC00B3587B /* TripsVC.swift */; };
+		7A1C033E26E217F400B3587B /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1C033D26E217F400B3587B /* Array+Extensions.swift */; };
 		7A26778126E0535100459C30 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A26778026E0535100459C30 /* UIButton+Extension.swift */; };
 		7A26778726E0600900459C30 /* UIControl+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A26778626E0600900459C30 /* UIControl+Extension.swift */; };
 		7A26778926E063DC00459C30 /* NSAttributedString+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A26778826E063DC00459C30 /* NSAttributedString+Extension.swift */; };
@@ -40,9 +45,12 @@
 		7A7D6B2126DF885200101CD9 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7D6B2026DF885200101CD9 /* UIColor+Extension.swift */; };
 		7A7D6B2326DF885A00101CD9 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7D6B2226DF885A00101CD9 /* UIImage+Extension.swift */; };
 		7A7D6B2526DF8DFA00101CD9 /* URL+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7D6B2426DF8DFA00101CD9 /* URL+Extension.swift */; };
+		7AB79CE826E193FB0034CA22 /* CopyableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB79CE726E193FB0034CA22 /* CopyableLabel.swift */; };
+		7AB79CEA26E1A3600034CA22 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB79CE926E1A3600034CA22 /* UIView+Extension.swift */; };
+		7AB79CEC26E1A9320034CA22 /* UISearchController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB79CEB26E1A9320034CA22 /* UISearchController+Extension.swift */; };
+		7AB79CEE26E1AE970034CA22 /* DecodingError+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB79CED26E1AE970034CA22 /* DecodingError+Extension.swift */; };
 		7AC2B4D826AE7876008DC5CF /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC2B4D726AE7876008DC5CF /* TabBarController.swift */; };
 		7AC2B4DC26AE7898008DC5CF /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC2B4DB26AE7898008DC5CF /* NavigationController.swift */; };
-		7AC2B4E026AE78C5008DC5CF /* TripsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC2B4DF26AE78C5008DC5CF /* TripsVC.swift */; };
 		7AC2B4E226AE78D0008DC5CF /* AboutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC2B4E126AE78D0008DC5CF /* AboutVC.swift */; };
 		7AC2B4E726AE80DF008DC5CF /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AC2B4E626AE80DF008DC5CF /* CloudKit.framework */; };
 		7AC2B4E926AE812E008DC5CF /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7AC2B4E826AE812E008DC5CF /* Settings.bundle */; };
@@ -99,6 +107,11 @@
 		7A09525B26CF952900938A50 /* cityrailBeep.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = cityrailBeep.wav; sourceTree = "<group>"; };
 		7A09525D26D0B01A00938A50 /* CKAccountStatus+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CKAccountStatus+Extension.swift"; sourceTree = "<group>"; };
 		7A09525F26D0B53400938A50 /* CKContainerApplicationPermissionStatus+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CKContainerApplicationPermissionStatus+Extension.swift"; sourceTree = "<group>"; };
+		7A1C033326E1B8E300B3587B /* UIAlertController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extension.swift"; sourceTree = "<group>"; };
+		7A1C033526E1B9B900B3587B /* UIAlertAction+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertAction+Extension.swift"; sourceTree = "<group>"; };
+		7A1C033726E1C23600B3587B /* UISearchBar+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISearchBar+Extension.swift"; sourceTree = "<group>"; };
+		7A1C033B26E203CC00B3587B /* TripsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripsVC.swift; sourceTree = "<group>"; };
+		7A1C033D26E217F400B3587B /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		7A26778026E0535100459C30 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		7A26778626E0600900459C30 /* UIControl+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIControl+Extension.swift"; sourceTree = "<group>"; };
 		7A26778826E063DC00459C30 /* NSAttributedString+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Extension.swift"; sourceTree = "<group>"; };
@@ -134,10 +147,13 @@
 		7A7D6B2026DF885200101CD9 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		7A7D6B2226DF885A00101CD9 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		7A7D6B2426DF8DFA00101CD9 /* URL+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extension.swift"; sourceTree = "<group>"; };
+		7AB79CE726E193FB0034CA22 /* CopyableLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyableLabel.swift; sourceTree = "<group>"; };
+		7AB79CE926E1A3600034CA22 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		7AB79CEB26E1A9320034CA22 /* UISearchController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISearchController+Extension.swift"; sourceTree = "<group>"; };
+		7AB79CED26E1AE970034CA22 /* DecodingError+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DecodingError+Extension.swift"; sourceTree = "<group>"; };
 		7AC2B4D026AE70FB008DC5CF /* Commute.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Commute.entitlements; sourceTree = "<group>"; };
 		7AC2B4D726AE7876008DC5CF /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		7AC2B4DB26AE7898008DC5CF /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
-		7AC2B4DF26AE78C5008DC5CF /* TripsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripsVC.swift; sourceTree = "<group>"; };
 		7AC2B4E126AE78D0008DC5CF /* AboutVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutVC.swift; sourceTree = "<group>"; };
 		7AC2B4E626AE80DF008DC5CF /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		7AC2B4E826AE812E008DC5CF /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
@@ -299,6 +315,14 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		7AB79CE626E193ED0034CA22 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7AB79CE726E193FB0034CA22 /* CopyableLabel.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		7AC2B4D326AE7333008DC5CF /* Shared */ = {
 			isa = PBXGroup;
 			children = (
@@ -337,6 +361,7 @@
 			isa = PBXGroup;
 			children = (
 				7AFDA8CA26DC713C002AB73B /* Application */,
+				7AB79CE626E193ED0034CA22 /* Views */,
 				7A7D6B0D26DF27AD00101CD9 /* Protocols */,
 				7AFDA8DF26DCE68C002AB73B /* TableViewCells */,
 				7ACC856526B16AE200F8F946 /* Nodes */,
@@ -431,6 +456,13 @@
 				7A26778826E063DC00459C30 /* NSAttributedString+Extension.swift */,
 				7A26778A26E0A17400459C30 /* ASTextCellNode+Extension.swift */,
 				7A26778C26E0B9A800459C30 /* UIAction+Extension.swift */,
+				7AB79CE926E1A3600034CA22 /* UIView+Extension.swift */,
+				7AB79CEB26E1A9320034CA22 /* UISearchController+Extension.swift */,
+				7AB79CED26E1AE970034CA22 /* DecodingError+Extension.swift */,
+				7A1C033326E1B8E300B3587B /* UIAlertController+Extension.swift */,
+				7A1C033526E1B9B900B3587B /* UIAlertAction+Extension.swift */,
+				7A1C033726E1C23600B3587B /* UISearchBar+Extension.swift */,
+				7A1C033D26E217F400B3587B /* Array+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -490,7 +522,7 @@
 		7AFDA8DC26DCCD40002AB73B /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				7AC2B4DF26AE78C5008DC5CF /* TripsVC.swift */,
+				7A1C033B26E203CC00B3587B /* TripsVC.swift */,
 				7AC2B4EF26AEA6C2008DC5CF /* AddTripOriginVC.swift */,
 				7AD1DDBA26AFAA2F0057BEF3 /* AddTripDestinationVC.swift */,
 				7AD4E04426AFFEB0007960AD /* TripDetailVC.swift */,
@@ -685,11 +717,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7AB79CEA26E1A3600034CA22 /* UIView+Extension.swift in Sources */,
 				7AD4E04726AFFECE007960AD /* APIFacade.swift in Sources */,
 				7AFDA8D226DC7313002AB73B /* LegCellNode.swift in Sources */,
 				7A7D6B1926DF73FD00101CD9 /* UILabel+Extension.swift in Sources */,
 				7A7D6B0C26DF21BF00101CD9 /* MGLStyle+Extension.swift in Sources */,
+				7AB79CEC26E1A9320034CA22 /* UISearchController+Extension.swift in Sources */,
 				7ACC856D26B23DE800F8F946 /* RightDetailCellNode.swift in Sources */,
+				7A1C033C26E203CC00B3587B /* TripsVC.swift in Sources */,
 				7A7D6B2526DF8DFA00101CD9 /* URL+Extension.swift in Sources */,
 				7A7D6B1B26DF75E600101CD9 /* UIStackView+Extension.swift in Sources */,
 				7AC2B4F026AEA6C2008DC5CF /* AddTripOriginVC.swift in Sources */,
@@ -698,6 +733,7 @@
 				7AF8783A26B4FB7000A81C3A /* ASViewController.swift in Sources */,
 				7A7D6B0226DDE71200101CD9 /* InfoPlist.swift in Sources */,
 				7AD1DDBE26AFABE00057BEF3 /* Commute.xcdatamodeld in Sources */,
+				7AB79CEE26E1AE970034CA22 /* DecodingError+Extension.swift in Sources */,
 				7AFDA8E126DCE69B002AB73B /* SubtitleCell.swift in Sources */,
 				7AFDA8DE26DCDB49002AB73B /* Int+Extension.swift in Sources */,
 				7A26779026E0C8F400459C30 /* StationName.swift in Sources */,
@@ -721,11 +757,13 @@
 				7AD1DDBB26AFAA2F0057BEF3 /* AddTripDestinationVC.swift in Sources */,
 				7AC3FFCA26B380A700EEBBBD /* Trip.swift in Sources */,
 				7A2C18FC26AE6CB2005BF502 /* AppDelegate.swift in Sources */,
+				7A1C033426E1B8E300B3587B /* UIAlertController+Extension.swift in Sources */,
 				7AC2B4F426AEA750008DC5CF /* Station.swift in Sources */,
 				7A473FED26C88CE2004CAC5E /* StationsVC.swift in Sources */,
 				7AC2B4D826AE7876008DC5CF /* TabBarController.swift in Sources */,
 				7A7D6B1726DF733900101CD9 /* UIActivityIndicatorView+Extension.swift in Sources */,
 				7ACC857226B25C7B00F8F946 /* SubtitleCellNode.swift in Sources */,
+				7A1C033826E1C23600B3587B /* UISearchBar+Extension.swift in Sources */,
 				7A7D6B0826DEF97100101CD9 /* MarqueeLabel+Extension.swift in Sources */,
 				7A77B9BA26B929E100712639 /* SceneDelegate.swift in Sources */,
 				7A7D6B2126DF885200101CD9 /* UIColor+Extension.swift in Sources */,
@@ -736,16 +774,18 @@
 				7A473FEF26C88DD2004CAC5E /* StationDetailVC.swift in Sources */,
 				7A26778D26E0B9A800459C30 /* UIAction+Extension.swift in Sources */,
 				7A29279626CB430A005FD79B /* ShortcutType.swift in Sources */,
-				7AC2B4E026AE78C5008DC5CF /* TripsVC.swift in Sources */,
 				7ADFA39E26C9D19600F474DA /* SortedStations.swift in Sources */,
 				7AC2B4E226AE78D0008DC5CF /* AboutVC.swift in Sources */,
 				7A7D6B0026DDE68200101CD9 /* CKContainer+Extension.swift in Sources */,
+				7AB79CE826E193FB0034CA22 /* CopyableLabel.swift in Sources */,
 				7AFDA8D026DC72B3002AB73B /* ServiceInformationVC.swift in Sources */,
 				7A26778B26E0A17400459C30 /* ASTextCellNode+Extension.swift in Sources */,
 				7AE38BB326D1D7A10021679A /* CKDatabaseScope+Extension.swift in Sources */,
 				7A7D6B2326DF885A00101CD9 /* UIImage+Extension.swift in Sources */,
 				7AC2B4DC26AE7898008DC5CF /* NavigationController.swift in Sources */,
 				7ACC857026B23F5A00F8F946 /* UserDefaults+Extension.swift in Sources */,
+				7A1C033626E1B9B900B3587B /* UIAlertAction+Extension.swift in Sources */,
+				7A1C033E26E217F400B3587B /* Array+Extensions.swift in Sources */,
 				7AFDA8CE26DC729F002AB73B /* ServiceAlertVC.swift in Sources */,
 				7A7D6B0A26DF086900101CD9 /* StopsMapCellNode.swift in Sources */,
 				7AFDA8C926DC7062002AB73B /* gtfs-realtime.pb.swift in Sources */,

@@ -19,6 +19,15 @@ struct Station: Identifiable {
 
   /// The `location` field.
   var location: CLLocation
+
+  init(id: CKRecord.ID, globalId: String, stopId: String, name: String, suburb: String, location: CLLocation) {
+    self.id = id
+    self.globalId = globalId
+    self.stopId = stopId
+    self.name = name
+    self.suburb = suburb
+    self.location = location
+  }
 }
 
 extension Station: Hashable {

@@ -1,6 +1,7 @@
 import Foundation
 
 extension UserDefaults {
+  /// A `UserDefaults` instance for the application group.
   static var commute: UserDefaults {
     return UserDefaults(suiteName: "group.\(InfoPlist.cfBundleIdentifier)") ?? .standard
   }

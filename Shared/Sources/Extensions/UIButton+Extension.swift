@@ -10,7 +10,9 @@ extension UIButton {
     } else {
       button = UIButton(type: .roundedRect)
       button.addAction {
-        UIApplication.shared.open(.settingsApp)
+        if UIApplication.shared.canOpenURL(.settingsApp) {
+          UIApplication.shared.open(.settingsApp)
+        }
       }
     }
 
@@ -23,6 +25,7 @@ extension UIButton {
       ),
       for: .normal
     )
+
     return button
   }
 }

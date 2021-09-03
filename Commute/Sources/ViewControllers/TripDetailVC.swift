@@ -1,8 +1,7 @@
+import TfNSW
 import UIKit
 import AsyncDisplayKit
 import MarqueeLabel
-import TinyConstraints
-import TfNSW
 
 final class TripDetailVC: ASDKViewController<ASTableNode> {
   private let tableNode = ASTableNode(style: .grouped)
@@ -45,13 +44,7 @@ final class TripDetailVC: ASDKViewController<ASTableNode> {
     tableNode.dataSource = self
     tableNode.delegate = self
     tableNode.view.showsVerticalScrollIndicator = false
-    tableNode.view.backgroundView = {
-      let view = UIView(frame: tableNode.bounds)
-      let loadingIndicator = UIActivityIndicatorView.mediumAnimating
-      view.addSubview(loadingIndicator)
-      loadingIndicator.centerInSuperview()
-      return view
-    }()
+    tableNode.view.backgroundView = .loadingView(frame: tableNode.bounds)
   }
 
   private func fetchJourneys() {
@@ -61,7 +54,8 @@ final class TripDetailVC: ASDKViewController<ASTableNode> {
         case .success(let journeys):
           self.journeys = journeys
         case .failure(let error):
-          print(error)
+          let alertController = UIAlertController.alertWithDismissButton(title: "Error", message: error.localizedDescription)
+          self.present(alertController, animated: true)
         }
       }
     }

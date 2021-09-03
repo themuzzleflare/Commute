@@ -30,14 +30,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
   }
 
   func windowScene(_ windowScene: UIWindowScene, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
-    completionHandler(handleShortcutItem(shortcutItem: shortcutItem))
+    let handled = handleShortcutItem(shortcutItem: shortcutItem)
+    completionHandler(handled)
   }
 
   func sceneDidBecomeActive(_ scene: UIScene) {
     if savedShortcutItem != nil {
       _ = handleShortcutItem(shortcutItem: savedShortcutItem)
     }
-
     UIApplication.shared.applicationIconBadgeNumber = 0
   }
 
@@ -66,33 +66,39 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
   private func checkPermissionStatus() {
     CKFacade.checkPermissionStatus { (result) in
-      switch result {
-      case .success(let status):
-        switch status {
-        case .initialState:
-          self.requestPermission()
-        case .couldNotComplete:
-          break
-        case .denied:
-          self.requestPermission()
-        case .granted:
-          break
-        @unknown default:
-          self.requestPermission()
+      DispatchQueue.main.async {
+        switch result {
+        case .success(let status):
+          switch status {
+          case .initialState:
+            self.requestPermission()
+          case .couldNotComplete:
+            break
+          case .denied:
+            self.requestPermission()
+          case .granted:
+            break
+          @unknown default:
+            self.requestPermission()
+          }
+        case .failure(let error):
+          let alertController = UIAlertController.errorAlertWithDismissButton(error: error)
+          self.window?.rootViewController?.present(alertController, animated: true)
         }
-      case .failure(let error):
-        print("\(error.title): \(error.description)")
       }
     }
   }
 
   private func requestPermission() {
     CKFacade.requestDiscoverability { (result) in
-      switch result {
-      case .success(let status):
-        print("\(status.title): \(status.description)")
-      case .failure(let error):
-        print("\(error.title): \(error.description)")
+      DispatchQueue.main.async {
+        switch result {
+        case .success(let status):
+          print("\(status.title): \(status.description)")
+        case .failure(let error):
+          let alertController = UIAlertController.errorAlertWithDismissButton(error: error)
+          self.window?.rootViewController?.present(alertController, animated: true)
+        }
       }
     }
   }
@@ -105,7 +111,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
           print("\(status.title): \(status.description)")
           self.checkPermissionStatus()
         case .failure(let error):
-          print("\(error.title): \(error.description)")
+          let alertController = UIAlertController.errorAlertWithDismissButton(error: error)
+          self.window?.rootViewController?.present(alertController, animated: true)
         }
       }
     }
@@ -118,10 +125,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         case .success(let subscription):
           print("Successfully created subscription with ID: \(subscription.subscriptionID)")
         case .failure(let error):
-          let ac = UIAlertController(title: error.title, message: error.description, preferredStyle: .alert)
-          let dismissAction = UIAlertAction(title: "Dismiss", style: .default)
-          ac.addAction(dismissAction)
-          self.window?.rootViewController?.present(ac, animated: true)
+          let alertController = UIAlertController.errorAlertWithDismissButton(error: error)
+          self.window?.rootViewController?.present(alertController, animated: true)
         }
       }
     }
@@ -134,10 +139,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         case .success(let subscription):
           print("Successfully created subscription with ID: \(subscription.subscriptionID)")
         case .failure(let error):
-          let ac = UIAlertController(title: error.title, message: error.description, preferredStyle: .alert)
-          let dismissAction = UIAlertAction(title: "Dismiss", style: .default)
-          ac.addAction(dismissAction)
-          self.window?.rootViewController?.present(ac, animated: true)
+          let alertController = UIAlertController.errorAlertWithDismissButton(error: error)
+          self.window?.rootViewController?.present(alertController, animated: true)
         }
       }
     }

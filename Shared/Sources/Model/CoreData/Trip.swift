@@ -1,5 +1,6 @@
 import Foundation
 import CoreData
+import IGListKit
 
 final class Trip: NSManagedObject {
   static func fetchAll(viewContext: NSManagedObjectContext = AppDelegate.viewContext) -> [Trip] {
@@ -37,6 +38,17 @@ extension Trip {
 
 extension Trip: Identifiable {
   @NSManaged public var id: UUID
+}
+
+extension Trip: ListDiffable {
+  func diffIdentifier() -> NSObjectProtocol {
+    return id as NSObject
+  }
+
+  func isEqual(toDiffableObject object: ListDiffable?) -> Bool {
+    guard let object = object as? Trip else { return false }
+    return self.id == object.id
+  }
 }
 
 extension Trip {

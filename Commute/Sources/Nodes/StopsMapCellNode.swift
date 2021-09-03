@@ -1,7 +1,7 @@
+import TfNSW
 import UIKit
 import AsyncDisplayKit
 import Mapbox
-import TfNSW
 
 final class StopsMapCellNode: ASCellNode {
   private var stopSequenceViewController: StopSequenceVC
@@ -33,7 +33,7 @@ final class StopsMapCellNode: ASCellNode {
     mapView.addAnnotation(polyine)
 
     if let location = stops.first?.location {
-      mapView.setCenter(location.coordinate, zoomLevel: 13.0, animated: false)
+      mapView.setCenter(location.coordinate, zoomLevel: 16.45, animated: false)
     }
 
     mapNode.style.minHeight = ASDimension(unit: .points, value: 300)

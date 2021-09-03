@@ -1,7 +1,7 @@
-import UIKit
 import CoreData
 import SwiftDate
 import AlamofireNetworkActivityIndicator
+import UIKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {

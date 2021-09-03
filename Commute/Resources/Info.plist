@@ -50,23 +50,15 @@
 	<key>UIApplicationShortcutItems</key>
 	<array>
 		<dict>
-			<key>UIApplicationShortcutItemIconFile</key>
-			<string>info.circle</string>
+			<key>UIApplicationShortcutItemIconSymbolName</key>
+			<string>tram</string>
 			<key>UIApplicationShortcutItemTitle</key>
-			<string>About</string>
+			<string>Trips</string>
 			<key>UIApplicationShortcutItemType</key>
-			<string>aboutShortcut</string>
+			<string>tripsShortcut</string>
 		</dict>
 		<dict>
-			<key>UIApplicationShortcutItemIconFile</key>
-			<string>gearshape</string>
-			<key>UIApplicationShortcutItemTitle</key>
-			<string>Tools</string>
-			<key>UIApplicationShortcutItemType</key>
-			<string>toolsShortcut</string>
-		</dict>
-		<dict>
-			<key>UIApplicationShortcutItemIconFile</key>
+			<key>UIApplicationShortcutItemIconSymbolName</key>
 			<string>location</string>
 			<key>UIApplicationShortcutItemTitle</key>
 			<string>Stations</string>
@@ -74,12 +66,20 @@
 			<string>stationsShortcut</string>
 		</dict>
 		<dict>
-			<key>UIApplicationShortcutItemIconFile</key>
-			<string>tram</string>
+			<key>UIApplicationShortcutItemIconSymbolName</key>
+			<string>gearshape</string>
 			<key>UIApplicationShortcutItemTitle</key>
-			<string>Trips</string>
+			<string>Tools</string>
 			<key>UIApplicationShortcutItemType</key>
-			<string>tripsShortcut</string>
+			<string>toolsShortcut</string>
+		</dict>
+		<dict>
+			<key>UIApplicationShortcutItemIconSymbolName</key>
+			<string>info.circle</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>About</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>aboutShortcut</string>
 		</dict>
 	</array>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
