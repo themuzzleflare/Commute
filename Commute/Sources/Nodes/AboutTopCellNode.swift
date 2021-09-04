@@ -19,7 +19,7 @@ final class AboutTopCellNode: ASCellNode {
     logoImageNode.cornerRadius = 40
 
     labelTextNode.attributedText = NSAttributedString(
-      string: "Commute",
+      text: "Commute",
       font: .newFrankBold(size: 32),
       alignment: .centreAligned
     )

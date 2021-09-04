@@ -9,11 +9,6 @@
         <attribute name="toId" attributeType="String" defaultValueString=""/>
         <attribute name="toName" attributeType="String" defaultValueString=""/>
         <attribute name="toStopId" attributeType="String" defaultValueString=""/>
-        <fetchIndex name="Sorted">
-            <fetchIndexElement property="dateAdded" type="Binary" order="descending"/>
-            <fetchIndexElement property="fromName" type="Binary" order="ascending"/>
-            <fetchIndexElement property="toName" type="Binary" order="ascending"/>
-        </fetchIndex>
     </entity>
     <elements>
         <element name="Trip" positionX="850.356201171875" positionY="-1219.601348876953" width="257.175537109375" height="149"/>

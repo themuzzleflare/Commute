@@ -11,12 +11,12 @@ final class SubtitleCellNode: ASCellNode {
     automaticallyManagesSubnodes = true
 
     topTextNode.attributedText = NSAttributedString(
-      string: text,
+      text: text,
       font: .newFrankBold(size: UIFont.labelFontSize)
     )
 
     bottomTextNode.attributedText = NSAttributedString(
-      string: detailText,
+      text: detailText,
       font: .newFrankRegular(size: UIFont.smallSystemFontSize),
       colour: .secondaryLabel
     )

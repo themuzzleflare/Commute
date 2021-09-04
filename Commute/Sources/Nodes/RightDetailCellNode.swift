@@ -13,12 +13,12 @@ final class RightDetailCellNode: ASCellNode {
     selectionStyle = .none
 
     leftTextNode.attributedText = NSAttributedString(
-      string: text,
+      text: text,
       font: .newFrankMedium(size: UIFont.labelFontSize)
     )
 
     rightTextNode.attributedText = NSAttributedString(
-      string: detailText,
+      text: detailText,
       colour: .secondaryLabel,
       alignment: .rightAligned
     )

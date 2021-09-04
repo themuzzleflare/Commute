@@ -39,7 +39,7 @@ extension JourneyDetailVC: ASTableDataSource {
   }
 
   func tableNode(_ tableNode: ASTableNode, nodeBlockForRowAt indexPath: IndexPath) -> ASCellNodeBlock {
-    let cellNode = LegCellNode(legs: self.legs, index: indexPath.row)
+    let cellNode = LegCellNode(legs: legs, index: indexPath.row)
 
     return {
       cellNode

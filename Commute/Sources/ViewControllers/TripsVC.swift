@@ -11,18 +11,20 @@ final class TripsVC: ASDKViewController<ASTableNode> {
     }
   }
 
-  private lazy var removeAllBarButtonItem = UIBarButtonItem(
-    title: "Remove All",
-    style: .plain,
-    target: self,
-    action: #selector(removeAllTrips)
-  )
+  private lazy var searchController = UISearchController.tripsSearchController(self)
 
   private var oldFilteredTrips = [Trip]()
 
   private var filteredTrips: [Trip] {
     return trips.filtered(searchBar: searchController.searchBar)
   }
+
+  private lazy var removeAllBarButtonItem = UIBarButtonItem(
+    title: "Remove All",
+    style: .plain,
+    target: self,
+    action: #selector(removeAllTrips)
+  )
 
   private lazy var editBarButtonItem = editButtonItem
 
@@ -31,8 +33,6 @@ final class TripsVC: ASDKViewController<ASTableNode> {
     target: self,
     action: #selector(openAddTrip)
   )
-
-  private lazy var searchController = UISearchController.tripsSearchController(self)
 
   override init() {
     super.init(node: tableNode)
@@ -96,6 +96,7 @@ final class TripsVC: ASDKViewController<ASTableNode> {
   private func configureTableNode() {
     tableNode.dataSource = self
     tableNode.delegate = self
+    tableNode.view.showsVerticalScrollIndicator = false
   }
 
   private func applySnapshot() {
@@ -149,12 +150,7 @@ final class TripsVC: ASDKViewController<ASTableNode> {
   }
 
   @objc private func removeAllTrips() {
-    let alertController = UIAlertController(title: "Confirmation", message: "Are you sure you'd like to remove all saved trips? This cannot be undone.", preferredStyle: .actionSheet)
-    let confirmAction = UIAlertAction(title: "Remove All", style: .destructive, handler: { (_) in
-      Trip.deleteAll()
-    })
-    alertController.addAction(confirmAction)
-    alertController.addAction(.cancel)
+    let alertController = UIAlertController.removeAllTripsConfirmation
     present(alertController, animated: true)
   }
 }
@@ -168,7 +164,7 @@ extension TripsVC: ASTableDataSource {
     let trip = filteredTrips[indexPath.row]
 
     return {
-      ASTextCellNode(string: trip.tripName, accessoryType: .disclosureIndicator)
+      ASTextCellNode(text: trip.tripName, accessoryType: .disclosureIndicator)
     }
   }
 

@@ -10,8 +10,8 @@ struct APIFacade {
    Retrieve a list of suggested transportation journeys based on the provided origin and destination.
 
    - parameters:
-      - from: The `id` or `stopId` of the starting stop.
-      - to: The `id` or `stopId` of the finishing stop.
+   - from: The `id` or `stopId` of the starting stop.
+   - to: The `id` or `stopId` of the finishing stop.
    - returns: An array of `TripRequestResponseJourney` objects.
    - throws: An `Error` object.
 

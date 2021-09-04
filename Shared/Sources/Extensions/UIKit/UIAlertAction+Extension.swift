@@ -11,4 +11,10 @@ extension UIAlertAction {
   static var cancel: UIAlertAction {
     return UIAlertAction(title: "Cancel", style: .cancel)
   }
+
+  static var removeAllTrips: UIAlertAction {
+    return UIAlertAction(title: "Remove All", style: .destructive, handler: { (_) in
+      Trip.deleteAll()
+    })
+  }
 }

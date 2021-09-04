@@ -14,4 +14,11 @@ extension UIAlertController {
     alertController.addAction(.dismiss)
     return alertController
   }
+
+  static var removeAllTripsConfirmation: UIAlertController {
+    let alertController = UIAlertController(title: "Confirmation", message: "Are you sure you'd like to remove all saved trips? This cannot be undone.", preferredStyle: .actionSheet)
+    alertController.addAction(.removeAllTrips)
+    alertController.addAction(.cancel)
+    return alertController
+  }
 }

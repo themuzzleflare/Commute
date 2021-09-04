@@ -2,6 +2,7 @@ import Foundation
 import UIKit
 
 extension UIButton {
+  /// A button for enabling location services.
   static var locationServicesButton: UIButton {
     let button: UIButton
 
@@ -18,7 +19,7 @@ extension UIButton {
 
     button.setAttributedTitle(
       NSAttributedString(
-        string: "Enable Location Services",
+        text: "Enable Location Services",
         font: .newFrankRegular(size: UIFont.buttonFontSize),
         colour: .accentColor,
         alignment: .centreAligned

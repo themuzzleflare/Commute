@@ -35,9 +35,12 @@ class ASViewController: ASDKViewController<ASDisplayNode> {
 extension ASViewController: CLLocationManagerDelegate {
   func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
     switch status {
-    case .authorizedWhenInUse: manager.startUpdatingLocation()
-    case .authorizedAlways: manager.startUpdatingLocation()
-    default: break
+    case .authorizedWhenInUse:
+      manager.startUpdatingLocation()
+    case .authorizedAlways:
+      manager.startUpdatingLocation()
+    default:
+      break
     }
   }
 }

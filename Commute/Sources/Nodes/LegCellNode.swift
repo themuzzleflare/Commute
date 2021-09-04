@@ -23,44 +23,44 @@ final class LegCellNode: ASCellNode {
     relativeTimeDisplayNode.style.preferredSize = CGSize(width: 80, height: 120)
 
     relativeTimeTextNode.attributedText = NSAttributedString(
-      string: index == 0 ? leg.relativeDepartureTime : leg.relativeWaitTime(for: legs[index - 1]),
+      text: index == 0 ? leg.relativeDepartureTime : leg.relativeWaitTime(for: legs[index - 1]),
       font: .newFrankRegular(size: UIFont.systemFontSize),
       colour: .white,
       alignment: .centreAligned
     )
 
     fromNameTextNode.attributedText = NSAttributedString(
-      string: leg.fromName,
+      text: leg.fromName,
       font: .newFrankRegular(size: UIFont.smallSystemFontSize),
       colour: .secondaryLabel
     )
 
     fromTimeTextNode.attributedText = NSAttributedString(
-      string: leg.fromTime,
+      text: leg.fromTime,
       font: .newFrankBold(size: UIFont.labelFontSize)
     )
 
     durationTextNode.attributedText = NSAttributedString(
-      string: leg.durationText,
+      text: leg.durationText,
       font: .newFrankRegular(size: UIFont.smallSystemFontSize),
       colour: .secondaryLabel
     )
 
     toNameTextNode.attributedText = NSAttributedString(
-      string: leg.toName,
+      text: leg.toName,
       font: .newFrankRegular(size: UIFont.smallSystemFontSize),
       colour: .secondaryLabel,
       alignment: .rightAligned
     )
 
     toTimeTextNode.attributedText = NSAttributedString(
-      string: leg.toTime,
+      text: leg.toTime,
       font: .newFrankBold(size: UIFont.labelFontSize),
       alignment: .rightAligned
     )
 
     transportationNameTextNode.attributedText = NSAttributedString(
-      string: leg.isWheelchairAccessible ?? false ? "\(leg.transportationName ?? "") ♿️" : leg.transportationName,
+      text: leg.isWheelchairAccessible ?? false ? "\(leg.transportationName ?? "") ♿️" : leg.transportationName,
       font: .newFrankRegular(size: UIFont.smallSystemFontSize),
       colour: .secondaryLabel,
       alignment: .rightAligned

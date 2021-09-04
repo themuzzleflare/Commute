@@ -3,12 +3,12 @@ import MarqueeLabel
 
 extension MarqueeLabel {
   /// A `MarqueeLabel` with a `duration` of 8.0 and a `fadeLength` of 10.0.
-  static func textLabel(with string: String) -> MarqueeLabel {
+  static func textLabel(text: String) -> MarqueeLabel {
     let label = MarqueeLabel()
     label.speed = .duration(8.0)
     label.fadeLength = 10.0
     label.font = .boldSystemFont(ofSize: UIFont.labelFontSize)
-    label.text = string
+    label.text = text
     return label
   }
 }

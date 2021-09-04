@@ -21,44 +21,44 @@ final class JourneyCellNode: ASCellNode {
     relativeTimeDisplayNode.style.preferredSize = CGSize(width: 80, height: 120)
 
     relativeTimeTextNode.attributedText = NSAttributedString(
-      string: journey.relativeDepartureTime,
+      text: journey.relativeDepartureTime,
       font: .newFrankRegular(size: UIFont.systemFontSize),
       colour: .white,
       alignment: .centreAligned
     )
 
     fromNameTextNode.attributedText = NSAttributedString(
-      string: journey.fromName,
+      text: journey.fromName,
       font: .newFrankRegular(size: UIFont.smallSystemFontSize),
       colour: .secondaryLabel
     )
 
     fromTimeTextNode.attributedText = NSAttributedString(
-      string: journey.fromTime,
+      text: journey.fromTime,
       font: .newFrankBold(size: UIFont.labelFontSize)
     )
 
     totalDurationTextNode.attributedText = NSAttributedString(
-      string: journey.totalDurationText,
+      text: journey.totalDurationText,
       font: .newFrankRegular(size: UIFont.smallSystemFontSize),
       colour: .secondaryLabel
     )
 
     toNameTextNode.attributedText = NSAttributedString(
-      string: journey.toName,
+      text: journey.toName,
       font: .newFrankRegular(size: UIFont.smallSystemFontSize),
       colour: .secondaryLabel,
       alignment: .rightAligned
     )
 
     toTimeTextNode.attributedText = NSAttributedString(
-      string: journey.toTime,
+      text: journey.toTime,
       font: .newFrankBold(size: UIFont.labelFontSize),
       alignment: .rightAligned
     )
 
     transportationNamesTextNode.attributedText = NSAttributedString(
-      string: journey.transportationNames,
+      text: journey.transportationNames,
       font: .newFrankRegular(size: UIFont.smallSystemFontSize),
       colour: .secondaryLabel,
       alignment: .rightAligned

@@ -36,7 +36,7 @@ final class TripDetailVC: ASDKViewController<ASTableNode> {
   }
 
   private func configureNavigation() {
-    navigationItem.titleView = MarqueeLabel.textLabel(with: trip.tripName)
+    navigationItem.titleView = MarqueeLabel.textLabel(text: trip.tripName)
     navigationItem.title = trip.tripName
   }
 

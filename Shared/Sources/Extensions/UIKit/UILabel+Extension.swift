@@ -11,18 +11,18 @@ extension UILabel {
     self.text = text
   }
 
-  static func backgroundLabelTitle(with string: String) -> UILabel {
+  static func backgroundLabelTitle(text: String) -> UILabel {
     return UILabel(
-      text: string,
+      text: text,
       font: .newFrankMedium(size: 32),
       textColour: .placeholderText,
       textAlignment: .center
     )
   }
 
-  static func backgroundLabelDescription(with string: String) -> UILabel {
+  static func backgroundLabelDescription(text: String) -> UILabel {
     return UILabel(
-      text: string,
+      text: text,
       textColour: .placeholderText,
       textAlignment: .center,
       numberOfLines: 0

@@ -17,12 +17,12 @@ final class AlertCellNode: ASCellNode {
     accessoryType = .disclosureIndicator
 
     headerTextNode.attributedText = NSAttributedString(
-      string: alert.headerText.translation.first?.text,
+      text: alert.headerText.translation.first?.text,
       font: .newFrankBold(size: UIFont.labelFontSize)
     )
 
     activePeriodTextNode.attributedText = NSAttributedString(
-      string: "\(fromDate.toString(.date(.medium))) to \(toDate.toString(.date(.medium)))",
+      text: "\(fromDate.toString(.date(.medium))) to \(toDate.toString(.date(.medium)))",
       font: .newFrankRegular(size: UIFont.smallSystemFontSize),
       colour: .secondaryLabel
     )

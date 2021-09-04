@@ -38,17 +38,23 @@ extension StationDetailVC: ASTableDataSource {
 
   func tableNode(_ tableNode: ASTableNode, numberOfRowsInSection section: Int) -> Int {
     switch section {
-    case 0: return 1
-    case 1: return 4
-    default: fatalError("Unknown section")
+    case 0:
+      return 1
+    case 1:
+      return 4
+    default:
+      fatalError("Unknown section")
     }
   }
 
   func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
     switch section {
-    case 0: return "Location"
-    case 1: return "Details"
-    default: return nil
+    case 0:
+      return "Location"
+    case 1:
+      return "Details"
+    default:
+      return nil
     }
   }
 
@@ -62,11 +68,11 @@ extension StationDetailVC: ASTableDataSource {
       case 1:
         switch indexPath.row {
         case 0:
-          return RightDetailCellNode(text: "Name", detailText: self.station.name)
-        case 1:
           return RightDetailCellNode(text: "ID", detailText: self.station.globalId)
-        case 2:
+        case 1:
           return RightDetailCellNode(text: "Stop ID", detailText: self.station.stopId)
+        case 2:
+          return RightDetailCellNode(text: "Name", detailText: self.station.name)
         case 3:
           return RightDetailCellNode(text: "Suburb", detailText: self.station.suburb)
         default:

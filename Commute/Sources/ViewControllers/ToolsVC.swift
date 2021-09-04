@@ -39,9 +39,9 @@ extension ToolsVC: ASTableDataSource {
     return {
       switch indexPath.row {
       case 0:
-        return ASTextCellNode(string: "Sydney Rail Network Map", accessoryType: .disclosureIndicator)
+        return ASTextCellNode(text: "Sydney Rail Network Map", accessoryType: .disclosureIndicator)
       case 1:
-        return ASTextCellNode(string: "Service Information", accessoryType: .disclosureIndicator)
+        return ASTextCellNode(text: "Service Information", accessoryType: .disclosureIndicator)
       default:
         fatalError("Unknown row")
       }

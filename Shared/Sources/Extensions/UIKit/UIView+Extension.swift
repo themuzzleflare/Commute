@@ -6,8 +6,8 @@ import TinyConstraints
 extension UIView {
   static func noTripsView(frame: CGRect) -> UIView {
     let view = UIView(frame: frame)
-    let titleLabel = UILabel.backgroundLabelTitle(with: "No Trips")
-    let descriptionLabel = UILabel.backgroundLabelDescription(with: "To get started, tap the plus button to add a trip.")
+    let titleLabel = UILabel.backgroundLabelTitle(text: "No Trips")
+    let descriptionLabel = UILabel.backgroundLabelDescription(text: "To get started, tap the plus button to add a trip.")
     let stackView = UIStackView.backgroundStack(for: [titleLabel, descriptionLabel])
     view.addSubview(stackView)
     stackView.horizontalToSuperview(insets: .horizontal(16))
@@ -17,7 +17,7 @@ extension UIView {
 
   static func noResultsView(frame: CGRect) -> UIView {
     let view = UIView(frame: frame)
-    let titleLabel = UILabel.backgroundLabelTitle(with: "No Results")
+    let titleLabel = UILabel.backgroundLabelTitle(text: "No Results")
     view.addSubview(titleLabel)
     titleLabel.centerInSuperview()
     return view
@@ -33,7 +33,7 @@ extension UIView {
 
   static func noStationsOrResultsView(for searchController: UISearchController, frame: CGRect) -> UIView {
     let view = UIView(frame: frame)
-    let label = UILabel.backgroundLabelTitle(with: searchController.searchBar.text!.isEmpty ? "No Stations" : "No Results")
+    let label = UILabel.backgroundLabelTitle(text: searchController.searchBar.text!.isEmpty ? "No Stations" : "No Results")
     view.addSubview(label)
     label.centerInSuperview()
     return view
@@ -41,8 +41,8 @@ extension UIView {
 
   static func errorView(for error: CKError, frame: CGRect) -> UIView {
     let view = UIView(frame: frame)
-    let titleLabel = UILabel.backgroundLabelTitle(with: error.title)
-    let descriptionLabel = UILabel.backgroundLabelDescription(with: error.description)
+    let titleLabel = UILabel.backgroundLabelTitle(text: error.title)
+    let descriptionLabel = UILabel.backgroundLabelDescription(text: error.description)
     let stackView = UIStackView.backgroundStack(for: [titleLabel, descriptionLabel])
     view.addSubview(stackView)
     stackView.horizontalToSuperview(insets: .horizontal(16))
