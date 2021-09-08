@@ -61,4 +61,12 @@ extension UIImage {
   static var gear: UIImage {
     return UIImage(systemName: "gear")!
   }
+
+  static var trash: UIImage {
+    return UIImage(systemName: "trash")!
+  }
+
+  static var trashFill: UIImage {
+    return UIImage(systemName: "trash.fill")!
+  }
 }

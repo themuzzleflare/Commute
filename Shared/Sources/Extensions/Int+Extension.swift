@@ -10,7 +10,7 @@ extension Int {
     }
   }
 
-  /// UInt(self).
+  /// `UInt(self)`.
   var uInt: UInt {
     return UInt(self)
   }

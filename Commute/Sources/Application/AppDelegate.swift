@@ -1,6 +1,8 @@
 import CoreData
 import SwiftDate
 import AlamofireNetworkActivityIndicator
+import Firebase
+import FirebaseAppCheck
 import UIKit
 
 @main
@@ -9,6 +11,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     NetworkActivityIndicatorManager.shared.isEnabled = true
     SwiftDate.defaultRegion = .current
     registerDefaults()
+    AppCheck.setAppCheckProviderFactory(CommuteAppCheckProviderFactory())
+    FirebaseApp.configure()
     return true
   }
 
@@ -25,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
       }
 
-      UserDefaults.commute.register(defaults: defaults)
+      CommuteApp.appDefaults.register(defaults: defaults)
     } catch {
       fatalError("Registering defaults failed: \(error.localizedDescription)")
     }

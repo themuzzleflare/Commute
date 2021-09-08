@@ -2,7 +2,7 @@ import PDFKit
 import UIKit
 import AsyncDisplayKit
 
-final class ToolsVC: ASDKViewController<ASTableNode> {
+final class ToolsVC: ASViewController {
   private let tableNode = ASTableNode(style: .grouped)
 
   override init() {

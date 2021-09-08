@@ -8,6 +8,37 @@
 	<array>
 		<dict>
 			<key>Type</key>
+			<string>PSMultiValueSpecifier</string>
+			<key>Title</key>
+			<string>Station Sort</string>
+			<key>Key</key>
+			<string>stationSort</string>
+			<key>DefaultValue</key>
+			<integer>0</integer>
+			<key>Titles</key>
+			<array>
+				<string>By Name</string>
+				<string>By Distance</string>
+			</array>
+			<key>ShortTitles</key>
+			<array>
+				<string>Name</string>
+				<string>Distance</string>
+			</array>
+			<key>Values</key>
+			<array>
+				<integer>0</integer>
+				<integer>1</integer>
+			</array>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+			<key>Title</key>
+			<string>Diagnostics</string>
+		</dict>
+		<dict>
+			<key>Type</key>
 			<string>PSTitleValueSpecifier</string>
 			<key>Title</key>
 			<string>Version</string>

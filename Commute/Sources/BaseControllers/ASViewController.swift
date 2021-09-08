@@ -3,32 +3,21 @@ import UIKit
 import AsyncDisplayKit
 
 class ASViewController: ASDKViewController<ASDisplayNode> {
-  let displayNode = ASDisplayNode()
-
-  var locationManager: CLLocationManager?
-
-  override init() {
-    super.init(node: displayNode)
-  }
-
-  required init?(coder: NSCoder) {
-    fatalError("Not implemented")
-  }
+  var locationManager = CLLocationManager()
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    configureView()
+    configureNode()
     configureLocationManager()
   }
 
-  private func configureView() {
-    view.backgroundColor = .systemBackground
+  private func configureNode() {
+    node.backgroundColor = .systemBackground
   }
 
   private func configureLocationManager() {
-    locationManager = CLLocationManager()
-    locationManager?.delegate = self
-    locationManager?.requestWhenInUseAuthorization()
+    locationManager.delegate = self
+    locationManager.requestWhenInUseAuthorization()
   }
 }
 

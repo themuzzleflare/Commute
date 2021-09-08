@@ -9,6 +9,12 @@ extension UIAlertController {
     return alertController
   }
 
+  static func alertWithDismissPopButton(_ navigationController: UINavigationController?, title: String, message: String) -> UIAlertController {
+    let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+    alertController.addAction(.dismissAndPop(navigationController))
+    return alertController
+  }
+
   static func errorAlertWithDismissButton(error: CKError) -> UIAlertController {
     let alertController = UIAlertController(title: error.title, message: error.description, preferredStyle: .alert)
     alertController.addAction(.dismiss)

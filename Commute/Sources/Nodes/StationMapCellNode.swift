@@ -3,16 +3,7 @@ import AsyncDisplayKit
 import Mapbox
 
 final class StationMapCellNode: ASCellNode {
-  private lazy var mapView: MGLMapView = {
-    let mapView = MGLMapView(frame: .zero)
-    mapView.styleURL = MGLStyle.commuteStyleURL
-    mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-    return mapView
-  }()
-
-  private lazy var mapNode = ASDisplayNode { () -> MGLMapView in
-    return self.mapView
-  }
+  private let mapNode = MGLMapNode()
 
   init(station: Station) {
     super.init()
@@ -21,8 +12,8 @@ final class StationMapCellNode: ASCellNode {
 
     selectionStyle = .none
 
-    mapView.frame = bounds
-    mapView.setCenter(station.location.coordinate, zoomLevel: 16.45, animated: false)
+    mapNode.styleURL = MGLStyle.commuteStyleURL
+    mapNode.setCenter(station.location.coordinate, zoomLevel: 16.45, animated: false)
     mapNode.style.minHeight = ASDimension(unit: .points, value: 300)
   }
 

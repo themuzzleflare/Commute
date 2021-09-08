@@ -1,7 +1,7 @@
 import UIKit
 import AsyncDisplayKit
 
-final class AboutVC: ASDKViewController<ASTableNode> {
+final class AboutVC: ASViewController {
   private let tableNode = ASTableNode(style: .grouped)
 
   override init() {
@@ -50,9 +50,9 @@ extension AboutVC: ASTableDataSource {
       case 0:
         return AboutTopCellNode()
       case 1:
-        return RightDetailCellNode(text: "Version", detailText: UserDefaults.commute.appVersion)
+        return RightDetailCellNode(text: "Version", detailText: CommuteApp.appDefaults.appVersion)
       case 2:
-        return RightDetailCellNode(text: "Build", detailText: UserDefaults.commute.appBuild)
+        return RightDetailCellNode(text: "Build", detailText: CommuteApp.appDefaults.appBuild)
       default:
         fatalError("Unknown row")
       }

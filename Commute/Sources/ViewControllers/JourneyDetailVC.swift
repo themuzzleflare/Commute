@@ -2,7 +2,7 @@ import TfNSW
 import UIKit
 import AsyncDisplayKit
 
-final class JourneyDetailVC: ASDKViewController<ASTableNode> {
+final class JourneyDetailVC: ASViewController {
   private var legs: [TripRequestResponseJourneyLeg]
 
   private let tableNode = ASTableNode(style: .grouped)

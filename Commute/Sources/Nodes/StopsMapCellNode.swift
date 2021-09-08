@@ -5,21 +5,13 @@ import Mapbox
 
 final class StopsMapCellNode: ASCellNode {
   private var stopSequenceViewController: StopSequenceVC
+  private var stops: [TripRequestResponseJourneyLegStop]
 
-  private lazy var mapView: MGLMapView = {
-    let mapView = MGLMapView(frame: .zero)
-    mapView.styleURL = MGLStyle.commuteStyleURL
-    mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-    mapView.delegate = self
-    return mapView
-  }()
-
-  private lazy var mapNode = ASDisplayNode { () -> MGLMapView in
-    return self.mapView
-  }
+  private let mapNode = MGLMapNode()
 
   init(_ viewController: StopSequenceVC, stops: [TripRequestResponseJourneyLegStop]) {
     self.stopSequenceViewController = viewController
+    self.stops = stops
     super.init()
 
     let coordinates = stops.compactMap { $0.location?.coordinate }
@@ -29,11 +21,12 @@ final class StopsMapCellNode: ASCellNode {
 
     selectionStyle = .none
 
-    mapView.frame = bounds
-    mapView.addAnnotation(polyine)
+    mapNode.styleURL = MGLStyle.commuteStyleURL
+    mapNode.delegate = self
+    mapNode.addAnnotation(polyine)
 
     if let location = stops.first?.location {
-      mapView.setCenter(location.coordinate, zoomLevel: 16.45, animated: false)
+      mapNode.setCenter(location.coordinate, zoomLevel: 16.45, animated: false)
     }
 
     mapNode.style.minHeight = ASDimension(unit: .points, value: 300)
@@ -55,12 +48,12 @@ extension StopsMapCellNode: StopSequenceDelegate {
     if let location = stop.location {
       let camera = MGLMapCamera(
         lookingAtCenter: location.coordinate,
-        altitude: mapView.camera.altitude,
-        pitch: mapView.camera.pitch,
-        heading: mapView.camera.heading
+        altitude: mapNode.camera.altitude,
+        pitch: mapNode.camera.pitch,
+        heading: mapNode.camera.heading
       )
 
-      mapView.fly(to: camera)
+      mapNode.fly(to: camera)
     }
   }
 }

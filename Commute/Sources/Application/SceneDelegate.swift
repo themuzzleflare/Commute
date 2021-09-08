@@ -12,13 +12,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
       savedShortcutItem = shortcutItem
     }
 
-    let window = UIWindow(windowScene: windowScene)
+    self.window = UIWindow(windowScene: windowScene)
 
-    window.tintColor = .accentColor
-    window.rootViewController = TabBarController()
-    window.makeKeyAndVisible()
-
-    self.window = window
+    window?.tintColor = .accentColor
+    window?.backgroundColor = .systemBackground
+    window?.rootViewController = TabBarController()
+    window?.makeKeyAndVisible()
 
     notificationCentre.requestAuthorization(options: [.alert, .sound, .badge]) { (granted, error) in
       if let error = error {

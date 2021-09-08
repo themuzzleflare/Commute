@@ -2,13 +2,13 @@ import WebKit
 import UIKit
 import MarqueeLabel
 
-final class ServiceAlertVC: UIViewController {
+final class ServiceAlertVC: ASViewController {
   private var alert: TransitRealtime_Alert
-  private let webView = WKWebView(frame: .zero)
+  private let webNode = WKWebNode()
 
   init(alert: TransitRealtime_Alert) {
     self.alert = alert
-    super.init(nibName: nil, bundle: nil)
+    super.init(node: webNode)
   }
 
   required init?(coder: NSCoder) {
@@ -17,22 +17,16 @@ final class ServiceAlertVC: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    view.addSubview(webView)
     configureNavigation()
-    configureWebView()
-  }
-
-  override func viewDidLayoutSubviews() {
-    super.viewDidLayoutSubviews()
-    webView.frame = view.bounds
+    configureWebNode()
   }
 
   private func configureNavigation() {
-    navigationItem.titleView = MarqueeLabel.textLabel(text: alert.headerText.translation[0].text)
+    navigationItem.titleView = MarqueeLabel.navigationTitle(text: alert.headerText.translation[0].text)
     navigationItem.title = alert.headerText.translation[0].text
   }
 
-  private func configureWebView() {
-    webView.loadHTMLString(alert.descriptionText.translation[1].text, baseURL: nil)
+  private func configureWebNode() {
+    webNode.loadHTMLString(alert.descriptionText.translation[1].text, baseURL: nil)
   }
 }

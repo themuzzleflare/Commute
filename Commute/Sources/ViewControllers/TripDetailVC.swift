@@ -3,7 +3,7 @@ import UIKit
 import AsyncDisplayKit
 import MarqueeLabel
 
-final class TripDetailVC: ASDKViewController<ASTableNode> {
+final class TripDetailVC: ASViewController {
   private let tableNode = ASTableNode(style: .grouped)
 
   private var trip: Trip
@@ -36,7 +36,7 @@ final class TripDetailVC: ASDKViewController<ASTableNode> {
   }
 
   private func configureNavigation() {
-    navigationItem.titleView = MarqueeLabel.textLabel(text: trip.tripName)
+    navigationItem.titleView = MarqueeLabel.navigationTitle(text: trip.tripName)
     navigationItem.title = trip.tripName
   }
 
@@ -54,7 +54,7 @@ final class TripDetailVC: ASDKViewController<ASTableNode> {
         case .success(let journeys):
           self.journeys = journeys
         case .failure(let error):
-          let alertController = UIAlertController.alertWithDismissButton(title: "Error", message: error.localizedDescription)
+          let alertController = UIAlertController.alertWithDismissPopButton(self.navigationController, title: "Error", message: error.localizedDescription)
           self.present(alertController, animated: true)
         }
       }

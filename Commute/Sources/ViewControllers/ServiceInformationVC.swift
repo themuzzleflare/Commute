@@ -1,7 +1,7 @@
 import UIKit
 import AsyncDisplayKit
 
-final class ServiceInformationVC: ASDKViewController<ASTableNode> {
+final class ServiceInformationVC: ASViewController {
   private let tableNode = ASTableNode(style: .grouped)
 
   private var alerts = [TransitRealtime_FeedEntity]() {
@@ -45,7 +45,7 @@ final class ServiceInformationVC: ASDKViewController<ASTableNode> {
         case .success(let feed):
           self.alerts = feed.entity
         case .failure(let error):
-          let alertController = UIAlertController.alertWithDismissButton(title: "Error", message: error.localizedDescription)
+          let alertController = UIAlertController.alertWithDismissPopButton(self.navigationController, title: "Error", message: error.localizedDescription)
           self.present(alertController, animated: true)
         }
       }

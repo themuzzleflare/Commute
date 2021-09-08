@@ -3,7 +3,7 @@ import TfNSW
 import UIKit
 import AsyncDisplayKit
 
-final class StopSequenceVC: ASDKViewController<ASTableNode> {
+final class StopSequenceVC: ASViewController {
   weak var delegate: StopSequenceDelegate?
 
   private let tableNode = ASTableNode(style: .grouped)

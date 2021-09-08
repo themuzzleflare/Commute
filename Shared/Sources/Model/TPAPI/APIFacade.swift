@@ -10,8 +10,8 @@ struct APIFacade {
    Retrieve a list of suggested transportation journeys based on the provided origin and destination.
 
    - parameters:
-   - from: The `id` or `stopId` of the starting stop.
-   - to: The `id` or `stopId` of the finishing stop.
+      - from: The `id` or `stopId` of the starting stop.
+      - to: The `id` or `stopId` of the finishing stop.
    - returns: An array of `TripRequestResponseJourney` objects.
    - throws: An `Error` object.
 
@@ -32,7 +32,9 @@ struct APIFacade {
       case .success:
         do {
           let decodedResponse = try jsonDecoder.decode(TripRequestResponse.self, from: response.data!)
-          completion(.success(decodedResponse.journeys!))
+          if let journeys = decodedResponse.journeys {
+            completion(.success(journeys))
+          }
         } catch {
           completion(.failure(error))
         }

@@ -5,15 +5,11 @@ import AsyncDisplayKit
 final class PDFVC: ASViewController {
   private var document: PDFDocument
 
-  private lazy var pdfNode = ASDisplayNode { () -> PDFView in
-    let view = PDFView()
-    view.document = self.document
-    return view
-  }
+  private let pdfNode = PDFNode()
 
   init(document: PDFDocument) {
     self.document = document
-    super.init()
+    super.init(node: pdfNode)
   }
 
   required init?(coder: NSCoder) {
@@ -22,16 +18,15 @@ final class PDFVC: ASViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    displayNode.addSubnode(pdfNode)
     configureNavigation()
-  }
-
-  override func viewDidLayoutSubviews() {
-    super.viewDidLayoutSubviews()
-    pdfNode.frame = displayNode.bounds
+    configurePDFNode()
   }
 
   private func configureNavigation() {
     navigationItem.title = document.documentAttributes?["Title"] as? String ?? ""
+  }
+
+  private func configurePDFNode() {
+    pdfNode.document = document
   }
 }

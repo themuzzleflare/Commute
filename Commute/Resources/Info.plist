@@ -30,6 +30,21 @@
 	<string>${COMMUTE_COPYRIGHT}</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>${COMMUTE_PRIVACY_LOCATION_DESCRIPTION}</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>NewFrankThin.ttf</string>
+		<string>NewFrankThinItalic.ttf</string>
+		<string>NewFrankLight.ttf</string>
+		<string>NewFrankLightItalic.ttf</string>
+		<string>NewFrankRegular.ttf</string>
+		<string>NewFrankRegularItalic.ttf</string>
+		<string>NewFrankMedium.ttf</string>
+		<string>NewFrankMediumItalic.ttf</string>
+		<string>NewFrankBold.ttf</string>
+		<string>NewFrankBoldItalic.ttf</string>
+		<string>NewFrankExtraBold.ttf</string>
+		<string>NewFrankExtraBoldItalic.ttf</string>
+	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -97,8 +112,6 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
@@ -106,21 +119,6 @@
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
-	</array>
-	<key>UIAppFonts</key>
-	<array>
-		<string>NewFrankThin.ttf</string>
-		<string>NewFrankThinItalic.ttf</string>
-		<string>NewFrankLight.ttf</string>
-		<string>NewFrankLightItalic.ttf</string>
-		<string>NewFrankRegular.ttf</string>
-		<string>NewFrankRegularItalic.ttf</string>
-		<string>NewFrankMedium.ttf</string>
-		<string>NewFrankMediumItalic.ttf</string>
-		<string>NewFrankBold.ttf</string>
-		<string>NewFrankBoldItalic.ttf</string>
-		<string>NewFrankExtraBold.ttf</string>
-		<string>NewFrankExtraBoldItalic.ttf</string>
 	</array>
 </dict>
 </plist>

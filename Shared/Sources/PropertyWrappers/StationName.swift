@@ -9,6 +9,8 @@ import Foundation
       string = newValue
         .replacingOccurrences(of: "Macquarie University", with: "Macquarie Uni")
         .replacingOccurrences(of: "International Airport", with: "Intnl Airport")
+        .replacingOccurrences(of: "Mount Kuring-gai", with: "Mt. Kuring-Gai")
+        .replacingOccurrences(of: "Hawkesbury River", with: "Hwksby River")
     }
   }
 

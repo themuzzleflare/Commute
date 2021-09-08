@@ -65,6 +65,9 @@ struct CKFacade {
       if let location = currentLocation {
         let locationSort = CKLocationSortDescriptor(key: "location", relativeLocation: location)
         query.sortDescriptors = [locationSort]
+      } else {
+        let nameSort = NSSortDescriptor(key: "name", ascending: true)
+        query.sortDescriptors = [nameSort]
       }
 
       operation = CKQueryOperation(query: query)

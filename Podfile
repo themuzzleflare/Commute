@@ -10,12 +10,15 @@ target 'Commute' do
   pod 'SwiftDate'
   pod 'Alamofire'
   pod 'AlamofireNetworkActivityIndicator'
-  pod 'Texture'
+  pod 'Texture/IGListKit'
+  pod 'BonMot'
   pod 'TinyConstraints'
   pod 'Mapbox-iOS-SDK'
   pod 'MarqueeLabel'
-  pod 'IGListKit/Diffing'
-
+  pod 'Firebase/AnalyticsWithoutAdIdSupport'
+  pod 'Firebase/Crashlytics'
+  pod 'Firebase/AppCheck'
+  
 end
 
 post_install do |installer|

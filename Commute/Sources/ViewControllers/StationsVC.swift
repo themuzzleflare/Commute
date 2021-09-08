@@ -1,106 +1,63 @@
+import CoreData
 import CloudKit
 import UIKit
+import IGListKit
 import AsyncDisplayKit
 
 final class StationsVC: ASViewController {
-  private enum Section {
-    case main
-  }
+  private let tableNode = ASTableNode(style: .grouped)
 
-  private typealias Snapshot = NSDiffableDataSourceSnapshot<SortedStations, Station>
-  private typealias ByDistanceSnapshot = NSDiffableDataSourceSnapshot<Section, Station>
-  private typealias ByDistanceDataSource = UITableViewDiffableDataSource<Section, Station>
-
-  private lazy var dataSource = makeDataSource()
-  private lazy var byDistanceDataSource = makeByDistanceDataSource()
-
-  private lazy var searchController = UISearchController.stationsSearchController(self)
-
-  private lazy var segmentedControl = ASDisplayNode { () -> UISegmentedControl in
-    let segmentedControl = UISegmentedControl(items: ["By Name", "By Distance"])
-    segmentedControl.selectedSegmentIndex = self.byName ? 0 : 1
-    segmentedControl.addTarget(self, action: #selector(self.changedSelection(_:)), for: .valueChanged)
-    return segmentedControl
-  }
-
-  private var byName: Bool = true {
-    didSet {
-      byName ? byDistanceTableNode.removeFromSupernode() : tableNode.removeFromSupernode()
-      byName ? displayNode.addSubnode(tableNode) : displayNode.addSubnode(byDistanceTableNode)
-      byName ? applySnapshot() : applyByDistanceSnapshot()
-    }
-  }
-
-  private var noStations: Bool = false
-  private var noByDistanceStations: Bool = false
-
-  private let tableView = UITableView(frame: .zero, style: .grouped)
-  private let byDistanceTableView = UITableView(frame: .zero, style: .grouped)
-
-  private lazy var tableNode = ASDisplayNode { () -> UITableView in
-    return self.tableView
-  }
-
-  private lazy var byDistanceTableNode = ASDisplayNode { () -> UITableView in
-    return self.byDistanceTableView
-  }
+  private var oldStations = [Station]()
 
   private var stations = [Station]() {
     didSet {
-      noStations = stations.isEmpty
       applySnapshot()
+    }
+  }
+
+  private var byNameStations = [Station]() {
+    didSet {
+      if sortSelection == .byName {
+        stations = byNameStations
+      }
     }
   }
 
   private var byDistanceStations = [Station]() {
     didSet {
-      noByDistanceStations = byDistanceStations.isEmpty
-      applyByDistanceSnapshot()
+      if sortSelection == .byDistance {
+        stations = byDistanceStations
+      }
     }
   }
+
+  private var noStations: Bool = false
 
   private var error: CKError?
-  private var byDistanceError: CKError?
 
-  private var groupedStations: [String: [Station]] {
-    return Dictionary(
-      grouping: stations,
-      by: { String($0.name.prefix(1)) }
-    )
-  }
-
-  private var keys: [String] {
-    return groupedStations.keys.sorted()
-  }
-
-  private var sortedStations: [(key: String, value: [Station])] {
-    return groupedStations.sorted { $0.key < $1.key }
-  }
-
-  private var sections = [SortedStations]()
-
-  // UITableViewDiffableDataSource
-  private class DataSource: UITableViewDiffableDataSource<SortedStations, Station> {
-    weak var parent: StationsVC! = nil
-
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-      guard let firstStation = itemIdentifier(for: IndexPath(item: 0, section: section)) else { return nil }
-      guard let section = snapshot().sectionIdentifier(containingItem: firstStation) else { return nil }
-      return section.id.capitalized
-    }
-
-    override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
-      return parent.keys.map { $0.capitalized }
-    }
-
-    override func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
-      return parent.keys.map { $0.capitalized }.firstIndex(of: title)!
+  private var sortSelection: StationSort = .byName {
+    didSet {
+      switch sortSelection {
+      case .byName:
+        stations = byNameStations
+      case .byDistance:
+        stations = byDistanceStations
+      }
+      tableNode.reloadData()
     }
   }
+
+  private lazy var searchController = UISearchController.stationsSearchController(self)
+
+  private lazy var segmentedControl: UISegmentedControl = {
+    let segmentedControl = UISegmentedControl(items: StationSort.allCases.map { $0.title })
+    segmentedControl.selectedSegmentIndex = sortSelection.rawValue
+    segmentedControl.addTarget(self, action: #selector(changedSelection(_:)), for: .valueChanged)
+    return segmentedControl
+  }()
 
   override init() {
-    super.init()
-    dataSource.parent = self
+    super.init(node: tableNode)
   }
 
   required init?(coder: NSCoder) {
@@ -109,23 +66,10 @@ final class StationsVC: ASViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    byName ? displayNode.addSubnode(tableNode) : displayNode.addSubnode(byDistanceTableNode)
     configureNavigation()
     configureToolbar()
-    configureTableView()
-    configureByDistanceTableView()
-    applySnapshot()
-    applyByDistanceSnapshot()
-  }
-
-  override func viewDidLayoutSubviews() {
-    super.viewDidLayoutSubviews()
-    switch byName {
-    case true:
-      tableNode.frame = displayNode.bounds
-    case false:
-      byDistanceTableNode.frame = displayNode.bounds
-    }
+    configureTableNode()
+    applySnapshot(override: true)
   }
 
   override func viewWillAppear(_ animated: Bool) {
@@ -156,116 +100,55 @@ final class StationsVC: ASViewController {
   }
 
   private func configureToolbar() {
-    setToolbarItems([UIBarButtonItem(customView: segmentedControl.view)], animated: false)
+    setToolbarItems([UIBarButtonItem(customView: segmentedControl)], animated: false)
   }
 
-  @objc private func changedSelection(_ segmentedControl: UISegmentedControl) {
-    switch segmentedControl.selectedSegmentIndex {
-    case 0:
-      byName = true
-    case 1:
-      byName = false
-    default:
-      break
-    }
+  private func configureTableNode() {
+    tableNode.dataSource = self
+    tableNode.delegate = self
   }
 
-  @objc private func close() {
-    navigationController?.dismiss(animated: true)
-  }
+  private func applySnapshot(override: Bool = false) {
+    DispatchQueue.main.async { [self] in
+      let results = ListDiffPaths(
+        fromSection: 0,
+        toSection: 0,
+        oldArray: oldStations,
+        newArray: stations,
+        option: .equality
+      ).forBatchUpdates()
 
-  private func configureTableView() {
-    tableView.dataSource = dataSource
-    tableView.delegate = self
-    tableView.register(UITableViewCell.self, forCellReuseIdentifier: "stationCell")
-    tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-  }
-
-  private func configureByDistanceTableView() {
-    byDistanceTableView.dataSource = byDistanceDataSource
-    byDistanceTableView.delegate = self
-    byDistanceTableView.register(SubtitleCell.self, forCellReuseIdentifier: "stationCell")
-    byDistanceTableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-  }
-
-  private func makeDataSource() -> DataSource {
-    let ds = DataSource(
-      tableView: tableView,
-      cellProvider: { (tableView, indexPath, station) in
-        let cell = tableView.dequeueReusableCell(withIdentifier: "stationCell", for: indexPath)
-        cell.separatorInset = .zero
-        cell.textLabel?.numberOfLines = 0
-        cell.textLabel?.font = .newFrankRegular(size: UIFont.labelFontSize)
-        cell.textLabel?.text = station.shortName
-        return cell
-      }
-    )
-    ds.defaultRowAnimation = .middle
-    return ds
-  }
-
-  private func makeByDistanceDataSource() -> ByDistanceDataSource {
-    let ds = ByDistanceDataSource(
-      tableView: byDistanceTableView,
-      cellProvider: { (tableView, indexPath, station) in
-        let cell = tableView.dequeueReusableCell(withIdentifier: "stationCell", for: indexPath) as! SubtitleCell
-        cell.separatorInset = .zero
-        cell.textLabel?.numberOfLines = 0
-        cell.textLabel?.font = .newFrankRegular(size: UIFont.labelFontSize)
-        cell.textLabel?.text = station.shortName
-        cell.detailTextLabel?.textColor = .secondaryLabel
-        cell.detailTextLabel?.font = .newFrankRegular(size: UIFont.smallSystemFontSize)
-        cell.detailTextLabel?.text = "\(NumberFormatter.twoDecimalPlaces.string(from: station.location.distance(from: self.locationManager?.location ?? CLLocation()).kilometres.nsNumber) ?? "") km"
-        return cell
-      }
-    )
-    ds.defaultRowAnimation = .middle
-    return ds
-  }
-
-  private func applySnapshot(animate: Bool = true) {
-    sections = sortedStations.map { SortedStations(id: $0.key, stations: $0.value) }
-    var snapshot = Snapshot()
-    snapshot.appendSections(sections)
-    sections.forEach { snapshot.appendItems($0.stations, toSection: $0) }
-    if snapshot.itemIdentifiers.isEmpty && error == nil {
-      if stations.isEmpty && !noStations {
-        tableView.backgroundView = .loadingView(frame: tableView.bounds)
-      } else {
-        tableView.backgroundView = .noStationsOrResultsView(for: searchController, frame: tableView.bounds)
-      }
-    } else {
-      if let error = error {
-        tableView.backgroundView = .errorView(for: error, frame: tableView.bounds)
-      } else {
-        if tableView.backgroundView != nil { tableView.backgroundView = nil }
-      }
-    }
-    dataSource.apply(snapshot, animatingDifferences: animate)
-  }
-
-  private func applyByDistanceSnapshot(animate: Bool = true) {
-    var snapshot = ByDistanceSnapshot()
-    snapshot.appendSections([.main])
-    snapshot.appendItems(byDistanceStations)
-    if CLLocationManager.authorizationStatus() != .authorizedWhenInUse {
-      byDistanceTableView.backgroundView = .locationServicesView(frame: byDistanceTableView.bounds)
-    } else {
-      if snapshot.itemIdentifiers.isEmpty && byDistanceError == nil {
-        if byDistanceStations.isEmpty && !noByDistanceStations {
-          byDistanceTableView.backgroundView = .loadingView(frame: byDistanceTableView.bounds)
+      if results.hasChanges || override {
+        if CLLocationManager.authorizationStatus() != .authorizedWhenInUse {
+          tableNode.view.backgroundView = .locationServicesView(frame: tableNode.bounds)
         } else {
-          byDistanceTableView.backgroundView = .noStationsOrResultsView(for: searchController, frame: byDistanceTableView.bounds)
+          if stations.isEmpty && error == nil {
+            if stations.isEmpty && !noStations {
+              tableNode.view.backgroundView = .loadingView(frame: tableNode.bounds)
+            } else {
+              tableNode.view.backgroundView = .noStationsOrResultsView(for: searchController, frame: tableNode.bounds)
+            }
+          } else {
+            if let error = error {
+              tableNode.view.backgroundView = .errorView(for: error, frame: tableNode.bounds)
+            } else {
+              if tableNode.view.backgroundView != nil { tableNode.view.backgroundView = nil }
+            }
+          }
         }
-      } else {
-        if let error = byDistanceError {
-          byDistanceTableView.backgroundView = .errorView(for: error, frame: byDistanceTableView.bounds)
-        } else {
-          if byDistanceTableView.backgroundView != nil { byDistanceTableView.backgroundView = nil }
+
+        let batchUpdates = {
+          tableNode.deleteRows(at: results.deletes, with: .middle)
+          tableNode.insertRows(at: results.inserts, with: .middle)
+          results.moves.forEach { tableNode.moveRow(at: $0.from, to: $0.to) }
+          tableNode.reloadRows(at: results.updates, with: .none)
         }
+
+        tableNode.performBatchUpdates(batchUpdates, completion: { (_) in
+          oldStations = stations
+        })
       }
     }
-    byDistanceDataSource.apply(snapshot, animatingDifferences: animate)
   }
 
   private func fetchStations() {
@@ -274,24 +157,24 @@ final class StationsVC: ASViewController {
         switch result {
         case .success(let stations):
           self.error = nil
-          self.stations = stations
+          self.byNameStations = CLLocationManager.authorizationStatus() == .authorizedWhenInUse ? stations : []
         case .failure(let error):
           self.error = error
-          self.stations = []
+          self.byNameStations = []
           let alertController = UIAlertController.errorAlertWithDismissButton(error: error)
           self.present(alertController, animated: true)
         }
       }
     }
 
-    CKFacade.searchStation(searchString: searchController.searchBar.text, currentLocation: locationManager?.location) { (result) in
+    CKFacade.searchStation(searchString: searchController.searchBar.text, currentLocation: locationManager.location) { (result) in
       DispatchQueue.main.async {
         switch result {
         case .success(let stations):
-          self.byDistanceError = nil
+          self.error = nil
           self.byDistanceStations = CLLocationManager.authorizationStatus() == .authorizedWhenInUse ? stations : []
         case .failure(let error):
-          self.byDistanceError = error
+          self.error = error
           self.byDistanceStations = []
           let alertController = UIAlertController.errorAlertWithDismissButton(error: error)
           self.present(alertController, animated: true)
@@ -299,26 +182,33 @@ final class StationsVC: ASViewController {
       }
     }
   }
+
+  @objc private func changedSelection(_ segmentedControl: UISegmentedControl) {
+    sortSelection = StationSort(rawValue: segmentedControl.selectedSegmentIndex)!
+  }
 }
 
-extension StationsVC: UITableViewDelegate {
-  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    return UITableView.automaticDimension
+extension StationsVC: ASTableDataSource {
+  func tableNode(_ tableNode: ASTableNode, numberOfRowsInSection section: Int) -> Int {
+    return stations.count
   }
 
-  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    tableView.deselectRow(at: indexPath, animated: true)
+  func tableNode(_ tableNode: ASTableNode, nodeBlockForRowAt indexPath: IndexPath) -> ASCellNodeBlock {
+    let station = stations[indexPath.row]
 
-    switch byName {
-    case true:
-      if let station = dataSource.itemIdentifier(for: indexPath) {
-        navigationController?.pushViewController(StationDetailVC(station: station), animated: true)
-      }
-    case false:
-      if let station = byDistanceDataSource.itemIdentifier(for: indexPath) {
-        navigationController?.pushViewController(StationDetailVC(station: station), animated: true)
-      }
+    return {
+      StationByDistanceCellNode(station: station, relativeLocation: self.locationManager.location ?? CLLocation())
     }
+  }
+}
+
+extension StationsVC: ASTableDelegate {
+  func tableNode(_ tableNode: ASTableNode, didSelectRowAt indexPath: IndexPath) {
+    let station = stations[indexPath.row]
+
+    tableNode.deselectRow(at: indexPath, animated: true)
+
+    navigationController?.pushViewController(StationDetailVC(station: station), animated: true)
   }
 }
 

@@ -1,7 +1,8 @@
 import Foundation
 import CloudKit
+import IGListKit
 
-struct Station: Identifiable {
+class Station: Identifiable {
   /// The `CKRecord.ID` associated with the record.
   var id: CKRecord.ID
 
@@ -37,6 +38,17 @@ extension Station: Hashable {
 
   static func == (lhs: Station, rhs: Station) -> Bool {
     lhs.id == rhs.id
+  }
+}
+
+extension Station: ListDiffable {
+  func diffIdentifier() -> NSObjectProtocol {
+    return id as NSObject
+  }
+
+  func isEqual(toDiffableObject object: ListDiffable?) -> Bool {
+    guard let object = object as? Station else { return false }
+    return self.id == object.id
   }
 }
 

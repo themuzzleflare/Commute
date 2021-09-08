@@ -1,7 +1,7 @@
 import UIKit
 import AsyncDisplayKit
 
-final class StationDetailVC: ASDKViewController<ASTableNode> {
+final class StationDetailVC: ASViewController {
   private let tableNode = ASTableNode(style: .grouped)
 
   private var station: Station
