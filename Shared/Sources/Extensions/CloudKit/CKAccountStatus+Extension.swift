@@ -13,6 +13,8 @@ extension CKAccountStatus {
       return "Restricted"
     case .noAccount:
       return "No Account"
+    case .temporarilyUnavailable:
+      return "Temporarily Unavailable"
     @unknown default:
       return "Unknown"
     }
@@ -29,6 +31,8 @@ extension CKAccountStatus {
       return "The system denies access to the user’s iCloud account."
     case .noAccount:
       return "The device doesn’t have an iCloud account."
+    case .temporarilyUnavailable:
+      return "The account is temporarily unavailable."
     @unknown default:
       return "Unknown status."
     }

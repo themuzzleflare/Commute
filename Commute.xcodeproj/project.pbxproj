@@ -75,6 +75,7 @@
 		7AC3137426E8A54D00218915 /* WKWebNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC3137326E8A54D00218915 /* WKWebNode.swift */; };
 		7AC3FFCA26B380A700EEBBBD /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC3FFC926B380A700EEBBBD /* Trip.swift */; };
 		7AC3FFCC26B38FCD00EEBBBD /* CKError+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC3FFCB26B38FCD00EEBBBD /* CKError+Extension.swift */; };
+		7ACB3D202706EBCB004B81D7 /* TripViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACB3D1F2706EBCB004B81D7 /* TripViewModel.swift */; };
 		7ACC855C26B0FCF900F8F946 /* JourneyDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACC855B26B0FCF900F8F946 /* JourneyDetailVC.swift */; };
 		7ACC855E26B0FDEB00F8F946 /* StopSequenceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACC855D26B0FDEB00F8F946 /* StopSequenceVC.swift */; };
 		7ACC856726B2201E00F8F946 /* JourneyCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACC856626B2201E00F8F946 /* JourneyCellNode.swift */; };
@@ -92,7 +93,6 @@
 		7ACCC04726E7268400333E14 /* ASCellNode+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACCC04626E7268400333E14 /* ASCellNode+Extension.swift */; };
 		7ACCC04926E823E800333E14 /* CommuteApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACCC04826E823E800333E14 /* CommuteApp.swift */; };
 		7ACCC04B26E8334800333E14 /* ListCollectionContext+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACCC04A26E8334800333E14 /* ListCollectionContext+Extension.swift */; };
-		7ACCC04F26E8373400333E14 /* AlertViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACCC04E26E8373400333E14 /* AlertViewModel.swift */; };
 		7AD1DDBE26AFABE00057BEF3 /* Commute.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7AD1DDBC26AFABE00057BEF3 /* Commute.xcdatamodeld */; };
 		7AD4E04526AFFEB0007960AD /* TripDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD4E04426AFFEB0007960AD /* TripDetailVC.swift */; };
 		7AD4E04726AFFECE007960AD /* APIFacade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD4E04626AFFECE007960AD /* APIFacade.swift */; };
@@ -200,6 +200,7 @@
 		7AC3137326E8A54D00218915 /* WKWebNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WKWebNode.swift; sourceTree = "<group>"; };
 		7AC3FFC926B380A700EEBBBD /* Trip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
 		7AC3FFCB26B38FCD00EEBBBD /* CKError+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CKError+Extension.swift"; sourceTree = "<group>"; };
+		7ACB3D1F2706EBCB004B81D7 /* TripViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripViewModel.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		7ACC855B26B0FCF900F8F946 /* JourneyDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyDetailVC.swift; sourceTree = "<group>"; };
 		7ACC855D26B0FDEB00F8F946 /* StopSequenceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopSequenceVC.swift; sourceTree = "<group>"; };
 		7ACC856626B2201E00F8F946 /* JourneyCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyCellNode.swift; sourceTree = "<group>"; };
@@ -217,7 +218,6 @@
 		7ACCC04626E7268400333E14 /* ASCellNode+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ASCellNode+Extension.swift"; sourceTree = "<group>"; };
 		7ACCC04826E823E800333E14 /* CommuteApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommuteApp.swift; sourceTree = "<group>"; };
 		7ACCC04A26E8334800333E14 /* ListCollectionContext+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ListCollectionContext+Extension.swift"; sourceTree = "<group>"; };
-		7ACCC04E26E8373400333E14 /* AlertViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewModel.swift; sourceTree = "<group>"; };
 		7AD1DDBD26AFABE00057BEF3 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		7AD4E04426AFFEB0007960AD /* TripDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripDetailVC.swift; sourceTree = "<group>"; };
 		7AD4E04626AFFECE007960AD /* APIFacade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIFacade.swift; sourceTree = "<group>"; };
@@ -454,6 +454,7 @@
 		7AC2B4D426AE733B008DC5CF /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				7ACB3D1E2706EBC0004B81D7 /* ListDiffable */,
 				7AFDA8C626DC6FCD002AB73B /* ProtocolBuffers */,
 				7ADFA39F26C9D1F600F474DA /* TPAPI */,
 				7ADFA3AE26C9D25100F474DA /* CloudKit */,
@@ -463,7 +464,6 @@
 				7A71F6EB26E31EB500C1243E /* StationSort.swift */,
 				7A8487EE26E5DF810078B9D3 /* AddTripType.swift */,
 				7ACCC04826E823E800333E14 /* CommuteApp.swift */,
-				7ACCC04E26E8373400333E14 /* AlertViewModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -509,7 +509,6 @@
 			isa = PBXGroup;
 			children = (
 				7A26778E26E0C8E200459C30 /* PropertyWrappers */,
-				7ACCC03B26E6FA8F00333E14 /* Protocols */,
 				7ACC856E26B23F4B00F8F946 /* Extensions */,
 				7AC2B4D426AE733B008DC5CF /* Model */,
 			);
@@ -533,6 +532,14 @@
 				7AC3FFC926B380A700EEBBBD /* Trip.swift */,
 			);
 			path = CoreData;
+			sourceTree = "<group>";
+		};
+		7ACB3D1E2706EBC0004B81D7 /* ListDiffable */ = {
+			isa = PBXGroup;
+			children = (
+				7ACB3D1F2706EBCB004B81D7 /* TripViewModel.swift */,
+			);
+			path = ListDiffable;
 			sourceTree = "<group>";
 		};
 		7ACC856526B16AE200F8F946 /* Nodes */ = {
@@ -605,13 +612,6 @@
 				7A7D6B0726DEF97100101CD9 /* MarqueeLabel+Extension.swift */,
 			);
 			path = MarqueeLabel;
-			sourceTree = "<group>";
-		};
-		7ACCC03B26E6FA8F00333E14 /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Protocols;
 			sourceTree = "<group>";
 		};
 		7ADFA39F26C9D1F600F474DA /* TPAPI */ = {
@@ -911,7 +911,6 @@
 				7A2B913426E5A2690027FCB2 /* AddTripVC.swift in Sources */,
 				7AC2B4F226AEA6D8008DC5CF /* CKFacade.swift in Sources */,
 				7ACC855E26B0FDEB00F8F946 /* StopSequenceVC.swift in Sources */,
-				7ACCC04F26E8373400333E14 /* AlertViewModel.swift in Sources */,
 				7AC3FFCA26B380A700EEBBBD /* Trip.swift in Sources */,
 				7ACCC03626E6D7E500333E14 /* ASSizeRange+Extension.swift in Sources */,
 				7A71F6EC26E31EB500C1243E /* StationSort.swift in Sources */,
@@ -946,6 +945,7 @@
 				7ACCC03426E6D75E00333E14 /* CGSize+Extension.swift in Sources */,
 				7AE38BB326D1D7A10021679A /* CKDatabaseScope+Extension.swift in Sources */,
 				7A7D6B2326DF885A00101CD9 /* UIImage+Extension.swift in Sources */,
+				7ACB3D202706EBCB004B81D7 /* TripViewModel.swift in Sources */,
 				7AB1B09B26E5FA1F00D17652 /* SeparatorCellNode.swift in Sources */,
 				7AC2B4DC26AE7898008DC5CF /* NavigationController.swift in Sources */,
 				7ACC857026B23F5A00F8F946 /* UserDefaults+Extension.swift in Sources */,
@@ -1004,6 +1004,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CURRENT_PROJECT_VERSION = "${COMMUTE_BUILD_VERSION}";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -1021,7 +1022,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = "${COMMUTE_DEPLOYMENT_TARGET}";
+				MARKETING_VERSION = "${COMMUTE_SHORT_VERSION_STRING}";
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1064,6 +1066,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CURRENT_PROJECT_VERSION = "${COMMUTE_BUILD_VERSION}";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1075,7 +1078,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = "${COMMUTE_DEPLOYMENT_TARGET}";
+				MARKETING_VERSION = "${COMMUTE_SHORT_VERSION_STRING}";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -1092,15 +1096,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Commute/Resources/Commute.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Paul Tavitian (P72KXKKSKD)";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development: Paul Tavitian (P72KXKKSKD)";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development: Paul Tavitian (P72KXKKSKD)";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = "${COMMUTE_BUILD_VERSION}";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = JDL5FY6SCC;
 				INFOPLIST_FILE = Commute/Resources/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = "${COMMUTE_SHORT_VERSION_STRING}";
 				PRODUCT_BUNDLE_IDENTIFIER = "${COMMUTE_BUNDLE_ID}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "Commute Development";
@@ -1118,15 +1119,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Commute/Resources/Commute.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Paul Tavitian (P72KXKKSKD)";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development: Paul Tavitian (P72KXKKSKD)";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development: Paul Tavitian (P72KXKKSKD)";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = "${COMMUTE_BUILD_VERSION}";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = JDL5FY6SCC;
 				INFOPLIST_FILE = Commute/Resources/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = "${COMMUTE_SHORT_VERSION_STRING}";
 				PRODUCT_BUNDLE_IDENTIFIER = "${COMMUTE_BUNDLE_ID}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "Commute Development";

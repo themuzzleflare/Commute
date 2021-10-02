@@ -4,13 +4,13 @@ extension DecodingError {
   /// The custom title of the error.
   var title: String {
     switch self {
-    case .typeMismatch(_, _):
+    case .typeMismatch:
       return "Type Mismatch"
-    case .valueNotFound(_, _):
+    case .valueNotFound:
       return "Value Not Found"
-    case .keyNotFound(_, _):
+    case .keyNotFound:
       return "Key Not Found"
-    case .dataCorrupted(_):
+    case .dataCorrupted:
       return "Data Corrupted"
     @unknown default:
       return "Unknown"

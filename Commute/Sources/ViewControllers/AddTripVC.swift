@@ -100,7 +100,7 @@ final class AddTripVC: ASViewController {
   }
 
   private func configureObserver() {
-    stationSortObserver = CommuteApp.appDefaults.observe(\.stationSort, options: [.initial, .new]) { [weak self] (_, change) in
+    stationSortObserver = CommuteApp.appDefaults.observe(\.stationSort, options: .new) { [weak self] (_, change) in
       guard let weakSelf = self, let value = change.newValue, let stationSort = StationSort(rawValue: value) else { return }
       weakSelf.sortSelection = stationSort
     }

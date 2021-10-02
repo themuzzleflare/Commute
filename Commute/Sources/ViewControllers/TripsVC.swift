@@ -123,7 +123,7 @@ final class TripsVC: ASViewController {
 
 extension TripsVC: ListAdapterDataSource {
   func objects(for listAdapter: ListAdapter) -> [ListDiffable] {
-    return filteredTrips
+    return filteredTrips.viewModels
   }
 
   func listAdapter(_ listAdapter: ListAdapter, sectionControllerFor object: Any) -> ListSectionController {

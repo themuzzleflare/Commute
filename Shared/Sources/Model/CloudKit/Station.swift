@@ -2,24 +2,24 @@ import Foundation
 import CloudKit
 import IGListKit
 
-class Station: Identifiable {
+final class Station: NSObject {
   /// The `CKRecord.ID` associated with the record.
-  var id: CKRecord.ID
+  let id: CKRecord.ID
 
   /// The `id` field.
-  var globalId: String
+  let globalId: String
 
   /// The `stopId` field.
-  var stopId: String
+  let stopId: String
 
   /// The `name` field.
-  @StationName var name: String
+  let name: String
 
   /// The `suburb` field.
-  var suburb: String
+  let suburb: String
 
   /// The `location` field.
-  var location: CLLocation
+  let location: CLLocation
 
   init(id: CKRecord.ID, globalId: String, stopId: String, name: String, suburb: String, location: CLLocation) {
     self.id = id
@@ -31,19 +31,9 @@ class Station: Identifiable {
   }
 }
 
-extension Station: Hashable {
-  func hash(into hasher: inout Hasher) {
-    hasher.combine(id)
-  }
-
-  static func == (lhs: Station, rhs: Station) -> Bool {
-    lhs.id == rhs.id
-  }
-}
-
 extension Station: ListDiffable {
   func diffIdentifier() -> NSObjectProtocol {
-    return id as NSObject
+    return id as NSObjectProtocol
   }
 
   func isEqual(toDiffableObject object: ListDiffable?) -> Bool {

@@ -6,7 +6,7 @@ import MarqueeLabel
 final class TripDetailVC: ASViewController {
   private let tableNode = ASTableNode(style: .grouped)
 
-  private var trip: Trip
+  private var trip: TripViewModel
 
   private var journeys = [TripRequestResponseJourney]() {
     didSet {
@@ -15,7 +15,7 @@ final class TripDetailVC: ASViewController {
     }
   }
 
-  init(trip: Trip) {
+  init(trip: TripViewModel) {
     self.trip = trip
     super.init(node: tableNode)
   }
@@ -36,8 +36,8 @@ final class TripDetailVC: ASViewController {
   }
 
   private func configureNavigation() {
-    navigationItem.titleView = MarqueeLabel.navigationTitle(text: trip.tripName)
-    navigationItem.title = trip.tripName
+    navigationItem.titleView = MarqueeLabel.navigationTitle(text: trip.name)
+    navigationItem.title = trip.name
   }
 
   private func configureTableNode() {

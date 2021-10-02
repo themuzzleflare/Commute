@@ -1,7 +1,7 @@
 import Foundation
 import CloudKit
 
-extension CKContainer_Application_PermissionStatus {
+extension CKContainer.ApplicationPermissionStatus {
   /// The custom title of the permission status.
   var title: String {
     switch self {

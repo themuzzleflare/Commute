@@ -75,6 +75,8 @@ extension CKError {
       return "Server Response Lost"
     case .assetNotAvailable:
       return "Asset Not Available"
+    case .accountTemporarilyUnavailable:
+      return "Account Temporarily Unavailable"
     @unknown default:
       return "Error"
     }
@@ -153,6 +155,8 @@ extension CKError {
       return "The server received and processed this request, but the response was lost due to a network failure."
     case .assetNotAvailable:
       return "The file for this asset could not be accessed."
+    case .accountTemporarilyUnavailable:
+      return "The account is temporarily unavailable."
     @unknown default:
       return "An unknown error was encountered."
     }
