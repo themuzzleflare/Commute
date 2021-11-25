@@ -11,6 +11,7 @@
 		7A09525C26CF952900938A50 /* cityrailBeep.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7A09525B26CF952900938A50 /* cityrailBeep.wav */; };
 		7A09525E26D0B01A00938A50 /* CKAccountStatus+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A09525D26D0B01A00938A50 /* CKAccountStatus+Extension.swift */; };
 		7A09526026D0B53400938A50 /* CKContainerApplicationPermissionStatus+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A09525F26D0B53400938A50 /* CKContainerApplicationPermissionStatus+Extension.swift */; };
+		7A12305C274F5EB400F41D56 /* ExportOptions.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A12305B274F5EB400F41D56 /* ExportOptions.plist */; };
 		7A1C033426E1B8E300B3587B /* UIAlertController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1C033326E1B8E300B3587B /* UIAlertController+Extension.swift */; };
 		7A1C033626E1B9B900B3587B /* UIAlertAction+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1C033526E1B9B900B3587B /* UIAlertAction+Extension.swift */; };
 		7A1C033826E1C23600B3587B /* UISearchBar+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1C033726E1C23600B3587B /* UISearchBar+Extension.swift */; };
@@ -85,7 +86,6 @@
 		7ACCC03226E6D6FC00333E14 /* CGFloat+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACCC03126E6D6FC00333E14 /* CGFloat+Extension.swift */; };
 		7ACCC03426E6D75E00333E14 /* CGSize+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACCC03326E6D75E00333E14 /* CGSize+Extension.swift */; };
 		7ACCC03626E6D7E500333E14 /* ASSizeRange+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACCC03526E6D7E500333E14 /* ASSizeRange+Extension.swift */; };
-		7ACCC04726E7268400333E14 /* ASCellNode+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACCC04626E7268400333E14 /* ASCellNode+Extension.swift */; };
 		7ACCC04926E823E800333E14 /* CommuteApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACCC04826E823E800333E14 /* CommuteApp.swift */; };
 		7ACCC04B26E8334800333E14 /* ListCollectionContext+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACCC04A26E8334800333E14 /* ListCollectionContext+Extension.swift */; };
 		7AD1DDBE26AFABE00057BEF3 /* Commute.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7AD1DDBC26AFABE00057BEF3 /* Commute.xcdatamodeld */; };
@@ -125,6 +125,7 @@
 		7A09525B26CF952900938A50 /* cityrailBeep.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = cityrailBeep.wav; sourceTree = "<group>"; };
 		7A09525D26D0B01A00938A50 /* CKAccountStatus+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CKAccountStatus+Extension.swift"; sourceTree = "<group>"; };
 		7A09525F26D0B53400938A50 /* CKContainerApplicationPermissionStatus+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CKContainerApplicationPermissionStatus+Extension.swift"; sourceTree = "<group>"; };
+		7A12305B274F5EB400F41D56 /* ExportOptions.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ExportOptions.plist; sourceTree = "<group>"; };
 		7A1C033326E1B8E300B3587B /* UIAlertController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extension.swift"; sourceTree = "<group>"; };
 		7A1C033526E1B9B900B3587B /* UIAlertAction+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertAction+Extension.swift"; sourceTree = "<group>"; };
 		7A1C033726E1C23600B3587B /* UISearchBar+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISearchBar+Extension.swift"; sourceTree = "<group>"; };
@@ -205,7 +206,6 @@
 		7ACCC03126E6D6FC00333E14 /* CGFloat+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Extension.swift"; sourceTree = "<group>"; };
 		7ACCC03326E6D75E00333E14 /* CGSize+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGSize+Extension.swift"; sourceTree = "<group>"; };
 		7ACCC03526E6D7E500333E14 /* ASSizeRange+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ASSizeRange+Extension.swift"; sourceTree = "<group>"; };
-		7ACCC04626E7268400333E14 /* ASCellNode+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ASCellNode+Extension.swift"; sourceTree = "<group>"; };
 		7ACCC04826E823E800333E14 /* CommuteApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommuteApp.swift; sourceTree = "<group>"; };
 		7ACCC04A26E8334800333E14 /* ListCollectionContext+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ListCollectionContext+Extension.swift"; sourceTree = "<group>"; };
 		7AD1DDBD26AFABE00057BEF3 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
@@ -298,6 +298,7 @@
 		7A2C18EF26AE6CB1005BF502 = {
 			isa = PBXGroup;
 			children = (
+				7A12305B274F5EB400F41D56 /* ExportOptions.plist */,
 				7AC2B4D326AE7333008DC5CF /* Shared */,
 				7A2C18FA26AE6CB2005BF502 /* Commute */,
 				7A2C18F926AE6CB2005BF502 /* Products */,
@@ -424,7 +425,6 @@
 			children = (
 				7A26778A26E0A17400459C30 /* ASTextCellNode+Extension.swift */,
 				7ACCC03526E6D7E500333E14 /* ASSizeRange+Extension.swift */,
-				7ACCC04626E7268400333E14 /* ASCellNode+Extension.swift */,
 			);
 			path = AsyncDisplayKit;
 			sourceTree = "<group>";
@@ -728,6 +728,7 @@
 				7AFDA8C426DC674B002AB73B /* NewFrankMedium.ttf in Resources */,
 				7AFDA8BC26DC674B002AB73B /* NewFrankLightItalic.ttf in Resources */,
 				7AC2B4E926AE812E008DC5CF /* Settings.bundle in Resources */,
+				7A12305C274F5EB400F41D56 /* ExportOptions.plist in Resources */,
 				7AFDA8C126DC674B002AB73B /* NewFrankLight.ttf in Resources */,
 				7A2C190526AE6CB4005BF502 /* Assets.xcassets in Resources */,
 			);
@@ -858,7 +859,6 @@
 				7A71F6F626E343BC00C1243E /* TripCellNode.swift in Sources */,
 				7A2B913126E598760027FCB2 /* IGListCollectionContext+Refinements.swift in Sources */,
 				7AD1DDBE26AFABE00057BEF3 /* Commute.xcdatamodeld in Sources */,
-				7ACCC04726E7268400333E14 /* ASCellNode+Extension.swift in Sources */,
 				7AB79CEE26E1AE970034CA22 /* DecodingError+Extension.swift in Sources */,
 				7AFDA8DE26DCDB49002AB73B /* Int+Extension.swift in Sources */,
 				7A26779026E0C8F400459C30 /* StationName.swift in Sources */,

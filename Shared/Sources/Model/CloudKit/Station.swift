@@ -1,6 +1,5 @@
 import Foundation
 import CloudKit
-import IGListKit
 
 struct Station {
   /// The `CKRecord.ID` associated with the record.
