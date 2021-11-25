@@ -1,13 +1,13 @@
 import TfNSW
 import UIKit
 import AsyncDisplayKit
-import Mapbox
+import MapboxMaps
 
 final class StopsMapCellNode: ASCellNode {
   private var stopSequenceViewController: StopSequenceVC
   private var stops: [TripRequestResponseJourneyLegStop]
 
-  private let mapNode = MGLMapNode()
+  private let mapNode = MapboxMapNode()
 
   init(_ viewController: StopSequenceVC, stops: [TripRequestResponseJourneyLegStop]) {
     self.stopSequenceViewController = viewController
@@ -15,21 +15,24 @@ final class StopsMapCellNode: ASCellNode {
     super.init()
 
     let coordinates = stops.compactMap { $0.location?.coordinate }
-    let polyine = MGLPolyline(coordinates: coordinates, count: coordinates.count.uInt)
+    let polylineManager = mapNode.rootView.annotations.makePolylineAnnotationManager()
+    
+    let annotations = PolylineAnnotation(lineCoordinates: coordinates)
+    polylineManager.annotations = [annotations]
+    
+    if let location = stops.first?.location {
+      mapNode.rootView.mapboxMap.setCamera(to: CameraOptions(center: location.coordinate, zoom: 16.45))
+    }
 
     automaticallyManagesSubnodes = true
 
     selectionStyle = .none
 
-    mapNode.styleURL = MGLStyle.commuteStyleURL
-    mapNode.delegate = self
-    mapNode.addAnnotation(polyine)
-
-    if let location = stops.first?.location {
-      mapNode.setCenter(location.coordinate, zoomLevel: 16.45, animated: false)
-    }
-
     mapNode.style.minHeight = ASDimension(unit: .points, value: 300)
+    
+    mapNode.rootView.mapboxMap.onNext(.mapLoaded) { (_) in
+      self.stopSequenceViewController.delegate = self
+    }
   }
 
   override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
@@ -37,23 +40,11 @@ final class StopsMapCellNode: ASCellNode {
   }
 }
 
-extension StopsMapCellNode: MGLMapViewDelegate {
-  func mapViewDidFinishLoadingMap(_ mapView: MGLMapView) {
-    stopSequenceViewController.delegate = self
-  }
-}
-
 extension StopsMapCellNode: StopSequenceDelegate {
   func didSelectStop(_ stop: TripRequestResponseJourneyLegStop) {
     if let location = stop.location {
-      let camera = MGLMapCamera(
-        lookingAtCenter: location.coordinate,
-        altitude: mapNode.camera.altitude,
-        pitch: mapNode.camera.pitch,
-        heading: mapNode.camera.heading
-      )
-
-      mapNode.fly(to: camera)
+      let cameraOptions = CameraOptions(center: location.coordinate)
+      mapNode.rootView.camera.fly(to: cameraOptions, duration: 1, completion: nil)
     }
   }
 }

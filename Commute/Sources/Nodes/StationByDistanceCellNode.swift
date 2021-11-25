@@ -6,7 +6,7 @@ final class StationByDistanceCellNode: ASCellNode {
   private let stationNameTextNode = ASTextNode()
   private let distanceTextNode = ASTextNode()
 
-  init(station: Station, relativeLocation: CLLocation) {
+  init(station: Station, relativeLocation: CLLocation?) {
     super.init()
 
     automaticallyManagesSubnodes = true
@@ -14,7 +14,7 @@ final class StationByDistanceCellNode: ASCellNode {
     stationNameTextNode.attributedText = NSAttributedString(text: station.shortName)
 
     distanceTextNode.attributedText = NSAttributedString(
-      text: "\(NumberFormatter.twoDecimalPlaces.string(from: station.location.distance(from: relativeLocation).kilometres.nsNumber) ?? "") km",
+      text: "\(NumberFormatter.twoDecimalPlaces.string(from: station.location.distance(from: relativeLocation ?? CLLocation()).kilometres.nsNumber) ?? "") km",
       font: .newFrankRegular(size: UIFont.smallSystemFontSize),
       colour: .secondaryLabel
     )

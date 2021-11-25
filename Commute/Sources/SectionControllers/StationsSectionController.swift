@@ -1,19 +1,16 @@
 import Foundation
 import CoreData
-import CoreLocation
 import IGListKit
 import AsyncDisplayKit
 
-final class StationsByDistanceSectionController: ListSectionController {
-  private var object: Station!
+final class StationsSectionController: ListSectionController {
+  private var object: StationViewModel!
   private var addTripType: AddTripType
   private var fromStation: Station?
-  private var relativeLocation: CLLocation
 
-  init(addTripType: AddTripType, fromStation: Station? = nil, relativeLocation: CLLocation) {
+  init(addTripType: AddTripType, fromStation: Station? = nil) {
     self.addTripType = addTripType
     self.fromStation = fromStation
-    self.relativeLocation = relativeLocation
     super.init()
     supplementaryViewSource = self
   }
@@ -31,7 +28,7 @@ final class StationsByDistanceSectionController: ListSectionController {
   }
 
   override func didUpdate(to object: Any) {
-    self.object = object as? Station
+    self.object = object as? StationViewModel
   }
 
   override func didSelectItem(at index: Int) {
@@ -40,10 +37,10 @@ final class StationsByDistanceSectionController: ListSectionController {
 
     switch addTripType {
     case .origin:
-      viewController?.navigationItem.backButtonTitle = object.shortName
-      viewController?.navigationController?.pushViewController(AddTripVC(type: .destination, station: object), animated: true)
+      viewController?.navigationItem.backButtonTitle = object.station.shortName
+      viewController?.navigationController?.pushViewController(AddTripVC(type: .destination, station: object.station), animated: true)
     case .destination:
-      configureCoreData(toStation: object)
+      configureCoreData(toStation: object.station)
     }
   }
 
@@ -80,19 +77,24 @@ final class StationsByDistanceSectionController: ListSectionController {
   }
 }
 
-extension StationsByDistanceSectionController: ASSectionController {
+extension StationsSectionController: ASSectionController {
   func nodeBlockForItem(at index: Int) -> ASCellNodeBlock {
     return {
-      StationByDistanceCellNode(station: self.object, relativeLocation: self.relativeLocation)
+      switch self.object.type {
+      case .byName:
+        return StationByNameCellNode(station: self.object.station)
+      case .byDistance:
+        return StationByDistanceCellNode(station: self.object.station, relativeLocation: self.object.distance)
+      }
     }
   }
 
   func sizeRangeForItem(at index: Int) -> ASSizeRange {
-    return .cellNode(minHeight: 55, maxHeight: 65)
+    return .cellNode(minHeight: 45, maxHeight: 55)
   }
 }
 
-extension StationsByDistanceSectionController: ListSupplementaryViewSource {
+extension StationsSectionController: ListSupplementaryViewSource {
   func supportedElementKinds() -> [String] {
     return [ASCollectionView.elementKindSectionFooter]
   }
@@ -106,7 +108,7 @@ extension StationsByDistanceSectionController: ListSupplementaryViewSource {
   }
 }
 
-extension StationsByDistanceSectionController: ASSupplementaryNodeSource {
+extension StationsSectionController: ASSupplementaryNodeSource {
   func nodeBlockForSupplementaryElement(ofKind elementKind: String, at index: Int) -> ASCellNodeBlock {
     return {
       SeparatorCellNode()

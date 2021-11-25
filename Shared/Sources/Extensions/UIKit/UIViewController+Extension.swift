@@ -12,16 +12,6 @@ extension UIViewController {
     return viewController
   }
 
-  static var stations: UIViewController {
-    let viewController = NavigationController(rootViewController: StationsVC())
-    viewController.tabBarItem = UITabBarItem(
-      title: "Stations",
-      image: .location,
-      selectedImage: .locationFill
-    )
-    return viewController
-  }
-
   static var tools: UIViewController {
     let viewController = NavigationController(rootViewController: ToolsVC())
     viewController.tabBarItem = UITabBarItem(

@@ -27,7 +27,7 @@ extension UIImage {
   }
 
   static var tram: UIImage {
-    return UIImage(systemName: "tram")!
+    return UIImage(systemName: "tram") ?? UIImage(systemName: "tram.fill")!
   }
 
   static var tramFill: UIImage {
@@ -43,11 +43,11 @@ extension UIImage {
   }
 
   static var gearshape: UIImage {
-    return UIImage(systemName: "gearshape")!
+    return UIImage(systemName: "gear")!
   }
 
   static var gearshapeFill: UIImage {
-    return UIImage(systemName: "gearshape.fill")!
+    return UIImage(systemName: "gear")!
   }
 
   static var infoCircle: UIImage {

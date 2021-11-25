@@ -8,6 +8,6 @@ final class TabBarController: ASTabBarController {
   }
 
   private func configure() {
-    setViewControllers([.trips, .stations, .tools, .about], animated: false)
+    setViewControllers([.trips, .tools, .about], animated: false)
   }
 }

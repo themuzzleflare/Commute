@@ -33,6 +33,18 @@ final class AddTripVC: ASViewController {
       if sortSelection == .byDistance { adapter.performUpdates(animated: true, completion: nil) }
     }
   }
+  
+  private var byNameStationModels: [StationViewModel] {
+    return byNameStations.map { (station) in
+      return StationViewModel(station: station, type: .byName, id: station.globalId, name: station.name, distance: nil)
+    }
+  }
+  
+  private var byDistanceStationModels: [StationViewModel] {
+    return byDistanceStations.map { (station) in
+      return StationViewModel(station: station, type: .byDistance, id: station.globalId, name: station.name, distance: locationManager.location)
+    }
+  }
 
   private var noByNameStations: Bool = false
   private var noByDistanceStations: Bool = false
@@ -40,11 +52,11 @@ final class AddTripVC: ASViewController {
   private var byNameError: CKError?
   private var byDistanceError: CKError?
 
-  private var sortSelection: StationSort = StationSort(rawValue: CommuteApp.appDefaults.stationSort) ?? .byName {
+  private lazy var sortSelection: StationSort = StationSort(rawValue: CommuteApp.appDefaults.stationSort) ?? .byName {
     didSet {
       if CommuteApp.appDefaults.stationSort != sortSelection.rawValue { CommuteApp.appDefaults.stationSort = sortSelection.rawValue }
       if segmentedControl.selectedSegmentIndex != sortSelection.rawValue { segmentedControl.selectedSegmentIndex = sortSelection.rawValue }
-      adapter.performUpdates(animated: true, completion: nil)
+      adapter.performUpdates(animated: true)
     }
   }
 
@@ -158,19 +170,14 @@ extension AddTripVC: ListAdapterDataSource {
   func objects(for listAdapter: ListAdapter) -> [ListDiffable] {
     switch sortSelection {
     case .byName:
-      return byNameStations
+      return byNameStationModels
     case .byDistance:
-      return byDistanceStations
+      return byDistanceStationModels
     }
   }
 
   func listAdapter(_ listAdapter: ListAdapter, sectionControllerFor object: Any) -> ListSectionController {
-    switch sortSelection {
-    case .byName:
-      return StationsByNameSectionController(addTripType: addTripType, fromStation: fromStation)
-    case .byDistance:
-      return StationsByDistanceSectionController(addTripType: addTripType, fromStation: fromStation, relativeLocation: locationManager.location ?? CLLocation())
-    }
+    return StationsSectionController(addTripType: addTripType, fromStation: fromStation)
   }
 
   func emptyView(for listAdapter: ListAdapter) -> UIView? {
