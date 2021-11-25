@@ -4,13 +4,13 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Commute.xcscheme_^#shared#^_</key>
+		<key>Commute.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>34</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
-	<dict/>
+	<dict />
 </dict>
 </plist>

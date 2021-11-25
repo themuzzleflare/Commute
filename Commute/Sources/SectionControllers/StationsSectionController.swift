@@ -32,9 +32,7 @@ final class StationsSectionController: ListSectionController {
   }
 
   override func didSelectItem(at index: Int) {
-    collectionContext?.nodeForItem(at: index, sectionController: self)?.select()
-    collectionContext?.nodeForItem(at: index, sectionController: self)?.deselect()
-
+    collectionContext?.deselectItem(at: index, sectionController: self, animated: true)
     switch addTripType {
     case .origin:
       viewController?.navigationItem.backButtonTitle = object.station.shortName

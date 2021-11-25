@@ -22,23 +22,16 @@ struct APIFacade {
       .accept("application/json")
     ]
 
-    let urlParams = [
+    let urlParams: Parameters = [
       "origin": origin,
       "destination": destination
     ]
 
-    AF.request("https://api.commute.tavitian.cloud/trips", method: .get, parameters: urlParams, headers: headers).responseJSON { (response) in
+    AF.request("https://api.commute.tavitian.cloud/trips", method: .get, parameters: urlParams, headers: headers).responseDecodable(of: TripRequestResponse.self) { (response) in
       switch response.result {
-      case .success:
-        do {
-          let decodedResponse = try jsonDecoder.decode(TripRequestResponse.self, from: response.data!)
-          if let journeys = decodedResponse.journeys {
-            completion(.success(journeys))
-          }
-        } catch {
-          completion(.failure(error))
-        }
-      case .failure(let error):
+      case let .success(data):
+        completion(.success(data.journeys!))
+      case let .failure(error):
         completion(.failure(error))
       }
     }

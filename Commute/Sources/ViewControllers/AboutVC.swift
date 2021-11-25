@@ -2,7 +2,7 @@ import UIKit
 import AsyncDisplayKit
 
 final class AboutVC: ASViewController {
-  private let tableNode = ASTableNode(style: .grouped)
+  private let tableNode = ASTableNode(style: .insetGrouped)
 
   override init() {
     super.init(node: tableNode)

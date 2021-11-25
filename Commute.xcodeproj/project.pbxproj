@@ -54,7 +54,6 @@
 		7A7D6B2326DF885A00101CD9 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7D6B2226DF885A00101CD9 /* UIImage+Extension.swift */; };
 		7A7D6B2526DF8DFA00101CD9 /* URL+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7D6B2426DF8DFA00101CD9 /* URL+Extension.swift */; };
 		7A8487EF26E5DF810078B9D3 /* AddTripType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8487EE26E5DF810078B9D3 /* AddTripType.swift */; };
-		7A8D33AE26E4282100D3333D /* TripsSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8D33AD26E4282100D3333D /* TripsSectionController.swift */; };
 		7AB1B09B26E5FA1F00D17652 /* SeparatorCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB1B09A26E5FA1F00D17652 /* SeparatorCellNode.swift */; };
 		7AB79CEA26E1A3600034CA22 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB79CE926E1A3600034CA22 /* UIView+Extension.swift */; };
 		7AB79CEC26E1A9320034CA22 /* UISearchController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB79CEB26E1A9320034CA22 /* UISearchController+Extension.swift */; };
@@ -174,7 +173,6 @@
 		7A7D6B2226DF885A00101CD9 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		7A7D6B2426DF8DFA00101CD9 /* URL+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extension.swift"; sourceTree = "<group>"; };
 		7A8487EE26E5DF810078B9D3 /* AddTripType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTripType.swift; sourceTree = "<group>"; };
-		7A8D33AD26E4282100D3333D /* TripsSectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripsSectionController.swift; sourceTree = "<group>"; };
 		7AB1B09A26E5FA1F00D17652 /* SeparatorCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatorCellNode.swift; sourceTree = "<group>"; };
 		7AB79CE926E1A3600034CA22 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		7AB79CEB26E1A9320034CA22 /* UISearchController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISearchController+Extension.swift"; sourceTree = "<group>"; };
@@ -388,7 +386,6 @@
 		7A8D33AC26E4281500D3333D /* SectionControllers */ = {
 			isa = PBXGroup;
 			children = (
-				7A8D33AD26E4282100D3333D /* TripsSectionController.swift */,
 				7A2B913526E5A76F0027FCB2 /* StationsSectionController.swift */,
 			);
 			path = SectionControllers;
@@ -561,7 +558,6 @@
 				7AB1B09C26E6096000D17652 /* IGListKit */,
 				7A71F6E526E2FD2D00C1243E /* UIKit */,
 				7ABBA91726E36B4D00A673CF /* AsyncDisplayKit */,
-				7ACCC03726E6DBC200333E14 /* Mapbox */,
 				7ACCC03826E6DBE100333E14 /* MarqueeLabel */,
 				7A71F6E626E2FDC200C1243E /* CloudKit */,
 				7ACC856F26B23F5A00F8F946 /* UserDefaults+Extension.swift */,
@@ -587,13 +583,6 @@
 				7AD1DDBC26AFABE00057BEF3 /* Commute.xcdatamodeld */,
 			);
 			path = CoreData;
-			sourceTree = "<group>";
-		};
-		7ACCC03726E6DBC200333E14 /* Mapbox */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Mapbox;
 			sourceTree = "<group>";
 		};
 		7ACCC03826E6DBE100333E14 /* MarqueeLabel */ = {
@@ -853,7 +842,6 @@
 				7AB79CEA26E1A3600034CA22 /* UIView+Extension.swift in Sources */,
 				7AD4E04726AFFECE007960AD /* APIFacade.swift in Sources */,
 				7AFDA8D226DC7313002AB73B /* LegCellNode.swift in Sources */,
-				7A8D33AE26E4282100D3333D /* TripsSectionController.swift in Sources */,
 				7A7D6B1926DF73FD00101CD9 /* UILabel+Extension.swift in Sources */,
 				5753133F274F302E00B35B50 /* StationViewModel.swift in Sources */,
 				7AB79CEC26E1A9320034CA22 /* UISearchController+Extension.swift in Sources */,

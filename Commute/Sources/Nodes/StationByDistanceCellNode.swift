@@ -19,6 +19,18 @@ final class StationByDistanceCellNode: ASCellNode {
       colour: .secondaryLabel
     )
   }
+  
+  override var isSelected: Bool {
+    didSet {
+      backgroundColor = isSelected ? .gray.withAlphaComponent(0.3) : .clear
+    }
+  }
+  
+  override var isHighlighted: Bool {
+    didSet {
+      backgroundColor = isHighlighted ? .gray.withAlphaComponent(0.3) : .clear
+    }
+  }
 
   override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
     let hStack = ASStackLayoutSpec(

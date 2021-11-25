@@ -1,6 +1,6 @@
 import Foundation
 
-enum AddTripType: Int {
+enum AddTripType: Int, CaseIterable {
   /// Origin.
   case origin = 0
 
