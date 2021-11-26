@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		570D63BD27505C5900239E14 /* LegInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570D63BC27505C5900239E14 /* LegInfoVC.swift */; };
 		5753133F274F302E00B35B50 /* StationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5753133E274F302E00B35B50 /* StationViewModel.swift */; };
 		7A09525C26CF952900938A50 /* cityrailBeep.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7A09525B26CF952900938A50 /* cityrailBeep.wav */; };
 		7A09525E26D0B01A00938A50 /* CKAccountStatus+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A09525D26D0B01A00938A50 /* CKAccountStatus+Extension.swift */; };
@@ -86,7 +87,6 @@
 		7ACCC03226E6D6FC00333E14 /* CGFloat+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACCC03126E6D6FC00333E14 /* CGFloat+Extension.swift */; };
 		7ACCC03426E6D75E00333E14 /* CGSize+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACCC03326E6D75E00333E14 /* CGSize+Extension.swift */; };
 		7ACCC03626E6D7E500333E14 /* ASSizeRange+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACCC03526E6D7E500333E14 /* ASSizeRange+Extension.swift */; };
-		7ACCC04926E823E800333E14 /* CommuteApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACCC04826E823E800333E14 /* CommuteApp.swift */; };
 		7ACCC04B26E8334800333E14 /* ListCollectionContext+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACCC04A26E8334800333E14 /* ListCollectionContext+Extension.swift */; };
 		7AD1DDBE26AFABE00057BEF3 /* Commute.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7AD1DDBC26AFABE00057BEF3 /* Commute.xcdatamodeld */; };
 		7AD4E04526AFFEB0007960AD /* TripDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD4E04426AFFEB0007960AD /* TripDetailVC.swift */; };
@@ -121,6 +121,7 @@
 		0B08224D77C6FF2AFE87A409 /* Pods-Commute.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Commute.debug.xcconfig"; path = "Target Support Files/Pods-Commute/Pods-Commute.debug.xcconfig"; sourceTree = "<group>"; };
 		48E658014247727F107433BE /* Pods_Commute.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Commute.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C21E28A3F23E0A640FF21A7 /* Pods-Commute.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Commute.release.xcconfig"; path = "Target Support Files/Pods-Commute/Pods-Commute.release.xcconfig"; sourceTree = "<group>"; };
+		570D63BC27505C5900239E14 /* LegInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegInfoVC.swift; sourceTree = "<group>"; };
 		5753133E274F302E00B35B50 /* StationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationViewModel.swift; sourceTree = "<group>"; };
 		7A09525B26CF952900938A50 /* cityrailBeep.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = cityrailBeep.wav; sourceTree = "<group>"; };
 		7A09525D26D0B01A00938A50 /* CKAccountStatus+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CKAccountStatus+Extension.swift"; sourceTree = "<group>"; };
@@ -206,7 +207,6 @@
 		7ACCC03126E6D6FC00333E14 /* CGFloat+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Extension.swift"; sourceTree = "<group>"; };
 		7ACCC03326E6D75E00333E14 /* CGSize+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGSize+Extension.swift"; sourceTree = "<group>"; };
 		7ACCC03526E6D7E500333E14 /* ASSizeRange+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ASSizeRange+Extension.swift"; sourceTree = "<group>"; };
-		7ACCC04826E823E800333E14 /* CommuteApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommuteApp.swift; sourceTree = "<group>"; };
 		7ACCC04A26E8334800333E14 /* ListCollectionContext+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ListCollectionContext+Extension.swift"; sourceTree = "<group>"; };
 		7AD1DDBD26AFABE00057BEF3 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		7AD4E04426AFFEB0007960AD /* TripDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripDetailVC.swift; sourceTree = "<group>"; };
@@ -451,7 +451,6 @@
 				7A7D6B0126DDE71200101CD9 /* InfoPlist.swift */,
 				7A71F6EB26E31EB500C1243E /* StationSort.swift */,
 				7A8487EE26E5DF810078B9D3 /* AddTripType.swift */,
-				7ACCC04826E823E800333E14 /* CommuteApp.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -637,6 +636,7 @@
 				7AD4E04426AFFEB0007960AD /* TripDetailVC.swift */,
 				7ACC855B26B0FCF900F8F946 /* JourneyDetailVC.swift */,
 				7ACC855D26B0FDEB00F8F946 /* StopSequenceVC.swift */,
+				570D63BC27505C5900239E14 /* LegInfoVC.swift */,
 				7ACC857326B2751F00F8F946 /* ToolsVC.swift */,
 				7AFDA8CF26DC72B3002AB73B /* ServiceInformationVC.swift */,
 				7AFDA8CD26DC729F002AB73B /* ServiceAlertVC.swift */,
@@ -890,6 +890,7 @@
 				7A2C18FC26AE6CB2005BF502 /* AppDelegate.swift in Sources */,
 				7A1C033426E1B8E300B3587B /* UIAlertController+Extension.swift in Sources */,
 				7AC2B4F426AEA750008DC5CF /* Station.swift in Sources */,
+				570D63BD27505C5900239E14 /* LegInfoVC.swift in Sources */,
 				7AC2B4D826AE7876008DC5CF /* TabBarController.swift in Sources */,
 				7A7D6B1726DF733900101CD9 /* UIActivityIndicatorView+Extension.swift in Sources */,
 				7ACC857226B25C7B00F8F946 /* SubtitleCellNode.swift in Sources */,
@@ -903,7 +904,6 @@
 				7AFDA8CC26DC7283002AB73B /* AlertCellNode.swift in Sources */,
 				7AD4E04526AFFEB0007960AD /* TripDetailVC.swift in Sources */,
 				7A7D6B1526DF6EF100101CD9 /* UIEdgeInsets+Extension.swift in Sources */,
-				7ACCC04926E823E800333E14 /* CommuteApp.swift in Sources */,
 				7A71F6F426E3419100C1243E /* StationByDistanceCellNode.swift in Sources */,
 				7A26778D26E0B9A800459C30 /* UIAction+Extension.swift in Sources */,
 				7A29279626CB430A005FD79B /* ShortcutType.swift in Sources */,

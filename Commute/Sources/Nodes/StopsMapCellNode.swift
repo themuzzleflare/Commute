@@ -16,12 +16,12 @@ final class StopsMapCellNode: ASCellNode {
 
     let coordinates = stops.compactMap { $0.location?.coordinate }
     let polylineManager = mapNode.rootView.annotations.makePolylineAnnotationManager()
-    
-    let annotations = PolylineAnnotation(lineCoordinates: coordinates)
-    polylineManager.annotations = [annotations]
+    let annotation = PolylineAnnotation(lineCoordinates: coordinates)
+    polylineManager.annotations = [annotation]
     
     if let location = stops.first?.location {
-      mapNode.rootView.mapboxMap.setCamera(to: CameraOptions(center: location.coordinate, zoom: 16.45))
+      let cameraOptions = CameraOptions(center: location.coordinate, zoom: 16.45)
+      mapNode.rootView.mapboxMap.setCamera(to: cameraOptions)
     }
 
     automaticallyManagesSubnodes = true
@@ -43,8 +43,8 @@ final class StopsMapCellNode: ASCellNode {
 extension StopsMapCellNode: StopSequenceDelegate {
   func didSelectStop(_ stop: TripRequestResponseJourneyLegStop) {
     if let location = stop.location {
-      let cameraOptions = CameraOptions(center: location.coordinate)
-      mapNode.rootView.camera.fly(to: cameraOptions, duration: 1, completion: nil)
+      let cameraOptions = CameraOptions(center: location.coordinate, zoom: 15)
+      mapNode.rootView.camera.fly(to: cameraOptions, duration: 1)
     }
   }
 }

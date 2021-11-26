@@ -28,7 +28,7 @@ import UIKit
         }
       }
 
-      CommuteApp.appDefaults.register(defaults: defaults)
+      UserDefaults.commute.register(defaults: defaults)
     } catch {
       fatalError("Registering defaults failed: \(error.localizedDescription)")
     }

@@ -54,7 +54,7 @@ extension JourneyDetailVC: ASTableDelegate {
     tableNode.deselectRow(at: indexPath, animated: true)
 
     if let stops = leg.stopSequence {
-      navigationController?.pushViewController(StopSequenceVC(stops: stops), animated: true)
+      navigationController?.pushViewController(StopSequenceVC(stops: stops, infos: leg.infos), animated: true)
     }
   }
 }

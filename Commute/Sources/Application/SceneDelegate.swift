@@ -52,12 +52,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
       switch actionTypeValue {
       case .trips:
         tbc.selectedIndex = 0
-      case .stations:
-        tbc.selectedIndex = 1
       case .tools:
-        tbc.selectedIndex = 2
+        tbc.selectedIndex = 1
       case .about:
-        tbc.selectedIndex = 3
+        tbc.selectedIndex = 2
       }
     }
     return true

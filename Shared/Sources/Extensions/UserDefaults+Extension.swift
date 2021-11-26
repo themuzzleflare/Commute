@@ -2,9 +2,7 @@ import Foundation
 
 extension UserDefaults {
   /// A `UserDefaults` instance for the application group. Observations should be made on a stored variable of this value.
-  static var commute: UserDefaults {
-    return UserDefaults(suiteName: "group.\(InfoPlist.cfBundleIdentifier)") ?? .standard
-  }
+  static let commute = UserDefaults(suiteName: "group.\(InfoPlist.cfBundleIdentifier)") ?? .standard
 
   /// The integer of the "stationSort" key.
   @objc dynamic var stationSort: Int {

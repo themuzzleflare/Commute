@@ -52,9 +52,9 @@ final class AddTripVC: ASViewController {
   private var byNameError: CKError?
   private var byDistanceError: CKError?
 
-  private lazy var sortSelection: StationSort = StationSort(rawValue: CommuteApp.appDefaults.stationSort) ?? .byName {
+  private lazy var sortSelection: StationSort = StationSort(rawValue: UserDefaults.commute.stationSort) ?? .byName {
     didSet {
-      if CommuteApp.appDefaults.stationSort != sortSelection.rawValue { CommuteApp.appDefaults.stationSort = sortSelection.rawValue }
+      if UserDefaults.commute.stationSort != sortSelection.rawValue { UserDefaults.commute.stationSort = sortSelection.rawValue }
       if segmentedControl.selectedSegmentIndex != sortSelection.rawValue { segmentedControl.selectedSegmentIndex = sortSelection.rawValue }
       adapter.performUpdates(animated: true)
     }
@@ -112,7 +112,7 @@ final class AddTripVC: ASViewController {
   }
 
   private func configureObserver() {
-    stationSortObserver = CommuteApp.appDefaults.observe(\.stationSort, options: .new) { [weak self] (_, change) in
+    stationSortObserver = UserDefaults.commute.observe(\.stationSort, options: .new) { [weak self] (_, change) in
       guard let weakSelf = self, let value = change.newValue, let stationSort = StationSort(rawValue: value) else { return }
       weakSelf.sortSelection = stationSort
     }

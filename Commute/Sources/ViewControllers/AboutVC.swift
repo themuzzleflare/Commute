@@ -50,9 +50,9 @@ extension AboutVC: ASTableDataSource {
       case 0:
         return AboutTopCellNode()
       case 1:
-        return RightDetailCellNode(text: "Version", detailText: CommuteApp.appDefaults.appVersion)
+        return RightDetailCellNode(text: "Version", detailText: UserDefaults.commute.appVersion)
       case 2:
-        return RightDetailCellNode(text: "Build", detailText: CommuteApp.appDefaults.appBuild)
+        return RightDetailCellNode(text: "Build", detailText: UserDefaults.commute.appBuild)
       default:
         fatalError("Unknown row")
       }
