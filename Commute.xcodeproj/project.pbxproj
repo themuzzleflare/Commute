@@ -12,7 +12,6 @@
 		7A09525C26CF952900938A50 /* cityrailBeep.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7A09525B26CF952900938A50 /* cityrailBeep.wav */; };
 		7A09525E26D0B01A00938A50 /* CKAccountStatus+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A09525D26D0B01A00938A50 /* CKAccountStatus+Extension.swift */; };
 		7A09526026D0B53400938A50 /* CKContainerApplicationPermissionStatus+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A09525F26D0B53400938A50 /* CKContainerApplicationPermissionStatus+Extension.swift */; };
-		7A12305C274F5EB400F41D56 /* ExportOptions.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A12305B274F5EB400F41D56 /* ExportOptions.plist */; };
 		7A1C033426E1B8E300B3587B /* UIAlertController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1C033326E1B8E300B3587B /* UIAlertController+Extension.swift */; };
 		7A1C033626E1B9B900B3587B /* UIAlertAction+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1C033526E1B9B900B3587B /* UIAlertAction+Extension.swift */; };
 		7A1C033826E1C23600B3587B /* UISearchBar+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1C033726E1C23600B3587B /* UISearchBar+Extension.swift */; };
@@ -733,7 +732,6 @@
 				7AFDA8C426DC674B002AB73B /* NewFrankMedium.ttf in Resources */,
 				7AFDA8BC26DC674B002AB73B /* NewFrankLightItalic.ttf in Resources */,
 				7AC2B4E926AE812E008DC5CF /* Settings.bundle in Resources */,
-				7A12305C274F5EB400F41D56 /* ExportOptions.plist in Resources */,
 				7AFDA8C126DC674B002AB73B /* NewFrankLight.ttf in Resources */,
 				7A2C190526AE6CB4005BF502 /* Assets.xcassets in Resources */,
 			);
