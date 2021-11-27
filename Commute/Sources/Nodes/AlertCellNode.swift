@@ -23,6 +23,10 @@ final class AlertCellNode: ASCellNode {
     activePeriodTextNode.attributedText = "\(fromDate.toString(.date(.medium))) to \(toDate.toString(.date(.medium)))".styled(with: .stationDistance)
   }
   
+  deinit {
+    print(#function)
+  }
+  
   override func layout() {
     super.layout()
   }

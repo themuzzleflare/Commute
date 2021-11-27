@@ -21,6 +21,10 @@ final class PDFNode: ASDisplayNode {
     setViewBlock(pdfViewBlock)
     pdfView.document = document
   }
+  
+  deinit {
+    print(#function)
+  }
 }
 
 extension PDFNode {

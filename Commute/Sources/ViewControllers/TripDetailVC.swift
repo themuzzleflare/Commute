@@ -19,6 +19,10 @@ final class TripDetailVC: ASViewController {
     self.trip = trip
     super.init(node: tableNode)
   }
+  
+  deinit {
+    print(#function)
+  }
 
   required init?(coder: NSCoder) {
     fatalError("Not implemented")

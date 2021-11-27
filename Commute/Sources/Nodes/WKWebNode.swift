@@ -15,6 +15,10 @@ final class WKWebNode: ASDisplayNode {
     super.init()
     setViewBlock(webNodeViewBlock)
   }
+  
+  deinit {
+    print(#function)
+  }
 }
 
 extension WKWebNode {

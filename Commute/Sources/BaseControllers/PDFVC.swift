@@ -11,6 +11,10 @@ final class PDFVC: ASViewController {
     self.document = document
     super.init(node: pdfNode)
   }
+  
+  deinit {
+    print(#function)
+  }
 
   required init?(coder: NSCoder) {
     fatalError("Not implemented")

@@ -15,6 +15,10 @@ final class InfoCellNode: ASCellNode {
     textNode.attributedText = text.styled(with: .commute)
   }
   
+  deinit {
+    print(#function)
+  }
+  
   override func layout() {
     super.layout()
   }

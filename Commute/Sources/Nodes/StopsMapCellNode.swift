@@ -6,7 +6,7 @@ import MapboxMaps
 final class StopsMapCellNode: ASCellNode {
   private let mapNode = MapboxMapNode()
   
-  private var stopSequenceViewController: StopSequenceVC
+  private weak var stopSequenceViewController: StopSequenceVC?
   private var stops: [TripRequestResponseJourneyLegStop]
 
   init(_ viewController: StopSequenceVC, stops: [TripRequestResponseJourneyLegStop]) {
@@ -29,8 +29,12 @@ final class StopsMapCellNode: ASCellNode {
     }
     
     mapNode.rootView.mapboxMap.onNext(.mapLoaded) { (_) in
-      self.stopSequenceViewController.delegate = self
+      self.stopSequenceViewController?.delegate = self
     }
+  }
+  
+  deinit {
+    print(#function)
   }
 
   override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {

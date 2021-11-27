@@ -76,7 +76,7 @@ final class AddTripVC: ASViewController {
 
   deinit {
     removeObserver()
-    print("deinit")
+    print(#function)
   }
 
   required init?(coder: NSCoder) {

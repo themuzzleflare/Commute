@@ -10,6 +10,10 @@ final class ServiceAlertVC: ASViewController {
     self.alert = alert
     super.init(node: webNode)
   }
+  
+  deinit {
+    print(#function)
+  }
 
   required init?(coder: NSCoder) {
     fatalError("Not implemented")

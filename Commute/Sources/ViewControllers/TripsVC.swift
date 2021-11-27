@@ -207,9 +207,9 @@ extension TripsVC: ASTableDataSource {
   }
   
   func tableNode(_ tableNode: ASTableNode, nodeBlockForRowAt indexPath: IndexPath) -> ASCellNodeBlock {
-    let trip = filteredTrips.viewModels[indexPath.row]
+    let trip = filteredTrips[indexPath.row]
     return {
-      return TripCellNode(trip: trip)
+      TripCellNode(trip: trip.viewModel)
     }
   }
   
@@ -239,10 +239,10 @@ extension TripsVC: ASTableDataSource {
 
 extension TripsVC: ASTableDelegate {
   func tableNode(_ tableNode: ASTableNode, didSelectRowAt indexPath: IndexPath) {
-    tableNode.deselectRow(at: indexPath, animated: true)
-    
     let trip = filteredTrips[indexPath.row]
-    navigationController?.pushViewController(TripDetailVC(trip: trip.viewModel), animated: true)
+    let viewController = TripDetailVC(trip: trip.viewModel)
+    tableNode.deselectRow(at: indexPath, animated: true)
+    navigationController?.pushViewController(viewController, animated: true)
   }
 }
 

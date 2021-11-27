@@ -13,6 +13,10 @@ final class ServiceInformationVC: ASViewController {
   override init() {
     super.init(node: tableNode)
   }
+  
+  deinit {
+    print(#function)
+  }
 
   required init?(coder: NSCoder) {
     fatalError("Not implemented")

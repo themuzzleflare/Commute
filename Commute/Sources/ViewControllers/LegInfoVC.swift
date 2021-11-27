@@ -12,6 +12,10 @@ final class LegInfoVC: ASDKViewController<ASTableNode> {
     super.init(node: tableNode)
   }
   
+  deinit {
+    print(#function)
+  }
+  
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }

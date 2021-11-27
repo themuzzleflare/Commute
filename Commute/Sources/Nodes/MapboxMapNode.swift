@@ -17,4 +17,8 @@ final class MapboxMapNode: ASDisplayNode {
     super.init()
     setViewBlock(mapboxViewBlock)
   }
+  
+  deinit {
+    print(#function)
+  }
 }
