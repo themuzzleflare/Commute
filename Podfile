@@ -10,7 +10,6 @@ target 'Commute' do
   pod 'SwiftDate'
   pod 'Alamofire'
   pod 'AlamofireNetworkActivityIndicator'
-  pod 'BonMot'
   pod 'SnapKit'
   pod 'Texture'
   pod 'Texture/IGListKit'
@@ -20,6 +19,7 @@ target 'Commute' do
   pod 'Firebase/AnalyticsWithoutAdIdSupport'
   pod 'Firebase/Crashlytics'
   pod 'Firebase/AppCheck'
+  pod 'BonMot'
   
 end
 

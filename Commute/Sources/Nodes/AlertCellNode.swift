@@ -1,35 +1,34 @@
 import SwiftDate
 import UIKit
 import AsyncDisplayKit
+import BonMot
 
 final class AlertCellNode: ASCellNode {
   private let headerTextNode = ASTextNode()
   private let activePeriodTextNode = ASTextNode()
+  
+  private var alert: TransitRealtime_Alert
+  private var fromDate: Date {
+    return Date(seconds: TimeInterval(alert.activePeriod[0].start))
+  }
+  private var toDate: Date {
+    return Date(seconds: TimeInterval(alert.activePeriod[0].end))
+  }
 
   init(alert: TransitRealtime_Alert) {
+    self.alert = alert
     super.init()
-
-    let fromDate = Date(seconds: TimeInterval(alert.activePeriod[0].start))
-    let toDate = Date(seconds: TimeInterval(alert.activePeriod[0].end))
-
     automaticallyManagesSubnodes = true
-
-    accessoryType = .disclosureIndicator
-
-    headerTextNode.attributedText = NSAttributedString(
-      text: alert.headerText.translation.first?.text,
-      font: .newFrankBold(size: UIFont.labelFontSize)
-    )
-
-    activePeriodTextNode.attributedText = NSAttributedString(
-      text: "\(fromDate.toString(.date(.medium))) to \(toDate.toString(.date(.medium)))",
-      font: .newFrankRegular(size: UIFont.smallSystemFontSize),
-      colour: .secondaryLabel
-    )
+    headerTextNode.attributedText = alert.headerText.translation.first?.text.styled(with: .commuteBold)
+    activePeriodTextNode.attributedText = "\(fromDate.toString(.date(.medium))) to \(toDate.toString(.date(.medium)))".styled(with: .stationDistance)
+  }
+  
+  override func layout() {
+    super.layout()
   }
 
   override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
-    let hStack = ASStackLayoutSpec(
+    let vStack = ASStackLayoutSpec(
       direction: .vertical,
       spacing: 0,
       justifyContent: .center,
@@ -39,9 +38,6 @@ final class AlertCellNode: ASCellNode {
         activePeriodTextNode
       ]
     )
-
-    hStack.style.minHeight = ASDimension(unit: .points, value: 80)
-
-    return ASInsetLayoutSpec(insets: .cellNode, child: hStack)
+    return ASInsetLayoutSpec(insets: .cellNode, child: vStack)
   }
 }

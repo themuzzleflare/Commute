@@ -2,7 +2,7 @@ import UIKit
 import AsyncDisplayKit
 
 final class ServiceInformationVC: ASViewController {
-  private let tableNode = ASTableNode(style: .insetGrouped)
+  private let tableNode = ASTableNode(style: .grouped)
 
   private var alerts = [TransitRealtime_FeedEntity]() {
     didSet {
@@ -42,9 +42,9 @@ final class ServiceInformationVC: ASViewController {
     APIFacade.fetchTrackworkAlerts { (result) in
       DispatchQueue.main.async {
         switch result {
-        case .success(let feed):
+        case let .success(feed):
           self.alerts = feed.entity
-        case .failure(let error):
+        case let .failure(error):
           let alertController = UIAlertController.alertWithDismissPopButton(self.navigationController, title: "Error", message: error.localizedDescription)
           self.present(alertController, animated: true)
         }

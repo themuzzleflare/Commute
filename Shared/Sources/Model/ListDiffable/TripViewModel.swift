@@ -30,6 +30,6 @@ extension TripViewModel: ListDiffable {
   func isEqual(toDiffableObject object: ListDiffable?) -> Bool {
     if self === object { return true }
     guard let object = object as? TripViewModel else { return false }
-    return self.name == object.name
+    return self.name == object.name && self.fromStopId == object.fromStopId && self.toStopId == object.toStopId
   }
 }

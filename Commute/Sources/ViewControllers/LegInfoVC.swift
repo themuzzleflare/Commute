@@ -2,8 +2,8 @@ import UIKit
 import AsyncDisplayKit
 import TfNSW
 
-final class LegInfoVC: ASViewController {
-  private let tableNode = ASTableNode(style: .insetGrouped)
+final class LegInfoVC: ASDKViewController<ASTableNode> {
+  private let tableNode = ASTableNode(style: .grouped)
   
   private var infos: [TripRequestResponseJourneyLegStopInfo]
   
@@ -22,14 +22,15 @@ final class LegInfoVC: ASViewController {
     configureTableNode()
   }
   
-  private func configureTableNode() {
-    tableNode.dataSource = self
-    tableNode.delegate = self
-  }
-  
   private func configureNavigation() {
     navigationItem.title = "Leg Info"
     navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(close))
+  }
+  
+  private func configureTableNode() {
+    tableNode.dataSource = self
+    tableNode.delegate = self
+    tableNode.allowsSelection = false
   }
   
   @objc private func close() {
@@ -45,7 +46,7 @@ extension LegInfoVC: ASTableDataSource {
   func tableNode(_ tableNode: ASTableNode, nodeBlockForRowAt indexPath: IndexPath) -> ASCellNodeBlock {
     let info = infos[indexPath.row]
     return {
-      SubtitleCellNode(text: info.subtitle ?? "", detailText: "")
+      InfoCellNode(text: info.subtitle ?? "")
     }
   }
 }

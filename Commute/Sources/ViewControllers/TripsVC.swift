@@ -4,7 +4,7 @@ import SnapKit
 import IGListKit
 
 final class TripsVC: ASViewController {
-  private let tableNode = ASTableNode(style: .insetGrouped)
+  private let tableNode = ASTableNode(style: .grouped)
   
   private var trips = [Trip]() {
     didSet {
@@ -238,8 +238,8 @@ extension TripsVC: ASTableDataSource {
 }
 
 extension TripsVC: ASTableDelegate {
-  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    tableView.deselectRow(at: indexPath, animated: true)
+  func tableNode(_ tableNode: ASTableNode, didSelectRowAt indexPath: IndexPath) {
+    tableNode.deselectRow(at: indexPath, animated: true)
     
     let trip = filteredTrips[indexPath.row]
     navigationController?.pushViewController(TripDetailVC(trip: trip.viewModel), animated: true)

@@ -7,7 +7,5 @@ extension ASSizeRange {
     return ASSizeRange(min: .cellNode(height: minHeight), max: .cellNode(height: maxHeight))
   }
 
-  static var separator: ASSizeRange {
-    return ASSizeRange(min: .separator, max: .separator)
-  }
+  static let separator = ASSizeRange(min: .separator, max: .separator)
 }

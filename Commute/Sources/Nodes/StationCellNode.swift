@@ -1,23 +1,19 @@
 import UIKit
-import CoreLocation
 import AsyncDisplayKit
+import BonMot
 
-final class StationByDistanceCellNode: ASCellNode {
+final class StationCellNode: ASCellNode {
   private let stationNameTextNode = ASTextNode()
   private let distanceTextNode = ASTextNode()
+  
+  private var station: StationViewModel
 
-  init(station: Station, relativeLocation: CLLocation?) {
+  init(station: StationViewModel) {
+    self.station = station
     super.init()
-
     automaticallyManagesSubnodes = true
-
-    stationNameTextNode.attributedText = NSAttributedString(text: station.shortName)
-
-    distanceTextNode.attributedText = NSAttributedString(
-      text: "\(NumberFormatter.twoDecimalPlaces.string(from: station.location.distance(from: relativeLocation ?? CLLocation()).kilometres.nsNumber) ?? "") km",
-      font: .newFrankRegular(size: UIFont.smallSystemFontSize),
-      colour: .secondaryLabel
-    )
+    stationNameTextNode.attributedText = station.name.styled(with: .commute)
+    distanceTextNode.attributedText = station.distance.styled(with: .stationDistance)
   }
   
   override var isSelected: Bool {
@@ -31,19 +27,23 @@ final class StationByDistanceCellNode: ASCellNode {
       backgroundColor = isHighlighted ? .gray.withAlphaComponent(0.3) : .clear
     }
   }
+  
+  override func layout() {
+    super.layout()
+  }
 
   override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
-    let hStack = ASStackLayoutSpec(
+    let vStack = ASStackLayoutSpec(
       direction: .vertical,
       spacing: 0,
       justifyContent: .start,
       alignItems: .start,
-      children: [
+      children: station.type == .byName ? [stationNameTextNode] : [
         stationNameTextNode,
         distanceTextNode
       ]
     )
 
-    return ASInsetLayoutSpec(insets: .cellNode, child: hStack)
+    return ASInsetLayoutSpec(insets: .cellNode, child: vStack)
   }
 }

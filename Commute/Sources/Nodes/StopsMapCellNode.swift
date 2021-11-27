@@ -4,15 +4,19 @@ import AsyncDisplayKit
 import MapboxMaps
 
 final class StopsMapCellNode: ASCellNode {
+  private let mapNode = MapboxMapNode()
+  
   private var stopSequenceViewController: StopSequenceVC
   private var stops: [TripRequestResponseJourneyLegStop]
-
-  private let mapNode = MapboxMapNode()
 
   init(_ viewController: StopSequenceVC, stops: [TripRequestResponseJourneyLegStop]) {
     self.stopSequenceViewController = viewController
     self.stops = stops
     super.init()
+    
+    automaticallyManagesSubnodes = true
+    selectionStyle = .none
+    mapNode.style.minHeight = ASDimension(unit: .points, value: 400)
 
     let coordinates = stops.compactMap { $0.location?.coordinate }
     let polylineManager = mapNode.rootView.annotations.makePolylineAnnotationManager()
@@ -23,12 +27,6 @@ final class StopsMapCellNode: ASCellNode {
       let cameraOptions = CameraOptions(center: location.coordinate, zoom: 16.45)
       mapNode.rootView.mapboxMap.setCamera(to: cameraOptions)
     }
-
-    automaticallyManagesSubnodes = true
-
-    selectionStyle = .none
-
-    mapNode.style.minHeight = ASDimension(unit: .points, value: 300)
     
     mapNode.rootView.mapboxMap.onNext(.mapLoaded) { (_) in
       self.stopSequenceViewController.delegate = self
@@ -39,6 +37,8 @@ final class StopsMapCellNode: ASCellNode {
     return ASInsetLayoutSpec(insets: .zero, child: mapNode)
   }
 }
+
+// MARK: - StopSequenceDelegate
 
 extension StopsMapCellNode: StopSequenceDelegate {
   func didSelectStop(_ stop: TripRequestResponseJourneyLegStop) {

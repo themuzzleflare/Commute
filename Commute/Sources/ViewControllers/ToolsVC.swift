@@ -3,26 +3,26 @@ import UIKit
 import AsyncDisplayKit
 
 final class ToolsVC: ASViewController {
-  private let tableNode = ASTableNode(style: .insetGrouped)
-
+  private let tableNode = ASTableNode(style: .grouped)
+  
   override init() {
     super.init(node: tableNode)
   }
-
+  
   required init?(coder: NSCoder) {
     fatalError("Not implemented")
   }
-
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     configureNavigation()
     configureTableNode()
   }
-
+  
   private func configureNavigation() {
     navigationItem.title = "Tools"
   }
-
+  
   private func configureTableNode() {
     tableNode.dataSource = self
     tableNode.delegate = self
@@ -34,7 +34,7 @@ extension ToolsVC: ASTableDataSource {
   func tableNode(_ tableNode: ASTableNode, numberOfRowsInSection section: Int) -> Int {
     return 2
   }
-
+  
   func tableNode(_ tableNode: ASTableNode, nodeBlockForRowAt indexPath: IndexPath) -> ASCellNodeBlock {
     return {
       switch indexPath.row {
@@ -52,7 +52,7 @@ extension ToolsVC: ASTableDataSource {
 extension ToolsVC: ASTableDelegate {
   func tableNode(_ tableNode: ASTableNode, didSelectRowAt indexPath: IndexPath) {
     tableNode.deselectRow(at: indexPath, animated: true)
-
+    
     switch indexPath.row {
     case 0:
       if let document = PDFDocument(url: .sydneyRailNetworkPDF) {

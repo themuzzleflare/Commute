@@ -29,15 +29,17 @@
 		7A2B913126E598760027FCB2 /* IGListCollectionContext+Refinements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2B912D26E598760027FCB2 /* IGListCollectionContext+Refinements.swift */; };
 		7A2B913226E598760027FCB2 /* ListValueSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2B912E26E598760027FCB2 /* ListValueSectionController.swift */; };
 		7A2B913426E5A2690027FCB2 /* AddTripVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2B913326E5A2690027FCB2 /* AddTripVC.swift */; };
-		7A2B913626E5A76F0027FCB2 /* StationsSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2B913526E5A76F0027FCB2 /* StationsSectionController.swift */; };
-		7A2B913A26E5AFA70027FCB2 /* StationByNameCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2B913926E5AFA70027FCB2 /* StationByNameCellNode.swift */; };
+		7A2B913626E5A76F0027FCB2 /* StationSC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2B913526E5A76F0027FCB2 /* StationSC.swift */; };
 		7A2C18FC26AE6CB2005BF502 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2C18FB26AE6CB2005BF502 /* AppDelegate.swift */; };
 		7A2C190526AE6CB4005BF502 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A2C190426AE6CB4005BF502 /* Assets.xcassets */; };
 		7A2C190826AE6CB4005BF502 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A2C190626AE6CB4005BF502 /* LaunchScreen.storyboard */; };
 		7A464EAB26E856550062781D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A464EAA26E856550062781D /* GoogleService-Info.plist */; };
 		7A464EAF26E86D3C0062781D /* MapboxMapNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A464EAE26E86D3C0062781D /* MapboxMapNode.swift */; };
+		7A47E2782751EEDE00ACBBED /* gtfs-realtime.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A47E2772751EEDE00ACBBED /* gtfs-realtime.pb.swift */; };
+		7A47E27B2751EFF200ACBBED /* StringStyle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A47E27A2751EFF200ACBBED /* StringStyle+Extension.swift */; };
+		7A493B862751DE67001022B7 /* InfoCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A493B852751DE67001022B7 /* InfoCellNode.swift */; };
 		7A71F6EC26E31EB500C1243E /* StationSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A71F6EB26E31EB500C1243E /* StationSort.swift */; };
-		7A71F6F426E3419100C1243E /* StationByDistanceCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A71F6F326E3419100C1243E /* StationByDistanceCellNode.swift */; };
+		7A71F6F426E3419100C1243E /* StationCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A71F6F326E3419100C1243E /* StationCellNode.swift */; };
 		7A71F6F626E343BC00C1243E /* TripCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A71F6F526E343BC00C1243E /* TripCellNode.swift */; };
 		7A77B9BA26B929E100712639 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A77B9B926B929E100712639 /* SceneDelegate.swift */; };
 		7A7D6B0026DDE68200101CD9 /* CKContainer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7D6AFF26DDE68200101CD9 /* CKContainer+Extension.swift */; };
@@ -67,7 +69,6 @@
 		7AC2B4E926AE812E008DC5CF /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7AC2B4E826AE812E008DC5CF /* Settings.bundle */; };
 		7AC2B4F226AEA6D8008DC5CF /* CKFacade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC2B4F126AEA6D8008DC5CF /* CKFacade.swift */; };
 		7AC2B4F426AEA750008DC5CF /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC2B4F326AEA750008DC5CF /* Station.swift */; };
-		7AC3137026E89F3E00218915 /* UIContextMenuConfiguration+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC3136F26E89F3E00218915 /* UIContextMenuConfiguration+Extension.swift */; };
 		7AC3137226E8A2B000218915 /* PDFNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC3137126E8A2B000218915 /* PDFNode.swift */; };
 		7AC3137426E8A54D00218915 /* WKWebNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC3137326E8A54D00218915 /* WKWebNode.swift */; };
 		7AC3FFCA26B380A700EEBBBD /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC3FFC926B380A700EEBBBD /* Trip.swift */; };
@@ -106,7 +107,6 @@
 		7AFDA8C326DC674B002AB73B /* NewFrankBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7AFDA8B726DC674A002AB73B /* NewFrankBold.ttf */; };
 		7AFDA8C426DC674B002AB73B /* NewFrankMedium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7AFDA8B826DC674B002AB73B /* NewFrankMedium.ttf */; };
 		7AFDA8C526DC674B002AB73B /* NewFrankExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7AFDA8B926DC674B002AB73B /* NewFrankExtraBoldItalic.ttf */; };
-		7AFDA8C926DC7062002AB73B /* gtfs-realtime.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFDA8C826DC7062002AB73B /* gtfs-realtime.pb.swift */; };
 		7AFDA8CC26DC7283002AB73B /* AlertCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFDA8CB26DC7283002AB73B /* AlertCellNode.swift */; };
 		7AFDA8CE26DC729F002AB73B /* ServiceAlertVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFDA8CD26DC729F002AB73B /* ServiceAlertVC.swift */; };
 		7AFDA8D026DC72B3002AB73B /* ServiceInformationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFDA8CF26DC72B3002AB73B /* ServiceInformationVC.swift */; };
@@ -143,8 +143,7 @@
 		7A2B912D26E598760027FCB2 /* IGListCollectionContext+Refinements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IGListCollectionContext+Refinements.swift"; sourceTree = "<group>"; };
 		7A2B912E26E598760027FCB2 /* ListValueSectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListValueSectionController.swift; sourceTree = "<group>"; };
 		7A2B913326E5A2690027FCB2 /* AddTripVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTripVC.swift; sourceTree = "<group>"; };
-		7A2B913526E5A76F0027FCB2 /* StationsSectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationsSectionController.swift; sourceTree = "<group>"; };
-		7A2B913926E5AFA70027FCB2 /* StationByNameCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationByNameCellNode.swift; sourceTree = "<group>"; };
+		7A2B913526E5A76F0027FCB2 /* StationSC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationSC.swift; sourceTree = "<group>"; };
 		7A2C18F826AE6CB2005BF502 /* Commute.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Commute.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A2C18FB26AE6CB2005BF502 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7A2C190426AE6CB4005BF502 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -155,8 +154,12 @@
 		7A38860F26BB835800F57EA0 /* Shared.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Shared.xcconfig; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.xcconfig; };
 		7A464EAA26E856550062781D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7A464EAE26E86D3C0062781D /* MapboxMapNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapboxMapNode.swift; sourceTree = "<group>"; };
+		7A47E2762751EEA500ACBBED /* gtfs-realtime.proto */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.protobuf; path = "gtfs-realtime.proto"; sourceTree = "<group>"; };
+		7A47E2772751EEDE00ACBBED /* gtfs-realtime.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "gtfs-realtime.pb.swift"; sourceTree = "<group>"; };
+		7A47E27A2751EFF200ACBBED /* StringStyle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StringStyle+Extension.swift"; sourceTree = "<group>"; };
+		7A493B852751DE67001022B7 /* InfoCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCellNode.swift; sourceTree = "<group>"; };
 		7A71F6EB26E31EB500C1243E /* StationSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationSort.swift; sourceTree = "<group>"; };
-		7A71F6F326E3419100C1243E /* StationByDistanceCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationByDistanceCellNode.swift; sourceTree = "<group>"; };
+		7A71F6F326E3419100C1243E /* StationCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationCellNode.swift; sourceTree = "<group>"; };
 		7A71F6F526E343BC00C1243E /* TripCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripCellNode.swift; sourceTree = "<group>"; };
 		7A77B9B926B929E100712639 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		7A7D6AFF26DDE68200101CD9 /* CKContainer+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CKContainer+Extension.swift"; sourceTree = "<group>"; };
@@ -187,7 +190,6 @@
 		7AC2B4E826AE812E008DC5CF /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		7AC2B4F126AEA6D8008DC5CF /* CKFacade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKFacade.swift; sourceTree = "<group>"; };
 		7AC2B4F326AEA750008DC5CF /* Station.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Station.swift; sourceTree = "<group>"; };
-		7AC3136F26E89F3E00218915 /* UIContextMenuConfiguration+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIContextMenuConfiguration+Extension.swift"; sourceTree = "<group>"; };
 		7AC3137126E8A2B000218915 /* PDFNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFNode.swift; sourceTree = "<group>"; };
 		7AC3137326E8A54D00218915 /* WKWebNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WKWebNode.swift; sourceTree = "<group>"; };
 		7AC3FFC926B380A700EEBBBD /* Trip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
@@ -226,8 +228,6 @@
 		7AFDA8B726DC674A002AB73B /* NewFrankBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NewFrankBold.ttf; sourceTree = "<group>"; };
 		7AFDA8B826DC674B002AB73B /* NewFrankMedium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NewFrankMedium.ttf; sourceTree = "<group>"; };
 		7AFDA8B926DC674B002AB73B /* NewFrankExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NewFrankExtraBoldItalic.ttf; sourceTree = "<group>"; };
-		7AFDA8C726DC6FFD002AB73B /* gtfs-realtime.proto */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.protobuf; path = "gtfs-realtime.proto"; sourceTree = "<group>"; };
-		7AFDA8C826DC7062002AB73B /* gtfs-realtime.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "gtfs-realtime.pb.swift"; sourceTree = "<group>"; };
 		7AFDA8CB26DC7283002AB73B /* AlertCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertCellNode.swift; sourceTree = "<group>"; };
 		7AFDA8CD26DC729F002AB73B /* ServiceAlertVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceAlertVC.swift; sourceTree = "<group>"; };
 		7AFDA8CF26DC72B3002AB73B /* ServiceInformationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceInformationVC.swift; sourceTree = "<group>"; };
@@ -334,6 +334,14 @@
 			path = Configurations;
 			sourceTree = "<group>";
 		};
+		7A47E2792751EFE500ACBBED /* BonMot */ = {
+			isa = PBXGroup;
+			children = (
+				7A47E27A2751EFF200ACBBED /* StringStyle+Extension.swift */,
+			);
+			path = BonMot;
+			sourceTree = "<group>";
+		};
 		7A71F6E526E2FD2D00C1243E /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
@@ -359,7 +367,6 @@
 				7A1C033526E1B9B900B3587B /* UIAlertAction+Extension.swift */,
 				7A1C033726E1C23600B3587B /* UISearchBar+Extension.swift */,
 				7ACCC02F26E6D55400333E14 /* UICollectionViewLayout+Extension.swift */,
-				7AC3136F26E89F3E00218915 /* UIContextMenuConfiguration+Extension.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -387,7 +394,7 @@
 		7A8D33AC26E4281500D3333D /* SectionControllers */ = {
 			isa = PBXGroup;
 			children = (
-				7A2B913526E5A76F0027FCB2 /* StationsSectionController.swift */,
+				7A2B913526E5A76F0027FCB2 /* StationSC.swift */,
 			);
 			path = SectionControllers;
 			sourceTree = "<group>";
@@ -535,8 +542,7 @@
 			children = (
 				7A71F6F526E343BC00C1243E /* TripCellNode.swift */,
 				7AB1B09A26E5FA1F00D17652 /* SeparatorCellNode.swift */,
-				7A2B913926E5AFA70027FCB2 /* StationByNameCellNode.swift */,
-				7A71F6F326E3419100C1243E /* StationByDistanceCellNode.swift */,
+				7A71F6F326E3419100C1243E /* StationCellNode.swift */,
 				7ACC856626B2201E00F8F946 /* JourneyCellNode.swift */,
 				7AFDA8D126DC7313002AB73B /* LegCellNode.swift */,
 				7ACC856C26B23DE800F8F946 /* RightDetailCellNode.swift */,
@@ -547,6 +553,7 @@
 				7A464EAE26E86D3C0062781D /* MapboxMapNode.swift */,
 				7AC3137126E8A2B000218915 /* PDFNode.swift */,
 				7AC3137326E8A54D00218915 /* WKWebNode.swift */,
+				7A493B852751DE67001022B7 /* InfoCellNode.swift */,
 			);
 			path = Nodes;
 			sourceTree = "<group>";
@@ -554,6 +561,7 @@
 		7ACC856E26B23F4B00F8F946 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				7A47E2792751EFE500ACBBED /* BonMot */,
 				7AB1B09C26E6096000D17652 /* IGListKit */,
 				7A71F6E526E2FD2D00C1243E /* UIKit */,
 				7ABBA91726E36B4D00A673CF /* AsyncDisplayKit */,
@@ -612,8 +620,8 @@
 		7AFDA8C626DC6FCD002AB73B /* ProtocolBuffers */ = {
 			isa = PBXGroup;
 			children = (
-				7AFDA8C826DC7062002AB73B /* gtfs-realtime.pb.swift */,
-				7AFDA8C726DC6FFD002AB73B /* gtfs-realtime.proto */,
+				7A47E2772751EEDE00ACBBED /* gtfs-realtime.pb.swift */,
+				7A47E2762751EEA500ACBBED /* gtfs-realtime.proto */,
 			);
 			path = ProtocolBuffers;
 			sourceTree = "<group>";
@@ -653,12 +661,12 @@
 			buildConfigurationList = 7A2C190C26AE6CB4005BF502 /* Build configuration list for PBXNativeTarget "Commute" */;
 			buildPhases = (
 				585D8D2AA137F5E62E6599E4 /* [CP] Check Pods Manifest.lock */,
+				7AC2B4CF26AE7070008DC5CF /* Initialise SwiftLint */,
 				7A2C18F426AE6CB2005BF502 /* Sources */,
 				7A2C18F526AE6CB2005BF502 /* Frameworks */,
 				7A2C18F626AE6CB2005BF502 /* Resources */,
 				43752CBDD0EFDDD7F07F5DEF /* [CP] Embed Pods Frameworks */,
 				7AC2B4EA26AE8259008DC5CF /* Append Values to Settings.bundle/Root.plist */,
-				7AC2B4CF26AE7070008DC5CF /* Initialise SwiftLint */,
 				7AE282CB26E844890031BAE1 /* Initialise Crashlytics */,
 			);
 			buildRules = (
@@ -853,6 +861,7 @@
 				7A8487EF26E5DF810078B9D3 /* AddTripType.swift in Sources */,
 				7ACC856726B2201E00F8F946 /* JourneyCellNode.swift in Sources */,
 				7A26778726E0600900459C30 /* UIControl+Extension.swift in Sources */,
+				7A47E2782751EEDE00ACBBED /* gtfs-realtime.pb.swift in Sources */,
 				7A2B913026E598760027FCB2 /* IGListSingleSectionController+Refinements.swift in Sources */,
 				7AF8783A26B4FB7000A81C3A /* ASViewController.swift in Sources */,
 				7A7D6B0226DDE71200101CD9 /* InfoPlist.swift in Sources */,
@@ -863,7 +872,7 @@
 				7AFDA8DE26DCDB49002AB73B /* Int+Extension.swift in Sources */,
 				7A26779026E0C8F400459C30 /* StationName.swift in Sources */,
 				7A09526026D0B53400938A50 /* CKContainerApplicationPermissionStatus+Extension.swift in Sources */,
-				7A2B913626E5A76F0027FCB2 /* StationsSectionController.swift in Sources */,
+				7A2B913626E5A76F0027FCB2 /* StationSC.swift in Sources */,
 				7A7D6B1F26DF884500101CD9 /* UIFont+Extension.swift in Sources */,
 				7AC3FFCC26B38FCD00EEBBBD /* CKError+Extension.swift in Sources */,
 				7ACC857426B2751F00F8F946 /* ToolsVC.swift in Sources */,
@@ -886,6 +895,7 @@
 				7ACC855E26B0FDEB00F8F946 /* StopSequenceVC.swift in Sources */,
 				7AC3FFCA26B380A700EEBBBD /* Trip.swift in Sources */,
 				7ACCC03626E6D7E500333E14 /* ASSizeRange+Extension.swift in Sources */,
+				7A493B862751DE67001022B7 /* InfoCellNode.swift in Sources */,
 				7A71F6EC26E31EB500C1243E /* StationSort.swift in Sources */,
 				7A2C18FC26AE6CB2005BF502 /* AppDelegate.swift in Sources */,
 				7A1C033426E1B8E300B3587B /* UIAlertController+Extension.swift in Sources */,
@@ -896,7 +906,6 @@
 				7ACC857226B25C7B00F8F946 /* SubtitleCellNode.swift in Sources */,
 				7A1C033826E1C23600B3587B /* UISearchBar+Extension.swift in Sources */,
 				7ACCC03226E6D6FC00333E14 /* CGFloat+Extension.swift in Sources */,
-				7AC3137026E89F3E00218915 /* UIContextMenuConfiguration+Extension.swift in Sources */,
 				7A7D6B0826DEF97100101CD9 /* MarqueeLabel+Extension.swift in Sources */,
 				7A77B9BA26B929E100712639 /* SceneDelegate.swift in Sources */,
 				7A7D6B2126DF885200101CD9 /* UIColor+Extension.swift in Sources */,
@@ -904,10 +913,9 @@
 				7AFDA8CC26DC7283002AB73B /* AlertCellNode.swift in Sources */,
 				7AD4E04526AFFEB0007960AD /* TripDetailVC.swift in Sources */,
 				7A7D6B1526DF6EF100101CD9 /* UIEdgeInsets+Extension.swift in Sources */,
-				7A71F6F426E3419100C1243E /* StationByDistanceCellNode.swift in Sources */,
+				7A71F6F426E3419100C1243E /* StationCellNode.swift in Sources */,
 				7A26778D26E0B9A800459C30 /* UIAction+Extension.swift in Sources */,
 				7A29279626CB430A005FD79B /* ShortcutType.swift in Sources */,
-				7A2B913A26E5AFA70027FCB2 /* StationByNameCellNode.swift in Sources */,
 				7AE282CF26E848140031BAE1 /* AppCheckProviderFactory.swift in Sources */,
 				7AC2B4E226AE78D0008DC5CF /* AboutVC.swift in Sources */,
 				7A7D6B0026DDE68200101CD9 /* CKContainer+Extension.swift in Sources */,
@@ -916,6 +924,7 @@
 				7AC3137226E8A2B000218915 /* PDFNode.swift in Sources */,
 				7ACCC03426E6D75E00333E14 /* CGSize+Extension.swift in Sources */,
 				7AE38BB326D1D7A10021679A /* CKDatabaseScope+Extension.swift in Sources */,
+				7A47E27B2751EFF200ACBBED /* StringStyle+Extension.swift in Sources */,
 				7A7D6B2326DF885A00101CD9 /* UIImage+Extension.swift in Sources */,
 				7ACB3D202706EBCB004B81D7 /* TripViewModel.swift in Sources */,
 				7AB1B09B26E5FA1F00D17652 /* SeparatorCellNode.swift in Sources */,
@@ -925,7 +934,6 @@
 				7A1C033626E1B9B900B3587B /* UIAlertAction+Extension.swift in Sources */,
 				7AFDA8CE26DC729F002AB73B /* ServiceAlertVC.swift in Sources */,
 				7A7D6B0A26DF086900101CD9 /* StopsMapCellNode.swift in Sources */,
-				7AFDA8C926DC7062002AB73B /* gtfs-realtime.pb.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

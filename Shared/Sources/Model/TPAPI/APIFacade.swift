@@ -51,7 +51,7 @@ struct APIFacade {
         } catch {
           completion(.failure(error))
         }
-      case .failure(let error):
+      case let .failure(error):
         completion(.failure(error))
       }
     }

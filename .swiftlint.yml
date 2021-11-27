@@ -14,6 +14,5 @@ opt_in_rules:
 - empty_string
 excluded:
 - Pods
-- R.generated.swift
 - Shared/Sources/Model/ProtocolBuffers
 - Shared/Sources/Extensions/IGListKit/IGListSwiftKit

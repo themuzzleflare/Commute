@@ -133,9 +133,6 @@ final class LegCellNode: ASCellNode {
       ]
     )
 
-    finalStack.style.minHeight = ASDimension(unit: .points, value: 120)
-    finalStack.style.maxHeight = ASDimension(unit: .points, value: 120)
-
     return ASInsetLayoutSpec(insets: .zero, child: finalStack)
   }
 }

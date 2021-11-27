@@ -1,36 +1,36 @@
 import UIKit
 import AsyncDisplayKit
+import BonMot
 
 final class SubtitleCellNode: ASCellNode {
   private let topTextNode = ASTextNode()
   private let bottomTextNode = ASTextNode()
-
+  
+  private var text: String
+  private var detailText: String
+  
   init(text: String, detailText: String) {
+    self.text = text
+    self.detailText = detailText
     super.init()
-
     automaticallyManagesSubnodes = true
-
-    topTextNode.attributedText = NSAttributedString(
-      text: text,
-      font: .newFrankBold(size: UIFont.labelFontSize)
-    )
-
-    bottomTextNode.attributedText = NSAttributedString(
-      text: detailText,
-      font: .newFrankRegular(size: UIFont.smallSystemFontSize),
-      colour: .secondaryLabel
-    )
+    topTextNode.attributedText = text.styled(with: .commuteBold)
+    bottomTextNode.attributedText = detailText.styled(with: .stationDistance)
   }
-
+  
+  override func layout() {
+    super.layout()
+  }
+  
   override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
-    let hStack = ASStackLayoutSpec(
+    let vStack = ASStackLayoutSpec(
       direction: .vertical,
       spacing: 0,
       justifyContent: .start,
       alignItems: .start,
-      children: bottomTextNode.attributedText!.string.isEmpty ? [topTextNode] : [topTextNode, bottomTextNode]
+      children: detailText.isEmpty ? [topTextNode] : [topTextNode, bottomTextNode]
     )
-
-    return ASInsetLayoutSpec(insets: .cellNode, child: hStack)
+    
+    return ASInsetLayoutSpec(insets: .cellNode, child: vStack)
   }
 }

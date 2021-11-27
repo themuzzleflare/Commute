@@ -1,6 +1,7 @@
 import TfNSW
 import UIKit
 import AsyncDisplayKit
+import BonMot
 
 final class JourneyCellNode: ASCellNode {
   private let relativeTimeDisplayNode = ASDisplayNode()
@@ -11,10 +12,12 @@ final class JourneyCellNode: ASCellNode {
   private let toNameTextNode = ASTextNode()
   private let toTimeTextNode = ASTextNode()
   private let transportationNamesTextNode = ASTextNode()
+  
+  private var journey: TripRequestResponseJourney
 
   init(journey: TripRequestResponseJourney) {
+    self.journey = journey
     super.init()
-
     automaticallyManagesSubnodes = true
 
     relativeTimeDisplayNode.backgroundColor = journey.colour
@@ -130,9 +133,6 @@ final class JourneyCellNode: ASCellNode {
         insetStack
       ]
     )
-
-    finalStack.style.minHeight = ASDimension(unit: .points, value: 120)
-    finalStack.style.maxHeight = ASDimension(unit: .points, value: 120)
 
     return ASInsetLayoutSpec(insets: .zero, child: finalStack)
   }

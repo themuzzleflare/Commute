@@ -34,15 +34,17 @@ final class AddTripVC: ASViewController {
     }
   }
   
-  private var byNameStationModels: [StationViewModel] {
+  private var byNameStationViewModels: [StationViewModel] {
     return byNameStations.map { (station) in
-      return StationViewModel(station: station, type: .byName, id: station.globalId, name: station.name, distance: nil)
+      let distanceString = "\(NumberFormatter.twoDecimalPlaces.string(from: station.location.distance(from: locationManager.location ?? CLLocation()).kilometres.nsNumber) ?? "") km"
+      return StationViewModel(station: station, type: sortSelection, id: station.globalId, name: station.shortName, distance: distanceString)
     }
   }
   
-  private var byDistanceStationModels: [StationViewModel] {
+  private var byDistanceStationViewModels: [StationViewModel] {
     return byDistanceStations.map { (station) in
-      return StationViewModel(station: station, type: .byDistance, id: station.globalId, name: station.name, distance: locationManager.location)
+      let distanceString = "\(NumberFormatter.twoDecimalPlaces.string(from: station.location.distance(from: locationManager.location ?? CLLocation()).kilometres.nsNumber) ?? "") km"
+      return StationViewModel(station: station, type: sortSelection, id: station.globalId, name: station.shortName, distance: distanceString)
     }
   }
 
@@ -170,14 +172,14 @@ extension AddTripVC: ListAdapterDataSource {
   func objects(for listAdapter: ListAdapter) -> [ListDiffable] {
     switch sortSelection {
     case .byName:
-      return byNameStationModels
+      return byNameStationViewModels
     case .byDistance:
-      return byDistanceStationModels
+      return byDistanceStationViewModels
     }
   }
 
   func listAdapter(_ listAdapter: ListAdapter, sectionControllerFor object: Any) -> ListSectionController {
-    return StationsSectionController(addTripType: addTripType, fromStation: fromStation)
+    return StationSC(addTripType: addTripType, fromStation: fromStation)
   }
 
   func emptyView(for listAdapter: ListAdapter) -> UIView? {
