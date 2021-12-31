@@ -8,17 +8,19 @@ final class StopSequenceVC: ASViewController {
   
   private let tableNode = ASTableNode(style: .grouped)
   
+  private var leg: TripRequestResponseJourneyLeg
   private var stopSequence: [TripRequestResponseJourneyLegStop]
   private var infos: [TripRequestResponseJourneyLegStopInfo]?
   
-  init(stops: [TripRequestResponseJourneyLegStop], infos: [TripRequestResponseJourneyLegStopInfo]? = nil) {
+  init(leg: TripRequestResponseJourneyLeg, stops: [TripRequestResponseJourneyLegStop], infos: [TripRequestResponseJourneyLegStopInfo]? = nil) {
+    self.leg = leg
     self.stopSequence = stops
     self.infos = infos
     super.init(node: tableNode)
   }
   
   deinit {
-    print(#function)
+    print("\(#function) \(String(describing: type(of: self)))")
   }
   
   required init?(coder: NSCoder) {
@@ -80,7 +82,7 @@ extension StopSequenceVC: ASTableDataSource {
     }
     
     let subtitleCellNode = SubtitleCellNode(text: text, detailText: stop.departureTime?.toDate()?.toString(.time(.short)) ?? stop.arrivalTime?.toDate()?.toString(.time(.short)) ?? "")
-    let stopsMapCellNode = StopsMapCellNode(self, stops: stopSequence)
+    let stopsMapCellNode = StopsMapCellNode(self, stops: stopSequence, colour: leg.colour ?? .accentColor)
     
     return {
       switch indexPath.section {

@@ -3,7 +3,7 @@ import AsyncDisplayKit
 import TfNSW
 
 final class LegInfoVC: ASDKViewController<ASTableNode> {
-  private let tableNode = ASTableNode(style: .grouped)
+  private let tableNode = ASTableNode(style: .plain)
   
   private var infos: [TripRequestResponseJourneyLegStopInfo]
   
@@ -13,7 +13,7 @@ final class LegInfoVC: ASDKViewController<ASTableNode> {
   }
   
   deinit {
-    print(#function)
+    print("\(#function) \(String(describing: type(of: self)))")
   }
   
   required init?(coder: NSCoder) {

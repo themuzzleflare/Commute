@@ -17,7 +17,7 @@ final class WKWebNode: ASDisplayNode {
   }
   
   deinit {
-    print(#function)
+    print("\(#function) \(String(describing: type(of: self)))")
   }
 }
 

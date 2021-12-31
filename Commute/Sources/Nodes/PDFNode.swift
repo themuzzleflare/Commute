@@ -23,7 +23,7 @@ final class PDFNode: ASDisplayNode {
   }
   
   deinit {
-    print(#function)
+    print("\(#function) \(String(describing: type(of: self)))")
   }
 }
 

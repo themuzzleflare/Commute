@@ -4,7 +4,7 @@ import AsyncDisplayKit
 import MarqueeLabel
 
 final class TripDetailVC: ASViewController {
-  private let tableNode = ASTableNode(style: .grouped)
+  private let tableNode = ASTableNode(style: .plain)
 
   private var trip: TripViewModel
 
@@ -21,7 +21,7 @@ final class TripDetailVC: ASViewController {
   }
   
   deinit {
-    print(#function)
+    print("\(#function) \(String(describing: type(of: self)))")
   }
 
   required init?(coder: NSCoder) {
@@ -89,8 +89,8 @@ extension TripDetailVC: ASTableDelegate {
 
     if let legs = journey.legs {
       if legs.count == 1 {
-        if let stops = legs.first?.stopSequence {
-          navigationController?.pushViewController(StopSequenceVC(stops: stops), animated: true)
+        if let leg = legs.first, let stops = leg.stopSequence {
+          navigationController?.pushViewController(StopSequenceVC(leg: leg, stops: stops), animated: true)
         } else {
           navigationController?.pushViewController(JourneyDetailVC(legs: legs), animated: true)
         }

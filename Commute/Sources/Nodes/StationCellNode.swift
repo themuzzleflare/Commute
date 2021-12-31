@@ -36,7 +36,7 @@ final class StationCellNode: ASCellNode {
     let vStack = ASStackLayoutSpec(
       direction: .vertical,
       spacing: 0,
-      justifyContent: .start,
+      justifyContent: .center,
       alignItems: .start,
       children: station.type == .byName ? [stationNameTextNode] : [
         stationNameTextNode,

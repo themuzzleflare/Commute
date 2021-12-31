@@ -42,7 +42,7 @@ struct APIFacade {
       .accept("application/json")
     ]
 
-    AF.request("https://api.commute.tavitian.cloud/alerts/trackwork", method: .get, headers: headers).responseJSON { (response) in
+    AF.request("https://api.commute.tavitian.cloud/alerts/trackwork", method: .get, headers: headers).response { (response) in
       switch response.result {
       case .success:
         do {

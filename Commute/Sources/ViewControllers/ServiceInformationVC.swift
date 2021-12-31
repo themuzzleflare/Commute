@@ -2,7 +2,7 @@ import UIKit
 import AsyncDisplayKit
 
 final class ServiceInformationVC: ASViewController {
-  private let tableNode = ASTableNode(style: .grouped)
+  private let tableNode = ASTableNode(style: .plain)
 
   private var alerts = [TransitRealtime_FeedEntity]() {
     didSet {
@@ -15,7 +15,7 @@ final class ServiceInformationVC: ASViewController {
   }
   
   deinit {
-    print(#function)
+    print("\(#function) \(String(describing: type(of: self)))")
   }
 
   required init?(coder: NSCoder) {

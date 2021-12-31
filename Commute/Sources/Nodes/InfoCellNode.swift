@@ -16,7 +16,7 @@ final class InfoCellNode: ASCellNode {
   }
   
   deinit {
-    print(#function)
+    print("\(#function) \(String(describing: type(of: self)))")
   }
   
   override func layout() {

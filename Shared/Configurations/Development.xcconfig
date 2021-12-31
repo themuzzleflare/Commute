@@ -1,5 +1,5 @@
 #include "Shared.xcconfig"
 
 CLOUDKIT_CONTAINER_ENVIRONMENT = Production
-APS_ENVIRONMENT = development
+APS_ENVIRONMENT = production
 APP_ATTEST_ENVIRONMENT = production

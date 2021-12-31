@@ -3,7 +3,7 @@ import UIKit
 import AsyncDisplayKit
 
 final class ToolsVC: ASViewController {
-  private let tableNode = ASTableNode(style: .grouped)
+  private let tableNode = ASTableNode(style: .plain)
   
   override init() {
     super.init(node: tableNode)

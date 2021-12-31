@@ -33,7 +33,6 @@
 		7A2C190526AE6CB4005BF502 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A2C190426AE6CB4005BF502 /* Assets.xcassets */; };
 		7A2C190826AE6CB4005BF502 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A2C190626AE6CB4005BF502 /* LaunchScreen.storyboard */; };
 		7A464EAB26E856550062781D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A464EAA26E856550062781D /* GoogleService-Info.plist */; };
-		7A464EAF26E86D3C0062781D /* MapboxMapNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A464EAE26E86D3C0062781D /* MapboxMapNode.swift */; };
 		7A47E2782751EEDE00ACBBED /* gtfs-realtime.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A47E2772751EEDE00ACBBED /* gtfs-realtime.pb.swift */; };
 		7A47E27B2751EFF200ACBBED /* StringStyle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A47E27A2751EFF200ACBBED /* StringStyle+Extension.swift */; };
 		7A493B862751DE67001022B7 /* InfoCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A493B852751DE67001022B7 /* InfoCellNode.swift */; };
@@ -151,7 +150,6 @@
 		7A38860E26BB683200F57EA0 /* Production.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Production.xcconfig; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.xcconfig; };
 		7A38860F26BB835800F57EA0 /* Shared.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Shared.xcconfig; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.xcconfig; };
 		7A464EAA26E856550062781D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		7A464EAE26E86D3C0062781D /* MapboxMapNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapboxMapNode.swift; sourceTree = "<group>"; };
 		7A47E2762751EEA500ACBBED /* gtfs-realtime.proto */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.protobuf; path = "gtfs-realtime.proto"; sourceTree = "<group>"; };
 		7A47E2772751EEDE00ACBBED /* gtfs-realtime.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "gtfs-realtime.pb.swift"; sourceTree = "<group>"; };
 		7A47E27A2751EFF200ACBBED /* StringStyle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StringStyle+Extension.swift"; sourceTree = "<group>"; };
@@ -546,7 +544,6 @@
 				7ACC856A26B22D8E00F8F946 /* AboutTopCellNode.swift */,
 				7A7D6B0926DF086900101CD9 /* StopsMapCellNode.swift */,
 				7AFDA8CB26DC7283002AB73B /* AlertCellNode.swift */,
-				7A464EAE26E86D3C0062781D /* MapboxMapNode.swift */,
 				7AC3137126E8A2B000218915 /* PDFNode.swift */,
 				7AC3137326E8A54D00218915 /* WKWebNode.swift */,
 				7A493B852751DE67001022B7 /* InfoCellNode.swift */,
@@ -842,7 +839,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7A464EAF26E86D3C0062781D /* MapboxMapNode.swift in Sources */,
 				7AB79CEA26E1A3600034CA22 /* UIView+Extension.swift in Sources */,
 				7AD4E04726AFFECE007960AD /* APIFacade.swift in Sources */,
 				7AFDA8D226DC7313002AB73B /* LegCellNode.swift in Sources */,

@@ -14,7 +14,6 @@ target 'Commute' do
   pod 'Texture'
   pod 'Texture/IGListKit'
   pod 'MBProgressHUD'
-  pod 'MapboxMaps'
   pod 'MarqueeLabel'
   pod 'Firebase/AnalyticsWithoutAdIdSupport'
   pod 'Firebase/Crashlytics'

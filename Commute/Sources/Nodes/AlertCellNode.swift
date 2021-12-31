@@ -8,9 +8,11 @@ final class AlertCellNode: ASCellNode {
   private let activePeriodTextNode = ASTextNode()
   
   private var alert: TransitRealtime_Alert
+  
   private var fromDate: Date {
     return Date(seconds: TimeInterval(alert.activePeriod[0].start))
   }
+  
   private var toDate: Date {
     return Date(seconds: TimeInterval(alert.activePeriod[0].end))
   }
@@ -24,7 +26,7 @@ final class AlertCellNode: ASCellNode {
   }
   
   deinit {
-    print(#function)
+    print("\(#function) \(String(describing: type(of: self)))")
   }
   
   override func layout() {

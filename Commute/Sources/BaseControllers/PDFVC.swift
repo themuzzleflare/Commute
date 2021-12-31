@@ -13,7 +13,7 @@ final class PDFVC: ASViewController {
   }
   
   deinit {
-    print(#function)
+    print("\(#function) \(String(describing: type(of: self)))")
   }
 
   required init?(coder: NSCoder) {

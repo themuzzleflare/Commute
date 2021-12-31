@@ -24,8 +24,6 @@
 	<false/>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>MBXAccessToken</key>
-	<string>${MAPBOX_TOKEN}</string>
 	<key>NSHumanReadableCopyright</key>
 	<string>${COMMUTE_COPYRIGHT}</string>
 	<key>NSLocationWhenInUseUsageDescription</key>

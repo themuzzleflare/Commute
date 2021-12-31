@@ -4,7 +4,7 @@ import SnapKit
 import IGListKit
 
 final class TripsVC: ASViewController {
-  private let tableNode = ASTableNode(style: .grouped)
+  private let tableNode = ASTableNode(style: .plain)
   
   private var trips = [Trip]() {
     didSet {
