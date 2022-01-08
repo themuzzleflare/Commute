@@ -27,7 +27,8 @@ struct APIFacade {
       "destination": destination
     ]
 
-    AF.request("https://api.commute.tavitian.cloud/trips", method: .get, parameters: urlParams, headers: headers).responseDecodable(of: TripRequestResponse.self) { (response) in
+    AF.request("https://api.commute.tavitian.cloud/trips", method: .get, parameters: urlParams, headers: headers)
+      .responseDecodable(of: TripRequestResponse.self) { (response) in
       switch response.result {
       case let .success(data):
         completion(.success(data.journeys!))
